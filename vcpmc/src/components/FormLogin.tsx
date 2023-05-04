@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Checkbox, Input, Button } from 'antd';
+import {
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  createUserWithEmailAndPassword,
+} from 'firebase/auth';
+import { auth } from '../firebase';
 import styled from 'styled-components';
 import ConfirmFormEmail from './ConfirmFormEmail';
+import { useNavigate } from 'react-router-dom';
 
 const FormContainer = styled(Form)`
   display: flex;
@@ -65,11 +72,40 @@ const FormItem = styled(Form.Item)`
 `;
 
 const FormLogin = () => {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [forgetPassword, setForgetPassword] = useState(true);
+  const navigate = useNavigate();
+
+  const handleSignIn = () => {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        navigate('/dashboard');
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  };
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigate('/home');
+      }
+    });
+  }, []);
+
   return (
     <>
       {forgetPassword ? (
-        <FormContainer name="login-form" layout="vertical">
+        <FormContainer
+          name="login-form"
+          layout="vertical"
+          onFinish={handleSignIn}
+        >
           <h1>Đăng nhập</h1>
           <span style={{ color: '#fff' }}>Tên đăng nhập</span>
           <FormItem
@@ -79,7 +115,11 @@ const FormLogin = () => {
               { required: true, message: 'Hãy điền thông tin đăng nhập!' },
             ]}
           >
-            <Input className="input" />
+            <Input
+              className="input"
+              value="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </FormItem>
           <span style={{ color: '#fff' }}>Password</span>
           <FormItem
@@ -87,7 +127,11 @@ const FormLogin = () => {
             name="password"
             rules={[{ required: true, message: 'Hãy điền mật khẩu của bạn!' }]}
           >
-            <Input.Password className="input" />
+            <Input.Password
+              className="input"
+              value="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </FormItem>
           <FormItem
             name="remember"
