@@ -5,6 +5,7 @@ import logo from '../assets/logo.png';
 import FormLogin from '../components/FormLogin';
 import VN from '../assets/VNlogo.png';
 import { DownOutlined } from '@ant-design/icons';
+import FormResetPassword from '../components/FormResetPassword';
 
 const Wrapper = styled.div`
   position: relative;
@@ -47,7 +48,7 @@ const Language = styled.p`
   }
 `;
 
-const Home = () => {
+const ResetPassword = () => {
   return (
     <Wrapper>
       <Language>
@@ -55,9 +56,9 @@ const Home = () => {
         <DownOutlined />
       </Language>
       <img src={logo} alt="logo" />
-      <FormLogin />
+      <FormResetPassword />
     </Wrapper>
   );
 };
 
-export default Home;
+export default ResetPassword;

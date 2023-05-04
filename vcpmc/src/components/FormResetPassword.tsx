@@ -21,16 +21,22 @@ const FormContainer = styled(Form)`
     }
   }
   .text-content {
-    h1 {
-      fontsize: 36px;
-      font-weight: 700;
-    }
-    h3 {
-      weight: 400;
-      color: #fff;
-      font-weight: 100;
-      font-size: 16px;
-    }
+    width: 585px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+ h1 {
+    color: #FF4747;
+          fontsize: 36px;
+          font-weight: 700;
+        }
+        h3 {
+          weight: 400;
+          color: #fff;
+          font-weight: 100;
+          font-size: 16px;
+        }
+      }
   }
 `;
 
@@ -64,37 +70,33 @@ const FormItem = styled(Form.Item)`
   }
 `;
 
-const FormLogin = () => {
+const FormResetPassword = () => {
   const [forgetPassword, setForgetPassword] = useState(true);
+  const [isConnected, setIsConnected] = useState(true);
   return (
     <>
-      {forgetPassword ? (
+      {!isConnected ? (
         <FormContainer name="login-form" layout="vertical">
-          <h1>Đăng nhập</h1>
-          <span style={{ color: '#fff' }}>Tên đăng nhập</span>
-          <FormItem
-            required={false}
-            name="email"
-            rules={[
-              { required: true, message: 'Hãy điền thông tin đăng nhập!' },
-            ]}
-          >
-            <Input className="input" />
-          </FormItem>
-          <span style={{ color: '#fff' }}>Password</span>
+          <h1>Đặt lại mật khẩu</h1>
+          <span style={{ color: '#fff' }}>Mật khẩu mới</span>
           <FormItem
             required={false}
             name="password"
-            rules={[{ required: true, message: 'Hãy điền mật khẩu của bạn!' }]}
+            rules={[
+              { required: true, message: 'Hãy điền thông tin mật khẩu!' },
+            ]}
           >
             <Input.Password className="input" />
           </FormItem>
+          <span style={{ color: '#fff' }}>Nhập lại mật khẩu mới</span>
           <FormItem
-            name="remember"
-            valuePropName="checked"
-            wrapperCol={{ span: 24 }}
+            required={false}
+            name="confirmPassword"
+            rules={[
+              { required: true, message: 'Hãy xác nhận mật khẩu của bạn!' },
+            ]}
           >
-            <Checkbox style={{ color: '#fff' }}>Ghi nhớ đăng nhập</Checkbox>
+            <Input.Password className="input" />
           </FormItem>
           <FormItem>
             <Button
@@ -104,23 +106,40 @@ const FormLogin = () => {
               size="large"
               style={{ width: '150px', backgroundColor: '#FF7506' }}
             >
-              Đăng nhập
-            </Button>
-          </FormItem>
-          <FormItem>
-            <Button
-              className="btn-forget"
-              onClick={() => setForgetPassword(!forgetPassword)}
-            >
-              Quên mật khẩu?
+              Lưu mật khẩu
             </Button>
           </FormItem>
         </FormContainer>
       ) : (
-        <ConfirmFormEmail />
+        <FormContainer name="login-form" layout="vertical">
+          <div className="text-content">
+            <h1>Không thể kết nối!!</h1>
+            <h3>
+              Dường như đã có chút trục trặc hoặc link này đã hết hạn. Vui lòng
+              thử lại hoặc yêu cầu gửi lại link để đặt lại mật khẩu của bạn.
+            </h3>
+          </div>
+          <FormItem>
+            <Button
+              type="primary"
+              htmlType="submit"
+              block
+              size="large"
+              style={{
+                width: '150px',
+                backgroundColor: 'transparent',
+                color: '#FF7506',
+                border: '1px solid #FF7506',
+                marginTop: '20px',
+              }}
+            >
+              Yêu cầu gửi lại link
+            </Button>
+          </FormItem>
+        </FormContainer>
       )}
     </>
   );
 };
 
-export default FormLogin;
+export default FormResetPassword;
