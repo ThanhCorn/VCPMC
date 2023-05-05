@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import logo from '../assets/logo.png';
-import MenuData from './MenuData';
 import React, { useState } from 'react';
 import {
   VideoCameraOutlined,

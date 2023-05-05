@@ -2,7 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import VN from '../assets/VNlogo.png';
 import { DownOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { Link } from 'react-router-dom';
+import Nouser from '../assets/nouser.png';
+interface User {
+  displayName: string | null;
+  email: string | null;
+  photoURL: string | null;
+  uid: string;
+  phoneNumber: string | null;
+  datePorn: string | null;
+}
 
+interface NavbarProps {
+  user: User | null;
+}
 const Language = styled.p`
   position: fixed;
   top: 0;
@@ -34,9 +48,16 @@ const Language = styled.p`
     border-radius: 50%;
   }
   .avatar {
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #fff;
+    :hover {
+      border: none;
+    }
     img {
       margin-left: 15px;
       width: 40px;
@@ -46,7 +67,7 @@ const Language = styled.p`
       margin-left: 5px;
       display: flex;
       flex-direction: column;
-      h4,
+      h3,
       p {
         margin: 0;
       }
@@ -57,7 +78,8 @@ const Language = styled.p`
   }
 `;
 
-const Navbar = () => {
+const Navbar: React.FC<NavbarProps> = ({ user }) => {
+  const { displayName, photoURL } = user || {};
   return (
     <>
       <Language>
@@ -65,13 +87,13 @@ const Navbar = () => {
           Tiếng việt <img src={VN} alt="VN" />
           <DownOutlined />
         </div>
-        <div className="avatar">
-          <img src={VN} alt="avatar" />
+        <Link to="/dashboard" className="avatar">
+          <img src={`${photoURL ? photoURL : Nouser} `} alt="avatar" />
           <div className="user-info">
-            <h4>Ngoc Thanh</h4>
+            <h3>{displayName}</h3>
             <p>Admin</p>
           </div>
-        </div>
+        </Link>
       </Language>
     </>
   );
