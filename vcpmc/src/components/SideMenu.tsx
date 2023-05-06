@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import logo from '../assets/logo.png';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   VideoCameraOutlined,
   PlaySquareOutlined,
@@ -13,7 +14,14 @@ import {
 import type { MenuProps } from 'antd';
 import { Button, Menu } from 'antd';
 
-type MenuItem = Required<MenuProps>['items'][number];
+type MenuItem = Required<MenuProps>['items'][number] & {
+  key: React.Key;
+  icon?: React.ReactNode;
+  label?: React.ReactNode;
+  children?: MenuItem[];
+  type?: 'group';
+  path?: string;
+};
 
 function getItem(
   label: React.ReactNode,
@@ -21,13 +29,38 @@ function getItem(
   icon?: React.ReactNode,
   children?: MenuItem[],
   type?: 'group',
+  path?: string,
 ): MenuItem {
+  if (path) {
+    return {
+      key,
+      icon,
+      children: children?.map((child) =>
+        getItem(
+          child.label,
+          child.key,
+          child.icon,
+          child.children,
+          child.type,
+          child.path,
+        ),
+      ),
+      label: (
+        <Link to={path} style={{ color: 'inherit' }}>
+          {label}
+        </Link>
+      ),
+      type,
+      path,
+    } as MenuItem;
+  }
   return {
     key,
     icon,
     children,
     label,
     type,
+    path,
   } as MenuItem;
 }
 const Wrapper = styled(Menu)`
@@ -49,6 +82,17 @@ const Wrapper = styled(Menu)`
       font-size: 14px;
       display: flex;
     }
+    .ant-menu-item-active {
+      border-left: 3px solid #ff7506 !important;
+      border-radius: 0px !important;
+    }
+    .ant-menu-item-selected {
+      background-color: #020220 !important;
+      color: #ff7506 !important;
+      border-left: 3px solid #ff7506 !important;
+      border-radius: 0px !important;
+    }
+
     .ant-menu-item {
       padding-top: 5px;
       display: flex;
@@ -68,6 +112,11 @@ const Wrapper = styled(Menu)`
       text-align: center;
       align-items: center;
       line-height: 20px;
+    }
+    .ant-menu-submenu-selected > .ant-menu-submenu-title {
+      border-radius: 0px !important;
+      border-left: 3px solid #ff7506;
+      color: #ff7506 !important;
     }
 
     .ant-menu-submenu-title > .ant-menu-title-content {
@@ -89,10 +138,38 @@ const items: MenuItem[] = [
   getItem('Lập lịch phát', '3', <CalendarOutlined />),
 
   getItem('Quản lý', 'sub1', <FileTextOutlined />, [
-    getItem('Quản lý hợp đồng', '5'),
-    getItem('Quản lý thiết bị', '6'),
-    getItem('Đơn vị ủy quyền', '7'),
-    getItem('Đơn vị sử dụng', '8'),
+    getItem(
+      'Quản lý hợp đồng',
+      '5',
+      undefined,
+      undefined,
+      undefined,
+      '/management/contract',
+    ),
+    getItem(
+      'Quản lý thiết bị',
+      '6',
+      undefined,
+      undefined,
+      undefined,
+      '/management/equip',
+    ),
+    getItem(
+      'Đơn vị ủy quyền',
+      '7',
+      undefined,
+      undefined,
+      undefined,
+      '/management/authority',
+    ),
+    getItem(
+      'Đơn vị sử dụng',
+      '8',
+      undefined,
+      undefined,
+      undefined,
+      '/management/used',
+    ),
   ]),
 
   getItem('Doanh thu', 'sub2', <DollarCircleOutlined />, [

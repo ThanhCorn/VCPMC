@@ -3,6 +3,10 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ResetPassword from './pages/ResetPassword';
 import Dashboard from './pages/Dashboard';
+import ContractManagement from './pages/ContractManagement';
+import EquipManagement from './pages/EquipManagement';
+import UnitUsed from './pages/UnitUsed';
+import AuthorizedUnit from './pages/AuthorizedUnit';
 
 function App() {
   return (
@@ -11,6 +15,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/management/contract" element={<ContractManagement />} />
+        <Route path="/management/equip" element={<EquipManagement />} />
+        <Route path="/management/authority" element={<AuthorizedUnit />} />
+        <Route path="/management/used" element={<UnitUsed />} />
       </Routes>
     </BrowserRouter>
   );

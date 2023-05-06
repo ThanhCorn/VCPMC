@@ -2,6 +2,7 @@ import React from 'react';
 import SideMenu from '../components/SideMenu';
 import PageContent from '../components/PageContent';
 import styled from 'styled-components';
+import UserInfo from '../components/UserInfo';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ const Dashboard = () => {
   return (
     <Wrapper>
       <SideMenu />
-      <PageContent />
+      <UserInfo />
     </Wrapper>
   );
 };
