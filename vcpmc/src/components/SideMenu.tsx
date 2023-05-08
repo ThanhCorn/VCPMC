@@ -81,6 +81,10 @@ const Wrapper = styled(Menu)`
     li {
       font-size: 14px;
       display: flex;
+      span > svg {
+        width: 32px;
+        height: 32px;
+      }
     }
     .ant-menu-item-active {
       border-left: 3px solid #ff7506 !important;
@@ -96,6 +100,8 @@ const Wrapper = styled(Menu)`
     .ant-menu-item {
       padding-top: 5px;
       display: flex;
+      height: 70px;
+
       flex-direction: column;
       text-align: center;
       align-items: center;
@@ -106,12 +112,31 @@ const Wrapper = styled(Menu)`
         border-left-radius: 0px !important;
       }
     }
+    .ant-menu-submenu {
+      padding-top: 5px;
+      display: flex;
+      height: 70px;
+
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+      line-height: 20px;
+      :hover {
+        color: #fff !important;
+        border-left-radius: 0px !important;
+      }
+    }
     .ant-menu-submenu > .ant-menu-submenu-title {
+      height: 70px;
       display: flex;
       flex-direction: column;
       text-align: center;
       align-items: center;
       line-height: 20px;
+      :hover {
+        border-left: 3px solid #ff7506 !important;
+        border-radius: 0px !important;
+      }
     }
     .ant-menu-submenu-selected > .ant-menu-submenu-title {
       border-radius: 0px !important;

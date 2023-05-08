@@ -72,7 +72,7 @@ const FormItem = styled(Form.Item)`
 
 const FormResetPassword = () => {
   const [forgetPassword, setForgetPassword] = useState(true);
-  const [isConnected, setIsConnected] = useState(false);
+  const [isConnected, setIsConnected] = useState(true);
   return (
     <>
       {!isConnected ? (

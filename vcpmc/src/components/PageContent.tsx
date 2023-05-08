@@ -11,17 +11,6 @@ const PageContent: React.FC = () => {
   return (
     <Wrapper>
       <Navbar user={currentUser} />
-      <div className="basic-info">
-        <h1>Thông tin cơ bản</h1>
-        <div className="avatar">
-          <img
-            src={`${currentUser?.photoURL ? currentUser.photoURL : Nouser} `}
-            alt={`${currentUser?.photoURL ? 'User image' : 'No user image'} `}
-          />
-          <CameraOutlined className="icon-camera" />
-          <h4>{currentUser?.displayName}</h4>
-        </div>
-      </div>
     </Wrapper>
   );
 };
