@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Form, Checkbox, Input, Button } from 'antd';
-import logo from '../assets/logo.png';
+import logo1 from '../assets/logo1.png';
 import FormLogin from '../components/FormLogin';
 import VN from '../assets/VNlogo.png';
 import { DownOutlined } from '@ant-design/icons';
@@ -55,7 +55,7 @@ const ResetPassword = () => {
         Tiếng việt <img src={VN} alt="VN" />
         <DownOutlined />
       </Language>
-      <img src={logo} alt="logo" />
+      <img src={logo1} alt="logo1" />
       <FormResetPassword />
     </Wrapper>
   );

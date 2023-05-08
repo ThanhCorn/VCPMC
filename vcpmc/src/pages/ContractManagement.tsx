@@ -23,7 +23,7 @@ const ContractManagement = () => {
         ) : (
           <h1>Danh sách hợp đồng khai thác</h1>
         )}
-        <div>
+        <div className="btn">
           <Button
             type="primary"
             onClick={() => setIsisAuthorizingOrMining(false)}
@@ -54,7 +54,8 @@ const Wrapper = styled.div`
   flex: 1;
   background-color: var(--primary-color);
   .content {
-    margin-left: 30px;
+    margin-top: 50px;
+    margin-left: 50px;
     margin-right: 70px;
     flex: 1;
     h1 {
@@ -73,25 +74,30 @@ const Wrapper = styled.div`
         color: #ffac69;
       }
     }
-    .button-1,
-    .button-2 {
+    .btn {
+      margin-bottom: 20px;
+      width: 308px;
       border: 1px solid #ff7506;
       border-radius: 24px;
-      background: none;
-      :hover {
+
+      .button-1,
+      .button-2 {
+        border-radius: 24px;
+        background: none;
+      }
+      .button-1 {
+        border-top-right-radius: 24px;
+        border-bottom-right-radius: 24px;
+        border-right: none;
+      }
+      .button-2 {
+        border-top-left-radius: 24px;
+        border-bottom-left-radius: 24px;
+        border-left: none;
+      }
+      .active {
         background: #b65100;
       }
-    }
-    .button-1 {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-    .button-2 {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-    .active {
-      background-color: #b65100;
     }
   }
 `;

@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import type { MenuProps } from 'antd';
-import { Space, Button, Dropdown, Input } from 'antd';
+import {
+  Space,
+  Button,
+  Dropdown,
+  Input,
+  List,
+  Pagination,
+  Typography,
+} from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { db } from '../firebase';
 import styled from 'styled-components';
+import type { PaginationProps } from 'antd';
 import {
   collection,
   getDocs,
@@ -12,6 +21,7 @@ import {
   Timestamp,
   doc,
 } from 'firebase/firestore';
+import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 
 const { Search } = Input;
@@ -23,9 +33,9 @@ interface DataProps {
   'Tên hợp đồng': string;
   'Quyền sở hữu': string;
   'Người ủy quyền': string;
-  'Ngày tạo': string;
-  'Ngày hết hạn': string;
-  'Ngày hiệu lực': string;
+  'Ngày tạo': firebase.firestore.Timestamp;
+  'Ngày hết hạn': firebase.firestore.Timestamp;
+  'Ngày hiệu lực': firebase.firestore.Timestamp;
   'Khách hàng': string;
   'Hiệu lực hợp đồng': string[];
 }
@@ -70,43 +80,85 @@ const AuthorizedContract = () => {
   }, []);
 
   return (
-    <Wrapper className="option">
-      <div className="option-1">
-        <Space className="space-1">
-          <p>Quyền sở hữu:</p>
-          <Dropdown menu={menuProps}>
-            <Button>
-              <Space>
-                Tất cả
-                <DownOutlined />
-              </Space>
-            </Button>
-          </Dropdown>
-        </Space>
-        <Space className="space-2">
-          <p>Hợp đồng ủy quyền:</p>
-          <Dropdown menu={{ items: HieuLucHopDongOptions }}>
-            <Button>
-              <Space>
-                Tất cả
-                <DownOutlined />
-              </Space>
-            </Button>
-          </Dropdown>
-        </Space>
+    <>
+      <Wrapper className="option">
+        <div className="option-1">
+          <Space className="space-1">
+            <p>Quyền sở hữu:</p>
+            <Dropdown menu={menuProps}>
+              <Button>
+                <Space>
+                  Tất cả
+                  <DownOutlined />
+                </Space>
+              </Button>
+            </Dropdown>
+          </Space>
+          <Space className="space-2">
+            <p>Hợp đồng ủy quyền:</p>
+            <Dropdown menu={{ items: HieuLucHopDongOptions }}>
+              <Button>
+                <Space>
+                  Tất cả
+                  <DownOutlined />
+                </Space>
+              </Button>
+            </Dropdown>
+          </Space>
+        </div>
+        <div className="option-2">
+          <Search
+            placeholder="input search text"
+            onSearch={onSearch}
+            style={{ width: 200 }}
+          />
+        </div>
+      </Wrapper>
+      <div>
+        <List
+          bordered
+          style={{ color: '#fff', width: '73.6vw' }}
+          itemLayout="horizontal"
+        >
+          <List.Item style={{ color: '#fff' }}>
+            <List.Item.Meta title="STT" />
+            <List.Item.Meta title="Số hợp đồng" />
+            <List.Item.Meta title="Tên hợp đồng" />
+            <List.Item.Meta title="Quyền sở hữu" />
+            <List.Item.Meta title="Người ủy quyền" />
+            <List.Item.Meta title="Ngày tạo" />
+            <List.Item.Meta title="Khách hàng" />
+            <List.Item.Meta title="Hiệu lực hợp đồng" />
+            <List.Item.Meta title="" />
+            <List.Item.Meta title="" />
+          </List.Item>
+          {data.map((item) => (
+            <List.Item key={item['STT']} style={{ color: '#fff' }}>
+              <p>{item['STT']}</p>
+              <p>{item['Số hợp đồng']}</p>
+              <p>{item['Tên hợp đồng']}</p>
+              <p>{item['Quyền sở hữu']}</p>
+              <p>{item['Người ủy quyền']}</p>
+              <p>
+                {item['Ngày tạo']
+                  ? item['Ngày tạo'].toDate().toLocaleString()
+                  : ''}
+              </p>
+              <p>{item['Khách hàng']}</p>
+              <p>{item['Hiệu lực hợp đồng'][0]}</p>
+              <button>Xem chi tiết</button>
+              <button>Lý do hủy</button>
+            </List.Item>
+          ))}
+          <Pagination defaultCurrent={1} total={100} />
+        </List>
       </div>
-      <Space className="option-2">
-        <Search
-          placeholder="input search text"
-          onSearch={onSearch}
-          style={{ width: 200 }}
-        />
-      </Space>
-    </Wrapper>
+    </>
   );
 };
 
 const Wrapper = styled.div`
+  margin-bottom: 20px;
   button {
     height: 48px;
   }

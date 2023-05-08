@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '../assets/logo.png';
+import logo1 from '../assets/logo1.png';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -67,7 +67,7 @@ const Wrapper = styled(Menu)`
   background-color: #020220;
   width: 10vw;
   height: 100vh;
-  .logo {
+  .logo1 {
     margin: 40px 0px 150px 40px;
     img {
       width: 115px;
@@ -220,8 +220,8 @@ const items: MenuItem[] = [
 const SideMenu = () => {
   return (
     <Wrapper>
-      <div className="logo">
-        <img src={logo} alt="logo" />
+      <div className="logo1">
+        <img src={logo1} alt="logo1" />
       </div>
       <div className="menu-item">
         <Menu mode="vertical" items={items} className="list-item" />
