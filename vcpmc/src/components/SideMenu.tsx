@@ -65,7 +65,8 @@ function getItem(
 }
 const Wrapper = styled(Menu)`
   background-color: #020220;
-  width: 10vw;
+  width: 170px;
+
   height: 100vh;
   .logo1 {
     margin: 40px 0px 150px 40px;

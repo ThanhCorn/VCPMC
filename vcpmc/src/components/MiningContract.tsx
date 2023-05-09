@@ -89,59 +89,79 @@ const MiningContract = () => {
             style={{ width: 200 }}
           />
         </div>
+        <Container>
+          <List
+            bordered
+            style={{ color: '#fff', width: '73.6vw' }}
+            itemLayout="horizontal"
+          >
+            {data.map((item, index) => (
+              <List.Item key={item['STT']} style={{ color: '#fff' }}>
+                <List.Item.Meta
+                  title={`${index === 0 ? 'STT' : ''}`}
+                  description={item['STT']}
+                  style={{ maxWidth: '80px' }}
+                />
+                <List.Item.Meta
+                  title={`${index === 0 ? 'Số hợp đồng' : ''}`}
+                  description={item['Số hợp đồng']}
+                  style={{ maxWidth: '170px' }}
+                />
+                <List.Item.Meta
+                  title={`${index === 0 ? 'Khách hàng' : ''}`}
+                  description={item['Khách hàng']}
+                  style={{ maxWidth: '309px' }}
+                />
+                <List.Item.Meta
+                  title={`${index === 0 ? 'Ngày tạo' : ''}`}
+                  description={
+                    item['Ngày tạo']
+                      ? item['Ngày tạo'].toDate().toLocaleString()
+                      : ''
+                  }
+                />
+                <List.Item.Meta
+                  title={`${index === 0 ? 'Ngày hiệu lực' : ''}`}
+                  description={
+                    item['Ngày hiệu lực']
+                      ? item['Ngày hiệu lực']
+                          .toDate()
+                          .toLocaleString()
+                          .slice(8, 18)
+                      : ''
+                  }
+                />
+                <List.Item.Meta
+                  title={`${index === 0 ? 'Ngày hết hạn' : ''}`}
+                  description={
+                    item['Ngày hết hạn']
+                      ? item['Ngày hết hạn']
+                          .toDate()
+                          .toLocaleString()
+                          .slice(8, 18)
+                      : ''
+                  }
+                />
+                <List.Item.Meta
+                  title={`${index === 0 ? 'Hiệu lực hợp đồng' : ''}`}
+                  description={item['Hiệu lực hợp đồng'][0]}
+                />
+                <div>
+                  <button>Xem chi tiết</button>
+                  <button>Lý do hủy</button>
+                </div>
+              </List.Item>
+            ))}
+            <Pagination defaultCurrent={1} total={100} />
+          </List>
+        </Container>
       </Wrapper>
-      <div>
-        <List
-          bordered
-          style={{ color: '#fff', width: '73.6vw' }}
-          itemLayout="horizontal"
-        >
-          <List.Item style={{ color: '#fff' }}>
-            <List.Item.Meta title="STT" />
-            <List.Item.Meta title="Số hợp đồng" />
-            <List.Item.Meta title="Khách hàng" />
-            <List.Item.Meta title="Quyền sở hữu" />
-            <List.Item.Meta title="Ngày tạo" />
-            <List.Item.Meta title="Ngày hiệu lực" />
-            <List.Item.Meta title="Ngày hết hạn" />
-            <List.Item.Meta title="Hiệu lực hợp đồng" />
-            <List.Item.Meta title="" />
-            <List.Item.Meta title="" />
-          </List.Item>
-          {data.map((item) => (
-            <List.Item key={item['STT']} style={{ color: '#fff' }}>
-              <p>{item['STT']}</p>
-              <p>{item['Số hợp đồng']}</p>
-              <p>{item['Khách hàng']}</p>
-              <p>{item['Quyền sở hữu']}</p>
-              <p>
-                {item['Ngày tạo']
-                  ? item['Ngày tạo'].toDate().toLocaleString()
-                  : ''}
-              </p>
-              <p>
-                {item['Ngày hiệu lực']
-                  ? item['Ngày hiệu lực'].toDate().toLocaleString().slice(8, 18)
-                  : ''}
-              </p>
-              <p>
-                {item['Ngày hết hạn']
-                  ? item['Ngày hết hạn'].toDate().toLocaleString().slice(8, 18)
-                  : ''}
-              </p>
-              <p>{item['Hiệu lực hợp đồng'][0]}</p>
-              <button>Xem chi tiết</button>
-              <button>Lý do hủy</button>
-            </List.Item>
-          ))}
-          <Pagination defaultCurrent={1} total={100} />
-        </List>
-      </div>
     </>
   );
 };
 
 const Wrapper = styled.div`
+  position: relative;
   button {
     height: 48px;
   }
@@ -181,6 +201,23 @@ const Wrapper = styled.div`
       width: 280px;
       height: 48px;
     }
+  }
+`;
+const Container = styled.div`
+  position: absolute;
+  top: 100px;
+  left: 0;
+  .ant-list {
+    width: 1533px !important;
+    max-height: 727px;
+  }
+  .ant-list .ant-list-item .ant-list-item-meta .ant-list-item-meta-title {
+    color: #ffac69;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+  }
+  .ant-list-bordered .ant-list-item {
   }
 `;
 export default MiningContract;

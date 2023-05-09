@@ -76,7 +76,7 @@ const Wrapper = styled.div`
     }
     .btn {
       margin-bottom: 20px;
-      width: 308px;
+      width: 309px;
       border: 1px solid #ff7506;
       border-radius: 24px;
 

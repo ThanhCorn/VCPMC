@@ -211,9 +211,9 @@ const Wrapper = styled.div`
   .side-option {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 0;
-    transform: translate(-12%, 50%);
+    transform: translateY(50%);
     right: 0;
     button {
       color: #fff;
