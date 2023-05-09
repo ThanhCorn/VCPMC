@@ -185,11 +185,10 @@ const AuthorizedContract = () => {
                 />
                 <List.Item.Meta
                   title={`${index === 0 ? 'Hiệu lực hợp đồng' : ''}`}
-                  description={`${
-                    item['Hiệu lực hợp đồng'][0] === 'Còn thời hạn'
+                  description={`${item['Hiệu lực hợp đồng'][0] === 'Còn thời hạn'
                       ? `🌱${item['Hiệu lực hợp đồng'][0]}`
                       : `⚡${item['Hiệu lực hợp đồng'][0]}`
-                  }`}
+                    }`}
                 />
                 <List.Item.Meta
                   title={`${index === 0 ? 'Ngày tạo' : ''}`}
@@ -302,7 +301,7 @@ const AuthorizedContract = () => {
                 Tác phẩm ủy quyền
               </Button>
             </div>
-            <div>{isInfoOrAuthority ? '' : <InfoContract />}</div>
+            <div>{isInfoOrAuthority ? '' : <InfoContract dataContract={data} />}</div>
           </ModalContainer>
         </div>
       </Wrapper>
@@ -420,7 +419,6 @@ position: relative;
       background-color: #2f2f41;
       width: 110px;
       line-height: 18px;
-      letter: 0.5%;
       height: 130px;
       background: #2f2f41;
       border: none;
@@ -432,6 +430,7 @@ position: relative;
       font-size: 2rem;
       color: #ff7506;
     }
+  }
 `;
 
 const Container = styled.div`
