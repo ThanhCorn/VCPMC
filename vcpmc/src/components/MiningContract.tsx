@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import type { MenuProps } from 'antd';
 import {
   Space,
@@ -23,6 +23,7 @@ import {
 } from 'firebase/firestore';
 import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
+import { DataContext } from '../context/DataContext';
 
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
@@ -59,25 +60,12 @@ const menuProps = {
 };
 
 const MiningContract = () => {
-  const [data, setData] = useState<DataProps[]>([]);
+  const { data } = useContext(DataContext);
   const HieuLucHopDong = data.length > 0 ? data[0]['Hiệu lực hợp đồng'] : [];
   const HieuLucHopDongOptions = HieuLucHopDong.map((option, index) => ({
     label: option,
     key: index.toString(),
   }));
-
-  useEffect(() => {
-    const getData = async () => {
-      const q = query(collection(db, 'contract'));
-      const querySnapshot = await getDocs(q);
-      const tempData: DataProps[] = [];
-      querySnapshot.forEach((doc) => {
-        tempData.push(doc.data() as DataProps);
-      });
-      setData(tempData);
-    };
-    getData();
-  }, []);
 
   return (
     <>

@@ -1,24 +1,49 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { DataContext } from '../context/DataContext';
+import {
+  List,
+  Pagination,
+  Space,
+  Dropdown,
+  Button,
+  Modal,
+  DatePicker,
+  Input,
+  Checkbox,
+} from 'antd';
 import styled from 'styled-components';
-import firebase from 'firebase/compat/app';
-import 'firebase/firestore';
-import { Modal, Input, Button, DatePicker, Checkbox } from 'antd';
+import {
+  CloudUploadOutlined,
+  DownOutlined,
+  FilePdfOutlined,
+} from '@ant-design/icons';
+import type { MenuProps } from 'antd';
 import {
   ContainerOutlined,
   CloseOutlined,
   FormOutlined,
+  PlusCircleOutlined,
 } from '@ant-design/icons';
-import {
-  FilePdfOutlined,
-  InfoCircleOutlined,
-  CloudUploadOutlined,
-} from '@ant-design/icons';
-import { DataContext } from '../context/DataContext';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-
-const { TextArea } = Input;
 const CheckboxGroup = Checkbox.Group;
+const items: MenuProps['items'] = [
+  {
+    label: 'Người biểu diễn',
+    key: '1',
+  },
+  {
+    label: 'Nhà diễn xuất',
+    key: '2',
+  },
+];
+const { TextArea } = Input;
+const handleMenuClick: MenuProps['onClick'] = (e) => {
+  console.log('click', e);
+};
+const menuProps = {
+  items,
+  onClick: handleMenuClick,
+};
 
 const options = [
   {
@@ -67,11 +92,10 @@ const onChange = (checkedValues: any) => {
   console.log('checked = ', checkedValues);
 };
 
-const InfoContract: React.FC = () => {
+const AuthoritySong = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const { data } = useContext(DataContext);
-  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -80,182 +104,159 @@ const InfoContract: React.FC = () => {
     setIsModalOpen2(true);
   };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
   return (
     <Container>
-      <div className="info-1">
-        <div className="info-content-1">
-          <h4>
-            Số hợp đồng: <p>BH123</p>
-          </h4>
-          <h4>
-            Tên hợp đồng: <p>Hợp đồng ủy quyền tác phẩm âm nhạc</p>
-          </h4>
-          <h4>
-            Ngày hiệu lực: <p>Hợp đồng ủy quyền tác phẩm âm nhạc</p>
-          </h4>
-          <h4>
-            Ngày hết hạn: <p>Hợp đồng ủy quyền tác phẩm âm nhạc</p>
-          </h4>
-          <h4>
-            Tình trạng: <p>🌱 Còn thời hạn</p>
-          </h4>
-        </div>
-        <div className="info-content-2">
-          <h3>Thông tin pháp nhân ủy quyền</h3>
-          <h4>
-            Pháp nhân ủy quyền: <p>Cá nhân</p>
-          </h4>
-          <h4>
-            Tên người ủy quyền: <p>Nguyễn Văn A</p>
-          </h4>
-          <h4>
-            Ngày sinh: <p>10/01/1984</p>
-          </h4>
-          <h4>
-            Giới tính: <p>Nam</p>
-          </h4>
-          <h4>
-            Quốc tịch: <p>Việt Nam</p>
-          </h4>
-          <h4>
-            Số điện thoại: <p>(+84) 345 678 901</p>
-          </h4>
-        </div>
+      <div className="option-1">
+        <Space className="space-1">
+          <p>Tình trạng phê duyệt:</p>
+          <Dropdown menu={menuProps}>
+            <Button>
+              <Space>
+                Tất cả
+                <DownOutlined />
+              </Space>
+            </Button>
+          </Dropdown>
+        </Space>
       </div>
-      <div className="info-2">
-        <div className="info-content-1">
-          <h4>
-            Đính kèm tệp:
-            <p style={{ transform: 'translate(10px, 12px)' }}>
-              <FilePdfOutlined /> hetthuongcannho.doc <br />
-              <FilePdfOutlined /> hetthuongcannho.doc
-            </p>
-          </h4>
-        </div>
-        <div className="info-content-2">
-          <h4>
-            Số CMND/ CCCD: <p>123456789012</p>
-          </h4>
-          <h4>
-            Ngày cấp: <p>10/07/2011</p>
-          </h4>
-          <h4>
-            Nơi cấp:<p>Tp.HCM, Việt Nam</p>
-          </h4>
-          <h4>
-            Mã số thuế: <p>92387489</p>
-          </h4>
-          <h4>
-            Nơi cư trú:
-            <p
-              style={{
-                transform: 'translate(10px,0px)',
-                marginBottom: '-10px',
-              }}
-            >
-              69/53, Nguyễn Gia Trí, Phường 25,
-              <br /> Quận Bình Thạnh, Thành phố Hồ Chí Minh
-            </p>
-          </h4>
-        </div>
-      </div>
-      <div className="info-3">
-        <div className="info-content-1">
-          <h4>
-            <InfoCircleOutlined /> Mức nhuận bút
-          </h4>
-          <h4>
-            Quyền tác giả:<p>0%</p>
-          </h4>
-          <h4>Quyền liên quan:</h4>
-          <h4>
-            Quyền của người biểu diễn:<p>50%</p>
-          </h4>
-          <h4>
-            Quyền của nhà sản xuất:
-            <br /> (Bản ghi/video)
-            <p
-              style={{
-                transform: 'translate(10px,-10px)',
-              }}
-            >
-              50%
-            </p>
-          </h4>
-        </div>
-        <div className="info-content-2">
-          <h4>
-            Email: <p>nguyenvana@gmail.com</p>
-          </h4>
-          <h4>
-            Tài khoản đăng nhập:<p>nguyenvana@gmail.com</p>
-          </h4>
-          <h4>
-            Mật khẩu:<p> 😄😄😄😄😄</p>
-          </h4>
-          <h4>
-            Số tài khoản: <p>1231123312211223</p>
-          </h4>
-          <h4>
-            Ngân hàng:
-            <p>ACB - Ngân hàng Á Châu</p>
-          </h4>
-        </div>
-      </div>
-      <div className="info-4">
-        <Link
-          to="/management/contract/1/detail"
+      <List
+        bordered
+        style={{
+          color: '#fff',
+          width: '73.6vw',
+          border: '1px solid #727288',
+          borderRadius: '16px',
+          background: 'rgba(47, 47, 65, 0.7)',
+        }}
+        itemLayout="horizontal"
+      >
+        {data.map((item, index) => (
+          <List.Item key={item['STT']} style={{ color: '#fff' }}>
+            <List.Item.Meta
+              title={`${index === 0 ? 'STT' : ''}`}
+              description={item['STT']}
+              style={{ maxWidth: '80px' }}
+            />
+            <List.Item.Meta
+              title={`${index === 0 ? 'Tên bản ghi' : ''}`}
+              description={item['Tên bản ghi']}
+              style={{ maxWidth: '170px' }}
+            />
+            <List.Item.Meta
+              title={`${index === 0 ? 'Mã ISRC' : ''}`}
+              description={item['Mã ISRC']}
+              style={{ maxWidth: '309px' }}
+            />
+            <List.Item.Meta
+              title={`${index === 0 ? 'Ca sĩ' : ''}`}
+              description={item['Người ủy quyền']}
+            />
+            <List.Item.Meta
+              title={`${index === 0 ? 'Tác giả' : ''}`}
+              description={item['Tác giả']}
+            />
+            <List.Item.Meta
+              title={`${index === 0 ? 'Ngày tải' : ''}`}
+              description={
+                item['Ngày tải']
+                  ? item['Ngày tải'].toDate().toLocaleString()
+                  : ''
+              }
+            />
+            <List.Item.Meta
+              title={`${index === 0 ? 'Tình trạng' : ''}`}
+              description={
+                item['Hiệu lực hợp đồng'][0] === 'Còn thời hạn'
+                  ? `🌱${item['Hiệu lực hợp đồng'][2]}`
+                  : `⚡${item['Hiệu lực hợp đồng'][5]}`
+              }
+            />
+            <div style={{ width: '170px' }}>
+              <button
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  textDecoration: 'underline',
+                  color: '#ff7506',
+                  cursor: 'pointer',
+                }}
+              >
+                Nghe
+              </button>
+            </div>
+          </List.Item>
+        ))}
+        <div
           style={{
-            borderRadius: '16px 0px 0px 0px',
-            fontSize: '14px',
-            justifyContent: 'center',
+            display: 'flex',
+            justifyContent: 'space-between',
+            padding: '0 23px',
           }}
         >
-          <FormOutlined className="icon" />
-          <p
-            style={{
-              marginLeft: '15px',
-              color: '#fff',
-              fontSize: '12px',
-              justifyContent: 'center',
-            }}
-          >
-            Chỉnh sửa <br />
-            hợp đồng
+          <p style={{ display: 'flex', letterSpacing: ' 0.015em' }}>
+            Hiển thị{' '}
+            <span
+              style={{
+                padding: '0 10px',
+                border: '1px solid #FF7506',
+                borderRadius: '4px',
+              }}
+            >
+              {data.length}
+            </span>{' '}
+            hàng trong mỗi trang
           </p>
-        </Link>
-        <button style={{ color: '#fff' }} onClick={() => setIsModalOpen2(true)}>
+          <Pagination defaultCurrent={1} total={100} />
+        </div>
+      </List>
+      <div className="info-4">
+        <button style={{ borderRadius: '16px 0px 0px 0px' }}>
+          <FormOutlined className="icon" /> <br />
+          Chỉnh sửa <br />
+          hợp đồng
+        </button>
+        <button onClick={() => setIsModalOpen2(true)}>
           <ContainerOutlined className="icon" />
           <br />
           Gia hạn <br />
           hợp đồng
         </button>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          style={{ borderRadius: '0px 0px 0px 16px', color: '#fff' }}
-        >
+        <button onClick={() => setIsModalOpen(true)}>
           <CloseOutlined className="icon" />
           <br />
           Hủy hợp <br />
           đồng
         </button>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          style={{ borderRadius: '0px 0px 0px 16px' }}
+        >
+          <PlusCircleOutlined className="icon" />
+          <br />
+          Thêm bản <br />
+          ghi
+        </button>
+        <Link
+          to="/detail-contract/1"
+          onClick={() => setIsModalOpen(true)}
+          style={{ borderRadius: '0px 0px 0px 16px' }}
+        >
+          <PlusCircleOutlined className="icon" />
+          <br />
+          Chi tiết <br />
+        </Link>
         {isModalOpen && (
           <ModalContent
-            title="Lý do hủy hợp đồng uỷ quyền HĐUQ 1234"
+            title="Hủy hợp đồng ủy quyền"
             visible={isModalOpen}
             onOk={() => setIsModalOpen(false)}
             onCancel={() => setIsModalOpen(false)}
           >
             <TextArea
-              placeholder="Hủy hợp đồng để tạo hợp đồng mới với giá trị và thời hạn lâu hơn."
+              placeholder="Cho chúng tôi biết lý do bạn muốn huỷ hợp đồng uỷ quyền này..."
               rows={4}
             />
           </ModalContent>
@@ -386,7 +387,6 @@ const InfoContract: React.FC = () => {
     </Container>
   );
 };
-
 const ModalContent = styled(Modal)`
   .ant-modal-content {
     background: #2f2f41;
@@ -428,96 +428,97 @@ const ModalContent = styled(Modal)`
     }
   }
 `;
+
 const Container = styled.div`
+  .jmDaKB .ant-modal-content {
+    background: rgb(30, 30, 46);
+    height: 100%;
+  }
+  height: 100%;
+  .ant-modal-content {
+    height: 100%;
+  }
+  .ant-modal-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .ant-btn-default {
+      background: transparent !important;
+      border: 1px solid #ff7506 !important;
+      :hover {
+        background: transparent !important;
+        border: 1px solid #ff7506 !important;
+      }
+      span {
+        color: #ff7506;
+      }
+    }
+    .ant-btn-primary {
+      background: #ff7506 !important;
+    }
+  }
+  margin-bottom: 0 auto;
   position: relative;
-  display: grid;
-  padding-right: 0px !important;
-  grid-template-columns: 1fr 1fr 1fr;
-  .info-1 {
-    display: flex;
-    flex-direction: column;
-    .info-content-1,
-    .info-content-2 {
-      h4 {
-        margin: 0 0 0 10px;
+  left: 0;
+  .ant-list {
+    width: 1533px !important;
+    max-height: 727px;
+  }
+  .ant-list .ant-list-item .ant-list-item-meta .ant-list-item-meta-title {
+    color: #ffac69;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .ant-list .ant-list-item .ant-list-item-meta .ant-list-item-meta-description {
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .ant-list-bordered .ant-list-item {
+    border-top: 1px solid #727288;
+  }
+  .option-1 {
+    width: 50%;
+    .space-1 {
+      margin-right: 20px;
+      p {
+        height: 24px;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 24px;
         color: #fff;
-        font-weight: 700;
+      }
+    }
+    .ant-space {
+      .ant-btn {
+        background: #1e1e2e;
+        border: 1px solid #ff7506;
         display: flex;
-        justify-content: center;
+        width: 120px;
+        height: 40px;
         align-items: center;
-        p {
-          flex: 1;
-          display: flex;
-          transform: translateX(10px);
-          color: #fff;
+        .ant-space-item {
+          font-size: 16px;
           font-weight: 400;
-          opacity: 0.7;
+          color: #fff;
+          span {
+            margin-left: 20px;
+            color: #ff7506;
+            width: 10.54px;
+            height: 6.25px;
+          }
         }
       }
     }
-    .info-content-2 {
-      h3 {
-        color: #ffac69;
-        margin-left: 10px;
-        margin-bottom: 0;
-        margin-top: 40px;
-      }
-    }
   }
-  .info-2 {
-    display: flex;
-    flex-direction: column;
-    .info-content-1,
-    .info-content-2 {
-      h4 {
-        margin: 0 0 0 10px;
-        color: #fff;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        p {
-          transform: translateX(10px);
-          color: #fff;
-          font-weight: 400;
-          opacity: 0.7;
-        }
-      }
-    }
-    .info-content-1 {
-      height: 250px;
-    }
-    .info-content-2 {
-      margin-top: 60px;
-    }
-  }
-  .info-3 {
-    display: flex;
-    flex-direction: column;
-    .info-content-1,
-    .info-content-2 {
-      h4 {
-        margin: 0 0 0 10px;
-        color: #fff;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        p {
-          transform: translateX(10px);
-          color: #fff;
-          font-weight: 400;
-          opacity: 0.7;
-        }
-      }
-    }
-    .info-content-1 {
-      height: 250px;
-    }
-    .info-content-2 {
-      margin-top: 60px;
-    }
-  }
+
   .info-4 {
     position: absolute;
+    margin-left: 50px;
     background-color: #2f2f41;
     top: 0;
     right: 0;
@@ -548,5 +549,4 @@ const Container = styled.div`
     }
   }
 `;
-
-export default InfoContract;
+export default AuthoritySong;

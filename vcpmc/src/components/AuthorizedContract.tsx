@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import type { MenuProps } from 'antd';
 import {
   Space,
@@ -30,23 +30,13 @@ import {
 } from 'firebase/firestore';
 import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
-import InfoContract from './InfoContract';
+import InfoContract from './Contract';
+import { DataContext } from '../context/DataContext';
+import AuthoritySong from './AuthoritySong';
+import { Link } from 'react-router-dom';
 
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
-
-interface DataProps {
-  STT: number;
-  'Số hợp đồng': string;
-  'Tên hợp đồng': string;
-  'Quyền sở hữu': string;
-  'Người ủy quyền': string;
-  'Ngày tạo': firebase.firestore.Timestamp;
-  'Ngày hết hạn': firebase.firestore.Timestamp;
-  'Ngày hiệu lực': firebase.firestore.Timestamp;
-  'Khách hàng': string;
-  'Hiệu lực hợp đồng': string[];
-}
 
 const items: MenuProps['items'] = [
   {
@@ -66,11 +56,14 @@ const menuProps = {
   onClick: handleMenuClick,
 };
 
-const AuthorizedContract = () => {
+type Props = {
+  children?: React.ReactNode | null;
+};
+
+const AuthorizedContract = ({ children }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isInfoOrAuthority, setIsisInfoOrAuthority] = useState(false);
-
-  const [data, setData] = useState<DataProps[]>([]);
+  const { data } = useContext(DataContext);
   const HieuLucHopDong = data.length > 0 ? data[0]['Hiệu lực hợp đồng'] : [];
   const HieuLucHopDongOptions = HieuLucHopDong.map((option, index) => ({
     label: option,
@@ -98,19 +91,6 @@ const AuthorizedContract = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
-  useEffect(() => {
-    const getData = async () => {
-      const q = query(collection(db, 'contract'));
-      const querySnapshot = await getDocs(q);
-      const tempData: DataProps[] = [];
-      querySnapshot.forEach((doc) => {
-        tempData.push(doc.data() as DataProps);
-      });
-      setData(tempData);
-    };
-    getData();
-  }, []);
 
   return (
     <>
@@ -185,10 +165,11 @@ const AuthorizedContract = () => {
                 />
                 <List.Item.Meta
                   title={`${index === 0 ? 'Hiệu lực hợp đồng' : ''}`}
-                  description={`${item['Hiệu lực hợp đồng'][0] === 'Còn thời hạn'
+                  description={`${
+                    item['Hiệu lực hợp đồng'][0] === 'Còn thời hạn'
                       ? `🌱${item['Hiệu lực hợp đồng'][0]}`
                       : `⚡${item['Hiệu lực hợp đồng'][0]}`
-                    }`}
+                  }`}
                 />
                 <List.Item.Meta
                   title={`${index === 0 ? 'Ngày tạo' : ''}`}
@@ -199,8 +180,8 @@ const AuthorizedContract = () => {
                   }
                 />
                 <div style={{ width: '170px' }}>
-                  <button
-                    onClick={showModal}
+                  <Link
+                    to="/management/contract/1"
                     style={{
                       background: 'transparent',
                       border: 'none',
@@ -210,7 +191,7 @@ const AuthorizedContract = () => {
                     }}
                   >
                     Xem chi tiết
-                  </button>
+                  </Link>
                   {item['Hiệu lực hợp đồng'][0] === 'Còn thời hạn' ? (
                     ' '
                   ) : (
@@ -253,12 +234,23 @@ const AuthorizedContract = () => {
           </List>
         </Container>
         <div className="side-option">
-          <Button style={{ borderTopLeftRadius: '16px' }}>
+          <Link
+            to="/new-contract"
+            style={{
+              borderTopLeftRadius: '16px',
+              background: '#2F2F41',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '16px',
+            }}
+          >
             <PlusCircleOutlined className="icon-setting" />
             <h3>
               Thêm hợp <br /> đồng
             </h3>
-          </Button>
+          </Link>
           <ModalContainer
             style={{
               position: 'fixed',
@@ -271,6 +263,7 @@ const AuthorizedContract = () => {
             open={isModalOpen}
             onOk={handleOk}
             onCancel={handleCancel}
+            footer={null}
           >
             <p style={{ color: 'white' }}>
               Quản lý <RightOutlined /> Quản lý hợp đồng <RightOutlined /> Chi
@@ -301,7 +294,9 @@ const AuthorizedContract = () => {
                 Tác phẩm ủy quyền
               </Button>
             </div>
-            <div>{isInfoOrAuthority ? '' : <InfoContract dataContract={data} />}</div>
+            <div>
+              {isInfoOrAuthority ? <AuthoritySong /> : <InfoContract />}
+            </div>
           </ModalContainer>
         </div>
       </Wrapper>
@@ -310,7 +305,7 @@ const AuthorizedContract = () => {
 };
 
 const Wrapper = styled.div`
-position: relative;
+  position: relative;
   margin-bottom: 20px;
   button {
     height: 48px;
@@ -461,6 +456,11 @@ const Container = styled.div`
 
 const ModalContainer = styled(Modal)`
   background: #1e1e2e;
+  height: 100%;
+  .dvwUQJ .ant-modal-content {
+    background: rgb(30, 30, 46);
+    height: 100%;
+  }
   .ant-modal-content {
     background: #1e1e2e;
   }
