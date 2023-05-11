@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideMenu from '../components/SideMenu';
-import PageContent from '../components/PageContent';
+import SideMenu from '../../components/SideMenu';
+import PageContent from '../../components/PageContent';
 
-const EquipManagement = () => {
+const AuthorizedUnit = () => {
   return (
     <Wrapper>
       <SideMenu />
@@ -12,7 +12,7 @@ const EquipManagement = () => {
   );
 };
 
-export default EquipManagement;
+export default AuthorizedUnit;
 
 const Wrapper = styled.div`
   position: relative;

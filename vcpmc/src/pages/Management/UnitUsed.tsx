@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideMenu from '../components/SideMenu';
-import PageContent from '../components/PageContent';
+import SideMenu from '../../components/SideMenu';
+import PageContent from '../../components/PageContent';
 
-const AuthorizedUnit = () => {
+const UnitUsed = () => {
   return (
     <Wrapper>
       <SideMenu />
@@ -12,7 +12,7 @@ const AuthorizedUnit = () => {
   );
 };
 
-export default AuthorizedUnit;
+export default UnitUsed;
 
 const Wrapper = styled.div`
   position: relative;

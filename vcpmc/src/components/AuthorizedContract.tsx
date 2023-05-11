@@ -30,7 +30,7 @@ import {
 } from 'firebase/firestore';
 import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
-import InfoContract from './Contract';
+import InfoContract from './FormContract';
 import { DataContext } from '../context/DataContext';
 import AuthoritySong from './AuthoritySong';
 import { Link } from 'react-router-dom';

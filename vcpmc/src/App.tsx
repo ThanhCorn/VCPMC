@@ -3,14 +3,17 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ResetPassword from './pages/ResetPassword';
 import Dashboard from './pages/Dashboard';
-import ContractManagement from './pages/ContractManagement';
-import EquipManagement from './pages/EquipManagement';
-import UnitUsed from './pages/UnitUsed';
-import AuthorizedUnit from './pages/AuthorizedUnit';
-import InfoContract from './components/Contract';
-import DetailContract from './components/DetailContract';
-import InfoContractDetail from './components/InfoContractDetail';
-import AddNewContractAuthority from './components/AddNewContractAuthority';
+import ContractManagement from './pages/Management/ContractManagement';
+import EquipManagement from './pages/Management/EquipManagement';
+import UnitUsed from './pages/Management/UnitUsed';
+import AuthorizedUnit from './pages/Management/AuthorizedUnit';
+import InfoContract from './pages/Management/InfoContract';
+import DetailProduct from './pages/Management/DetailProduct';
+import InfoContractDetail from './pages/Management/InfoContractDetail';
+import AddNewContractAuthority from './pages/Management/AddNewContractAuthority';
+import Guide from './pages/Help/Guide';
+import DownloadApp from './pages/Help/DownloadApp';
+import Feedback from './pages/Help/Feedback';
 
 function App() {
   return (
@@ -28,8 +31,11 @@ function App() {
           path="/management/contract/1/detail"
           element={<InfoContractDetail />}
         />
-        <Route path="/detail-contract/1" element={<DetailContract />} />
+        <Route path="/detail-product/1" element={<DetailProduct />} />
         <Route path="/new-contract" element={<AddNewContractAuthority />} />
+        <Route path="/help/guide" element={<Guide />} />
+        <Route path="/help/download" element={<DownloadApp />} />
+        <Route path="/help/feedback" element={<Feedback />} />
       </Routes>
     </BrowserRouter>
   );

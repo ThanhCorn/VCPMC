@@ -1,11 +1,11 @@
 import React, { Children, useState } from 'react';
 import styled from 'styled-components';
-import SideMenu from '../components/SideMenu';
-import PageContent from '../components/PageContent';
+import SideMenu from '../../components/SideMenu';
+import PageContent from '../../components/PageContent';
 import { RightOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import AuthorizedContract from '../components/AuthorizedContract';
-import MiningContract from '../components/MiningContract';
+import AuthorizedContract from '../../components/AuthorizedContract';
+import MiningContract from '../../components/MiningContract';
 
 const ContractManagement = () => {
   const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);

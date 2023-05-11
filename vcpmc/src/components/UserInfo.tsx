@@ -10,6 +10,7 @@ import FormResetPassword from './FormResetPassword';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { UserContext } from '../context/UserContext';
+import PageContent from './PageContent';
 
 interface User {
   displayName: string | null;
@@ -51,7 +52,7 @@ const UserInfo = () => {
 
   return (
     <Wrapper>
-      <Navbar user={currentUser} />
+      <PageContent />
       <div className="basic-info">
         <h1>Thông tin cơ bản</h1>
         <div className="avatar">

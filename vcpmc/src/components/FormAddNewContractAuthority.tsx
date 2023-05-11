@@ -74,7 +74,7 @@ const onChange = (checkedValues: any) => {
   console.log('checked = ', checkedValues);
 };
 
-const InfoContractDetail: React.FC = () => {
+const AddNewContractAuthority: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const { data } = useContext(DataContext);
@@ -98,9 +98,7 @@ const InfoContractDetail: React.FC = () => {
 
   return (
     <Wrapper>
-      <SideMenu />
       <div className="content">
-        <PageContent />
         <h4 style={{ color: 'white' }}>
           Quản lý hợp đồng <RightOutlined /> Chi tiết hợp đồng <RightOutlined />{' '}
           Chỉnh sửa danh sách tác phẩm uỷ quyền
@@ -115,18 +113,7 @@ const InfoContractDetail: React.FC = () => {
               <h4>
                 Tên hợp đồng: <p>Hợp đồng ủy quyền tác phẩm âm nhạc</p>
               </h4>
-              <h4>
-                Ngày hiệu lực:{' '}
-                <p>
-                  <p style={{ marginLeft: '-10px', marginRight: '10px' }}>
-                    {data[0]['Ngày hiệu lực'].toDate().toLocaleDateString()}
-                  </p>
-                </p>
-              </h4>
-              <h4>
-                Ngày hết hạn:{' '}
-                <p>{data[0]['Ngày hết hạn'].toDate().toLocaleDateString()}</p>
-              </h4>
+
               <h4>
                 Tình trạng:{' '}
                 <p style={{ marginLeft: '35px' }}>
@@ -152,7 +139,7 @@ const InfoContractDetail: React.FC = () => {
               </h4>
               <h4>
                 Tên người ủy quyền:{' '}
-                <p
+                <Input
                   style={{
                     alignItems: 'center',
                     height: '40px',
@@ -161,13 +148,11 @@ const InfoContractDetail: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '10px',
                   }}
-                >
-                  Nguyễn Văn A
-                </p>
+                />
               </h4>
               <h4>
                 Ngày sinh:{' '}
-                <p
+                <Input
                   style={{
                     alignItems: 'center',
                     height: '40px',
@@ -176,9 +161,7 @@ const InfoContractDetail: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '89px',
                   }}
-                >
-                  10/01/1984
-                </p>
+                />
               </h4>
               <h4>
                 Giới tính:{' '}
@@ -195,7 +178,7 @@ const InfoContractDetail: React.FC = () => {
               </h4>
               <h4>
                 Quốc tịch:{' '}
-                <p
+                <Input
                   style={{
                     alignItems: 'center',
                     height: '40px',
@@ -204,13 +187,11 @@ const InfoContractDetail: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '89px',
                   }}
-                >
-                  Việt Nam
-                </p>
+                />
               </h4>
               <h4>
                 Số điện thoại:{' '}
-                <p
+                <Input
                   style={{
                     alignItems: 'center',
                     height: '40px',
@@ -219,9 +200,7 @@ const InfoContractDetail: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '60px',
                   }}
-                >
-                  (+84) 345 678 901
-                </p>
+                />
               </h4>
             </div>
           </div>
@@ -259,7 +238,7 @@ const InfoContractDetail: React.FC = () => {
             <div className="info-content-2">
               <h4>
                 Số CMND/ CCCD:{' '}
-                <p
+                <Input
                   style={{
                     width: '150px',
                     display: 'flex',
@@ -269,86 +248,76 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '0px',
+                    marginLeft: '10px',
                   }}
-                >
-                  123456789012
-                </p>
+                />
               </h4>
               <h4>
                 Ngày cấp:{' '}
-                <p
+                <Input
                   style={{
                     width: '150px',
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
                     height: '40px',
+                    background: '#2b2b3f',
+                    border: '1px solid #727288',
+                    borderRadius: '8px',
+                    marginLeft: '68px',
+                  }}
+                />
+              </h4>
+              <h4>
+                Nơi cấp:
+                <Input
+                  style={{
+                    width: '150px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '40px',
+                    background: '#2b2b3f',
+                    border: '1px solid #727288',
+                    borderRadius: '8px',
+                    marginLeft: '83px',
+                  }}
+                />
+              </h4>
+              <h4>
+                Mã số thuế:{' '}
+                <Input
+                  style={{
+                    width: '150px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '40px',
+                    background: '#2b2b3f',
+                    border: '1px solid #727288',
+                    borderRadius: '8px',
+                    marginLeft: '57px',
+                  }}
+                />
+              </h4>
+              <h4>
+                Nơi cư trú:
+                <Input
+                  style={{
+                    transform: 'translate(10px,0px)',
+                    marginBottom: '-10px',
+                    width: '300px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '50px',
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
                     marginLeft: '55px',
+                    marginRight: '50px',
                   }}
-                >
-                  10/07/2011
-                </p>
-              </h4>
-              <h4>
-                Nơi cấp:
-                <p
-                  style={{
-                    width: '150px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '40px',
-                    background: '#2b2b3f',
-                    border: '1px solid #727288',
-                    borderRadius: '8px',
-                    marginLeft: '70px',
-                  }}
-                >
-                  Tp.HCM, Việt Nam
-                </p>
-              </h4>
-              <h4>
-                Mã số thuế:{' '}
-                <p
-                  style={{
-                    width: '150px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '40px',
-                    background: '#2b2b3f',
-                    border: '1px solid #727288',
-                    borderRadius: '8px',
-                    marginLeft: '40px',
-                  }}
-                >
-                  92387489
-                </p>
-              </h4>
-              <h4>
-                Nơi cư trú:
-                <p
-                  style={{
-                    transform: 'translate(10px,0px)',
-                    marginBottom: '-10px',
-                    width: '380px',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '70px',
-                    background: '#2b2b3f',
-                    border: '1px solid #727288',
-                    borderRadius: '8px',
-                    marginLeft: '50px',
-                  }}
-                >
-                  69/53, Nguyễn Gia Trí, Phường 25,
-                  <br /> Quận Bình Thạnh, Thành phố Hồ Chí Minh
-                </p>
+                />
               </h4>
             </div>
           </div>
@@ -367,19 +336,17 @@ const InfoContractDetail: React.FC = () => {
               <h4>
                 Quyền của nhà sản xuất:
                 <br /> (Bản ghi/video)
-                <p
+                <Input
                   style={{
                     transform: 'translate(10px,-10px)',
                   }}
-                >
-                  50%
-                </p>
+                />
               </h4>
             </div>
             <div className="info-content-2">
               <h4>
                 Email:{' '}
-                <p
+                <Input
                   style={{
                     width: '400px',
                     display: 'flex',
@@ -391,13 +358,11 @@ const InfoContractDetail: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '50px',
                   }}
-                >
-                  {currentUser?.email}
-                </p>
+                />
               </h4>
               <h4>
                 Tài khoản đăng nhập:
-                <p
+                <Input
                   style={{
                     width: '300px',
                     display: 'flex',
@@ -409,13 +374,11 @@ const InfoContractDetail: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '22px',
                   }}
-                >
-                  {currentUser?.email}
-                </p>
+                />
               </h4>
               <h4>
                 Mật khẩu:
-                <p
+                <Input
                   style={{
                     width: '400px',
                     display: 'flex',
@@ -427,14 +390,11 @@ const InfoContractDetail: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '20px',
                   }}
-                >
-                  {' '}
-                  😄😄😄😄😄
-                </p>
+                />
               </h4>
               <h4>
                 Số tài khoản:{' '}
-                <p
+                <Input
                   style={{
                     width: '400px',
                     display: 'flex',
@@ -446,13 +406,11 @@ const InfoContractDetail: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '0px',
                   }}
-                >
-                  1231123312211223
-                </p>
+                />
               </h4>
               <h4>
                 Ngân hàng:
-                <p
+                <Input
                   style={{
                     width: '400px',
                     display: 'flex',
@@ -464,9 +422,7 @@ const InfoContractDetail: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '10px',
                   }}
-                >
-                  ACB - Ngân hàng Á Châu
-                </p>
+                />
               </h4>
             </div>
           </div>
@@ -493,22 +449,51 @@ const InfoContractDetail: React.FC = () => {
               </p>
             </Link>
             <button
-              style={{ color: '#fff' }}
+              style={{
+                color: '#fff',
+                marginLeft: '0px',
+              }}
               onClick={() => setIsModalOpen2(true)}
             >
-              <ContainerOutlined className="icon" />
-              <br />
-              Gia hạn <br />
-              hợp đồng
+              <ContainerOutlined
+                style={{
+                  marginLeft: '15px',
+                }}
+                className="icon"
+              />
+              <p
+                style={{
+                  marginLeft: '-20px',
+                  color: '#fff',
+                  fontSize: '12px',
+                  justifyContent: 'center',
+                }}
+              >
+                Gia hạn <br />
+                hợp đồng
+              </p>
             </button>
             <button
               onClick={() => setIsModalOpen(true)}
               style={{ borderRadius: '0px 0px 0px 16px', color: '#fff' }}
             >
-              <CloseOutlined className="icon" />
-              <br />
-              Hủy hợp <br />
-              đồng
+              <CloseOutlined
+                style={{
+                  marginLeft: '15px',
+                }}
+                className="icon"
+              />
+              <p
+                style={{
+                  marginLeft: '-20px',
+                  color: '#fff',
+                  fontSize: '12px',
+                  justifyContent: 'center',
+                }}
+              >
+                Hủy hợp <br />
+                đồng
+              </p>
             </button>
             {isModalOpen && (
               <ModalContent
@@ -690,15 +675,12 @@ const InfoContractDetail: React.FC = () => {
 };
 
 const Wrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex: 1;
   background-color: var(--primary-color);
+
   .content {
     margin-top: 50px;
     margin-left: 50px;
-    margin-right: 10px;
-    flex: 1;
+    margin-right: 100px;
     .option-1 {
       flex-direction: column;
       display: flex;
@@ -824,11 +806,10 @@ const Wrapper = styled.div`
   }
   .info-4 {
     position: absolute;
-    margin-left: 50px;
     background-color: #2f2f41;
     top: 0;
     right: 0;
-    transform: translateY(200%);
+    transform: translate(200%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -836,7 +817,6 @@ const Wrapper = styled.div`
     width: 110px;
     background: #2f2f41;
     border: 0px;
-    margin-right: -24px;
     .icon {
       margin-top: 10px;
       margin-left: 20px;
@@ -918,6 +898,7 @@ const Container = styled.div`
     .info-content-1,
     .info-content-2 {
       h4 {
+        width: 500px;
         height: 48px;
         opacity: 1;
         margin: 0 0 0 10px;
@@ -947,7 +928,7 @@ const Container = styled.div`
     }
   }
   .info-2 {
-    margin-left: 50px;
+    margin-left: 30px;
     display: flex;
     flex-direction: column;
     .info-content-1,
@@ -971,7 +952,7 @@ const Container = styled.div`
       }
     }
     .info-content-1 {
-      height: 250px;
+      height: 180px;
     }
     .info-content-2 {
       margin-top: 60px;
@@ -1040,4 +1021,4 @@ const Container = styled.div`
   }
 `;
 
-export default InfoContractDetail;
+export default AddNewContractAuthority;

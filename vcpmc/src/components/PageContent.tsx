@@ -18,7 +18,5 @@ const PageContent: React.FC = () => {
 export default PageContent;
 
 const Wrapper = styled.div`
-  position: relative;
-  flex: 1;
-  background-color: var(--primary-color);
+  z-index: 1;
 `;

@@ -74,7 +74,7 @@ const onChange = (checkedValues: any) => {
   console.log('checked = ', checkedValues);
 };
 
-const AddNewContractAuthority: React.FC = () => {
+const InfoContractDetail: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const { data } = useContext(DataContext);
@@ -98,9 +98,7 @@ const AddNewContractAuthority: React.FC = () => {
 
   return (
     <Wrapper>
-      <SideMenu />
       <div className="content">
-        <PageContent />
         <h4 style={{ color: 'white' }}>
           Quản lý hợp đồng <RightOutlined /> Chi tiết hợp đồng <RightOutlined />{' '}
           Chỉnh sửa danh sách tác phẩm uỷ quyền
@@ -115,18 +113,7 @@ const AddNewContractAuthority: React.FC = () => {
               <h4>
                 Tên hợp đồng: <p>Hợp đồng ủy quyền tác phẩm âm nhạc</p>
               </h4>
-              <h4>
-                Ngày hiệu lực:{' '}
-                <p>
-                  <p style={{ marginLeft: '-10px', marginRight: '10px' }}>
-                    {data[0]['Ngày hiệu lực'].toDate().toLocaleDateString()}
-                  </p>
-                </p>
-              </h4>
-              <h4>
-                Ngày hết hạn:{' '}
-                <p>{data[0]['Ngày hết hạn'].toDate().toLocaleDateString()}</p>
-              </h4>
+
               <h4>
                 Tình trạng:{' '}
                 <p style={{ marginLeft: '35px' }}>
@@ -152,7 +139,7 @@ const AddNewContractAuthority: React.FC = () => {
               </h4>
               <h4>
                 Tên người ủy quyền:{' '}
-                <Input
+                <p
                   style={{
                     alignItems: 'center',
                     height: '40px',
@@ -161,11 +148,13 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '10px',
                   }}
-                />
+                >
+                  Nguyễn Văn A
+                </p>
               </h4>
               <h4>
                 Ngày sinh:{' '}
-                <Input
+                <p
                   style={{
                     alignItems: 'center',
                     height: '40px',
@@ -174,7 +163,9 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '89px',
                   }}
-                />
+                >
+                  10/01/1984
+                </p>
               </h4>
               <h4>
                 Giới tính:{' '}
@@ -191,7 +182,7 @@ const AddNewContractAuthority: React.FC = () => {
               </h4>
               <h4>
                 Quốc tịch:{' '}
-                <Input
+                <p
                   style={{
                     alignItems: 'center',
                     height: '40px',
@@ -200,11 +191,13 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '89px',
                   }}
-                />
+                >
+                  Việt Nam
+                </p>
               </h4>
               <h4>
                 Số điện thoại:{' '}
-                <Input
+                <p
                   style={{
                     alignItems: 'center',
                     height: '40px',
@@ -213,7 +206,9 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '60px',
                   }}
-                />
+                >
+                  (+84) 345 678 901
+                </p>
               </h4>
             </div>
           </div>
@@ -251,7 +246,7 @@ const AddNewContractAuthority: React.FC = () => {
             <div className="info-content-2">
               <h4>
                 Số CMND/ CCCD:{' '}
-                <Input
+                <p
                   style={{
                     width: '150px',
                     display: 'flex',
@@ -263,11 +258,13 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '0px',
                   }}
-                />
+                >
+                  123456789012
+                </p>
               </h4>
               <h4>
                 Ngày cấp:{' '}
-                <Input
+                <p
                   style={{
                     width: '150px',
                     display: 'flex',
@@ -279,11 +276,13 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '55px',
                   }}
-                />
+                >
+                  10/07/2011
+                </p>
               </h4>
               <h4>
                 Nơi cấp:
-                <Input
+                <p
                   style={{
                     width: '150px',
                     display: 'flex',
@@ -295,11 +294,13 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '70px',
                   }}
-                />
+                >
+                  Tp.HCM, Việt Nam
+                </p>
               </h4>
               <h4>
                 Mã số thuế:{' '}
-                <Input
+                <p
                   style={{
                     width: '150px',
                     display: 'flex',
@@ -311,11 +312,13 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '40px',
                   }}
-                />
+                >
+                  92387489
+                </p>
               </h4>
               <h4>
                 Nơi cư trú:
-                <Input
+                <p
                   style={{
                     transform: 'translate(10px,0px)',
                     marginBottom: '-10px',
@@ -329,7 +332,10 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '50px',
                   }}
-                />
+                >
+                  69/53, Nguyễn Gia Trí, Phường 25,
+                  <br /> Quận Bình Thạnh, Thành phố Hồ Chí Minh
+                </p>
               </h4>
             </div>
           </div>
@@ -348,17 +354,19 @@ const AddNewContractAuthority: React.FC = () => {
               <h4>
                 Quyền của nhà sản xuất:
                 <br /> (Bản ghi/video)
-                <Input
+                <p
                   style={{
                     transform: 'translate(10px,-10px)',
                   }}
-                />
+                >
+                  50%
+                </p>
               </h4>
             </div>
             <div className="info-content-2">
               <h4>
                 Email:{' '}
-                <Input
+                <p
                   style={{
                     width: '400px',
                     display: 'flex',
@@ -370,11 +378,13 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '50px',
                   }}
-                />
+                >
+                  {currentUser?.email}
+                </p>
               </h4>
               <h4>
                 Tài khoản đăng nhập:
-                <Input
+                <p
                   style={{
                     width: '300px',
                     display: 'flex',
@@ -386,11 +396,13 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '22px',
                   }}
-                />
+                >
+                  {currentUser?.email}
+                </p>
               </h4>
               <h4>
                 Mật khẩu:
-                <Input
+                <p
                   style={{
                     width: '400px',
                     display: 'flex',
@@ -402,11 +414,14 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '20px',
                   }}
-                />
+                >
+                  {' '}
+                  😄😄😄😄😄
+                </p>
               </h4>
               <h4>
                 Số tài khoản:{' '}
-                <Input
+                <p
                   style={{
                     width: '400px',
                     display: 'flex',
@@ -418,11 +433,13 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '0px',
                   }}
-                />
+                >
+                  1231123312211223
+                </p>
               </h4>
               <h4>
                 Ngân hàng:
-                <Input
+                <p
                   style={{
                     width: '400px',
                     display: 'flex',
@@ -434,7 +451,9 @@ const AddNewContractAuthority: React.FC = () => {
                     borderRadius: '8px',
                     marginLeft: '10px',
                   }}
-                />
+                >
+                  ACB - Ngân hàng Á Châu
+                </p>
               </h4>
             </div>
           </div>
@@ -1008,4 +1027,4 @@ const Container = styled.div`
   }
 `;
 
-export default AddNewContractAuthority;
+export default InfoContractDetail;

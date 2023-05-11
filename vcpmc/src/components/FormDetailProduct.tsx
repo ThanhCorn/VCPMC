@@ -25,7 +25,7 @@ const onChange = (e: CheckboxChangeEvent) => {
 const { TextArea } = Input;
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
-const DetailContract: React.FC = () => {
+const DetailProduct: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { data } = useContext(DataContext);
   const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);
@@ -44,9 +44,7 @@ const DetailContract: React.FC = () => {
 
   return (
     <Wrapper>
-      <SideMenu />
       <div className="content">
-        <PageContent />
         <h4 style={{ color: 'white' }}>
           Quản lý hợp đồng <RightOutlined /> Chi tiết hợp đồng <RightOutlined />{' '}
           Chỉnh sửa danh sách tác phẩm uỷ quyền
@@ -528,4 +526,4 @@ const Container = styled.div`
   }
 `;
 
-export default DetailContract;
+export default DetailProduct;

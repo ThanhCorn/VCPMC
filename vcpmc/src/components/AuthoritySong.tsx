@@ -240,7 +240,7 @@ const AuthoritySong = () => {
           ghi
         </button>
         <Link
-          to="/detail-contract/1"
+          to="/detail-product/1"
           onClick={() => setIsModalOpen(true)}
           style={{ borderRadius: '0px 0px 0px 16px' }}
         >

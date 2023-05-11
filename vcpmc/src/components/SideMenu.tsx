@@ -212,9 +212,23 @@ const items: MenuItem[] = [
     getItem('Chu kỳ đối soát', '16'),
   ]),
   getItem('Hổ trợ', 'sub4', <QuestionCircleOutlined />, [
-    getItem('Hướng dẫn sử dụng', '17'),
-    getItem('Tải app', '18'),
-    getItem('Feedback', '19'),
+    getItem(
+      'Hướng dẫn sử dụng',
+      '17',
+      undefined,
+      undefined,
+      undefined,
+      '/help/guide',
+    ),
+    getItem('Tải app', '18', undefined, undefined, undefined, '/help/download'),
+    getItem(
+      'Feedback',
+      '19',
+      undefined,
+      undefined,
+      undefined,
+      '/help/feedback',
+    ),
   ]),
 ];
 

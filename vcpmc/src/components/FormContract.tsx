@@ -37,9 +37,7 @@ const Contract: React.FC = () => {
 
   return (
     <Wrapper>
-      <SideMenu />
       <div className="content">
-        <PageContent />
         <h4 style={{ color: 'white' }}>
           Quản lý <RightOutlined /> Quản lý hợp đồng <RightOutlined /> Chi tiết
         </h4>
