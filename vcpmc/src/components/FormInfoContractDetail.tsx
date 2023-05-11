@@ -113,7 +113,18 @@ const InfoContractDetail: React.FC = () => {
               <h4>
                 Tên hợp đồng: <p>Hợp đồng ủy quyền tác phẩm âm nhạc</p>
               </h4>
-
+                       <h4>
+                Ngày hiệu lực:{' '}
+                <p>
+                  <p style={{ marginLeft: '-10px', marginRight: '10px' }}>
+                    {data[0]['Ngày hiệu lực'].toDate().toLocaleDateString()}
+                  </p>
+                </p>
+              </h4>
+              <h4>
+                Ngày hết hạn:{' '}
+                <p>{data[0]['Ngày hết hạn'].toDate().toLocaleDateString()}</p>
+              </h4>
               <h4>
                 Tình trạng:{' '}
                 <p style={{ marginLeft: '35px' }}>
