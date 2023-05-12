@@ -13,8 +13,8 @@ const ContractManagement = () => {
   return (
     <Wrapper>
       <SideMenu />
+      <PageContent />
       <div className="content">
-        <PageContent />
         <h4 style={{ color: 'white' }}>
           Quản lý <RightOutlined /> Quản lý hợp đồng
         </h4>

@@ -24,6 +24,7 @@ import {
 import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 import { DataContext } from '../context/DataContext';
+import { Link } from 'react-router-dom';
 
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
@@ -135,12 +136,55 @@ const MiningContract = () => {
                   description={item['Hiệu lực hợp đồng'][0]}
                 />
                 <div>
-                  <button>Xem chi tiết</button>
-                  <button>Lý do hủy</button>
+                  <Link
+                    to="/management/contract/1"
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      textDecoration: 'underline',
+                      color: '#ff7506',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Xem chi tiết
+                  </Link>
+
+                  <button
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      textDecoration: 'underline',
+                      color: '#ff7506',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Sao chép hợp đồng
+                  </button>
                 </div>
               </List.Item>
             ))}
-            <Pagination defaultCurrent={1} total={100} />
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: '0 23px',
+              }}
+            >
+              <p style={{ display: 'flex', letterSpacing: ' 0.015em' }}>
+                Hiển thị{' '}
+                <span
+                  style={{
+                    padding: '0 10px',
+                    border: '1px solid #FF7506',
+                    borderRadius: '4px',
+                  }}
+                >
+                  {data.length}
+                </span>{' '}
+                hàng trong mỗi trang
+              </p>
+              <Pagination defaultCurrent={1} total={100} />
+            </div>
           </List>
         </Container>
       </Wrapper>
@@ -150,17 +194,71 @@ const MiningContract = () => {
 
 const Wrapper = styled.div`
   position: relative;
+  margin-bottom: 20px;
   button {
     height: 48px;
   }
   display: flex;
+  position: relative;
   align-items: center;
-
   .option-1 {
+    width: 50%;
+    .space-1 {
+      margin-right: 20px;
+      p {
+        height: 24px;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: #fff;
+      }
+    }
+    .space-2 {
+      p {
+        height: 24px;
+        font-style: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: #fff;
+      }
+      .ant-btn {
+        width: 130px !important;
+        span {
+          margin-left: 40px !important;
+        }
+      }
+    }
+    display: flex;
+    .ant-space {
+      .ant-btn {
+        background: #1e1e2e;
+        border: 1px solid #ff7506;
+        display: flex;
+        width: 160px;
+        height: 40px;
+        align-items: center;
+        .ant-space-item {
+          font-size: 16px;
+          font-weight: 400;
+          color: #fff;
+          span {
+            margin-left: 70px;
+            color: #ff7506;
+            width: 10.54px;
+            height: 6.25px;
+          }
+        }
+      }
+    }
+  }
+  .option-2 {
     flex-direction: column;
     display: flex;
-    margin-bottom: 20px;
+    width: 501px;
+    transform: translate(35%, 0);
     .ant-input-wrapper {
+      width: 501px;
+
       background: #1e1e2e;
       span {
         button {
@@ -186,11 +284,38 @@ const Wrapper = styled.div`
       :hover {
         border-right: none;
       }
-      width: 280px;
+      width: 510px;
       height: 48px;
     }
   }
+  .side-option {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    transform: translateY(150%);
+    button {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      background-color: #2f2f41;
+      width: 110px;
+      line-height: 18px;
+      height: 130px;
+      background: #2f2f41;
+      border: none;
+      h3 {
+        font-size: 12px;
+      }
+    }
+    .icon-setting {
+      font-size: 2rem;
+      color: #ff7506;
+    }
+  }
 `;
+
 const Container = styled.div`
   position: absolute;
   top: 100px;
@@ -204,8 +329,17 @@ const Container = styled.div`
     font-size: 14px;
     line-height: 20px;
     font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .ant-list .ant-list-item .ant-list-item-meta .ant-list-item-meta-description {
+    color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
   }
   .ant-list-bordered .ant-list-item {
+    border-top: 1px solid #727288;
   }
 `;
+
 export default MiningContract;

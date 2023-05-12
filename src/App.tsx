@@ -14,6 +14,7 @@ import AddNewContractAuthority from './pages/Management/AddNewContractAuthority'
 import Guide from './pages/Help/Guide';
 import DownloadApp from './pages/Help/DownloadApp';
 import Feedback from './pages/Help/Feedback';
+import PeriodCycle from './pages/Setting/PeriodCycle';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="/help/guide" element={<Guide />} />
         <Route path="/help/download" element={<DownloadApp />} />
         <Route path="/help/feedback" element={<Feedback />} />
+        <Route path="/setting/period" element={<PeriodCycle />} />
       </Routes>
     </BrowserRouter>
   );

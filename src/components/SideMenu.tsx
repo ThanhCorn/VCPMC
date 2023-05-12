@@ -209,7 +209,14 @@ const items: MenuItem[] = [
     getItem('Cấu hình', '13'),
     getItem('Quản lý hợp đồng', '14'),
     getItem('Thông tin tác phẩm', '15'),
-    getItem('Chu kỳ đối soát', '16'),
+    getItem(
+      'Chu kỳ đối soát',
+      '16',
+      undefined,
+      undefined,
+      undefined,
+      '/setting/period',
+    ),
   ]),
   getItem('Hổ trợ', 'sub4', <QuestionCircleOutlined />, [
     getItem(
