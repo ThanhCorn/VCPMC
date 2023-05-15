@@ -243,31 +243,6 @@ const Wrapper = styled.div`
         color: #ffac69;
       }
     }
-    .btn {
-      margin-bottom: 20px;
-      width: 309px;
-      border: 1px solid #ff7506;
-      border-radius: 24px;
-
-      .button-1,
-      .button-2 {
-        border-radius: 24px;
-        background: none;
-      }
-      .button-1 {
-        border-top-right-radius: 24px;
-        border-bottom-right-radius: 24px;
-        border-right: none;
-      }
-      .button-2 {
-        border-top-left-radius: 24px;
-        border-bottom-left-radius: 24px;
-        border-left: none;
-      }
-      .active {
-        background: #b65100;
-      }
-    }
     .space-1 {
       background: #2b2b3f;
       .ant-card-bordered {
