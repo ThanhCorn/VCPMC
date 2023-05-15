@@ -361,12 +361,12 @@ const Wrapper = styled.div`
     .svg-2 {
       position: fixed;
       right: 0;
-      transform: translate(-200%, 60%);
+      transform: translate(-200%, 150%);
     }
     .svg-3 {
       position: fixed;
       right: 0;
-      transform: translate(-250%, 100%);
+      transform: translate(-250%, 200%);
     }
     .svg-1 {
       position: fixed;

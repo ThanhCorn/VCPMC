@@ -16,7 +16,7 @@ const Guide = () => {
         <h1>Hướng dẫn sử dụng</h1>
         <div style={{ display: 'flex' }}>
           <Space
-            style={{ display: 'flex', width: '18vw', background: '#39394D' }}
+            style={{ display: 'flex', width: '400px', background: '#2b2b3f' }}
             className="space-1"
             direction="vertical"
             size="middle"

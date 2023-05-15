@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SideMenu from '../components/SideMenu';
 import PageContent from '../components/PageContent';
-import { Avatar, Button, Col, Dropdown, Input, List, Row, Space } from 'antd';
+import { Button, Dropdown, Input, Space } from 'antd';
 import {
   AppstoreOutlined,
   CheckOutlined,
@@ -13,25 +13,19 @@ import {
   UnorderedListOutlined,
 } from '@ant-design/icons';
 import { items, items2, items3, items4 } from '../MenuDropDown';
-import { mySong } from '../mySong';
+import ListView from '../components/ListView';
+import GridView from '../components/GridView';
+import { useDispatch } from 'react-redux';
+import { setGridView, setListView } from '../features/layoutSlice';
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/store';
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
 
-interface Song {
-  stt: number;
-  tenBanGhi: string;
-  maISRC: string;
-  thoiLuong: string;
-  caSi: string;
-  tacGia: string;
-  theLoai: string;
-  dinhDang: string;
-  thoiGianSuDung: string;
-  hinhAnh: string; // Thêm trường hình ảnh
-}
-
 const RecordStore = () => {
+  const isListView = useSelector((state: RootState) => state.view.isListView);
   const [isPass, setIsPass] = React.useState<boolean>(true);
+  const dispatch = useDispatch();
   return (
     <Wrapper>
       <SideMenu />
@@ -90,91 +84,27 @@ const RecordStore = () => {
                 </Dropdown>
               </Space>
               <Space className="space-5">
-                <Button>
-                  <UnorderedListOutlined />
+                <Button
+                  onClick={() => {
+                    dispatch(setListView(false));
+                  }}
+                >
+                  <UnorderedListOutlined
+                    className={`${isListView ? 'svg-active' : null}`}
+                  />
                 </Button>
-                <Button>
-                  <AppstoreOutlined />
+                <Button
+                  onClick={() => {
+                    dispatch(setGridView(true));
+                  }}
+                >
+                  <AppstoreOutlined
+                    className={`${!isListView ? 'svg-active' : null}`}
+                  />
                 </Button>
               </Space>
             </div>
-            <Container>
-              <Row className="row" justify="space-around">
-                <Col span={1}>
-                  <p>STT</p>
-                </Col>
-                <Col span={2}>
-                  <p>Hình ảnh</p>
-                </Col>
-                <Col span={3}>
-                  <p>Tên bản ghi</p>
-                </Col>
-                <Col span={3}>
-                  <p>Ma ISRC</p>
-                </Col>
-                <Col span={2}>
-                  <p>Thời lượng</p>
-                </Col>
-                <Col span={3}>
-                  <p>Ca sĩ</p>
-                </Col>
-                <Col span={3}>
-                  <p>Tác giả</p>
-                </Col>
-                <Col span={2}>
-                  <p>Thể loại</p>
-                </Col>
-                <Col span={2}>
-                  <p>Định dạng</p>
-                </Col>
-                <Col span={3}>
-                  <p>Thời gian sử dụng</p>
-                </Col>
-              </Row>
-              <List
-                itemLayout="horizontal"
-                dataSource={mySong}
-                pagination={{
-                  pageSize: 10,
-                }}
-                renderItem={(song: Song) => (
-                  <List.Item key={song.stt}>
-                    <Row className="row">
-                      <Col span={1}>
-                        <p>{song.stt}</p>
-                      </Col>
-                      <Col span={2}>
-                        <Avatar src={song.hinhAnh} />
-                      </Col>
-                      <Col span={3}>
-                        <p>{song.tenBanGhi}</p>
-                      </Col>
-                      <Col span={3}>
-                        <p>{song.maISRC}</p>
-                      </Col>
-                      <Col span={2}>
-                        <p>{song.thoiLuong}</p>
-                      </Col>
-                      <Col span={3}>
-                        <p>{song.caSi}</p>
-                      </Col>
-                      <Col span={3}>
-                        <p>{song.tacGia}</p>
-                      </Col>
-                      <Col span={2}>
-                        <p>{song.theLoai}</p>
-                      </Col>
-                      <Col span={2}>
-                        <p>{song.dinhDang}</p>
-                      </Col>
-                      <Col span={3}>
-                        <p>{song.thoiGianSuDung}</p>
-                      </Col>
-                    </Row>
-                  </List.Item>
-                )}
-              ></List>
-            </Container>
+            {isListView ? <ListView /> : <GridView />}
           </div>
           <div className="option">
             <Button
@@ -265,7 +195,36 @@ const RecordStore = () => {
 
 export default RecordStore;
 
-const Container = styled.div``;
+const Container = styled.div`
+  width: 1541px;
+  max-height: 722px;
+  border: 1px solid rgba(47, 47, 65, 0.7);
+  border-radius: 16px;
+  margin: 10px 0;
+  .row-1,
+  .row-2 {
+    width: 1541px;
+    padding-top: 20px;
+    padding-left: 35px;
+    .ant-col-3 {
+      max-width: 10%;
+    }
+  }
+  .row-2 {
+    border-bottom: 1px solid rgba(47, 47, 65, 0.7);
+    p {
+      color: #fff;
+      opacity: 0.7;
+    }
+  }
+  .row-1 {
+    p {
+      font-weight: bold;
+      color: #ffac69;
+      opacity: 1;
+    }
+  }
+`;
 
 const Wrapper = styled.div`
   background-color: var(--primary-color);
@@ -273,9 +232,6 @@ const Wrapper = styled.div`
   .content {
     margin-left: 50px;
     margin-top: 50px;
-    p {
-      opacity: 0.5;
-    }
     .option-1 {
       margin-top: 20px;
       width: 1541px;
@@ -318,9 +274,9 @@ const Wrapper = styled.div`
         button {
           background: transparent;
           border: none;
+          color: #fff;
           svg {
             font-size: 2rem;
-            color: #ff7506;
           }
         }
       }
@@ -341,6 +297,9 @@ const Wrapper = styled.div`
           }
         }
       }
+    }
+    .svg-active {
+      color: #ff7506;
     }
     .ant-input {
       background: #1e1e2e;
