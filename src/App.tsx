@@ -15,6 +15,7 @@ import Guide from './pages/Help/Guide';
 import DownloadApp from './pages/Help/DownloadApp';
 import Feedback from './pages/Help/Feedback';
 import PeriodCycle from './pages/Setting/PeriodCycle';
+import RecordStore from './pages/RecordStore';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/help/download" element={<DownloadApp />} />
         <Route path="/help/feedback" element={<Feedback />} />
         <Route path="/setting/period" element={<PeriodCycle />} />
+        <Route path="/record-store" element={<RecordStore />} />
       </Routes>
     </BrowserRouter>
   );

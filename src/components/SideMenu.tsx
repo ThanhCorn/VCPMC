@@ -159,7 +159,14 @@ const Wrapper = styled(Menu)`
 `;
 
 const items: MenuItem[] = [
-  getItem('Kho bản ghi', '1', <VideoCameraOutlined />),
+  getItem(
+    'Kho bản ghi',
+    '1',
+    <VideoCameraOutlined />,
+    undefined,
+    undefined,
+    '/record-store',
+  ),
   getItem('Playlist', '2', <PlaySquareOutlined />),
   getItem('Lập lịch phát', '3', <CalendarOutlined />),
 

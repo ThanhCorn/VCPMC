@@ -676,7 +676,7 @@ const AddNewContractAuthority: React.FC = () => {
 
 const Wrapper = styled.div`
   background-color: var(--primary-color);
-
+  margin-top: 50px;
   .content {
     margin-top: 50px;
     margin-left: 50px;

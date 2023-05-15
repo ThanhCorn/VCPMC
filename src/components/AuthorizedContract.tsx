@@ -237,18 +237,22 @@ const AuthorizedContract = ({ children }: Props) => {
           <Link
             to="/new-contract"
             style={{
+              width: '110px',
               borderTopLeftRadius: '16px',
+              borderBottomLeftRadius: '16px',
               background: '#2F2F41',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '16px',
+              fontSize: '14px',
+              fontWeight: '400',
+              opacity: '0.8',
             }}
           >
             <PlusCircleOutlined className="icon-setting" />
-            <h3>
-              Thêm hợp <br /> đồng
+            <h3 style={{ fontSize: '16px' }}>
+              Thêm hợp <br /> &nbsp;&nbsp;&nbsp;&nbsp; đồng
             </h3>
           </Link>
           <ModalContainer
@@ -422,6 +426,7 @@ const Wrapper = styled.div`
       }
     }
     .icon-setting {
+      margin-top: 10px;
       font-size: 2rem;
       color: #ff7506;
     }

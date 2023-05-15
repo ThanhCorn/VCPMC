@@ -73,9 +73,9 @@ const MiningContract = () => {
       <Wrapper className="option">
         <div className="option-1">
           <Search
-            placeholder="input search text"
+            placeholder="Tên hợp đồng, tên tác giả,..."
             onSearch={onSearch}
-            style={{ width: 200 }}
+            style={{ width: '200px' }}
           />
         </div>
         <Container>
@@ -198,7 +198,6 @@ const Wrapper = styled.div`
   button {
     height: 48px;
   }
-  display: flex;
   position: relative;
   align-items: center;
   .option-1 {
@@ -227,6 +226,35 @@ const Wrapper = styled.div`
           margin-left: 40px !important;
         }
       }
+    }
+    .ant-input-wrapper {
+      background: #1e1e2e;
+      span {
+        button {
+          height: 48px;
+          background: #1e1e2e;
+          border: 1px solid #727288;
+          border-left: none;
+          svg {
+            color: #fff;
+            height: 21px;
+            width: 21px;
+          }
+        }
+      }
+    }
+    .ant-input {
+      background: #1e1e2e;
+      color: #fff;
+      border: 1px solid #727288;
+      ::placeholder {
+        color: #727288;
+      }
+      :hover {
+        border-right: none;
+      }
+      width: 280px;
+      height: 48px;
     }
     display: flex;
     .ant-space {

@@ -91,7 +91,6 @@ const Wrapper = styled.div`
     }
     h4 {
       font-weight: 200;
-      opacity: 0.5;
       font-size: 16px;
       svg {
         color: #ffac69;
