@@ -33,11 +33,15 @@ interface DataProps {
 interface DataContextValue {
   data: DataProps[];
   setData: (data: DataProps[]) => void;
+  isKhoBanGhi: boolean;
+  setIsKhoBanGhi: (isKhoBanGhi: boolean) => void;
 }
 
 export const DataContext = createContext<DataContextValue>({
   data: [],
   setData: () => {},
+  isKhoBanGhi: true,
+  setIsKhoBanGhi: () => {},
 });
 
 export const useData = () => useContext(DataContext);
@@ -46,6 +50,7 @@ export const DataProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
   const [data, setData] = useState<DataProps[]>([]);
+  const [isKhoBanGhi, setIsKhoBanGhi] = useState<boolean>(true);
 
   useEffect(() => {
     const getData = async () => {
@@ -60,7 +65,9 @@ export const DataProvider: React.FC<React.PropsWithChildren> = ({
     getData();
   }, []);
   return (
-    <DataContext.Provider value={{ data, setData }}>
+    <DataContext.Provider
+      value={{ data, setData, isKhoBanGhi, setIsKhoBanGhi }}
+    >
       {children}
     </DataContext.Provider>
   );

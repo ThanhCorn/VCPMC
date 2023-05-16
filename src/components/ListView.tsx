@@ -1,27 +1,36 @@
-import { Col, List, Pagination, Row } from 'antd';
+import { Checkbox, Col, List, Pagination, Row } from 'antd';
 import React from 'react';
-import { mySong } from '../mySong';
+import { mySong, Song } from '../mySong';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { RootState } from '../app/store';
 
-interface Song {
-  stt: number;
-  tenBanGhi: string;
-  maISRC: string;
-  thoiLuong: string;
-  caSi: string;
-  tacGia: string;
-  theLoai: string;
-  dinhDang: string;
-  thoiGianSuDung: string;
-  hinhAnh: string; // Thêm trường hình ảnh
+interface ListViewProps {
+  listView: boolean;
+  isKhoBanGhi: boolean;
 }
 
-const ListView = () => {
+const ListView: React.FC<ListViewProps> = ({ listView, isKhoBanGhi }) => {
+  const isListView = useSelector((state: RootState) => state.view.isListView);
+  const [isChecked, setIsChecked] = React.useState(false);
+  const dispatch = useDispatch();
+  const rowStyle = !isListView
+    ? { alignItems: 'center', marginLeft: '-15px' }
+    : {};
+
   return (
     <Container>
-      <Row className="row-1">
-        <Col span={1}>
+      <Row className="row-1" style={rowStyle}>
+        {isKhoBanGhi === false && (
+          <Checkbox
+            checked={isChecked}
+            onChange={(e) => setIsChecked(e.target.checked)}
+          />
+        )}
+
+        <Col span={1} style={{ marginLeft: '10px' }}>
           <p>STT</p>
         </Col>
         <Col span={3}>
@@ -53,8 +62,13 @@ const ListView = () => {
         itemLayout="horizontal"
         dataSource={mySong}
         renderItem={(song: Song) => (
-          <List.Item key={song.stt}>
+          <List.Item
+            key={song.stt}
+            style={{ alignItems: 'center', display: 'flex' }}
+          >
             <Row className="row-2">
+              {isKhoBanGhi === false && <Checkbox checked={isChecked} />}
+
               <Col span={1}>
                 <p style={{ marginLeft: '18px' }}> {song.stt}</p>
               </Col>
@@ -91,20 +105,23 @@ const ListView = () => {
                   20/12/2023
                 </span>
               </Col>
-              <Col span={2}>
-                <Link
-                  to="/management/contract/1"
-                  style={{
-                    background: 'transparent',
-                    border: 'none',
-                    textDecoration: 'underline',
-                    color: '#ff7506',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Cập nhật
-                </Link>
-              </Col>
+              {isKhoBanGhi === true && (
+                <Col span={2}>
+                  <Link
+                    to="/update-record"
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      textDecoration: 'underline',
+                      color: '#ff7506',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Cập nhật
+                  </Link>
+                </Col>
+              )}
+
               <Col>
                 <Link
                   to="/management/contract/1"

@@ -15,7 +15,9 @@ import Guide from './pages/Help/Guide';
 import DownloadApp from './pages/Help/DownloadApp';
 import Feedback from './pages/Help/Feedback';
 import PeriodCycle from './pages/Setting/PeriodCycle';
-import RecordStore from './pages/RecordStore';
+import RecordStore from './pages/Store/RecordStore';
+import RecordApproval from './pages/Store/RecordApproval';
+import UpdateRecordStore from './pages/Store/UpdateRecordStore';
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
         <Route path="/help/feedback" element={<Feedback />} />
         <Route path="/setting/period" element={<PeriodCycle />} />
         <Route path="/record-store" element={<RecordStore />} />
+        <Route path="/record-approval" element={<RecordApproval />} />
+        <Route path="/update-record" element={<UpdateRecordStore />} />
       </Routes>
     </BrowserRouter>
   );

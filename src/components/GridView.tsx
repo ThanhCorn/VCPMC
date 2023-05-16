@@ -1,9 +1,19 @@
-import { Avatar, Col, List, Row } from 'antd';
+import { Avatar, Checkbox, Col, List, Row } from 'antd';
 import styled from 'styled-components';
 import { mySong, Song } from '../mySong';
 import { FormOutlined } from '@ant-design/icons';
 
-const GridView = () => {
+interface GrỉdViewProps {
+  gridView: boolean;
+  isKhoBanGhi: boolean;
+  isChecked: boolean;
+}
+
+const GridView: React.FC<GrỉdViewProps> = ({
+  gridView,
+  isKhoBanGhi,
+  isChecked,
+}) => {
   return (
     <Container>
       <Row>
@@ -38,10 +48,14 @@ const GridView = () => {
                 </div>
                 <div className="box-type">
                   <span>Thời lượng</span>
-
                   <p>{song.thoiLuong}</p>
                 </div>
-                <FormOutlined className="icon" />
+
+                {isKhoBanGhi ? (
+                  <FormOutlined className="icon" />
+                ) : (
+                  <Checkbox className="icon" checked={isChecked} />
+                )}
               </div>
             </div>
           </Col>
