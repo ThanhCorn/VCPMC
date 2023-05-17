@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import SideMenu from '../../components/SideMenu';
 import PageContent from '../../components/PageContent';
-import { Button, Checkbox, Dropdown, Input, Space } from 'antd';
+import { Button, Checkbox, Dropdown, Input, Modal, Space } from 'antd';
 import {
   AppstoreOutlined,
   CheckOutlined,
@@ -22,9 +22,11 @@ import { RootState } from '../../app/store';
 import { DataContext } from '../../context/DataContext';
 import { Link } from 'react-router-dom';
 const { Search } = Input;
+const { TextArea } = Input;
 const onSearch = (value: string) => console.log(value);
 
 const RecordApproval = () => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const isListView = useSelector((state: RootState) => state.view.isListView);
   const { isKhoBanGhi, setIsKhoBanGhi } = useContext(DataContext);
   const [isChecked, setIsChecked] = React.useState(false);
@@ -121,7 +123,10 @@ const RecordApproval = () => {
               phê duyệt
             </p>
           </Link>
-          <Button className="button-option">
+          <Button
+            className="button-option"
+            onClick={() => setIsModalOpen(true)}
+          >
             <div className="icon">
               <CloseOutlined style={{ color: 'red' }} />
             </div>
@@ -137,40 +142,63 @@ const RecordApproval = () => {
             isChecked={isChecked}
           />
         )}
+        {isModalOpen && (
+          <ModalContent
+            title="Lý do từ chối phê duyệt"
+            visible={isModalOpen}
+            onOk={() => setIsModalOpen(false)}
+            onCancel={() => setIsModalOpen(false)}
+          >
+            <TextArea
+              placeholder="Cho chúng tôi biết lý do bạn muốn từ chối phê duyệt bản ghi này..."
+              rows={4}
+            />
+          </ModalContent>
+        )}
       </div>
     </Wrapper>
   );
 };
 
 export default RecordApproval;
-
-const Container = styled.div`
-  width: 1541px;
-  max-height: 722px;
-  border: 1px solid rgba(47, 47, 65, 0.7);
-  border-radius: 16px;
-  margin: 10px 0;
-  .row-1,
-  .row-2 {
-    width: 1541px;
-    padding-top: 20px;
-    padding-left: 35px;
-    .ant-col-3 {
-      max-width: 10%;
+const ModalContent = styled(Modal)`
+  .ant-modal-content {
+    background: #2f2f41;
+  }
+  .ant-modal-title {
+    background: #2f2f41;
+    color: #fff;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .ant-input {
+    color: #fff;
+    border: 1px solid #727288;
+    background: #2b2b3f;
+    ::placeholder {
+      color: #727288;
     }
   }
-  .row-2 {
-    border-bottom: 1px solid rgba(47, 47, 65, 0.7);
-    p {
-      color: #fff;
-      opacity: 0.7;
+  .ant-modal-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .ant-btn-default {
+      background: transparent !important;
+      border: 1px solid #ff7506 !important;
+      :hover {
+        background: transparent !important;
+        border: 1px solid #ff7506 !important;
+      }
+      span {
+        color: #ff7506;
+      }
     }
-  }
-  .row-1 {
-    p {
-      font-weight: bold;
-      color: #ffac69;
-      opacity: 1;
+    .ant-btn-primary {
+      background: #ff7506 !important;
     }
   }
 `;

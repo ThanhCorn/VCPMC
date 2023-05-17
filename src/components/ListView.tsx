@@ -1,4 +1,13 @@
-import { Checkbox, Col, List, Pagination, Row } from 'antd';
+import {
+  Button,
+  Checkbox,
+  Col,
+  Input,
+  List,
+  Modal,
+  Pagination,
+  Row,
+} from 'antd';
 import React from 'react';
 import { mySong, Song } from '../mySong';
 import { Link } from 'react-router-dom';
@@ -6,13 +15,17 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { RootState } from '../app/store';
+import ImageSong from '../assets/Song.png';
 
 interface ListViewProps {
   listView: boolean;
   isKhoBanGhi: boolean;
 }
 
+const { TextArea } = Input;
+
 const ListView: React.FC<ListViewProps> = ({ listView, isKhoBanGhi }) => {
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
   const isListView = useSelector((state: RootState) => state.view.isListView);
   const [isChecked, setIsChecked] = React.useState(false);
   const dispatch = useDispatch();
@@ -123,20 +136,27 @@ const ListView: React.FC<ListViewProps> = ({ listView, isKhoBanGhi }) => {
               )}
 
               <Col>
-                <Link
-                  to="/management/contract/1"
+                <Button
+                  onClick={() => setIsModalOpen(true)}
                   style={{
                     background: 'transparent',
                     border: 'none',
                     textDecoration: 'underline',
                     color: '#ff7506',
-                    cursor: 'pointer',
                   }}
                 >
                   Nghe
-                </Link>
+                </Button>
               </Col>
             </Row>
+            {isModalOpen && (
+              <ModalContent
+                visible={isModalOpen}
+                onCancel={() => setIsModalOpen(false)}
+              >
+                <img src={ImageSong} alt="" />
+              </ModalContent>
+            )}
           </List.Item>
         )}
       ></List>
@@ -168,6 +188,43 @@ const ListView: React.FC<ListViewProps> = ({ listView, isKhoBanGhi }) => {
 };
 
 export default ListView;
+const ModalContent = styled(Modal)`
+  img {
+    width: 100%;
+    margin-top: 30px;
+  }
+  .ant-modal-content {
+    background: #2f2f41;
+  }
+  .ant-modal-title {
+    background: #2f2f41;
+    color: #fff;
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .ant-input {
+    color: #fff;
+    border: 1px solid #727288;
+    background: #2b2b3f;
+    ::placeholder {
+      color: #727288;
+    }
+  }
+  .ant-modal-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .ant-btn-default {
+      display: none;
+    }
+    .ant-btn-primary {
+      display: none;
+    }
+  }
+`;
 
 const Container = styled.div`
   width: 1541px;

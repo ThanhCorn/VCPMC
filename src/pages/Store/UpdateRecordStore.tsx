@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import SideMenu from '../../components/SideMenu';
 import PageContent from '../../components/PageContent';
 import { RightOutlined, StepForwardOutlined } from '@ant-design/icons';
-import { Space } from 'antd';
+import { Button, Form, Input, Space } from 'antd';
 import { mySong, Song } from '../../mySong';
 
 const UpdateRecordStore = () => {
+  const [form] = Form.useForm();
   const data = mySong[0];
   return (
     <Wrapper>
@@ -22,7 +23,7 @@ const UpdateRecordStore = () => {
           <div className="content-1">
             <Space className="space-1">
               <div className="info-record">
-                <h1>Thông tin bản ghi</h1>
+                <h2>Thông tin bản ghi</h2>
                 <img src={data.hinhAnh} alt={data.tenBanGhi} />
                 <span>
                   {' '}
@@ -50,10 +51,10 @@ const UpdateRecordStore = () => {
               </div>
             </Space>
             <Space className="space-2">
-              <h1>Thông tin ủy quyền</h1>
+              <h2>Thông tin ủy quyền</h2>
               <div className="main-info">
                 <p>
-                  Số hợp đồng<span>BH123</span>{' '}
+                  Số hợp đồng<span>Bh223</span>{' '}
                 </p>
                 <p>
                   Ngày nhận ủy quyền:<span>01/05/2021</span>
@@ -70,7 +71,35 @@ const UpdateRecordStore = () => {
           </div>
           <div className="content-2 ">
             <Space className="space-3">
-              <h1>Chỉnh sửa thông tin</h1>
+              <h2>Chỉnh sửa thông tin</h2>
+              <Form layout="vertical" form={form} style={{ maxWidth: 600 }}>
+                <Form.Item label="Tên bản ghi" required>
+                  <Input placeholder="Mất em" disabled />
+                </Form.Item>
+                <Form.Item label="Mã ISRC" required>
+                  <Input placeholder="KRA0123123" disabled />
+                </Form.Item>
+                <Form.Item label="Ca sĩ" required>
+                  <Input placeholder="Phan Mạnh Quỳnh" disabled />
+                </Form.Item>
+                <Form.Item label="Tác giả" required>
+                  <Input placeholder="Phan Mạnh Quỳnh" disabled />
+                </Form.Item>
+                <Form.Item label="Nhà sản xuất" required>
+                  <Input placeholder="Nguyễn Nam Minh Thụy" disabled />
+                </Form.Item>
+                <Form.Item label="Thể loại" required>
+                  <Input placeholder="Ballad" disabled />
+                </Form.Item>
+                <Form.Item className="button">
+                  <Button type="primary" className="btn-huy">
+                    Hủy
+                  </Button>
+                  <Button type="primary" className="btn-luu">
+                    Lưu
+                  </Button>
+                </Form.Item>
+              </Form>
             </Space>
           </div>
         </Container>
@@ -94,11 +123,11 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  h2 {
+    color: #ff7506;
+    font-size: 24px;
+  }
   .content-1 {
-    h1 {
-      color: #ff7506;
-      font-size: 24px;
-    }
     display: flex;
     flex-direction: column;
     width: 570px;
@@ -188,8 +217,32 @@ const Container = styled.div`
     width: 743px;
     .space-3 {
       border: 1px solid #2b2b3f;
-
       height: 757px;
+      display: flex;
+      flex-direction: column;
+      .ant-form {
+        margin-left: -80px;
+        label {
+          color: #fff;
+          font-size: 16px;
+          font-weight: 500;
+        }
+        input {
+          height: 48px;
+          width: 695px;
+          background: #33334d;
+          border: 1px solid #727288;
+          ::placeholder {
+            color: #fff;
+            opacity: 0.7;
+          }
+        }
+        .button {
+          position: fixed;
+          transform: translateX(-66%);
+          bottom: 0;
+        }
+      }
     }
   }
 `;

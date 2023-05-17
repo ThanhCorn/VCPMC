@@ -25,3 +25,20 @@ code {
 input {
   color: #fff;
 }
+
+.btn-huy {
+  height: 48px;
+  margin-right: 20px;
+  background-color: transparent;
+  width: 168px;
+  color: #ff7506;
+  border: 1px solid #ff7506;
+}
+.btn-huy:hover {
+  background: none;
+}
+.btn-luu {
+  height: 48px;
+  width: 168px;
+  background-color: #ff7506;
+}

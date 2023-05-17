@@ -18,6 +18,10 @@ import PeriodCycle from './pages/Setting/PeriodCycle';
 import RecordStore from './pages/Store/RecordStore';
 import RecordApproval from './pages/Store/RecordApproval';
 import UpdateRecordStore from './pages/Store/UpdateRecordStore';
+import Playlist from './pages/Playlist/Playlist';
+import Schedule from './pages/Schedule/Schedule';
+import ScheduleDetail1 from './pages/Schedule/ScheduleDetail1';
+import AddSchedule from './pages/Schedule/AddSchedule ';
 
 function App() {
   return (
@@ -44,6 +48,10 @@ function App() {
         <Route path="/record-store" element={<RecordStore />} />
         <Route path="/record-approval" element={<RecordApproval />} />
         <Route path="/update-record" element={<UpdateRecordStore />} />
+        <Route path="/playist" element={<Playlist />} />
+        <Route path="/schedule" element={<Schedule />} />
+        <Route path="/schedule/:id" element={<ScheduleDetail1 />} />
+        <Route path="/add-schedule" element={<AddSchedule />} />
       </Routes>
     </BrowserRouter>
   );

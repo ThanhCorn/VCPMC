@@ -167,8 +167,22 @@ const items: MenuItem[] = [
     undefined,
     '/record-store',
   ),
-  getItem('Playlist', '2', <PlaySquareOutlined />),
-  getItem('Lập lịch phát', '3', <CalendarOutlined />),
+  getItem(
+    'Playlist',
+    '2',
+    <PlaySquareOutlined />,
+    undefined,
+    undefined,
+    '/playlist',
+  ),
+  getItem(
+    'Lập lịch phát',
+    '3',
+    <CalendarOutlined />,
+    undefined,
+    undefined,
+    '/schedule',
+  ),
 
   getItem('Quản lý', 'sub1', <FileTextOutlined />, [
     getItem(
