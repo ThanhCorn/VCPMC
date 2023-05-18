@@ -1,19 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { Button, DatePicker, Form, Input, Table } from 'antd';
+import { Button, DatePicker, Form, Input, Modal, Table } from 'antd';
 import SideMenu from '../../components/SideMenu';
 import PageContent from '../../components/PageContent';
 import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { mySchecule, Schecule } from '../../mySong';
+import dayjs from 'dayjs';
+import { MouseEvent } from 'react';
 
 interface TimeSlot {
   key: number;
   time: string;
-  monday: string;
-  tuesday: string;
-  // Add other days of the week as properties
-  // ...
+  monday?: string | React.ReactNode;
+  tuesday?: string;
+  wednesday?: string;
+  thursday?: string;
+  friday?: string;
+  saturday?: string;
+  sunday?: string;
 }
 
 const columns: Array<{
@@ -65,19 +70,107 @@ for (let i = 1; i <= 16; i++) {
     time: `${i}:00`,
     monday: '',
     tuesday: '',
-    // Initialize other days of the week with empty values
-    // ...
+    wednesday: '',
+    thursday: '',
+    friday: '',
+    saturday: '',
+    sunday: '',
   });
 }
 
 export default function AddSchedule() {
   const schedule: Schecule[] = mySchecule;
+  const [selectedPlaylist, setSelectedPlaylist] =
+    React.useState<Schecule | null>(null);
+  const [tableData, setTableData] = React.useState<TimeSlot[]>(data);
+
+  const deletePlaylist = (event: MouseEvent) => {
+    event.stopPropagation();
+    Modal.warning({
+      title: 'Xóa playlist',
+      content: (
+        <div>
+          <p>Bạn có chắc chắn muốn xóa playlist này?</p>
+          <p>{selectedPlaylist?.tenplaylist}</p>
+        </div>
+      ),
+    });
+  };
+
+  const ModalButtonBody = () => {
+    Modal.info({
+      title: 'Thông tin playlist',
+      content: (
+        <div>
+          <p>Tên playlist: {selectedPlaylist?.tenplaylist}</p>
+          <p>Thời gian: {selectedPlaylist?.thoigian}</p>
+          <p>Bắt đầu kết thúc: {selectedPlaylist?.batdauketthuc}</p>
+        </div>
+      ),
+    });
+  };
+
+  useEffect(() => {
+    if (selectedPlaylist && selectedPlaylist.batdauketthuc) {
+      const timeRange = selectedPlaylist.batdauketthuc.split(' - ');
+      const startTime = parseInt(timeRange[0].split(':')[0], 10);
+      const endTime = parseInt(timeRange[1].split(':')[0], 10);
+      console.log(startTime);
+      const updatedTableData = tableData.map((item) => {
+        return {
+          ...item,
+          monday: (
+            <Button
+              onClick={ModalButtonBody}
+              type="primary"
+              key={item.key}
+              style={{
+                height: '94px',
+                width: '163px',
+                background: '#3e3e5b',
+                marginLeft: '-20px',
+                zIndex: '1',
+              }}
+            >
+              {item.key === startTime && (
+                <div>
+                  <button
+                    onClick={(event: MouseEvent) => deletePlaylist(event)}
+                    className="button-delete"
+                  >
+                    x
+                  </button>
+                  <p style={{ color: '#FFAC69', marginTop: '-10px' }}>
+                    {selectedPlaylist.tenplaylist}
+                  </p>
+                  <span>{selectedPlaylist.batdauketthuc}</span>
+                </div>
+              )}
+            </Button>
+          ),
+        };
+      });
+      setTableData(updatedTableData);
+    }
+  }, [selectedPlaylist]);
+  const starDateString = selectedPlaylist?.thoigian.split(' - ');
+  const startDate =
+    starDateString && starDateString.length > 0
+      ? new Date(starDateString[0])
+      : null;
+  const endDate =
+    starDateString && starDateString.length > 1
+      ? new Date(starDateString[1])
+      : null;
+  const startDateDayjs = startDate ? dayjs(startDate) : null;
+  const endDateDayjs = endDate ? dayjs(endDate) : null;
+
   return (
     <Wrapper>
       <SideMenu />
       <PageContent />
       <div className="content">
-        <span>
+        <span style={{ color: '#fff', opacity: '0.5' }}>
           Lập lịch phát <RightOutlined /> Thêm lịch phát mới
         </span>
         <h1>Lập lịch phát</h1>
@@ -87,18 +180,44 @@ export default function AddSchedule() {
               <h3>Thông tin lịch phát</h3>
               <Form layout="vertical">
                 <Form.Item label="Tên lịch phát">
-                  <Input placeholder="Nhập tên lịch phát" />
+                  <Input
+                    placeholder="Nhập tên lịch phát"
+                    value={selectedPlaylist?.tenplaylist}
+                  />
                 </Form.Item>
                 <Form.Item label="Từ ngày">
-                  <DatePicker placeholder="dd/mm/yyyy" />
+                  <DatePicker
+                    placeholder="dd/mm/yyyy"
+                    value={startDateDayjs}
+                    className="myDatePicker"
+                  />
                 </Form.Item>
                 <Form.Item label="Đến ngày">
-                  <DatePicker placeholder="dd/mm/yyyy" />
+                  <DatePicker placeholder="dd/mm/yyyy" value={endDateDayjs} />
                 </Form.Item>
               </Form>
             </div>
             <div className="table-2">
               <h3>Danh sách Playlist</h3>
+              {schedule.map((item, index) => {
+                if (item.tenplaylist) {
+                  return (
+                    <Button
+                      type="primary"
+                      key={item.stt}
+                      onClick={() => setSelectedPlaylist(item)}
+                    >
+                      {item.tenplaylist}
+                      <p>
+                        Thời lượng: <span>{item.thoiluong}</span>
+                      </p>
+                    </Button>
+                  );
+                }
+                return null; // Skip mapping if `tenplaylist` is falsy
+              })}
+              <div style={{ borderTop: '2px solid #fff' }}></div>
+              <h3>Playlist mới</h3>
               {schedule.map((item, index) => {
                 if (item.tenplaylist) {
                   return (
@@ -117,7 +236,7 @@ export default function AddSchedule() {
           <div className="right-table">
             <Table
               columns={columns}
-              dataSource={data}
+              dataSource={tableData}
               bordered
               pagination={false}
               scroll={{ y: 735, x: 100 }}
@@ -158,8 +277,11 @@ const Container = styled.div`
       color: #fff;
       opacity: 0.7;
     }
+
     .table-2 {
+      overflow-y: scroll;
       padding: 0 10px;
+      height: 200px;
     }
     .table-1 {
       border-radius: 16px;
@@ -173,19 +295,25 @@ const Container = styled.div`
         border: 1px solid #727288;
         background: rgba(47, 47, 65, 0.7);
       }
+
       input,
       .ant-picker {
         height: 48px;
         width: 241px;
+
         ::placeholder {
           color: #fff;
           opacity: 0.5;
         }
       }
       .ant-picker {
+        border: 1px solid #ff7506;
         margin-top: -10px;
         background: rgba(47, 47, 65, 0.7);
         height: 40px !important;
+        svg {
+          color: #ff7506;
+        }
       }
       .ant-picker-input {
         input {
@@ -223,14 +351,33 @@ const Container = styled.div`
       }
     }
   }
+
   .right-table {
     height: 792;
-    background: rgba(47, 47, 65, 0.7);
+    .ant-table-cell {
+      border-bottom: 0;
+      border-right: 0;
+      background: #2f2f41;
+      title {
+        color: #fff;
+      }
+    }
     .ant-table-wrapper {
       width: 1250px;
       .ant-table-container {
         width: 1250px;
       }
+    }
+    .myDatePicker .ant-picker-input > input {
+      color: #ff7506;
+    }
+    .button-delete {
+      z-index: 2;
+      transform: translate(4rem, -10px);
+      background: transparent;
+      border: none;
+      color: #ff7506;
+      cursor: pointer;
     }
   }
 `;

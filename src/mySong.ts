@@ -111,7 +111,7 @@ const mySchecule: Schecule[] = [
     thoigian: '8/12/2023 - 10/12/2023',
     tenplaylist: 'Top USUK 2021',
     ngayphatplaylist: '8/12/2023 - 10/12/2023',
-    batdauketthuc: '06:00:00 - 18:00:00',
+    batdauketthuc: '11:00:00 - 13:00:00',
     chukyphat: 'Thứ 3 | Thứ 6',
     thietbi: 'Thiết bị 1 | Thiết bị 2 | Thiết bị 3 | Thiết bị 4',
     thoiluong: '02:00:00',
