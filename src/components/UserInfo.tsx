@@ -138,28 +138,10 @@ const UserInfo = () => {
             </Form.Item>
           </div>
           <div className="button-confirm">
-            <Button
-              danger
-              style={{
-                height: '48px',
-                marginRight: '20px',
-                backgroundColor: 'transparent',
-                width: '168px',
-                color: '#FF7506',
-                border: '1px solid #FF7506',
-              }}
-            >
+            <Button danger className="btn-huy">
               Hủy
             </Button>
-            <Button
-              type="primary"
-              htmlType="submit"
-              style={{
-                height: '48px',
-                width: '168px',
-                backgroundColor: '#FF7506',
-              }}
-            >
+            <Button type="primary" htmlType="submit" className="btn-luu">
               Lưu
             </Button>
           </div>

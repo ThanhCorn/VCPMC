@@ -1,26 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import type { MenuProps } from 'antd';
-import {
-  Space,
-  Button,
-  Dropdown,
-  Input,
-  List,
-  Pagination,
-  Typography,
-} from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import { db } from '../firebase';
+import { Input, List, Pagination } from 'antd';
 import styled from 'styled-components';
-import type { PaginationProps } from 'antd';
-import {
-  collection,
-  getDocs,
-  query,
-  onSnapshot,
-  Timestamp,
-  doc,
-} from 'firebase/firestore';
 import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 import { DataContext } from '../context/DataContext';
@@ -202,31 +183,6 @@ const Wrapper = styled.div`
   align-items: center;
   .option-1 {
     width: 50%;
-    .space-1 {
-      margin-right: 20px;
-      p {
-        height: 24px;
-        font-style: normal;
-        font-size: 16px;
-        line-height: 24px;
-        color: #fff;
-      }
-    }
-    .space-2 {
-      p {
-        height: 24px;
-        font-style: normal;
-        font-size: 16px;
-        line-height: 24px;
-        color: #fff;
-      }
-      .ant-btn {
-        width: 130px !important;
-        span {
-          margin-left: 40px !important;
-        }
-      }
-    }
     .ant-input-wrapper {
       background: #1e1e2e;
       span {
@@ -277,43 +233,6 @@ const Wrapper = styled.div`
           }
         }
       }
-    }
-  }
-  .option-2 {
-    flex-direction: column;
-    display: flex;
-    width: 501px;
-    transform: translate(35%, 0);
-    .ant-input-wrapper {
-      width: 501px;
-
-      background: #1e1e2e;
-      span {
-        button {
-          height: 48px;
-          background: #1e1e2e;
-          border: 1px solid #727288;
-          border-left: none;
-          svg {
-            color: #fff;
-            height: 21px;
-            width: 21px;
-          }
-        }
-      }
-    }
-    .ant-input {
-      background: #1e1e2e;
-      color: #fff;
-      border: 1px solid #727288;
-      ::placeholder {
-        color: #727288;
-      }
-      :hover {
-        border-right: none;
-      }
-      width: 510px;
-      height: 48px;
     }
   }
   .side-option {

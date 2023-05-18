@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 import { Modal, Input, Button, DatePicker, Checkbox, Radio } from 'antd';
 import {
@@ -18,10 +17,6 @@ import {
 import { DataContext } from '../context/DataContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import AuthorizedContract from './AuthorizedContract';
-import SideMenu from './SideMenu';
-import PageContent from './PageContent';
-import Navbar from './Navbar';
 import { UserContext } from '../context/UserContext';
 
 const { TextArea } = Input;
@@ -113,7 +108,7 @@ const InfoContractDetail: React.FC = () => {
               <h4>
                 Tên hợp đồng: <p>Hợp đồng ủy quyền tác phẩm âm nhạc</p>
               </h4>
-                       <h4>
+              <h4>
                 Ngày hiệu lực:{' '}
                 <p>
                   <p style={{ marginLeft: '-10px', marginRight: '10px' }}>

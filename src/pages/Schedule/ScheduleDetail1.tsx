@@ -71,29 +71,6 @@ export default function ScheduleDetail1() {
             )}
           ></List>
         </Container>
-        <div className="side-option">
-          <Link
-            to="/new-contract"
-            style={{
-              width: '110px',
-              borderTopLeftRadius: '16px',
-              borderBottomLeftRadius: '16px',
-              background: '#2F2F41',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '14px',
-              fontWeight: '400',
-              opacity: '0.8',
-            }}
-          >
-            <PlusCircleOutlined className="icon-setting" />
-            <h3 style={{ fontSize: '16px' }}>
-              Thêm lịch <br /> &nbsp;&nbsp;&nbsp;&nbsp; phát
-            </h3>
-          </Link>
-        </div>
       </div>
     </Wrapper>
   );

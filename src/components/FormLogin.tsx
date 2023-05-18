@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Checkbox, Input, Button } from 'antd';
-import {
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import styled from 'styled-components';
 import ConfirmFormEmail from './ConfirmFormEmail';
 import { useNavigate } from 'react-router-dom';
-import { User } from 'firebase/auth';
 
 const FormContainer = styled(Form)`
   display: flex;

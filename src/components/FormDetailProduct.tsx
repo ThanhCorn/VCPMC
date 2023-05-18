@@ -3,20 +3,11 @@ import styled from 'styled-components';
 import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 import { Modal, Input, List, Pagination, Checkbox, Button } from 'antd';
-import {
-  ContainerOutlined,
-  CloseOutlined,
-  FormOutlined,
-} from '@ant-design/icons';
+import { CloseOutlined } from '@ant-design/icons';
 import type { CheckboxChangeEvent } from 'antd/es/checkbox';
-import { FilePdfOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { DataContext } from '../context/DataContext';
 import { useContext } from 'react';
-import SideMenu from './SideMenu';
 import { RightOutlined } from '@ant-design/icons';
-import PageContent from './PageContent';
-import InfoContract from './InfoContract';
-import AuthoritySong from './AuthoritySong';
 
 const onChange = (e: CheckboxChangeEvent) => {
   console.log(`checked = ${e.target.checked}`);

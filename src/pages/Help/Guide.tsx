@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import SideMenu from '../../components/SideMenu';
 import PageContent from '../../components/PageContent';
 import { RightOutlined } from '@ant-design/icons';
-import { Button, Card, Space } from 'antd';
+import { Card, Space } from 'antd';
 
 const Guide = () => {
   return (

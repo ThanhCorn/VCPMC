@@ -1,26 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
-import { Modal, Input, Button } from 'antd';
-import {
-  ContainerOutlined,
-  CloseOutlined,
-  FormOutlined,
-} from '@ant-design/icons';
-import { FilePdfOutlined, InfoCircleOutlined } from '@ant-design/icons';
-import { DataContext } from '../context/DataContext';
-import { useContext } from 'react';
-import SideMenu from './SideMenu';
+import { Modal, Button } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
-import PageContent from './PageContent';
 import InfoContract from './InfoContract';
 import AuthoritySong from './AuthoritySong';
-const { TextArea } = Input;
 
 const Contract: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { data } = useContext(DataContext);
   const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);
 
   const showModal = () => {

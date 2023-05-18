@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 import { Modal, Input, Button, DatePicker, Checkbox } from 'antd';
 import {
@@ -71,7 +70,6 @@ const InfoContract: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const { data } = useContext(DataContext);
-  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);
 
   const showModal = () => {
     setIsModalOpen(true);

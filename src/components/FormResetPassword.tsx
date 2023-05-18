@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Form, Checkbox, Input, Button } from 'antd';
+import { Form, Input, Button } from 'antd';
 import styled from 'styled-components';
-import ConfirmFormEmail from './ConfirmFormEmail';
 
 const FormContainer = styled(Form)`
   display: flex;

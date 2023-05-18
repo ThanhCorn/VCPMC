@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 import { Modal, Input, Button, DatePicker, Checkbox, Radio } from 'antd';
 import {
@@ -18,10 +17,6 @@ import {
 import { DataContext } from '../context/DataContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import AuthorizedContract from './AuthorizedContract';
-import SideMenu from './SideMenu';
-import PageContent from './PageContent';
-import Navbar from './Navbar';
 import { UserContext } from '../context/UserContext';
 
 const { TextArea } = Input;

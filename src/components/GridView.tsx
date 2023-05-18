@@ -1,4 +1,4 @@
-import { Avatar, Checkbox, Col, List, Row } from 'antd';
+import { Checkbox, Col, Row } from 'antd';
 import styled from 'styled-components';
 import { mySong, Song } from '../mySong';
 import { FormOutlined } from '@ant-design/icons';

@@ -1,34 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import type { MenuProps } from 'antd';
-import {
-  Space,
-  Button,
-  Dropdown,
-  Input,
-  List,
-  Pagination,
-  Typography,
-  Modal,
-} from 'antd';
+import { Space, Button, Dropdown, Input, List, Pagination, Modal } from 'antd';
 import {
   DownOutlined,
   PlusCircleOutlined,
   RightOutlined,
 } from '@ant-design/icons';
-import { db } from '../firebase';
 import styled from 'styled-components';
-import type { PaginationProps } from 'antd';
-import { FaEdit, FaLock, FaSignOutAlt } from 'react-icons/fa';
 import { toast } from 'react-toastify';
-import {
-  collection,
-  getDocs,
-  query,
-  onSnapshot,
-  Timestamp,
-  doc,
-} from 'firebase/firestore';
-import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
 import InfoContract from './FormContract';
 import { DataContext } from '../context/DataContext';
