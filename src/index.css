@@ -39,3 +39,18 @@ input {
   width: 168px;
   background-color: #ff7506;
 }
+
+.modal-info {
+  color: red;
+}
+
+.ant-modal .ant-modal-content {
+  width: 536px;
+  background: rgb(62, 62, 91);
+  .anticon {
+    display: none;
+  }
+}
+
+span {
+}

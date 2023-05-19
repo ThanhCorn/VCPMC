@@ -1,61 +1,51 @@
 import { Checkbox, Col, Pagination, Row } from 'antd';
 import styled from 'styled-components';
-import { mySong, Song } from '../mySong';
-import { FormOutlined } from '@ant-design/icons';
+import { mySchecule, Schecule } from '../mySong';
+import { InfoCircleOutlined } from '@ant-design/icons';
 
-interface GrỉdViewProps {
-  gridView: boolean;
-  isKhoBanGhi: boolean;
-  isChecked: boolean;
-}
-
-const GridView: React.FC<GrỉdViewProps> = ({
-  gridView,
-  isKhoBanGhi,
-  isChecked,
-}) => {
+const GridViewPlaylist: React.FC = () => {
   return (
     <Container>
       <Row>
-        {mySong.map((song: Song) => (
+        {mySchecule.map((song: Schecule) => (
           <Col>
-            <img src={song.hinhAnh} alt={song.tenBanGhi} />
+            <img src={song.hinhanh} alt={song.tenplaylist} />
             <div style={{ margin: '0 10px' }}>
-              <p style={{ fontSize: '16px', marginTop: '5px' }}>
-                {song.tenBanGhi}
+              <p
+                style={{
+                  fontSize: '16px',
+                  marginTop: '5px',
+                  marginBottom: '8px',
+                }}
+              >
+                {song.tenplaylist}
               </p>
+              <div className="box-topic">
+                <span>Chủ đề ví dụ</span>
+                <span>Pop</span>
+                <span>Trending</span>
+                <span>Good</span>
+              </div>
               <div className="info-song">
                 <p>
-                  Ca sĩ: <span>{song.caSi}</span>
+                  Người tạo: <span>{song.nguoitao}</span>
                 </p>
                 <p>
-                  Sáng tác: <span>{song.tacGia}</span>
-                </p>
-                <p>
-                  Số hợp đồng: <span>{song.maISRC}</span>
+                  Ngày tạo: <span>{song.ngaytao}</span>
                 </p>
               </div>
               <div className="type-song">
                 <div className="box-type">
-                  <span>Thể loại</span>
+                  <span>Số bản ghi</span>
 
-                  <p>{song.theLoai}</p>
+                  <p>{song.sobanghi}</p>
                 </div>
-                <div className="box-type">
-                  <span>Định dạng</span>
 
-                  <p>{song.dinhDang}</p>
-                </div>
                 <div className="box-type">
                   <span>Thời lượng</span>
-                  <p>{song.thoiLuong}</p>
+                  <p>{song.thoiluong}</p>
                 </div>
-
-                {isKhoBanGhi ? (
-                  <FormOutlined className="icon" />
-                ) : (
-                  <Checkbox className="icon" checked={isChecked} />
-                )}
+                <InfoCircleOutlined className="icon" />
               </div>
             </div>
           </Col>
@@ -78,7 +68,7 @@ const GridView: React.FC<GrỉdViewProps> = ({
               borderRadius: '4px',
             }}
           >
-            {mySong.length}
+            {mySchecule.length}
           </span>{' '}
           hàng trong mỗi trang
         </p>
@@ -88,18 +78,38 @@ const GridView: React.FC<GrỉdViewProps> = ({
   );
 };
 
-export default GridView;
+export default GridViewPlaylist;
 
 const Container = styled.div`
   width: 1541px;
   max-height: 722px;
+  .box-topic {
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    span {
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      border: 1px solid #fff;
+      height: 30px;
+      max-width: 90px;
+      border-radius: 4px;
+      margin-right: 10px;
+
+      color: #fff;
+      opacity: 0.5;
+      font-weight: 400;
+      font-size: 12px;
+    }
+  }
   .ant-col {
     margin-right: 40px;
     margin-bottom: 40px;
     margin-top: 40px;
     border-radius: 8px;
     width: 342px !important;
-    height: 314px;
+    height: 340px;
     background: rgba(57, 57, 85, 0.7);
     img {
       border-top-left-radius: 8px;
@@ -141,7 +151,7 @@ const Container = styled.div`
         font-size: 10px;
       }
       p {
-        font-size: 14px;
+        font-size: 12px;
       }
     }
     .icon {

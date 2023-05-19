@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import SideMenu from '../../components/SideMenu';
 import PageContent from '../../components/PageContent';
-import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
+import {
+  FormOutlined,
+  PlusCircleOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
 import { mySchecule, Schecule } from '../../mySong';
 import { Row, Col, List, Checkbox, Input, Modal } from 'antd';
 import { Link } from 'react-router-dom';
@@ -71,6 +75,19 @@ export default function ScheduleDetail1() {
             )}
           ></List>
         </Container>
+        <div className="side-option">
+          <div className="option">
+            <Link to="/edit-schedule" className="link-option">
+              <div className="icon">
+                <FormOutlined />
+              </div>
+              <p>
+                Chỉnh sửa <br />
+                lịch phát
+              </p>
+            </Link>
+          </div>
+        </div>
       </div>
     </Wrapper>
   );
@@ -85,6 +102,56 @@ const Wrapper = styled.div`
       margin-top: 5px;
       color: #fff;
       opacity: 0.7;
+    }
+  }
+  .option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 30%;
+    right: 0;
+    transform: translateY(-50%);
+    .link-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      .icon {
+        padding: 5px 0;
+        margin-left: 0 !important;
+      }
+      svg {
+        font-size: 2rem;
+        margin-left: 10px;
+      }
+    }
+    .button-option,
+    .link-option {
+      background: #2f2f41;
+      border: none;
+      width: 110px;
+      height: 130px;
+
+      .icon {
+        background-color: rgba(114, 114, 136, 0.5);
+        width: 50px;
+        font-size: 2rem;
+        color: #ff7506;
+        border: 1px solid rgba(114, 114, 136, 0.5);
+        border-radius: 50%;
+      }
+      p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        opacity: 0.5;
+        font-size: 12px;
+      }
     }
   }
 `;

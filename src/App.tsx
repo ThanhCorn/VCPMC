@@ -22,6 +22,9 @@ import Playlist from './pages/Playlist/Playlist';
 import Schedule from './pages/Schedule/Schedule';
 import ScheduleDetail1 from './pages/Schedule/ScheduleDetail1';
 import AddSchedule from './pages/Schedule/AddSchedule ';
+import EditSchedule from './pages/Schedule/EditSchedule';
+import ChooseDevice from './pages/Schedule/ChooseDevice';
+import TopPlaylist from './pages/Playlist/TopPlaylist';
 
 function App() {
   return (
@@ -48,10 +51,13 @@ function App() {
         <Route path="/record-store" element={<RecordStore />} />
         <Route path="/record-approval" element={<RecordApproval />} />
         <Route path="/update-record" element={<UpdateRecordStore />} />
-        <Route path="/playist" element={<Playlist />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/schedule/:id" element={<ScheduleDetail1 />} />
         <Route path="/add-schedule" element={<AddSchedule />} />
+        <Route path="/edit-schedule" element={<EditSchedule />} />
+        <Route path="/choose-device" element={<ChooseDevice />} />
+        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/top-playlist" element={<TopPlaylist />} />
       </Routes>
     </BrowserRouter>
   );

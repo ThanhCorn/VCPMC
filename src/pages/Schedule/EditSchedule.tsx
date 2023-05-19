@@ -24,12 +24,12 @@ interface TimeSlot {
   key: number;
   time: string;
   monday?: string | React.ReactNode;
-  tuesday?: string;
-  wednesday?: string;
-  thursday?: string;
-  friday?: string;
-  saturday?: string;
-  sunday?: string;
+  tuesday?: string | React.ReactNode;
+  wednesday?: string | React.ReactNode;
+  thursday?: string | React.ReactNode;
+  friday?: string | React.ReactNode;
+  saturday?: string | React.ReactNode;
+  sunday?: string | React.ReactNode;
 }
 
 const columns: Array<{
@@ -102,11 +102,13 @@ const onChange = (checkedValues: CheckboxValueType[]) => {
   console.log('checked = ', checkedValues);
 };
 
-export default function AddSchedule() {
+export default function EditSchedule() {
   const schedule: Schecule[] = mySchecule;
   const [selectedPlaylist, setSelectedPlaylist] =
     React.useState<Schecule | null>(null);
   const [tableData, setTableData] = React.useState<TimeSlot[]>(data);
+
+  console.log(tableData);
 
   useEffect(() => {
     if (selectedPlaylist && selectedPlaylist.batdauketthuc) {
@@ -242,9 +244,10 @@ export default function AddSchedule() {
       <PageContent />
       <div className="content">
         <span style={{ color: '#fff', opacity: '0.5' }}>
-          Lập lịch phát <RightOutlined /> Thêm lịch phát mới
+          Lập lịch phát <RightOutlined /> Chi tiết <RightOutlined /> Chỉnh sửa
+          lịch phát
         </span>
-        <h1>Lập lịch phát</h1>
+        <h1>Lịch phát số 1</h1>
         <Container>
           <div className="left-table">
             <div className="table-1">
@@ -316,7 +319,7 @@ export default function AddSchedule() {
         </Container>
         <div className="side-option">
           <div className="option">
-            <Link to="" className="link-option">
+            <Link to="/choose-device" className="link-option">
               <div className="icon">
                 <PlusCircleOutlined />
               </div>
