@@ -63,7 +63,11 @@ const Playlist = () => {
             </Button>
           </Space>
           <div className="option">
-            <Link to="/top-playlist" className="link-option">
+            <Link
+              to="/record-approval"
+              className="link-option"
+              onClick={() => setIsKhoBanGhi(false)}
+            >
               <div className="icon">
                 <FormOutlined />
               </div>

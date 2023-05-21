@@ -25,6 +25,8 @@ import AddSchedule from './pages/Schedule/AddSchedule ';
 import EditSchedule from './pages/Schedule/EditSchedule';
 import ChooseDevice from './pages/Schedule/ChooseDevice';
 import TopPlaylist from './pages/Playlist/TopPlaylist';
+import AddPlaylist from './pages/Playlist/AddPlaylist';
+import AddRecord from './pages/Playlist/AddRecord';
 
 function App() {
   return (
@@ -58,6 +60,8 @@ function App() {
         <Route path="/choose-device" element={<ChooseDevice />} />
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/top-playlist" element={<TopPlaylist />} />
+        <Route path="/add-playlist" element={<AddPlaylist />} />
+        <Route path="/add-record" element={<AddRecord />} />
       </Routes>
     </BrowserRouter>
   );

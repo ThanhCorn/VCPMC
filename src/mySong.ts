@@ -7,16 +7,16 @@ import NTH from './assets/thaihoc.jpg';
 import Love from './assets/lovesong.jpg';
 import One from './assets/one.jpg';
 export interface Song {
-  stt: number;
-  tenBanGhi: string;
-  maISRC: string;
-  thoiLuong: string;
-  caSi: string;
-  tacGia: string;
-  theLoai: string;
-  dinhDang: string;
-  thoiGianSuDung: string;
-  hinhAnh: string; // Thêm trường hình ảnh
+  stt?: number;
+  tenBanGhi?: string;
+  maISRC?: string;
+  thoiLuong?: string;
+  caSi?: string;
+  tacGia?: string;
+  theLoai?: string;
+  dinhDang?: string;
+  thoiGianSuDung?: string;
+  hinhAnh?: string; // Thêm trường hình ảnh
 }
 
 const mySong: Song[] = [
@@ -220,6 +220,10 @@ const mySchecule: Schecule[] = [
     nguoitao: 'The Weeknd',
     hinhanh: Starboy,
     thoiluong: '02:00:00',
+    ngayphatplaylist: '8/12/2023 - 10/12/2023',
+    batdauketthuc: '11:00:00 - 13:00:00',
+    chukyphat: 'Thứ 2 | Thứ 6',
+    thietbi: 'Thiết bị 1 | Thiết bị 2 | Thiết bị 3 | Thiết bị 4',
   },
   {
     stt: 5,
@@ -232,6 +236,10 @@ const mySchecule: Schecule[] = [
     nguoitao: 'Charlie Puth',
     hinhanh: One,
     thoiluong: '02:00:00',
+    ngayphatplaylist: '8/12/2023 - 10/12/2023',
+    batdauketthuc: '11:00:00 - 13:00:00',
+    chukyphat: 'Thứ 2 | Thứ 6',
+    thietbi: 'Thiết bị 1 | Thiết bị 2 | Thiết bị 3 | Thiết bị 4',
   },
 ];
 
