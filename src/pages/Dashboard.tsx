@@ -12,10 +12,9 @@ const Wrapper = styled.div`
 
 const Dashboard = () => {
   return (
-    <Wrapper>
-      <SideMenu />
+    <>
       <UserInfo />
-    </Wrapper>
+    </>
   );
 };
 

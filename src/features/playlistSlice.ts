@@ -25,6 +25,20 @@ export const playlistSlice = createSlice({
       }
     },
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(addPlaylist, (state, action) => {
+        state.value.push(action.payload);
+      })
+      .addCase(deletePlaylist, (state, action) => {
+        const index = state.value.findIndex(
+          (record) => record.stt === action.payload,
+        );
+        if (index !== -1) {
+          state.value.splice(index, 1);
+        }
+      });
+  },
 });
 
 export const { addPlaylist, deletePlaylist } = playlistSlice.actions;

@@ -1,70 +1,303 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import ResetPassword from './pages/ResetPassword';
-import Dashboard from './pages/Dashboard';
-import ContractManagement from './pages/Management/ContractManagement';
-import EquipManagement from './pages/Management/EquipManagement';
-import UnitUsed from './pages/Management/UnitUsed';
-import AuthorizedUnit from './pages/Management/AuthorizedUnit';
-import InfoContract from './pages/Management/InfoContract';
-import DetailProduct from './pages/Management/DetailProduct';
-import InfoContractDetail from './pages/Management/InfoContractDetail';
-import AddNewContractAuthority from './pages/Management/AddNewContractAuthority';
-import Guide from './pages/Help/Guide';
-import DownloadApp from './pages/Help/DownloadApp';
-import Feedback from './pages/Help/Feedback';
-import PeriodCycle from './pages/Setting/PeriodCycle';
-import RecordStore from './pages/Store/RecordStore';
-import RecordApproval from './pages/Store/RecordApproval';
-import UpdateRecordStore from './pages/Store/UpdateRecordStore';
-import Playlist from './pages/Playlist/Playlist';
-import Schedule from './pages/Schedule/Schedule';
-import ScheduleDetail1 from './pages/Schedule/ScheduleDetail1';
-import AddSchedule from './pages/Schedule/AddSchedule ';
-import EditSchedule from './pages/Schedule/EditSchedule';
-import ChooseDevice from './pages/Schedule/ChooseDevice';
-import TopPlaylist from './pages/Playlist/TopPlaylist';
-import AddPlaylist from './pages/Playlist/AddPlaylist';
-import AddRecord from './pages/Playlist/AddRecord';
+import React, { useContext } from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  Outlet,
+} from 'react-router-dom';
+import {
+  Home,
+  ResetPassword,
+  Dashboard,
+  ContractManagement,
+  EquipManagement,
+  UnitUsed,
+  AuthorizedUnit,
+  InfoContract,
+  DetailProduct,
+  InfoContractDetail,
+  AddNewContractAuthority,
+  Guide,
+  DownloadApp,
+  Feedback,
+  PeriodCycle,
+  RecordStore,
+  RecordApproval,
+  UpdateRecordStore,
+  Playlist,
+  Schedule,
+  ScheduleDetail1,
+  AddSchedule,
+  EditSchedule,
+  ChooseDevice,
+  TopPlaylist,
+  AddPlaylist,
+  AddRecord,
+  MainLayout,
+} from './pages';
+
+interface ProtectedRouteProps {
+  element: React.ReactNode;
+  path: string;
+  [key: string]: any;
+}
 
 function App() {
   return (
-    <BrowserRouter>
+    <React.Fragment>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/management/contract" element={<ContractManagement />} />
-        <Route path="/management/equip" element={<EquipManagement />} />
-        <Route path="/management/authority" element={<AuthorizedUnit />} />
-        <Route path="/management/used" element={<UnitUsed />} />
-        <Route path="/management/contract/1" element={<InfoContract />} />
-        <Route
-          path="/management/contract/1/detail"
-          element={<InfoContractDetail />}
-        />
-        <Route path="/detail-product/1" element={<DetailProduct />} />
-        <Route path="/new-contract" element={<AddNewContractAuthority />} />
-        <Route path="/help/guide" element={<Guide />} />
-        <Route path="/help/download" element={<DownloadApp />} />
-        <Route path="/help/feedback" element={<Feedback />} />
-        <Route path="/setting/period" element={<PeriodCycle />} />
-        <Route path="/record-store" element={<RecordStore />} />
-        <Route path="/record-approval" element={<RecordApproval />} />
-        <Route path="/update-record" element={<UpdateRecordStore />} />
-        <Route path="/schedule" element={<Schedule />} />
-        <Route path="/schedule/:id" element={<ScheduleDetail1 />} />
-        <Route path="/add-schedule" element={<AddSchedule />} />
-        <Route path="/edit-schedule" element={<EditSchedule />} />
-        <Route path="/choose-device" element={<ChooseDevice />} />
-        <Route path="/playlist" element={<Playlist />} />
-        <Route path="/top-playlist" element={<TopPlaylist />} />
-        <Route path="/add-playlist" element={<AddPlaylist />} />
-        <Route path="/add-record" element={<AddRecord />} />
+        {myPath.map((item) => {
+          return (
+            <>
+              <Route path="/" element={<Home />} />
+              <Route path="/reset-password" element={<ResetPassword />} />
+              <Route path={item.path} element={item.element} key={item.id} />
+            </>
+          );
+        })}
       </Routes>
-    </BrowserRouter>
+    </React.Fragment>
   );
 }
 
 export default App;
+
+const myPath = [
+  {
+    id: 1,
+    path: '/dashboard',
+    element: (
+      <MainLayout>
+        <Dashboard />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 2,
+
+    path: '/management/contract',
+    element: (
+      <MainLayout>
+        <ContractManagement />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 3,
+
+    path: '/management/equip',
+    element: (
+      <MainLayout>
+        <EquipManagement />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 4,
+
+    path: '/management/authority',
+    element: (
+      <MainLayout>
+        <AuthorizedUnit />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 5,
+
+    path: '/management/used',
+    element: (
+      <MainLayout>
+        <UnitUsed />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 6,
+
+    path: '/management/contract/1',
+    element: (
+      <MainLayout>
+        <InfoContract />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 7,
+
+    path: '/management/contract/1/detail',
+    element: (
+      <MainLayout>
+        <InfoContractDetail />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 8,
+
+    path: '/detail-product/1',
+    element: (
+      <MainLayout>
+        <DetailProduct />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 9,
+
+    path: '/new-contract',
+    element: (
+      <MainLayout>
+        <AddNewContractAuthority />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 10,
+
+    path: '/help/guide',
+    element: (
+      <MainLayout>
+        <Guide />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 11,
+
+    path: '/help/download',
+    element: (
+      <MainLayout>
+        <DownloadApp />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 12,
+
+    path: '/help/feedback',
+    element: (
+      <MainLayout>
+        <Feedback />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 13,
+    path: '/setting/period',
+    element: (
+      <MainLayout>
+        <PeriodCycle />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 14,
+    path: '/record-store',
+    element: (
+      <MainLayout>
+        <RecordStore />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 15,
+    path: '/record-approval',
+    element: (
+      <MainLayout>
+        <RecordApproval />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 16,
+    path: '/update-record',
+    element: (
+      <MainLayout>
+        <UpdateRecordStore />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 17,
+    path: '/schedule',
+    element: (
+      <MainLayout>
+        <Schedule />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 18,
+    path: '/schedule/:id',
+    element: (
+      <MainLayout>
+        <ScheduleDetail1 />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 19,
+    path: '/add-schedule',
+    element: (
+      <MainLayout>
+        <AddSchedule />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 20,
+    path: '/edit-schedule',
+    element: (
+      <MainLayout>
+        <EditSchedule />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 21,
+    path: '/choose-device',
+    element: (
+      <MainLayout>
+        <ChooseDevice />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 22,
+    path: '/playlist',
+    element: (
+      <MainLayout>
+        <Playlist />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 23,
+    path: '/top-playlist',
+    element: (
+      <MainLayout>
+        <TopPlaylist />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 24,
+    path: '/add-playlist',
+    element: (
+      <MainLayout>
+        <AddPlaylist />
+      </MainLayout>
+    ),
+  },
+  {
+    id: 25,
+    path: '/add-record',
+    element: (
+      <MainLayout>
+        <AddRecord />
+      </MainLayout>
+    ),
+  },
+];

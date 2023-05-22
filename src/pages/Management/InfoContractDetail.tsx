@@ -7,14 +7,14 @@ import FormInfoContractDetail from '../../components/FormInfoContractDetail';
 const InfoContractDetail = () => {
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <FormInfoContractDetail />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   display: flex;
   background-color: var(--primary-color);
 `;

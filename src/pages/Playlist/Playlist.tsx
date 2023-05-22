@@ -36,8 +36,6 @@ const Playlist = () => {
 
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         <h1>Playlist</h1>
         <div className="option-1">
@@ -86,38 +84,9 @@ const Playlist = () => {
 
 export default Playlist;
 
-const Container = styled.div`
-  width: 1541px;
-  max-height: 722px;
-  border: 1px solid rgba(47, 47, 65, 0.7);
-  border-radius: 16px;
-  margin: 10px 0;
-  .row-1,
-  .row-2 {
-    width: 1541px;
-    padding-top: 20px;
-    padding-left: 35px;
-    .ant-col-3 {
-      max-width: 10%;
-    }
-  }
-  .row-2 {
-    border-bottom: 1px solid rgba(47, 47, 65, 0.7);
-    p {
-      color: #fff;
-      opacity: 0.7;
-    }
-  }
-  .row-1 {
-    p {
-      font-weight: bold;
-      color: #ffac69;
-      opacity: 1;
-    }
-  }
-`;
-
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   background-color: var(--primary-color);
   display: flex;
   .content {

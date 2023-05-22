@@ -11,8 +11,6 @@ import { PlusCircleOutlined, PlusSquareOutlined } from '@ant-design/icons';
 export default function Schedule() {
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         <h1>Danh sách lịch phát</h1>
         <Container>
@@ -165,6 +163,8 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   background-color: var(--primary-color);
   display: flex;
   .content {

@@ -7,14 +7,14 @@ import FormDetailProduct from '../../components/FormDetailProduct';
 const DetailProduct = () => {
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <FormDetailProduct />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   display: flex;
   background-color: var(--primary-color);
 `;

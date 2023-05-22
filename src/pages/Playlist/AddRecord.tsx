@@ -62,8 +62,6 @@ const AddRecord: React.FC<Song> = () => {
   console.log(playlist);
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         <span style={{ color: '#fff', opacity: '0.5' }}>
           Playlist <RightOutlined /> Thêm playlist mới <RightOutlined /> Thêm
@@ -356,6 +354,8 @@ const AddRecord: React.FC<Song> = () => {
 export default AddRecord;
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   background-color: var(--primary-color);
   display: flex;
   .content {

@@ -7,14 +7,14 @@ import FormAddNewContractAuthority from '../../components/FormAddNewContractAuth
 const AddNewContractAuthority = () => {
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <FormAddNewContractAuthority />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   display: flex;
   background-color: var(--primary-color);
 `;

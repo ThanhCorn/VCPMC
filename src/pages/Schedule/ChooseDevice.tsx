@@ -20,8 +20,6 @@ export default function ChooseDevice() {
 
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         <span style={{ color: '#fff', opacity: '0.5' }}>
           Lập lịch phát <RightOutlined /> Chi tiết <RightOutlined /> Chỉnh sửa
@@ -181,6 +179,8 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   background-color: var(--primary-color);
   display: flex;
   .content {

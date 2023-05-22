@@ -238,8 +238,6 @@ export default function AddSchedule() {
 
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         <span style={{ color: '#fff', opacity: '0.5' }}>
           Lập lịch phát <RightOutlined /> Thêm lịch phát mới
@@ -485,6 +483,8 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   background-color: var(--primary-color);
   display: flex;
   .content {

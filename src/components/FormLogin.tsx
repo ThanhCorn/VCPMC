@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Form, Checkbox, Input, Button } from 'antd';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import styled from 'styled-components';
 import ConfirmFormEmail from './ConfirmFormEmail';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 const FormContainer = styled(Form)`
   display: flex;
@@ -68,6 +69,8 @@ const FormItem = styled(Form.Item)`
 `;
 
 const FormLogin = () => {
+  const { isLogin, setIsLogin } = useContext(UserContext);
+  console.log(isLogin);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [forgetPassword, setForgetPassword] = useState(true);
@@ -77,22 +80,16 @@ const FormLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        setIsLogin(true);
         navigate('/dashboard');
-        console.log(user);
+        console.log(isLogin);
       })
       .catch((error) => {
+        setIsLogin(false);
         const errorCode = error.code;
         const errorMessage = error.message;
       });
   };
-
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigate('/');
-      }
-    });
-  }, []);
 
   return (
     <>

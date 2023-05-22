@@ -4,17 +4,14 @@ import SideMenu from '../../components/SideMenu';
 import PageContent from '../../components/PageContent';
 
 const UnitUsed = () => {
-  return (
-    <Wrapper>
-      <SideMenu />
-      <PageContent />
-    </Wrapper>
-  );
+  return <Wrapper></Wrapper>;
 };
 
 export default UnitUsed;
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   position: relative;
   flex: 1;
   background-color: var(--primary-color);

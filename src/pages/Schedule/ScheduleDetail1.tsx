@@ -12,8 +12,6 @@ import { Link } from 'react-router-dom';
 export default function ScheduleDetail1() {
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         <span className="path-title">
           Lập lịch phát <RightOutlined /> Chi tiết
@@ -93,6 +91,8 @@ export default function ScheduleDetail1() {
   );
 }
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   background-color: var(--primary-color);
   display: flex;
   .content {

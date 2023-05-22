@@ -11,8 +11,6 @@ const UpdateRecordStore = () => {
   const data = mySong[0];
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         <span style={{ color: '#fff', opacity: '0.5' }}>
           Kho bản ghi <RightOutlined style={{ color: '#FF7506' }} /> Cập nhật
@@ -111,6 +109,8 @@ const UpdateRecordStore = () => {
 export default UpdateRecordStore;
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   background-color: var(--primary-color);
   display: flex;
   .content {

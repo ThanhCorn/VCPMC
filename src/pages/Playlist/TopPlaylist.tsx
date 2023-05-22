@@ -48,8 +48,6 @@ export default function TopPlaylist() {
 
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         {isEdit ? (
           <span style={{ color: '#fff', opacity: '0.5' }}>
@@ -411,6 +409,8 @@ export default function TopPlaylist() {
 const Container = styled.div`
   display: flex;
   margin: 10px 0;
+  height: 100vh;
+  width: 100vw;
   .left-table {
     display: flex;
     flex-direction: column;

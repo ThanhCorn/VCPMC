@@ -40,8 +40,6 @@ const PeriodCycle = () => {
   ];
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         <h4 style={{ color: 'white' }}>
           Trang chủ
@@ -123,6 +121,8 @@ const PeriodCycle = () => {
 export default PeriodCycle;
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex: 1;
   background-color: var(--primary-color);
