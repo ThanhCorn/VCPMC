@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import FormDetailProduct from '../../components/FormDetailProduct';
+import SideMenu from '../../../components/SideMenu';
+import PageContent from '../../../components/PageContent';
+import FormDetailProduct from '../../../components/FormDetailProduct';
 
 const DetailProduct = () => {
   return (

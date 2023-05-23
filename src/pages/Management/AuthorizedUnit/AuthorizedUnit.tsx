@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
+import SideMenu from '../../../components/SideMenu';
+import PageContent from '../../../components/PageContent';
 
-const UnitUsed = () => {
+const AuthorizedUnit = () => {
   return <Wrapper></Wrapper>;
 };
 
-export default UnitUsed;
+export default AuthorizedUnit;
 
 const Wrapper = styled.div`
   height: 100vh;

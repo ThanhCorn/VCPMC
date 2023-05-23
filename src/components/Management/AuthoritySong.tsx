@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { DataContext } from '../context/DataContext';
+import { DataContext } from '../../context/DataContext';
 import {
   List,
   Pagination,
@@ -212,42 +212,50 @@ const AuthoritySong = () => {
           <Pagination defaultCurrent={1} total={100} />
         </div>
       </List>
-      <div className="info-4">
-        <button style={{ borderRadius: '16px 0px 0px 0px' }}>
-          <FormOutlined className="icon" /> <br />
-          Chỉnh sửa <br />
-          hợp đồng
-        </button>
-        <button onClick={() => setIsModalOpen2(true)}>
-          <ContainerOutlined className="icon" />
-          <br />
-          Gia hạn <br />
-          hợp đồng
-        </button>
-        <button onClick={() => setIsModalOpen(true)}>
-          <CloseOutlined className="icon" />
-          <br />
-          Hủy hợp <br />
-          đồng
-        </button>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          style={{ borderRadius: '0px 0px 0px 16px' }}
-        >
-          <PlusCircleOutlined className="icon" />
-          <br />
-          Thêm bản <br />
-          ghi
-        </button>
-        <Link
-          to="/detail-product/1"
-          onClick={() => setIsModalOpen(true)}
-          style={{ borderRadius: '0px 0px 0px 16px' }}
-        >
-          <PlusCircleOutlined className="icon" />
-          <br />
-          Chi tiết <br />
+      <div className="option">
+        <Link to="/management/contract/1/detail" className="link-option">
+          <div className="icon">
+            <FormOutlined style={{ color: '#FF7506' }} />
+          </div>
+          <p>
+            Chỉnh sửa <br />
+            tác phẩm
+          </p>
         </Link>
+        <Button className="button-option" onClick={() => setIsModalOpen2(true)}>
+          <div className="icon">
+            <ContainerOutlined style={{ color: '#FF7506' }} />
+          </div>
+          <p>
+            Gia hạn <br />
+            hợp đồng
+          </p>
+        </Button>
+        <Button className="button-option" onClick={() => setIsModalOpen(true)}>
+          <div className="icon">
+            <CloseOutlined style={{ color: 'red' }} />
+          </div>
+          <p>
+            Hủy <br />
+            hợp đồng
+          </p>
+        </Button>
+        <Button className="button-option" onClick={() => setIsModalOpen(true)}>
+          <div className="icon">
+            <PlusCircleOutlined style={{ color: '#FF7506' }} />
+          </div>
+          <p>
+            Thêm bản <br />
+            ghi
+          </p>
+        </Button>
+        <Link to="/detail-product/1" className="link-option">
+          <div className="icon">
+            <PlusCircleOutlined style={{ color: '#FF7506' }} />
+          </div>
+          <p>Chi Tiết</p>
+        </Link>
+
         {isModalOpen && (
           <ModalContent
             title="Hủy hợp đồng ủy quyền"
@@ -516,36 +524,50 @@ const Container = styled.div`
     }
   }
 
-  .info-4 {
-    position: absolute;
-    margin-left: 50px;
-    background-color: #2f2f41;
-    top: 0;
-    right: 0;
+  .option {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 330px;
-    width: 110px;
-    background: #2f2f41;
-    border: 0px;
-    margin-right: -24px;
-    .icon {
-      margin-top: 10px;
-      margin-left: 20px;
-      font-size: 1.5rem;
-      width: 52px;
-      height: 52px;
-      color: #ff7506;
-      background: rgba(114, 114, 136, 0.5);
-      border-radius: 67px;
+    position: fixed;
+    top: 40%;
+    right: 0;
+    transform: translateY(-50%);
+    .link-option {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      .icon {
+        padding: 5px 0;
+        margin-left: 0 !important;
+      }
+      svg {
+        font-size: 2rem;
+        margin-left: 7px;
+      }
     }
-    button {
+    .button-option,
+    .link-option {
       background: #2f2f41;
-      cursor: pointer;
+      border: none;
+      width: 110px;
+      height: 130px;
+
+      .icon {
+        background-color: rgba(114, 114, 136, 0.5);
+        margin-left: 15px;
+        width: 50px;
+        font-size: 2rem;
+        color: #ff7506;
+        border: 1px solid rgba(114, 114, 136, 0.5);
+        border-radius: 50%;
+      }
+      p {
+        color: #fff;
+        opacity: 0.5;
+        font-size: 12px;
+      }
     }
   }
 `;

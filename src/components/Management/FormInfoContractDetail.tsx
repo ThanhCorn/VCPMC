@@ -14,10 +14,10 @@ import {
   CloudUploadOutlined,
   RightOutlined,
 } from '@ant-design/icons';
-import { DataContext } from '../context/DataContext';
+import { DataContext } from '../../context/DataContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../context/UserContext';
+import { UserContext } from '../../context/UserContext';
 
 const { TextArea } = Input;
 const CheckboxGroup = Checkbox.Group;
@@ -95,8 +95,8 @@ const InfoContractDetail: React.FC = () => {
     <Wrapper>
       <div className="content">
         <h4 style={{ color: 'white' }}>
-          Quản lý hợp đồng <RightOutlined /> Chi tiết hợp đồng <RightOutlined />{' '}
-          Chỉnh sửa danh sách tác phẩm uỷ quyền
+          Quản lý <RightOutlined /> Quản lý hợp đồng <RightOutlined /> Chi tiết{' '}
+          <RightOutlined /> Chỉnh sửa thông tin
         </h4>
         <h1 style={{ width: '1000px' }}>Hợp đồng uỷ quyền bài hát - BH123</h1>
         <Container>
@@ -462,187 +462,6 @@ const InfoContractDetail: React.FC = () => {
                 </p>
               </h4>
             </div>
-          </div>
-          <div className="info-4">
-            <Link
-              to="/management/contract/1/detail"
-              style={{
-                borderRadius: '16px 0px 0px 0px',
-                fontSize: '14px',
-                justifyContent: 'center',
-              }}
-            >
-              <FormOutlined className="icon" />
-              <p
-                style={{
-                  marginLeft: '15px',
-                  color: '#fff',
-                  fontSize: '12px',
-                  justifyContent: 'center',
-                }}
-              >
-                Chỉnh sửa <br />
-                hợp đồng
-              </p>
-            </Link>
-            <button
-              style={{ color: '#fff' }}
-              onClick={() => setIsModalOpen2(true)}
-            >
-              <ContainerOutlined className="icon" />
-              <br />
-              Gia hạn <br />
-              hợp đồng
-            </button>
-            <button
-              onClick={() => setIsModalOpen(true)}
-              style={{ borderRadius: '0px 0px 0px 16px', color: '#fff' }}
-            >
-              <CloseOutlined className="icon" />
-              <br />
-              Hủy hợp <br />
-              đồng
-            </button>
-            {isModalOpen && (
-              <ModalContent
-                title="Lý do hủy hợp đồng uỷ quyền HĐUQ 1234"
-                visible={isModalOpen}
-                onOk={() => setIsModalOpen(false)}
-                onCancel={() => setIsModalOpen(false)}
-              >
-                <TextArea
-                  placeholder="Hủy hợp đồng để tạo hợp đồng mới với giá trị và thời hạn lâu hơn."
-                  rows={4}
-                />
-              </ModalContent>
-            )}
-            {isModalOpen2 && (
-              <ModalContent
-                width={900}
-                title="Gia hạn ủy quyền tác phẩm"
-                visible={isModalOpen2}
-                onOk={() => setIsModalOpen2(false)}
-                onCancel={() => setIsModalOpen2(false)}
-              >
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
-                  }}
-                >
-                  <div
-                    style={{
-                      color: '#fff',
-                      width: '10vw',
-                      display: 'flex',
-                      flexDirection: 'column',
-                    }}
-                  >
-                    <h4>Thời gian gia hạn</h4>
-                    <p style={{ marginTop: '0' }}>
-                      Từ ngày:{' '}
-                      {`${data[0]['Ngày hết hạn']
-                        .toDate()
-                        .toLocaleDateString()}  `}{' '}
-                    </p>
-                    <p style={{ display: 'flex', width: '50vw' }}>
-                      Đến ngày:{' '}
-                      <DatePicker
-                        style={{
-                          background: 'transparent',
-                          color: '#FFAC69',
-                          border: ' 1px solid #727288',
-                        }}
-                      />
-                    </p>
-                    <span style={{ opacity: '0.3' }}>
-                      Lưu ý: Thời gian bắt đầu gia hạn hợp đồng mới được tính
-                      sau ngày hết hạn hợp đồng cũ một ngày.
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      color: '#fff',
-                      display: 'flex',
-                      flexDirection: 'column',
-                    }}
-                  >
-                    <h4>Mức nhuận bút</h4>
-                    <Checkbox value="checked" style={{ color: '#fff' }}>
-                      Quyền tác giả{' '}
-                      <span
-                        style={{
-                          padding: '5px',
-                          border: '1px solid #727288',
-                          borderRadius: '4px',
-                          background: '#2B2B3F',
-                          marginRight: '5px',
-                        }}
-                      >
-                        0
-                      </span>
-                      %
-                    </Checkbox>
-                    <br />
-                    <Checkbox value="checked" style={{ color: '#fff' }}>
-                      Quyền liên quan{' '}
-                      <span
-                        style={{
-                          padding: '5px',
-                          border: '1px solid #727288',
-                          borderRadius: '4px',
-                          background: '#2B2B3F',
-                          marginRight: '5px',
-                        }}
-                      >
-                        0
-                      </span>
-                      %
-                      <CheckboxGroup
-                        options={options}
-                        onChange={onChange}
-                        style={{
-                          marginTop: '10px',
-                          alignItems: 'center',
-                          display: 'flex',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        {' '}
-                      </CheckboxGroup>
-                    </Checkbox>
-                  </div>
-                </div>
-                <div style={{ color: '#fff', display: 'flex' }}>
-                  <h4 style={{ color: '#fff' }}>Đính kèm tệp</h4>
-                  <div
-                    style={{
-                      transform: 'translateY(15px)',
-                      marginLeft: '10px',
-                    }}
-                  >
-                    <Button
-                      style={{
-                        color: '#FFAC69',
-                        border: '1px solid #FFAC69',
-                        background: 'transparent',
-                      }}
-                    >
-                      {' '}
-                      <CloudUploadOutlined /> Tải lên
-                    </Button>
-                    <p>
-                      {' '}
-                      <FilePdfOutlined /> hetthuongcannho.doc
-                    </p>
-                    <p>
-                      {' '}
-                      <FilePdfOutlined /> hetthuongcannho.doc
-                    </p>
-                  </div>
-                </div>
-              </ModalContent>
-            )}
           </div>
         </Container>
         <div

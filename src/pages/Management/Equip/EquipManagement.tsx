@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
+import SideMenu from '../../../components/SideMenu';
+import PageContent from '../../../components/PageContent';
 
 const EquipManagement = () => {
   return <Wrapper></Wrapper>;

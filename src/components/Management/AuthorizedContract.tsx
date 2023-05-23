@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import 'firebase/firestore';
 import InfoContract from './FormContract';
-import { DataContext } from '../context/DataContext';
+import { DataContext } from '../../context/DataContext';
 import AuthoritySong from './AuthoritySong';
 import { Link } from 'react-router-dom';
 
@@ -213,27 +213,6 @@ const AuthorizedContract = ({ children }: Props) => {
           </List>
         </Container>
         <div className="side-option">
-          <Link
-            to="/new-contract"
-            style={{
-              width: '110px',
-              borderTopLeftRadius: '16px',
-              borderBottomLeftRadius: '16px',
-              background: '#2F2F41',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '14px',
-              fontWeight: '400',
-              opacity: '0.8',
-            }}
-          >
-            <PlusCircleOutlined className="icon-setting" />
-            <h3 style={{ fontSize: '16px' }}>
-              Thêm hợp <br /> &nbsp;&nbsp;&nbsp;&nbsp; đồng
-            </h3>
-          </Link>
           <ModalContainer
             style={{
               position: 'fixed',

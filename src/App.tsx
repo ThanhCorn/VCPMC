@@ -36,6 +36,7 @@ import {
   AddRecord,
   MainLayout,
 } from './pages';
+import AddInfoRecord from './pages/Management/Contract/AddInfoRecord';
 
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -52,7 +53,7 @@ function App() {
             <>
               <Route path="/" element={<Home />} />
               <Route path="/reset-password" element={<ResetPassword />} />
-              <Route path={item.path} element={item.element} key={item.id} />
+              <Route path={item.path} element={item.element} key={item.path} />
             </>
           );
         })}
@@ -65,7 +66,6 @@ export default App;
 
 const myPath = [
   {
-    id: 1,
     path: '/dashboard',
     element: (
       <MainLayout>
@@ -74,8 +74,6 @@ const myPath = [
     ),
   },
   {
-    id: 2,
-
     path: '/management/contract',
     element: (
       <MainLayout>
@@ -84,8 +82,6 @@ const myPath = [
     ),
   },
   {
-    id: 3,
-
     path: '/management/equip',
     element: (
       <MainLayout>
@@ -94,8 +90,6 @@ const myPath = [
     ),
   },
   {
-    id: 4,
-
     path: '/management/authority',
     element: (
       <MainLayout>
@@ -104,8 +98,6 @@ const myPath = [
     ),
   },
   {
-    id: 5,
-
     path: '/management/used',
     element: (
       <MainLayout>
@@ -114,8 +106,14 @@ const myPath = [
     ),
   },
   {
-    id: 6,
-
+    path: '/management/add-info-record',
+    element: (
+      <MainLayout>
+        <AddInfoRecord />
+      </MainLayout>
+    ),
+  },
+  {
     path: '/management/contract/1',
     element: (
       <MainLayout>
@@ -124,8 +122,6 @@ const myPath = [
     ),
   },
   {
-    id: 7,
-
     path: '/management/contract/1/detail',
     element: (
       <MainLayout>
@@ -134,8 +130,6 @@ const myPath = [
     ),
   },
   {
-    id: 8,
-
     path: '/detail-product/1',
     element: (
       <MainLayout>
@@ -144,8 +138,6 @@ const myPath = [
     ),
   },
   {
-    id: 9,
-
     path: '/new-contract',
     element: (
       <MainLayout>
@@ -154,8 +146,6 @@ const myPath = [
     ),
   },
   {
-    id: 10,
-
     path: '/help/guide',
     element: (
       <MainLayout>
@@ -164,8 +154,6 @@ const myPath = [
     ),
   },
   {
-    id: 11,
-
     path: '/help/download',
     element: (
       <MainLayout>
@@ -174,8 +162,6 @@ const myPath = [
     ),
   },
   {
-    id: 12,
-
     path: '/help/feedback',
     element: (
       <MainLayout>
@@ -184,7 +170,6 @@ const myPath = [
     ),
   },
   {
-    id: 13,
     path: '/setting/period',
     element: (
       <MainLayout>
@@ -193,7 +178,6 @@ const myPath = [
     ),
   },
   {
-    id: 14,
     path: '/record-store',
     element: (
       <MainLayout>
@@ -202,7 +186,6 @@ const myPath = [
     ),
   },
   {
-    id: 15,
     path: '/record-approval',
     element: (
       <MainLayout>
@@ -211,7 +194,6 @@ const myPath = [
     ),
   },
   {
-    id: 16,
     path: '/update-record',
     element: (
       <MainLayout>
@@ -220,7 +202,6 @@ const myPath = [
     ),
   },
   {
-    id: 17,
     path: '/schedule',
     element: (
       <MainLayout>
@@ -229,7 +210,6 @@ const myPath = [
     ),
   },
   {
-    id: 18,
     path: '/schedule/:id',
     element: (
       <MainLayout>
@@ -238,7 +218,6 @@ const myPath = [
     ),
   },
   {
-    id: 19,
     path: '/add-schedule',
     element: (
       <MainLayout>
@@ -247,7 +226,6 @@ const myPath = [
     ),
   },
   {
-    id: 20,
     path: '/edit-schedule',
     element: (
       <MainLayout>
@@ -256,7 +234,6 @@ const myPath = [
     ),
   },
   {
-    id: 21,
     path: '/choose-device',
     element: (
       <MainLayout>
@@ -265,7 +242,6 @@ const myPath = [
     ),
   },
   {
-    id: 22,
     path: '/playlist',
     element: (
       <MainLayout>
@@ -274,7 +250,6 @@ const myPath = [
     ),
   },
   {
-    id: 23,
     path: '/top-playlist',
     element: (
       <MainLayout>
@@ -283,7 +258,6 @@ const myPath = [
     ),
   },
   {
-    id: 24,
     path: '/add-playlist',
     element: (
       <MainLayout>
@@ -292,7 +266,6 @@ const myPath = [
     ),
   },
   {
-    id: 25,
     path: '/add-record',
     element: (
       <MainLayout>

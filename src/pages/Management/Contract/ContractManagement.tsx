@@ -1,11 +1,12 @@
 import React, { Children, useState } from 'react';
 import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import { RightOutlined } from '@ant-design/icons';
+import SideMenu from '../../../components/SideMenu';
+import PageContent from '../../../components/PageContent';
+import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import AuthorizedContract from '../../components/AuthorizedContract';
-import MiningContract from '../../components/MiningContract';
+import AuthorizedContract from '../../../components/Management/AuthorizedContract';
+import MiningContract from '../../../components/Management/MiningContract';
+import { Link } from 'react-router-dom';
 
 const ContractManagement = () => {
   const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);
@@ -41,6 +42,13 @@ const ContractManagement = () => {
           {isAuthorizingOrMining ? <MiningContract /> : <AuthorizedContract />}
         </div>
       </div>
+
+      <Link to="/new-contract" className="link-option">
+        <PlusCircleOutlined />
+        <p>
+          Thêm hợp <br /> &nbsp;&nbsp;&nbsp;&nbsp; đồng
+        </p>
+      </Link>
     </Wrapper>
   );
 };
@@ -74,30 +82,67 @@ const Wrapper = styled.div`
         color: #ffac69;
       }
     }
-    .btn {
-      margin-bottom: 20px;
-      width: 309px;
-      border: 1px solid #ff7506;
-      border-radius: 24px;
+  }
+  .link-option {
+    flex-direction: column;
+    position: fixed;
+    top: 30%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: #2f2f41;
+    border: none;
+    width: 110px;
+    height: 130px;
+    .icon {
+      background-color: rgba(114, 114, 136, 0.5);
+      margin-left: 15px;
+      width: 50px;
+      font-size: 2rem;
+      border: 1px solid rgba(114, 114, 136, 0.5);
+      border-radius: 50%;
+    }
+    p {
+      color: #fff;
+      opacity: 0.5;
+      font-size: 12px;
+    }
+    svg {
+      color: #ff7506;
 
-      .button-1,
-      .button-2 {
-        border-radius: 24px;
-        background: none;
-      }
-      .button-1 {
-        border-top-right-radius: 24px;
-        border-bottom-right-radius: 24px;
-        border-right: none;
-      }
-      .button-2 {
-        border-top-left-radius: 24px;
-        border-bottom-left-radius: 24px;
-        border-left: none;
-      }
-      .active {
-        background: #b65100;
-      }
+      font-size: 2rem;
+      margin-left: 7px;
+    }
+  }
+
+  .btn {
+    margin-bottom: 20px;
+    width: 309px;
+    border: 1px solid #ff7506;
+    border-radius: 24px;
+
+    .button-1,
+    .button-2 {
+      border-radius: 24px;
+      background: none;
+    }
+    .button-1 {
+      border-top-right-radius: 24px;
+      border-bottom-right-radius: 24px;
+      border-right: none;
+    }
+    .button-2 {
+      border-top-left-radius: 24px;
+      border-bottom-left-radius: 24px;
+      border-left: none;
+    }
+    .active {
+      background: #b65100;
     }
   }
 `;

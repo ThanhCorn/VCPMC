@@ -4,7 +4,7 @@ import { Input, List, Pagination } from 'antd';
 import styled from 'styled-components';
 import firebase from 'firebase/compat/app';
 import 'firebase/firestore';
-import { DataContext } from '../context/DataContext';
+import { DataContext } from '../../context/DataContext';
 import { Link } from 'react-router-dom';
 
 const { Search } = Input;

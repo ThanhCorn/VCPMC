@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import FormContract from '../../components/FormContract';
+import SideMenu from '../../../components/SideMenu';
+import PageContent from '../../../components/PageContent';
+import FormContract from '../../../components/Management/FormContract';
 
 const InfoContract = () => {
   return (

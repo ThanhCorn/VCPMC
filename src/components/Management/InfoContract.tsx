@@ -12,7 +12,7 @@ import {
   InfoCircleOutlined,
   CloudUploadOutlined,
 } from '@ant-design/icons';
-import { DataContext } from '../context/DataContext';
+import { DataContext } from '../../context/DataContext';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -208,43 +208,34 @@ const InfoContract: React.FC = () => {
           </h4>
         </div>
       </div>
-      <div className="info-4">
-        <Link
-          to="/management/contract/1/detail"
-          style={{
-            borderRadius: '16px 0px 0px 0px',
-            fontSize: '14px',
-            justifyContent: 'center',
-          }}
-        >
-          <FormOutlined className="icon" />
-          <p
-            style={{
-              marginLeft: '15px',
-              color: '#fff',
-              fontSize: '12px',
-              justifyContent: 'center',
-            }}
-          >
+      <div className="option">
+        <Link to="/management/contract/1/detail" className="link-option">
+          <div className="icon">
+            <FormOutlined style={{ color: '#FF7506' }} />
+          </div>
+          <p>
             Chỉnh sửa <br />
             hợp đồng
           </p>
         </Link>
-        <button style={{ color: '#fff' }} onClick={() => setIsModalOpen2(true)}>
-          <ContainerOutlined className="icon" />
-          <br />
-          Gia hạn <br />
-          hợp đồng
-        </button>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          style={{ borderRadius: '0px 0px 0px 16px', color: '#fff' }}
-        >
-          <CloseOutlined className="icon" />
-          <br />
-          Hủy hợp <br />
-          đồng
-        </button>
+        <Button className="button-option" onClick={() => setIsModalOpen2(true)}>
+          <div className="icon">
+            <ContainerOutlined style={{ color: '#FF7506' }} />
+          </div>
+          <p>
+            Gia hạn <br />
+            hợp đồng
+          </p>
+        </Button>
+        <Button className="button-option" onClick={() => setIsModalOpen(true)}>
+          <div className="icon">
+            <CloseOutlined style={{ color: 'red' }} />
+          </div>
+          <p>
+            Hủy <br />
+            hợp đồng
+          </p>
+        </Button>
         {isModalOpen && (
           <ModalContent
             title="Lý do hủy hợp đồng uỷ quyền HĐUQ 1234"
@@ -514,35 +505,50 @@ const Container = styled.div`
       margin-top: 60px;
     }
   }
-  .info-4 {
-    position: absolute;
-    background-color: #2f2f41;
-    top: 0;
-    right: 0;
+  .option {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    height: 330px;
-    width: 110px;
-    background: #2f2f41;
-    border: 0px;
-    margin-right: -24px;
-    .icon {
-      margin-top: 10px;
-      margin-left: 20px;
-      font-size: 1.5rem;
-      width: 52px;
-      height: 52px;
-      color: #ff7506;
-      background: rgba(114, 114, 136, 0.5);
-      border-radius: 67px;
+    position: fixed;
+    top: 30%;
+    right: 0;
+    transform: translateY(-50%);
+    .link-option {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      .icon {
+        padding: 5px 0;
+        margin-left: 0 !important;
+      }
+      svg {
+        font-size: 2rem;
+        margin-left: 7px;
+      }
     }
-    button {
+    .button-option,
+    .link-option {
       background: #2f2f41;
-      cursor: pointer;
+      border: none;
+      width: 110px;
+      height: 130px;
+
+      .icon {
+        background-color: rgba(114, 114, 136, 0.5);
+        margin-left: 15px;
+        width: 50px;
+        font-size: 2rem;
+        color: #ff7506;
+        border: 1px solid rgba(114, 114, 136, 0.5);
+        border-radius: 50%;
+      }
+      p {
+        color: #fff;
+        opacity: 0.5;
+        font-size: 12px;
+      }
     }
   }
 `;
