@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import SideMenu from '../../components/SideMenu';
 import PageContent from '../../components/PageContent';
-import { mySchecule, Schecule } from '../../mySong';
+import { mySchecule, Schecule } from '../../myData';
 import { Button, Pagination } from 'antd';
 import { Row, Col, List, Checkbox, Input, Modal } from 'antd';
 import { Link } from 'react-router-dom';
 import { PlusCircleOutlined, PlusSquareOutlined } from '@ant-design/icons';
+import Page from '../../components/Page';
 
 export default function Schedule() {
   return (
@@ -88,29 +89,7 @@ export default function Schedule() {
               </List.Item>
             )}
           ></List>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              padding: '0 23px',
-              marginTop: '20px',
-            }}
-          >
-            <p style={{ display: 'flex', letterSpacing: ' 0.015em' }}>
-              Hiển thị{' '}
-              <span
-                style={{
-                  padding: '0 10px',
-                  border: '1px solid #FF7506',
-                  borderRadius: '4px',
-                }}
-              >
-                {mySchecule.length}
-              </span>{' '}
-              hàng trong mỗi trang
-            </p>
-            <Pagination defaultCurrent={1} total={100} />
-          </div>
+          <Page data={mySchecule} />
         </Container>
         <div className="side-option">
           <div className="option">

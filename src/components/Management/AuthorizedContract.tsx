@@ -13,6 +13,7 @@ import InfoContract from './FormContract';
 import { DataContext } from '../../context/DataContext';
 import AuthoritySong from './AuthoritySong';
 import { Link } from 'react-router-dom';
+import Page from '../Page';
 
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
@@ -188,28 +189,7 @@ const AuthorizedContract = ({ children }: Props) => {
                 </div>
               </List.Item>
             ))}
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                padding: '0 23px',
-              }}
-            >
-              <p style={{ display: 'flex', letterSpacing: ' 0.015em' }}>
-                Hiển thị{' '}
-                <span
-                  style={{
-                    padding: '0 10px',
-                    border: '1px solid #FF7506',
-                    borderRadius: '4px',
-                  }}
-                >
-                  {data.length}
-                </span>{' '}
-                hàng trong mỗi trang
-              </p>
-              <Pagination defaultCurrent={1} total={100} />
-            </div>
+            <Page data={data} />
           </List>
         </Container>
         <div className="side-option">

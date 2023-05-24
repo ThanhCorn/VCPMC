@@ -6,7 +6,7 @@ import {
   PlusCircleOutlined,
   RightOutlined,
 } from '@ant-design/icons';
-import { mySchecule, Schecule } from '../../mySong';
+import { mySchecule, Schecule } from '../../myData';
 import { Row, Col, List, Checkbox, Input, Modal } from 'antd';
 import { Link } from 'react-router-dom';
 export default function ScheduleDetail1() {

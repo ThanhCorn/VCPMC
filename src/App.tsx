@@ -37,6 +37,7 @@ import {
   MainLayout,
 } from './pages';
 import AddInfoRecord from './pages/Management/Contract/AddInfoRecord';
+import UpdateInfo from './pages/Management/AuthorizedUnit/UpdateInfo';
 
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -94,6 +95,14 @@ const myPath = [
     element: (
       <MainLayout>
         <AuthorizedUnit />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/management/authority/update',
+    element: (
+      <MainLayout>
+        <UpdateInfo />
       </MainLayout>
     ),
   },

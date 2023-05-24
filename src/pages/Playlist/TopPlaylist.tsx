@@ -27,7 +27,7 @@ import {
   Switch,
   Tag,
 } from 'antd';
-import { Song, mySong } from '../../mySong';
+import { Song, mySong } from '../../myData';
 import ImageSong from '../../assets/Song.png';
 import { Menu, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';

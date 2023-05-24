@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Song, mySong } from '../../mySong';
+import { Song, mySong } from '../../myData';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';

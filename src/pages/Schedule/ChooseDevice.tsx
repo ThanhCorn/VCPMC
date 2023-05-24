@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SideMenu from '../../components/SideMenu';
 import PageContent from '../../components/PageContent';
-import { myDevice, Device } from '../../mySong';
+import { myDevice, Device } from '../../myData';
 import { Button, Pagination } from 'antd';
 import { Row, Col, List, Checkbox, Input, Modal } from 'antd';
 import { Link } from 'react-router-dom';

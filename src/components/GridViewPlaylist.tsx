@@ -1,7 +1,8 @@
 import { Checkbox, Col, Pagination, Row } from 'antd';
 import styled from 'styled-components';
-import { mySchecule, Schecule } from '../mySong';
+import { mySchecule, Schecule } from '../myData';
 import { InfoCircleOutlined } from '@ant-design/icons';
+import Page from './Page';
 
 const GridViewPlaylist: React.FC = () => {
   return (
@@ -51,29 +52,8 @@ const GridViewPlaylist: React.FC = () => {
           </Col>
         ))}
       </Row>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          padding: '0 23px',
-          marginTop: '-15px',
-        }}
-      >
-        <p style={{ display: 'flex', letterSpacing: ' 0.015em' }}>
-          Hiển thị{' '}
-          <span
-            style={{
-              padding: '0 10px',
-              border: '1px solid #FF7506',
-              borderRadius: '4px',
-            }}
-          >
-            {mySchecule.length}
-          </span>{' '}
-          hàng trong mỗi trang
-        </p>
-        <Pagination defaultCurrent={1} total={100} />
-      </div>
+
+      <Page data={mySchecule} />
     </Container>
   );
 };

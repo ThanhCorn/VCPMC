@@ -9,13 +9,14 @@ import {
   Row,
 } from 'antd';
 import React from 'react';
-import { mySong, Song } from '../mySong';
+import { mySong, Song } from '../myData';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { RootState } from '../app/store';
 import ImageSong from '../assets/Song.png';
+import Page from './Page';
 
 interface ListViewProps {
   listView: boolean;
@@ -160,29 +161,7 @@ const ListView: React.FC<ListViewProps> = ({ listView, isKhoBanGhi }) => {
           </List.Item>
         )}
       ></List>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          padding: '0 23px',
-          marginTop: '20px',
-        }}
-      >
-        <p style={{ display: 'flex', letterSpacing: ' 0.015em' }}>
-          Hiển thị{' '}
-          <span
-            style={{
-              padding: '0 10px',
-              border: '1px solid #FF7506',
-              borderRadius: '4px',
-            }}
-          >
-            {mySong.length}
-          </span>{' '}
-          hàng trong mỗi trang
-        </p>
-        <Pagination defaultCurrent={1} total={100} />
-      </div>
+      <Page data={mySong} />
     </Container>
   );
 };

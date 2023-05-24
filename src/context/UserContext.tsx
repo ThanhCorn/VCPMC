@@ -69,7 +69,7 @@ export const UserProvider: React.FC<React.PropsWithChildren> = ({
       setCurrentUser(null);
       setIsLogin(false);
       localStorage.removeItem('isLogin');
-    }, 600000);
+    }, 6000000);
 
     return () => clearTimeout(clearUserData);
   }, [isLogin]);

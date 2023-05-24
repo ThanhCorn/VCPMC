@@ -15,7 +15,7 @@ import SideMenu from '../../components/SideMenu';
 import PageContent from '../../components/PageContent';
 import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-import { mySchecule, Schecule } from '../../mySong';
+import { mySchecule, Schecule } from '../../myData';
 import dayjs from 'dayjs';
 import { MouseEvent } from 'react';
 import { CheckboxValueType } from 'antd/lib/checkbox/Group';

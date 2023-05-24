@@ -29,7 +29,7 @@ import {
   Switch,
   Tag,
 } from 'antd';
-import { Song, mySong } from '../../mySong';
+import { Song, mySong } from '../../myData';
 import ImageSong from '../../assets/Song.png';
 import { Menu, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
@@ -49,8 +49,6 @@ export default function AddPlaylist() {
 
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         <span style={{ color: '#fff', opacity: '0.5' }}>
           Playlist <RightOutlined /> Thêm playlist mới
@@ -302,7 +300,7 @@ export default function AddPlaylist() {
         </div>
         <div className="side-option">
           <div className="option">
-            <Link to="" className="link-option">
+            <Link to="/add-record" className="link-option">
               <div className="icon-2">
                 <PlusOutlined />
               </div>
@@ -418,6 +416,8 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   background-color: var(--primary-color);
   display: flex;
   .content {

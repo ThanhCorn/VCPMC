@@ -4,7 +4,7 @@ import SideMenu from '../../components/SideMenu';
 import PageContent from '../../components/PageContent';
 import { RightOutlined, StepForwardOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Space } from 'antd';
-import { mySong, Song } from '../../mySong';
+import { mySong, Song } from '../../myData';
 
 const UpdateRecordStore = () => {
   const [form] = Form.useForm();

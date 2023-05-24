@@ -1,7 +1,8 @@
 import { Checkbox, Col, Pagination, Row } from 'antd';
 import styled from 'styled-components';
-import { mySong, Song } from '../mySong';
+import { mySong, Song } from '../myData';
 import { FormOutlined } from '@ant-design/icons';
+import Page from './Page';
 
 interface GrỉdViewProps {
   gridView: boolean;
@@ -16,7 +17,7 @@ const GridView: React.FC<GrỉdViewProps> = ({
 }) => {
   return (
     <Container>
-      <Row>
+      <Row style={{ marginBottom: '-25px' }}>
         {mySong.map((song: Song) => (
           <Col>
             <img src={song.hinhAnh} alt={song.tenBanGhi} />
@@ -61,29 +62,7 @@ const GridView: React.FC<GrỉdViewProps> = ({
           </Col>
         ))}
       </Row>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          padding: '0 23px',
-          marginTop: '-15px',
-        }}
-      >
-        <p style={{ display: 'flex', letterSpacing: ' 0.015em' }}>
-          Hiển thị{' '}
-          <span
-            style={{
-              padding: '0 10px',
-              border: '1px solid #FF7506',
-              borderRadius: '4px',
-            }}
-          >
-            {mySong.length}
-          </span>{' '}
-          hàng trong mỗi trang
-        </p>
-        <Pagination defaultCurrent={1} total={100} />
-      </div>
+      <Page data={mySong} />
     </Container>
   );
 };

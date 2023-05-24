@@ -1,13 +1,9 @@
 import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
 import { RightOutlined } from '@ant-design/icons';
 
 const DownloadApp = () => {
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         <h4 style={{ color: 'white' }}>
           Hổ trợ <RightOutlined /> Tải App
@@ -296,6 +292,8 @@ const DownloadApp = () => {
 export default DownloadApp;
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex: 1;
   background-color: var(--primary-color);

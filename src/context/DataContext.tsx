@@ -12,7 +12,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebase';
 
-interface DataProps {
+export interface DataProps {
   STT: number;
   'Số hợp đồng': string;
   'Tên hợp đồng': string;

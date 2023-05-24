@@ -6,6 +6,7 @@ import SixFeetUnder from './assets/theweeknd.jpg';
 import NTH from './assets/thaihoc.jpg';
 import Love from './assets/lovesong.jpg';
 import One from './assets/one.jpg';
+
 export interface Song {
   stt?: number;
   tenBanGhi?: string;
@@ -243,4 +244,52 @@ const mySchecule: Schecule[] = [
   },
 ];
 
-export { mySong, mySchecule, myDevice };
+export interface PartnerAuthorizer {
+  stt: string;
+  hoten: string;
+  tendangnhap: string;
+  email: string;
+  ngayhethan: string;
+  sdt: string;
+  trangthai: boolean;
+}
+
+const myPartner: PartnerAuthorizer[] = [
+  {
+    stt: '1',
+    hoten: 'Nguyễn Văn A',
+    tendangnhap: 'nnnt10122000@gmail.com',
+    email: 'nnnt10122000@gmail.com',
+    ngayhethan: '20/10/2023',
+    sdt: '0123456789',
+    trangthai: true,
+  },
+  {
+    stt: '2',
+    hoten: 'Nguyễn Văn B',
+    tendangnhap: 'nguyenb@gmail.com',
+    email: 'nguyenb@gmail.com',
+    ngayhethan: '20/10/2023',
+    sdt: '0123456789',
+    trangthai: true,
+  },
+  {
+    stt: '3',
+    hoten: 'Nguyễn Văn C',
+    tendangnhap: 'nguyenc@gmail.com',
+    email: 'nguyenc@gmail.com',
+    ngayhethan: '20/10/2023',
+    sdt: '0123456789',
+    trangthai: true,
+  },
+  {
+    stt: '4',
+    hoten: 'Nguyễn Văn D',
+    tendangnhap: 'nguyend@gmail.com',
+    email: 'nguyend@gmail.com',
+    ngayhethan: '20/10/2023',
+    sdt: '0123456789',
+    trangthai: false,
+  },
+];
+export { mySong, mySchecule, myDevice, myPartner };
