@@ -252,6 +252,8 @@ export interface PartnerAuthorizer {
   ngayhethan: string;
   sdt: string;
   trangthai: boolean;
+  vaitro: string;
+  ngaycapnhat: string;
 }
 
 const myPartner: PartnerAuthorizer[] = [
@@ -262,6 +264,8 @@ const myPartner: PartnerAuthorizer[] = [
     email: 'nnnt10122000@gmail.com',
     ngayhethan: '20/10/2023',
     sdt: '0123456789',
+    vaitro: 'QC',
+    ngaycapnhat: '20/12/2023',
     trangthai: true,
   },
   {
@@ -271,6 +275,8 @@ const myPartner: PartnerAuthorizer[] = [
     email: 'nguyenb@gmail.com',
     ngayhethan: '20/10/2023',
     sdt: '0123456789',
+    vaitro: 'QC',
+    ngaycapnhat: '20/12/2023',
     trangthai: true,
   },
   {
@@ -280,6 +286,8 @@ const myPartner: PartnerAuthorizer[] = [
     email: 'nguyenc@gmail.com',
     ngayhethan: '20/10/2023',
     sdt: '0123456789',
+    vaitro: 'QC',
+    ngaycapnhat: '20/12/2023',
     trangthai: true,
   },
   {
@@ -289,6 +297,8 @@ const myPartner: PartnerAuthorizer[] = [
     email: 'nguyend@gmail.com',
     ngayhethan: '20/10/2023',
     sdt: '0123456789',
+    vaitro: 'QC',
+    ngaycapnhat: '20/12/2023',
     trangthai: false,
   },
 ];

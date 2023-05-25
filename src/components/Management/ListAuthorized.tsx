@@ -8,7 +8,7 @@ import Page from '../Page';
 
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
-const FormListAuthorized = () => {
+const ListAuthorized = () => {
   return (
     <Wrapper>
       <p style={{ opacity: '0.5', marginBottom: '0' }}>
@@ -112,7 +112,7 @@ const FormListAuthorized = () => {
   );
 };
 
-export default FormListAuthorized;
+export default ListAuthorized;
 
 const Container = styled.div`
   width: 1541px;

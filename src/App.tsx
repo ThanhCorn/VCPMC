@@ -38,6 +38,9 @@ import {
 } from './pages';
 import AddInfoRecord from './pages/Management/Contract/AddInfoRecord';
 import UpdateInfo from './pages/Management/AuthorizedUnit/UpdateInfo';
+import DetailUnitUsed from './pages/Management/UnitsUsed/DetailUnitUsed';
+import DetailUserUsed from './pages/Management/UnitsUsed/DetailUserUsed';
+import AddUser from './pages/Management/UnitsUsed/AddUser';
 
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -111,6 +114,30 @@ const myPath = [
     element: (
       <MainLayout>
         <UnitUsed />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/management/used/add-user',
+    element: (
+      <MainLayout>
+        <AddUser />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/management/used/detail-user',
+    element: (
+      <MainLayout>
+        <DetailUserUsed />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/management/used/detail',
+    element: (
+      <MainLayout>
+        <DetailUnitUsed />
       </MainLayout>
     ),
   },

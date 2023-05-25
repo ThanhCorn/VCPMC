@@ -28,6 +28,11 @@ export interface DataProps {
   'Tên bản ghi': string;
   'Tình trạng': string[];
   'Mã ISRC': string;
+  'Trạng thái': boolean;
+  'Tên tài khoản quản trị': string;
+  Admin: string;
+  'Người dùng': string;
+  'Thiết bị chỉ định': string;
 }
 
 interface DataContextValue {

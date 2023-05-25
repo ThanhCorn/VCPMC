@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
 import { RightOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Select } from 'antd';
 import { useContext } from 'react';
@@ -24,8 +22,6 @@ const Feedback = () => {
   };
   return (
     <Wrapper>
-      <SideMenu />
-      <PageContent />
       <div className="content">
         <h4 style={{ color: 'white' }}>
           Hổ trợ <RightOutlined /> Feedback
@@ -127,6 +123,8 @@ const Feedback = () => {
 export default Feedback;
 
 const Wrapper = styled.div`
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex: 1;
   background-color: var(--primary-color);
