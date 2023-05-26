@@ -62,7 +62,9 @@ export default GridViewPlaylist;
 
 const Container = styled.div`
   width: 1541px;
-  max-height: 722px;
+  max-height: 1000px;
+  height: 900px;
+  position: relative;
   .box-topic {
     margin-right: 10px;
     display: flex;

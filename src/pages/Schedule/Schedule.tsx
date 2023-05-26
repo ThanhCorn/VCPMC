@@ -112,6 +112,8 @@ export default function Schedule() {
 const Container = styled.div`
   width: 1541px;
   max-height: 722px;
+  height: 800px;
+  position: relative;
   background: rgba(47, 47, 65, 0.7);
   border: 1px solid rgba(47, 47, 65, 0.7);
   border-radius: 16px;

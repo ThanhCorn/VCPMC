@@ -1,17 +1,21 @@
 import React from 'react';
 import { Pagination } from 'antd';
 import { DataProps } from '../context/DataContext';
-import { Song, PartnerAuthorizer } from '../myData';
+import { Song, PartnerAuthorizer, CategorySong } from '../myData';
 
 interface PageProps {
-  data: DataProps[] | Song[] | PartnerAuthorizer[];
+  data: DataProps[] | Song[] | PartnerAuthorizer[] | CategorySong[];
 }
 const Page: React.FC<PageProps> = ({ data }) => {
   return (
     <div
       style={{
         display: 'flex',
+        width: '100%',
         justifyContent: 'space-between',
+        position: 'absolute',
+        alignItems: 'center',
+        bottom: '0',
         padding: '0 23px',
       }}
     >
@@ -28,7 +32,12 @@ const Page: React.FC<PageProps> = ({ data }) => {
         </span>{' '}
         hàng trong mỗi trang
       </p>
-      <Pagination total={100} />
+      <Pagination
+        style={{ marginRight: '40px ' }}
+        pageSize={10}
+        defaultCurrent={1}
+        total={100}
+      />
     </div>
   );
 };

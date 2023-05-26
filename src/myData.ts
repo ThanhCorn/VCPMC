@@ -302,4 +302,55 @@ const myPartner: PartnerAuthorizer[] = [
     trangthai: false,
   },
 ];
-export { mySong, mySchecule, myDevice, myPartner };
+
+export interface CategorySong {
+  stt: number;
+  tentheloai: string;
+  mota: string;
+  length?: number;
+}
+
+const myCategorySong: CategorySong[] = [
+  {
+    stt: 1,
+    tentheloai: 'Pop',
+    mota: 'Nhạc pop là một thể loại của nhạc đương đại và rất phổ biến trong làng nhạc đại chúng.',
+  },
+  {
+    stt: 2,
+    tentheloai: 'Bolero',
+    mota: 'Quay về với một thời hoa bướm đầy mơ mộng khi nghe các tuyệt phẩm nhạc bolero trữ tình này.',
+  },
+  {
+    stt: 3,
+    tentheloai: 'Ballad',
+    mota: 'Ballad là dòng nhạc nhẹ nhàng, trữ tình bắt nguồn từ dòng nhạc country và folk vì giai điệu chậm, thong thả. ',
+  },
+  {
+    stt: 4,
+    tentheloai: 'Lofi',
+    mota: 'Lo-fi là một thể loại nhạc trong đó có chứa các yếu tố không hoàn hảo trong quá trình ghi âm và trình diễn.',
+  },
+  {
+    stt: 5,
+    tentheloai: 'Blues',
+    mota: 'Nhạc Blues có nguồn gốc từ những điệu hát của miền tây Phi Châu được các nô lệ da đen mang sang Bắc Mỹ.',
+  },
+  {
+    stt: 6,
+    tentheloai: 'Country',
+    mota: 'Nhạc đồng quê là một thể loại nhạc pha trộn truyền thống được tìm thấy phổ biến ở Mỹ và Canada.',
+  },
+  {
+    stt: 7,
+    tentheloai: 'Jazz',
+    mota: 'Jazz là một thể loại âm nhạc bắt nguồn từ cộng đồng người châu Phi ở Hoa Kỳ vào cuối thế kỷ 19 và đầu thế kỷ 20.',
+  },
+
+  {
+    stt: 8,
+    tentheloai: 'Rock',
+    mota: 'Rock là một thể loại âm nhạc quần chúng được bắt nguồn từ cách gọi ngắn gọn của cụm từ "rock and roll" vào những năm 1950 ở Mỹ.',
+  },
+];
+export { mySong, mySchecule, myDevice, myPartner, myCategorySong };

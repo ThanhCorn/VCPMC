@@ -373,6 +373,7 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   position: absolute;
+
   top: 100px;
   left: 0;
   .ant-list {

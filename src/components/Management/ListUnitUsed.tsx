@@ -166,6 +166,8 @@ const ListUnitUsed = () => {
 export default ListUnitUsed;
 
 const Container = styled.div`
+  height: 800px;
+  position: relative;
   width: 1541px;
   max-height: 722px;
   background: rgba(47, 47, 65, 0.7);

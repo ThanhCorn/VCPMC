@@ -180,6 +180,8 @@ const ModalContent = styled(Modal)`
 const Container = styled.div`
   width: 1541px;
   max-height: 722px;
+  height: 800px;
+  position: relative;
   border: 1px solid rgba(47, 47, 65, 0.7);
   border-radius: 16px;
   margin: 10px 0;

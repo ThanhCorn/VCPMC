@@ -41,6 +41,7 @@ import UpdateInfo from './pages/Management/AuthorizedUnit/UpdateInfo';
 import DetailUnitUsed from './pages/Management/UnitsUsed/DetailUnitUsed';
 import DetailUserUsed from './pages/Management/UnitsUsed/DetailUserUsed';
 import AddUser from './pages/Management/UnitsUsed/AddUser';
+import InfoCreation from './pages/Setting/InfoCreation';
 
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -210,6 +211,14 @@ const myPath = [
     element: (
       <MainLayout>
         <PeriodCycle />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/setting/info-creation',
+    element: (
+      <MainLayout>
+        <InfoCreation />
       </MainLayout>
     ),
   },

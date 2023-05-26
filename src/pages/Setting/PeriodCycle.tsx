@@ -41,11 +41,12 @@ const PeriodCycle = () => {
   return (
     <Wrapper>
       <div className="content">
-        <h4 style={{ color: 'white' }}>
+        <p style={{ color: 'white', opacity: '0.5' }}>
           Trang chủ
-          <RightOutlined /> Cài đặt hệ thống <RightOutlined /> Thông tin tác
-          phẩm
-        </h4>
+          <RightOutlined style={{ color: 'var(--text-primary)' }} /> Cài đặt hệ
+          thống <RightOutlined style={{ color: 'var(--text-primary)' }} /> Thông
+          tin tác phẩm
+        </p>
         <h1>Cài đặt hệ thống</h1>
         <div className="content-radio">
           <h2>Cài đặt chu kì đối soát</h2>

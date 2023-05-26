@@ -17,7 +17,7 @@ const GridView: React.FC<GrỉdViewProps> = ({
 }) => {
   return (
     <Container>
-      <Row style={{ marginBottom: '-25px' }}>
+      <Row>
         {mySong.map((song: Song) => (
           <Col>
             <img src={song.hinhAnh} alt={song.tenBanGhi} />
@@ -71,7 +71,9 @@ export default GridView;
 
 const Container = styled.div`
   width: 1541px;
-  max-height: 722px;
+  height: 800px;
+  position: relative;
+  max-height: 1000px;
   .ant-col {
     margin-right: 40px;
     margin-bottom: 40px;

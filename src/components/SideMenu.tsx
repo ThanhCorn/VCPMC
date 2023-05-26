@@ -229,7 +229,14 @@ const items: MenuItem[] = [
     getItem('Phân quyền người dùng', '12'),
     getItem('Cấu hình', '13'),
     getItem('Quản lý hợp đồng', '14'),
-    getItem('Thông tin tác phẩm', '15'),
+    getItem(
+      'Thông tin tác phẩm',
+      '15',
+      undefined,
+      undefined,
+      undefined,
+      '/setting/info-creation',
+    ),
     getItem(
       'Chu kỳ đối soát',
       '16',
