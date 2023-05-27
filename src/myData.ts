@@ -6,6 +6,10 @@ import SixFeetUnder from './assets/theweeknd.jpg';
 import NTH from './assets/thaihoc.jpg';
 import Love from './assets/lovesong.jpg';
 import One from './assets/one.jpg';
+import Theme1 from './assets/theme1.jpg';
+import Theme2 from './assets/theme2.jpg';
+import Theme3 from './assets/theme3.jpg';
+import Theme4 from './assets/theme4.jpg';
 
 export interface Song {
   stt?: number;
@@ -264,7 +268,7 @@ const myPartner: PartnerAuthorizer[] = [
     email: 'nnnt10122000@gmail.com',
     ngayhethan: '20/10/2023',
     sdt: '0123456789',
-    vaitro: 'QC',
+    vaitro: 'Group Admin',
     ngaycapnhat: '20/12/2023',
     trangthai: true,
   },
@@ -286,7 +290,7 @@ const myPartner: PartnerAuthorizer[] = [
     email: 'nguyenc@gmail.com',
     ngayhethan: '20/10/2023',
     sdt: '0123456789',
-    vaitro: 'QC',
+    vaitro: 'License',
     ngaycapnhat: '20/12/2023',
     trangthai: true,
   },
@@ -297,7 +301,7 @@ const myPartner: PartnerAuthorizer[] = [
     email: 'nguyend@gmail.com',
     ngayhethan: '20/10/2023',
     sdt: '0123456789',
-    vaitro: 'QC',
+    vaitro: 'Super Admin',
     ngaycapnhat: '20/12/2023',
     trangthai: false,
   },
@@ -353,4 +357,82 @@ const myCategorySong: CategorySong[] = [
     mota: 'Rock là một thể loại âm nhạc quần chúng được bắt nguồn từ cách gọi ngắn gọn của cụm từ "rock and roll" vào những năm 1950 ở Mỹ.',
   },
 ];
-export { mySong, mySchecule, myDevice, myPartner, myCategorySong };
+
+export interface Config {
+  stt: number;
+  image: string;
+}
+
+const myConfig: Config[] = [
+  {
+    stt: 1,
+    image: Theme1,
+  },
+  {
+    stt: 2,
+    image: Theme2,
+  },
+  {
+    stt: 3,
+    image: Theme3,
+  },
+  {
+    stt: 4,
+    image: Theme4,
+  },
+];
+
+export interface Role {
+  stt: number;
+  tennhom: string;
+  soluong: number;
+  vaitro: string;
+  mota: string;
+}
+
+const myRole: Role[] = [
+  {
+    stt: 1,
+    tennhom: 'Super Admin',
+    soluong: 1,
+    vaitro: 'System Admin',
+    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+  },
+  {
+    stt: 2,
+    tennhom: 'Group Admin',
+    soluong: 8,
+    vaitro: 'System Admin',
+    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+  },
+  {
+    stt: 3,
+    tennhom: 'Sub-user',
+    soluong: 30,
+    vaitro: 'Super Admin',
+    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+  },
+  {
+    stt: 4,
+    tennhom: 'Content Manager',
+    soluong: 5,
+    vaitro: 'License',
+    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+  },
+  {
+    stt: 5,
+    tennhom: 'QC',
+    soluong: 5,
+    vaitro: 'License',
+    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+  },
+];
+export {
+  mySong,
+  mySchecule,
+  myDevice,
+  myPartner,
+  myCategorySong,
+  myConfig,
+  myRole,
+};

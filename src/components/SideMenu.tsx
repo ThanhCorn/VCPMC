@@ -226,8 +226,22 @@ const items: MenuItem[] = [
   ]),
 
   getItem('Cài đặt', 'sub3', <SettingOutlined />, [
-    getItem('Phân quyền người dùng', '12'),
-    getItem('Cấu hình', '13'),
+    getItem(
+      'Phân quyền người dùng',
+      '12',
+      undefined,
+      undefined,
+      undefined,
+      '/setting/permission',
+    ),
+    getItem(
+      'Cấu hình',
+      '13',
+      undefined,
+      undefined,
+      undefined,
+      '/setting/config',
+    ),
     getItem(
       'Quản lý hợp đồng',
       '14',

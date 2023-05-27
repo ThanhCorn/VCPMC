@@ -43,6 +43,8 @@ import DetailUserUsed from './pages/Management/UnitsUsed/DetailUserUsed';
 import AddUser from './pages/Management/UnitsUsed/AddUser';
 import InfoCreation from './pages/Setting/InfoCreation';
 import SettingContract from './pages/Setting/SettingContract';
+import Configuration from './pages/Setting/Configuration';
+import Permission from './pages/Setting/Permission';
 
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -220,6 +222,22 @@ const myPath = [
     element: (
       <MainLayout>
         <InfoCreation />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/setting/config',
+    element: (
+      <MainLayout>
+        <Configuration />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/setting/permission',
+    element: (
+      <MainLayout>
+        <Permission />
       </MainLayout>
     ),
   },
