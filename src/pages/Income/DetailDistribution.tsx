@@ -20,13 +20,15 @@ const DetailDistribution = () => {
           Doanh thu
           <RightOutlined style={{ color: '#FFAC69' }} />
           Phân phối doanh thu
+          <RightOutlined style={{ color: '#FFAC69' }} />
+          Chi tiết doanh thu
         </p>
-        <h1>Quản lý phân phối doanh thu</h1>
+        <h1>Hợp đồng ủy quyền UQ123 - Quý 1 </h1>
         <div className="search-btn">
           <div className="datepick">
             <h3>Danh sách bản ghi</h3>
             <Search
-              placeholder="Nhập tên người dùng..."
+              placeholder="Nhập tên bài hát..."
               onSearch={onSearch}
               style={{ width: 200 }}
             />
@@ -59,6 +61,7 @@ const DetailDistribution = () => {
                 <p>Nhuận bút (VNĐ) </p>
               </Col>
             </Row>
+
             <List
               itemLayout="horizontal"
               dataSource={myIncome}
@@ -94,15 +97,26 @@ const DetailDistribution = () => {
             <Page data={myIncome} />
           </div>
           <div className="container-2">
-            <Row className="row-1">
-              <Col span={1}>
-                <p>STT</p>
+            <Row className="row-3">
+              <Col span={3}>
+                <p>Đơn vị khai thác</p>
               </Col>
               <Col span={2}>
-                <p>Bài hát</p>
+                <p>Số lượt phát</p>
               </Col>
               <Col span={3}>
-                <p>Số lượng phát</p>
+                <p>Doanh thu (VNĐ)</p>
+              </Col>
+            </Row>
+            <Row className="row-5">
+              <Col span={3}>
+                <p>Tổng</p>
+              </Col>
+              <Col span={2}>
+                <p>100</p>
+              </Col>
+              <Col span={3}>
+                <p>900000000</p>
               </Col>
             </Row>
             <List
@@ -113,15 +127,15 @@ const DetailDistribution = () => {
                   key={myIncome.stt}
                   style={{ alignItems: 'center', display: 'flex' }}
                 >
-                  <Row className="row-2">
-                    <Col span={2}>
-                      <p> {myIncome.stt}</p>
+                  <Row className="row-4">
+                    <Col span={7}>
+                      <p> {myIncome.donvikhaithac}</p>
                     </Col>
-                    <Col span={4}>
-                      <p>{myIncome.tenbaihat}</p>
-                    </Col>
-                    <Col span={3}>
+                    <Col span={6}>
                       <p>{myIncome.soluotphat}</p>
+                    </Col>
+                    <Col>
+                      <p>{myIncome.doanhthu}</p>
                     </Col>
                   </Row>
                 </List.Item>
@@ -143,6 +157,7 @@ export default DetailDistribution;
 const Container = styled.div`
   width: 1541px;
   display: flex;
+  justify-content: space-between;
   .container-1 {
     margin-right: 20px;
     max-height: 722px;
@@ -183,17 +198,16 @@ const Container = styled.div`
   .container-2 {
     max-height: 722px;
     height: 722px;
+    margin-left: 20px;
     position: relative;
     background: rgba(47, 47, 65, 0.7);
     border: 1px solid rgba(47, 47, 65, 0.7);
     border-radius: 16px;
     margin: 10px 0;
     width: 35%;
-    .ant-col {
-    }
-    .row-1,
-    .row-2 {
-      width: 1541px;
+    .row-5 {
+      width: 1500px;
+
       padding-left: 35px;
       display: flex;
       align-items: center;
@@ -201,14 +215,24 @@ const Container = styled.div`
         max-width: 10%;
       }
     }
-    .row-2 {
+    .row-3,
+    .row-4 {
+      width: 1500px;
+      padding-left: 35px;
+      display: flex;
+      align-items: center;
+      .ant-col-3 {
+        max-width: 10%;
+      }
+    }
+    .row-4 {
       border-bottom: 1px solid rgba(47, 47, 65, 0.7);
       p {
         color: #fff;
         opacity: 0.7;
       }
     }
-    .row-1 {
+    .row-3 {
       p {
         font-weight: bold;
         color: #ffac69;

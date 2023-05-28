@@ -51,6 +51,7 @@ import UpdateRole from './components/Setting/UpdateRole';
 import AddRole from './components/Setting/AddRole';
 import Distribution from './pages/Income/Distribution';
 import DetailDistribution from './pages/Income/DetailDistribution';
+import InCome from './pages/Income/InCome';
 
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -228,6 +229,14 @@ const myPath = [
     element: (
       <MainLayout>
         <DetailDistribution />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/income',
+    element: (
+      <MainLayout>
+        <InCome />
       </MainLayout>
     ),
   },
