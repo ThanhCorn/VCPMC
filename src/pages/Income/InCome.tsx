@@ -113,7 +113,7 @@ const InCome = () => {
     else setIsForMonth(false);
   };
   const items4 = isForMonth ? items2 : items3;
-  const chartData = {
+  const data = {
     labels: [
       '1',
       '2',
@@ -220,7 +220,7 @@ const InCome = () => {
         <h3>Biểu đồ theo dõi lượt phát - 20-7-2023</h3>
         <div>
           <div className="chart">
-            <Line data={chartData}></Line>
+            <Line data={data}></Line>
           </div>
         </div>
       </div>

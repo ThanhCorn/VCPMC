@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import { Input } from 'antd';
 import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData';
 import Page from '../../components/Page';
-import ListUser from '../../components/Setting/ListUser';
-import ListRole from '../../components/Setting/ListRole';
 
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
