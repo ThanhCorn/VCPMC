@@ -222,7 +222,14 @@ const items: MenuItem[] = [
   getItem('Doanh thu', 'sub2', <DollarCircleOutlined />, [
     getItem('Báo cáo doanh thu', '9'),
     getItem('Lịch sử đối soát', '10'),
-    getItem('Phấn phối doanh thu', '11'),
+    getItem(
+      'Phấn phối doanh thu',
+      '11',
+      undefined,
+      undefined,
+      undefined,
+      '/income/distribution',
+    ),
   ]),
 
   getItem('Cài đặt', 'sub3', <SettingOutlined />, [

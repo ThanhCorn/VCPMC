@@ -8,8 +8,6 @@ import {
 } from '@ant-design/icons';
 import { Button, Col, List, Row } from 'antd';
 import styled from 'styled-components';
-import { CategorySong, myCategorySong } from '../../myData';
-import Page from '../../components/Page';
 import React, { useEffect } from 'react';
 
 const SettingContract = () => {

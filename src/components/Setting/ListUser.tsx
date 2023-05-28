@@ -1,8 +1,8 @@
 import React from 'react';
 import { List, Switch, Row, Col } from 'antd';
-import { PartnerAuthorizer, myPartner } from '../myData';
+import { PartnerAuthorizer, myPartner } from '../../myData';
 import { Link } from 'react-router-dom';
-import Page from './Page';
+import Page from '../Page';
 import styled from 'styled-components';
 
 const ListUser = () => {
@@ -80,7 +80,7 @@ const ListUser = () => {
                 }}
               >
                 <Link
-                  to="/management/authority/update"
+                  to="/setting/edit-user"
                   style={{
                     background: 'transparent',
                     border: 'none',

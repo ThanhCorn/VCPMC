@@ -427,6 +427,91 @@ const myRole: Role[] = [
     mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
   },
 ];
+
+export interface Income {
+  stt: number;
+  hopdong: string;
+  nguoiuyquyen: string;
+  sobaihatuyquyen: number;
+  doanhthu: number;
+  hanhchinhphi: number;
+  mucnhuanbut: number;
+  ngaychot: string;
+  tenbaihat: string;
+  donvikhaithac: string;
+  soluotphat: number;
+}
+
+const myIncome: Income[] = [
+  {
+    stt: 1,
+    hopdong: 'HD001',
+    nguoiuyquyen: 'Nguyễn Văn A',
+    sobaihatuyquyen: 10,
+    doanhthu: 100000000,
+    hanhchinhphi: 10000000,
+    mucnhuanbut: 90000000,
+    ngaychot: '20/10/2021',
+    tenbaihat: 'Bài hát 1',
+    donvikhaithac: 'Nhà sản xuất 1',
+    soluotphat: 100,
+  },
+  {
+    stt: 2,
+    hopdong: 'HD002',
+    nguoiuyquyen: 'Nguyễn Văn B',
+    sobaihatuyquyen: 20,
+    doanhthu: 200000000,
+    hanhchinhphi: 20000000,
+    mucnhuanbut: 180000000,
+
+    ngaychot: '20/10/2021',
+    tenbaihat: 'Bài hát 1',
+    donvikhaithac: 'Nhà sản xuất 1',
+    soluotphat: 100,
+  },
+  {
+    stt: 3,
+    hopdong: 'HD003',
+    nguoiuyquyen: 'Nguyễn Văn C',
+    sobaihatuyquyen: 30,
+    doanhthu: 300000000,
+
+    hanhchinhphi: 30000000,
+    mucnhuanbut: 270000000,
+    ngaychot: '20/10/2021',
+    tenbaihat: 'Bài hát 1',
+    donvikhaithac: 'Nhà sản xuất 1',
+    soluotphat: 100,
+  },
+  {
+    stt: 4,
+    hopdong: 'HD004',
+    nguoiuyquyen: 'Nguyễn Văn D',
+    sobaihatuyquyen: 40,
+    doanhthu: 400000000,
+    hanhchinhphi: 40000000,
+    mucnhuanbut: 360000000,
+
+    ngaychot: '20/10/2021',
+    tenbaihat: 'Bài hát 1',
+    donvikhaithac: 'Nhà sản xuất 1',
+    soluotphat: 100,
+  },
+  {
+    stt: 5,
+    hopdong: 'HD005',
+    nguoiuyquyen: 'Nguyễn Văn E',
+    sobaihatuyquyen: 50,
+    doanhthu: 500000000,
+    hanhchinhphi: 50000000,
+    mucnhuanbut: 450000000,
+    ngaychot: '20/10/2021',
+    tenbaihat: 'Bài hát 1',
+    donvikhaithac: 'Nhà sản xuất 1',
+    soluotphat: 100,
+  },
+];
 export {
   mySong,
   mySchecule,
@@ -435,4 +520,5 @@ export {
   myCategorySong,
   myConfig,
   myRole,
+  myIncome,
 };

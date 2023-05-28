@@ -45,6 +45,12 @@ import InfoCreation from './pages/Setting/InfoCreation';
 import SettingContract from './pages/Setting/SettingContract';
 import Configuration from './pages/Setting/Configuration';
 import Permission from './pages/Setting/Permission';
+import EditUser from './components/Setting/EditUser';
+import AddUser1 from './components/Setting/AddUser';
+import UpdateRole from './components/Setting/UpdateRole';
+import AddRole from './components/Setting/AddRole';
+import Distribution from './pages/Income/Distribution';
+import DetailDistribution from './pages/Income/DetailDistribution';
 
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -210,6 +216,22 @@ const myPath = [
     ),
   },
   {
+    path: '/income/distribution',
+    element: (
+      <MainLayout>
+        <Distribution />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/income/distribution/detail',
+    element: (
+      <MainLayout>
+        <DetailDistribution />
+      </MainLayout>
+    ),
+  },
+  {
     path: '/setting/period',
     element: (
       <MainLayout>
@@ -238,6 +260,38 @@ const myPath = [
     element: (
       <MainLayout>
         <Permission />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/setting/edit-user',
+    element: (
+      <MainLayout>
+        <EditUser />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/setting/add-user',
+    element: (
+      <MainLayout>
+        <AddUser1 />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/setting/update-role',
+    element: (
+      <MainLayout>
+        <UpdateRole />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/setting/add-role',
+    element: (
+      <MainLayout>
+        <AddRole />
       </MainLayout>
     ),
   },

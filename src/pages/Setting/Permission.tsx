@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 import { Input } from 'antd';
 import { PartnerAuthorizer, myPartner } from '../../myData';
 import Page from '../../components/Page';
-import ListUser from '../../components/ListUser';
-import ListRole from '../../components/ListRole';
+import ListUser from '../../components/Setting/ListUser';
+import ListRole from '../../components/Setting/ListRole';
 
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
@@ -18,11 +18,11 @@ const Permission = () => {
   return (
     <Wrapper>
       <div className="content">
-        <h4 style={{ color: 'white' }}>
+        <p style={{ color: 'white', opacity: '0.5' }}>
           Cài đặt
-          <RightOutlined />
+          <RightOutlined style={{ color: '#FFAC69' }} />
           Phân quyền người dùng
-        </h4>
+        </p>
         {!isRole ? (
           <h1>Danh sách người dùng</h1>
         ) : (
@@ -54,12 +54,12 @@ const Permission = () => {
         {isRole ? <ListRole /> : <ListUser />}
       </div>
       {isRole ? (
-        <Link to="/new-contract" className="link-option">
+        <Link to="/setting/add-role" className="link-option">
           <PlusCircleOutlined />
           <p>Thêm vai trò</p>
         </Link>
       ) : (
-        <Link to="/new-contract" className="link-option">
+        <Link to="/setting/add-user" className="link-option">
           <PlusCircleOutlined />
           <p>
             Thêm người <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dùng

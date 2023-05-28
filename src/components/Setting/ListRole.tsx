@@ -1,11 +1,12 @@
 import React from 'react';
 import { List, Switch, Row, Col } from 'antd';
-import { Role, myRole } from '../myData';
+import { Role, myRole } from '../../myData';
 import { Link } from 'react-router-dom';
-import Page from './Page';
+import Page from '../Page';
 import styled from 'styled-components';
 
 const ListRole = () => {
+  const [isUpdate, setIsUpdate] = React.useState(false);
   return (
     <Container>
       <Row className="row-1">
@@ -60,7 +61,7 @@ const ListRole = () => {
                 }}
               >
                 <Link
-                  to=""
+                  to="/setting/update-role"
                   style={{
                     background: 'transparent',
                     border: 'none',
