@@ -56,6 +56,7 @@ import DetailInCome from './pages/Income/DetailInCome';
 import DetailInComeProfit from './pages/Income/DetailInComeProfit';
 import HistorySync from './pages/Income/HistorySync';
 import History from './pages/Income/History';
+import AddDevice from './pages/Management/Equip/AddDevice';
 
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -105,6 +106,14 @@ const myPath = [
     element: (
       <MainLayout>
         <EquipManagement />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/management/equip/add',
+    element: (
+      <MainLayout>
+        <AddDevice />
       </MainLayout>
     ),
   },

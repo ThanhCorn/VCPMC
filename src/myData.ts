@@ -127,6 +127,8 @@ export interface Device {
   trangthai: boolean;
   thoigiandongbo: string;
   tongluotphat: number;
+  memory: string;
+  isCheck?: boolean;
 }
 
 const myDevice: Device[] = [
@@ -141,6 +143,8 @@ const myDevice: Device[] = [
     trangthai: true,
     thoigiandongbo: '10:00 20/10/2020',
     tongluotphat: 100,
+    memory: '0.00GB/32GB',
+    isCheck: false,
   },
   {
     stt: 2,
@@ -153,6 +157,8 @@ const myDevice: Device[] = [
     trangthai: false,
     thoigiandongbo: '10:00 20/10/2020',
     tongluotphat: 100,
+    memory: '0.00GB/32GB',
+    isCheck: false,
   },
   {
     stt: 3,
@@ -165,6 +171,8 @@ const myDevice: Device[] = [
     trangthai: true,
     thoigiandongbo: '10:00 20/10/2020',
     tongluotphat: 100,
+    memory: '0.00GB/32GB',
+    isCheck: false,
   },
   {
     stt: 4,
@@ -177,6 +185,8 @@ const myDevice: Device[] = [
     trangthai: true,
     thoigiandongbo: '10:00 20/10/2020',
     tongluotphat: 100,
+    memory: '0.00GB/32GB',
+    isCheck: false,
   },
 ];
 

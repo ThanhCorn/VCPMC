@@ -33,6 +33,7 @@ import { Song, mySong } from '../../myData';
 import ImageSong from '../../assets/Song.png';
 import { Menu, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
+import Page from '../../components/Page';
 
 const items: MenuProps['items'] = [
   {
@@ -286,11 +287,7 @@ export default function AddPlaylist() {
                 </span>{' '}
                 hàng trong mỗi trang
               </p>
-              <Pagination
-                defaultCurrent={1}
-                total={100}
-                style={{ marginRight: '20px' }}
-              />
+              <Page data={mySong} />
             </div>
           </div>
         </Container>
