@@ -52,6 +52,10 @@ import AddRole from './components/Setting/AddRole';
 import Distribution from './pages/Income/Distribution';
 import DetailDistribution from './pages/Income/DetailDistribution';
 import InCome from './pages/Income/InCome';
+import DetailInCome from './pages/Income/DetailInCome';
+import DetailInComeProfit from './pages/Income/DetailInComeProfit';
+import HistorySync from './pages/Income/HistorySync';
+import History from './pages/Income/History';
 
 interface ProtectedRouteProps {
   element: React.ReactNode;
@@ -237,6 +241,38 @@ const myPath = [
     element: (
       <MainLayout>
         <InCome />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/income/detail',
+    element: (
+      <MainLayout>
+        <DetailInCome />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/income/detail/profit',
+    element: (
+      <MainLayout>
+        <DetailInComeProfit />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/income/history-sync',
+    element: (
+      <MainLayout>
+        <HistorySync />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/income/history',
+    element: (
+      <MainLayout>
+        <History />
       </MainLayout>
     ),
   },

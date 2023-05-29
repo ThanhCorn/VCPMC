@@ -19,6 +19,7 @@
     "@types/redux-thunk": "^2.1.0",
     "@types/toastify-js": "^1.11.1",
     "antd": "^5.4.6",
+    "axios": "^1.4.0",
     "chart.js": "^4.3.0",
     "dayjs": "^1.11.7",
     "firebase": "^9.21.0",

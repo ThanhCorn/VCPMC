@@ -228,7 +228,14 @@ const items: MenuItem[] = [
       undefined,
       '/income',
     ),
-    getItem('Lịch sử đối soát', '10'),
+    getItem(
+      'Lịch sử đối soát',
+      '10',
+      undefined,
+      undefined,
+      undefined,
+      '/income/history',
+    ),
     getItem(
       'Phấn phối doanh thu',
       '11',

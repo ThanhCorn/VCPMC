@@ -124,6 +124,9 @@ export interface Device {
   donvisudung: string;
   tendangnhap: string;
   diadiem: string;
+  trangthai: boolean;
+  thoigiandongbo: string;
+  tongluotphat: number;
 }
 
 const myDevice: Device[] = [
@@ -135,6 +138,9 @@ const myDevice: Device[] = [
     donvisudung: 'Cửa hàng 1',
     tendangnhap: 'User 25',
     diadiem: '194, Nguyễn Thị Minh Khai, Phường 6 , Quận 3 ,TP Hồ Chí Minh',
+    trangthai: true,
+    thoigiandongbo: '10:00 20/10/2020',
+    tongluotphat: 100,
   },
   {
     stt: 2,
@@ -144,6 +150,9 @@ const myDevice: Device[] = [
     donvisudung: 'Cửa hàng 2',
     tendangnhap: 'User 32',
     diadiem: '194, Nguyễn Thị Minh Khai, Phường 6 , Quận 3 ,TP Hồ Chí Minh',
+    trangthai: false,
+    thoigiandongbo: '10:00 20/10/2020',
+    tongluotphat: 100,
   },
   {
     stt: 3,
@@ -153,6 +162,9 @@ const myDevice: Device[] = [
     donvisudung: 'Cửa hàng 3',
     tendangnhap: 'User 2',
     diadiem: '194, Nguyễn Thị Minh Khai, Phường 6 , Quận 3 ,TP Hồ Chí Minh',
+    trangthai: true,
+    thoigiandongbo: '10:00 20/10/2020',
+    tongluotphat: 100,
   },
   {
     stt: 4,
@@ -162,6 +174,9 @@ const myDevice: Device[] = [
     donvisudung: 'Cửa hàng 4',
     tendangnhap: 'User 21',
     diadiem: '86/33, Âu Cơ, Phường 9, Tân Bình, TP Hồ Chí Minh',
+    trangthai: true,
+    thoigiandongbo: '10:00 20/10/2020',
+    tongluotphat: 100,
   },
 ];
 
@@ -440,6 +455,12 @@ export interface Income {
   tenbaihat: string;
   donvikhaithac: string;
   soluotphat: number;
+  thoihanhopdong: string;
+  loaihopdong: string;
+  sothietbidongbo: string;
+  tongsoluotphat: number;
+  danhsachbaihat: string;
+  doanhthuchuaphanphoi: number;
 }
 
 const myIncome: Income[] = [
@@ -455,6 +476,12 @@ const myIncome: Income[] = [
     tenbaihat: 'Bài hát 1',
     donvikhaithac: 'Nhà sản xuất 1',
     soluotphat: 100,
+    thoihanhopdong: '20/10/2021',
+    loaihopdong: 'Trọn gói',
+    sothietbidongbo: '5/7',
+    tongsoluotphat: 100,
+    danhsachbaihat: 'Bài hát 1',
+    doanhthuchuaphanphoi: 100000000,
   },
   {
     stt: 2,
@@ -464,11 +491,16 @@ const myIncome: Income[] = [
     doanhthu: 200000000,
     hanhchinhphi: 20000000,
     mucnhuanbut: 180000000,
-
+    danhsachbaihat: 'Bài hát 2',
     ngaychot: '20/10/2021',
     tenbaihat: 'Bài hát 1',
     donvikhaithac: 'Nhà sản xuất 1',
     soluotphat: 100,
+    thoihanhopdong: '20/10/2021',
+    loaihopdong: 'Trọn gói',
+    sothietbidongbo: '7/7',
+    tongsoluotphat: 100,
+    doanhthuchuaphanphoi: 200000000,
   },
   {
     stt: 3,
@@ -476,13 +508,18 @@ const myIncome: Income[] = [
     nguoiuyquyen: 'Nguyễn Văn C',
     sobaihatuyquyen: 30,
     doanhthu: 300000000,
-
+    danhsachbaihat: 'Bài hát 3',
     hanhchinhphi: 30000000,
     mucnhuanbut: 270000000,
     ngaychot: '20/10/2021',
     tenbaihat: 'Bài hát 1',
     donvikhaithac: 'Nhà sản xuất 1',
     soluotphat: 100,
+    thoihanhopdong: '20/10/2021',
+    loaihopdong: 'Trọn gói',
+    sothietbidongbo: '7/7',
+    tongsoluotphat: 100,
+    doanhthuchuaphanphoi: 300000000,
   },
   {
     stt: 4,
@@ -492,11 +529,16 @@ const myIncome: Income[] = [
     doanhthu: 400000000,
     hanhchinhphi: 40000000,
     mucnhuanbut: 360000000,
-
+    danhsachbaihat: 'Bài hát 4',
     ngaychot: '20/10/2021',
     tenbaihat: 'Bài hát 1',
     donvikhaithac: 'Nhà sản xuất 1',
     soluotphat: 100,
+    thoihanhopdong: '20/10/2021',
+    loaihopdong: 'Theo lượt phát',
+    sothietbidongbo: '7/7',
+    tongsoluotphat: 100,
+    doanhthuchuaphanphoi: 400000000,
   },
   {
     stt: 5,
@@ -510,6 +552,12 @@ const myIncome: Income[] = [
     tenbaihat: 'Bài hát 1',
     donvikhaithac: 'Nhà sản xuất 1',
     soluotphat: 100,
+    thoihanhopdong: '20/10/2021',
+    loaihopdong: 'Theo lượt phát',
+    sothietbidongbo: '7/7',
+    tongsoluotphat: 100,
+    danhsachbaihat: 'Bài hát 5',
+    doanhthuchuaphanphoi: 500000000,
   },
 ];
 export {

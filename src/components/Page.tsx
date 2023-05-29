@@ -19,7 +19,9 @@ const Page: React.FC<PageProps> = ({ data }) => {
         padding: '0 23px',
       }}
     >
-      <p style={{ display: 'flex', letterSpacing: ' 0.015em' }}>
+      <p
+        style={{ display: 'flex', letterSpacing: ' 0.015em', fontSize: '12px' }}
+      >
         Hiển thị{' '}
         <span
           style={{

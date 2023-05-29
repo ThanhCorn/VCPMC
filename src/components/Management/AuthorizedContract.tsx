@@ -10,10 +10,14 @@ import styled from 'styled-components';
 import { toast } from 'react-toastify';
 import 'firebase/firestore';
 import InfoContract from './FormContract';
-import { DataContext } from '../../context/DataContext';
+import { DataContext, DataProps } from '../../context/DataContext';
 import AuthoritySong from './AuthoritySong';
 import { Link } from 'react-router-dom';
 import Page from '../Page';
+import { AppDispatch, RootState } from '../../app/store';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { fetchData } from '../../features/layoutSlice';
 
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
@@ -43,8 +47,14 @@ type Props = {
 const AuthorizedContract = ({ children }: Props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isInfoOrAuthority, setIsisInfoOrAuthority] = useState(false);
-  const { data } = useContext(DataContext);
-  const HieuLucHopDong = data.length > 0 ? data[0]['Hiệu lực hợp đồng'] : [];
+  const dispatch: AppDispatch = useDispatch();
+  const data2 = useSelector<RootState, DataProps[]>(
+    (state) => state.view.data2,
+  );
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+  const HieuLucHopDong = data2.length > 0 ? data2[0]['Hiệu lực hợp đồng'] : [];
   const HieuLucHopDongOptions = HieuLucHopDong.map((option, index) => ({
     label: option,
     key: index.toString(),
@@ -118,7 +128,7 @@ const AuthorizedContract = ({ children }: Props) => {
             }}
             itemLayout="horizontal"
           >
-            {data.map((item, index) => (
+            {data2.map((item, index) => (
               <List.Item key={item['STT']} style={{ color: '#fff' }}>
                 <List.Item.Meta
                   title={`${index === 0 ? 'STT' : ''}`}
@@ -189,7 +199,7 @@ const AuthorizedContract = ({ children }: Props) => {
                 </div>
               </List.Item>
             ))}
-            <Page data={data} />
+            <Page data={data2} />
           </List>
         </Container>
         <div className="side-option">

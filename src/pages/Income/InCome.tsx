@@ -224,7 +224,7 @@ const InCome = () => {
           </div>
         </div>
       </div>
-      <Link to="" className="link-option">
+      <Link to="/income/detail" className="link-option">
         <PlusCircleOutlined />
         <p>Xuất dữ liệu</p>
       </Link>

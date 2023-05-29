@@ -13,25 +13,10 @@ const onChange = (e: CheckboxChangeEvent) => {
   console.log(`checked = ${e.target.checked}`);
 };
 
-const { TextArea } = Input;
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
 const DetailProduct: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const { data } = useContext(DataContext);
-  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
 
   return (
     <Wrapper>
@@ -393,126 +378,6 @@ const ModalContent = styled(Modal)`
     }
     .ant-btn-primary {
       background: #ff7506 !important;
-    }
-  }
-`;
-const Container = styled.div`
-  position: relative;
-  display: grid;
-  padding-right: 0px !important;
-  grid-template-columns: 1fr 1fr 1fr;
-  .info-1 {
-    display: flex;
-    flex-direction: column;
-    .info-content-1,
-    .info-content-2 {
-      h4 {
-        margin: 0 0 0 10px;
-        color: #fff;
-        font-weight: 700;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        p {
-          flex: 1;
-          display: flex;
-          transform: translateX(10px);
-          color: #fff;
-          font-weight: 400;
-          opacity: 0.7;
-        }
-      }
-    }
-    .info-content-2 {
-      h3 {
-        color: #ffac69;
-        margin-left: 10px;
-        margin-bottom: 0;
-        margin-top: 40px;
-      }
-    }
-  }
-  .info-2 {
-    display: flex;
-    flex-direction: column;
-    .info-content-1,
-    .info-content-2 {
-      h4 {
-        margin: 0 0 0 10px;
-        color: #fff;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        p {
-          transform: translateX(10px);
-          color: #fff;
-          font-weight: 400;
-          opacity: 0.7;
-        }
-      }
-    }
-    .info-content-1 {
-      height: 250px;
-    }
-    .info-content-2 {
-      margin-top: 60px;
-    }
-  }
-  .info-3 {
-    display: flex;
-    flex-direction: column;
-    .info-content-1,
-    .info-content-2 {
-      h4 {
-        margin: 0 0 0 10px;
-        color: #fff;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        p {
-          transform: translateX(10px);
-          color: #fff;
-          font-weight: 400;
-          opacity: 0.7;
-        }
-      }
-    }
-    .info-content-1 {
-      height: 250px;
-    }
-    .info-content-2 {
-      margin-top: 60px;
-    }
-  }
-  .info-4 {
-    position: absolute;
-    background-color: #2f2f41;
-    top: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 330px;
-    width: 110px;
-    background: #2f2f41;
-    border: 0px;
-    margin-right: -24px;
-    .icon {
-      margin-top: 10px;
-      margin-left: 20px;
-      font-size: 1.5rem;
-      width: 52px;
-      height: 52px;
-      color: #ff7506;
-      background: rgba(114, 114, 136, 0.5);
-      border-radius: 67px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    button {
-      background: #2f2f41;
-      cursor: pointer;
     }
   }
 `;
