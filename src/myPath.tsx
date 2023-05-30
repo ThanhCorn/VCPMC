@@ -50,6 +50,8 @@ import HistorySync from './pages/Income/HistorySync';
 import History from './pages/Income/History';
 import AddDevice from './pages/Management/Equip/AddDevice';
 import InfoDevice from './pages/Management/Equip/InfoDevice';
+import InfoMiningContract from './pages/Management/Contract/InfoMiningContract';
+import CopyContract from './pages/Management/Contract/CopyContract';
 
 export const myPath = [
   {
@@ -150,10 +152,18 @@ export const myPath = [
     ),
   },
   {
-    path: '/management/contract/1',
+    path: '/management/contract/detail-authority',
     element: (
       <MainLayout>
         <InfoContract />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/management/contract/detail-mining',
+    element: (
+      <MainLayout>
+        <InfoMiningContract />
       </MainLayout>
     ),
   },
@@ -162,6 +172,22 @@ export const myPath = [
     element: (
       <MainLayout>
         <InfoContractDetail />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/management/contract/copy',
+    element: (
+      <MainLayout>
+        <CopyContract />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/management/contract/detail-mining',
+    element: (
+      <MainLayout>
+        <InfoMiningContract />
       </MainLayout>
     ),
   },

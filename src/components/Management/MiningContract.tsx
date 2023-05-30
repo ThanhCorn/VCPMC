@@ -119,19 +119,21 @@ const MiningContract = () => {
                 />
                 <div>
                   <Link
-                    to="/management/contract/1"
+                    to="/management/contract/detail-mining"
                     style={{
                       background: 'transparent',
                       border: 'none',
                       textDecoration: 'underline',
                       color: '#ff7506',
                       cursor: 'pointer',
+                      marginRight: '10px',
                     }}
                   >
                     Xem chi tiết
                   </Link>
 
-                  <button
+                  <Link
+                    to="/management/contract/copy"
                     style={{
                       background: 'transparent',
                       border: 'none',
@@ -141,12 +143,12 @@ const MiningContract = () => {
                     }}
                   >
                     Sao chép hợp đồng
-                  </button>
+                  </Link>
                 </div>
               </List.Item>
             ))}
-            <Page data={data} />
           </List>
+          <Page data={data} />
         </Container>
       </Wrapper>
     </>
@@ -154,7 +156,6 @@ const MiningContract = () => {
 };
 
 const Wrapper = styled.div`
-  position: relative;
   margin-bottom: 20px;
   button {
     height: 48px;
@@ -248,6 +249,7 @@ const Container = styled.div`
   top: 100px;
   left: 0;
   .ant-list {
+    height: 300px;
     width: 1533px !important;
     max-height: 727px;
   }

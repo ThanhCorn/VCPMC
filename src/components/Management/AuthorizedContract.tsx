@@ -60,28 +60,6 @@ const AuthorizedContract = ({ children }: Props) => {
     key: index.toString(),
   }));
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-    toast.success('🦄 Đổi mật khẩu thành công!', {
-      position: 'bottom-center',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: 'light',
-    });
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <>
       <Wrapper className="option">
@@ -171,7 +149,7 @@ const AuthorizedContract = ({ children }: Props) => {
                 />
                 <div style={{ width: '170px' }}>
                   <Link
-                    to="/management/contract/1"
+                    to="/management/contract/detail-authority"
                     style={{
                       background: 'transparent',
                       border: 'none',
@@ -199,58 +177,9 @@ const AuthorizedContract = ({ children }: Props) => {
                 </div>
               </List.Item>
             ))}
-            <Page data={data2} />
           </List>
+          <Page data={data2} />
         </Container>
-        <div className="side-option">
-          <ModalContainer
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              bottom: 0,
-              right: 0,
-            }}
-            width={1800}
-            open={isModalOpen}
-            onOk={handleOk}
-            onCancel={handleCancel}
-            footer={null}
-          >
-            <p style={{ color: 'white' }}>
-              Quản lý <RightOutlined /> Quản lý hợp đồng <RightOutlined /> Chi
-              tiết
-            </p>
-            {!isInfoOrAuthority ? (
-              <h1 style={{ color: 'white' }}>
-                Chi tiết hợp đồng uỷ quyền bài hát - BH123
-              </h1>
-            ) : (
-              <h1 style={{ color: 'white' }}>
-                Hợp đồng uỷ quyền bài hát - BH123
-              </h1>
-            )}
-            <div className="btn">
-              <Button
-                type="primary"
-                onClick={() => setIsisInfoOrAuthority(false)}
-                className={`button-1 ${!isInfoOrAuthority ? 'active' : ''}`}
-              >
-                Thông tin hợp đồng
-              </Button>
-              <Button
-                onClick={() => setIsisInfoOrAuthority(true)}
-                type="primary"
-                className={`button-2 ${isInfoOrAuthority ? 'active' : ''}`}
-              >
-                Tác phẩm ủy quyền
-              </Button>
-            </div>
-            <div>
-              {isInfoOrAuthority ? <AuthoritySong /> : <InfoContract />}
-            </div>
-          </ModalContainer>
-        </div>
       </Wrapper>
     </>
   );
@@ -263,7 +192,6 @@ const Wrapper = styled.div`
     height: 48px;
   }
   display: flex;
-  position: relative;
   align-items: center;
   .option-1 {
     width: 50%;
@@ -383,10 +311,10 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   position: absolute;
-
   top: 100px;
   left: 0;
   .ant-list {
+    height: 300px;
     width: 1533px !important;
     max-height: 727px;
   }
