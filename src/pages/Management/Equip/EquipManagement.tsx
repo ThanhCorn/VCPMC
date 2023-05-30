@@ -21,9 +21,12 @@ import {
 } from '@ant-design/icons';
 import { Device, myDevice } from '../../../myData';
 import Page from '../../../components/Page';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { CheckboxChangeEvent } from 'antd/lib/checkbox';
 import { FaTrash } from 'react-icons/fa';
+import InfoDevice from './InfoDevice';
+import MainLayout from '../../MainLayout';
+import { set } from 'immer/dist/internal';
 const { Search } = Input;
 const onSearch = (value: string) => console.log(value);
 
@@ -84,21 +87,53 @@ const items2: MenuProps['items'] = [
 const EquipManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [myData, setMyData] = useState<Device[]>(myDevice);
+  const [selectedDevice, setSelectedDevice] = useState<Device | null>(null);
+  const navigate = useNavigate();
   const onChange = (event: CheckboxChangeEvent, song: Device) => {
     const { checked } = event.target;
 
     if (checked) {
       song.isCheck = true;
+      setSelectedDevice(song);
     } else {
+      setSelectedDevice(null);
       song.isCheck = false;
     }
   };
-  useEffect(() => {}, [myData]);
 
   const handleDelete = () => {
     const newData = myData.filter((item) => item.isCheck !== true);
     setMyData(newData);
   };
+
+  const infoDevice = (song: Device) => {
+    setSelectedDevice(song);
+    navigate(`/management/equip/${song.stt}`);
+  };
+  const handleClockDevice = () => {
+    const newData = myData.map((item) => {
+      if (item.isCheck === true) {
+        return { ...item, trangthai: false };
+      }
+      return item;
+    });
+    setMyData(newData);
+    setSelectedDevice(null);
+  };
+
+  const handleStopDevice = () => {
+    const newData = myData.map((item) => {
+      if (item.isCheck === true) {
+        // Omit the trangthai property
+        const { trangthai, ...rest } = item;
+        return rest;
+      }
+      return item;
+    });
+    setMyData(newData);
+    setSelectedDevice(null);
+  };
+  useEffect(() => {}, [selectedDevice, myData]);
   return (
     <Wrapper>
       <div className="content">
@@ -131,7 +166,6 @@ const EquipManagement = () => {
         <Container>
           <Row className="row-1">
             <Checkbox />
-
             <Col span={1} style={{ marginLeft: '10px' }}>
               <p>STT</p>
             </Col>
@@ -162,12 +196,23 @@ const EquipManagement = () => {
                 key={song.stt}
                 style={{ alignItems: 'center', display: 'flex' }}
               >
-                <Row className="row-2">
+                <Row
+                  className="row-2"
+                  onClick={(event) => {
+                    const target = event.target as HTMLElement;
+                    if (target.tagName.toLowerCase() === 'input') {
+                      return; // Skip the onClick event if the target is an input element (checkbox)
+                    }
+                    infoDevice(song);
+                  }}
+                >
                   <Col span={1}>
                     <p style={{ marginLeft: '18px' }}>
                       {' '}
                       <Checkbox
-                        onChange={(event) => onChange(event, song)}
+                        onChange={(event) => {
+                          onChange(event, song);
+                        }}
                         style={{ marginLeft: '-10px', marginRight: '10px' }}
                       />
                       {song.stt}
@@ -178,9 +223,9 @@ const EquipManagement = () => {
                   </Col>
                   <Col span={4}>
                     <p>{`${
-                      song.trangthai
-                        ? 'Đang hoạt động | Đang kích hoạt'
-                        : 'Ngưng hoạt động | Ngưng kích hoạt'
+                      (song.trangthai === true && 'Đang kích hoạt') ||
+                      (song.trangthai === false && 'Đang bị khóa') ||
+                      (song?.trangthai === undefined && 'Ngừng kích hoạt')
                     }`}</p>
                   </Col>
                   <Col span={8}>
@@ -214,17 +259,29 @@ const EquipManagement = () => {
             </div>
             <p>Thêm thiết bị</p>
           </Link>
-          <Button className="button-option">
-            <div className="icon">
-              <MehOutlined />
-            </div>
-            <p>
-              Kích hoạt <br />
-              thiết bị
-            </p>
-          </Button>
+          {selectedDevice?.isCheck === true ? (
+            <Button onClick={handleStopDevice} className="button-option">
+              <div className="icon">
+                <MehOutlined />
+              </div>
+              <p>
+                Ngưng kích <br />
+                hoạt thiết bị
+              </p>
+            </Button>
+          ) : (
+            <Button className="button-option">
+              <div className="icon">
+                <MehOutlined />
+              </div>
+              <p>
+                Kích hoạt <br />
+                thiết bị
+              </p>
+            </Button>
+          )}
 
-          <Button className="button-option">
+          <Button onClick={handleClockDevice} className="button-option">
             <div className="icon">
               <ClockCircleFilled />
             </div>

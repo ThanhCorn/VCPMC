@@ -10,6 +10,10 @@ import Theme1 from './assets/theme1.jpg';
 import Theme2 from './assets/theme2.jpg';
 import Theme3 from './assets/theme3.jpg';
 import Theme4 from './assets/theme4.jpg';
+import d1 from './assets/d1.jpg';
+import d2 from './assets/d2.jpg';
+import d3 from './assets/d3.jpg';
+import d4 from './assets/d4.jpg';
 
 export interface Song {
   stt?: number;
@@ -117,23 +121,24 @@ export interface Schecule {
 }
 
 export interface Device {
-  stt: number;
+  stt: string;
   tenthietbi: string;
   MACAdress: string;
   SKUID: string;
   donvisudung: string;
   tendangnhap: string;
   diadiem: string;
-  trangthai: boolean;
+  trangthai?: boolean;
   thoigiandongbo: string;
   tongluotphat: number;
   memory: string;
   isCheck?: boolean;
+  img: string;
 }
 
 const myDevice: Device[] = [
   {
-    stt: 1,
+    stt: '1',
     tenthietbi: 'Device A12321',
     MACAdress: '192.168.1.8',
     SKUID: '232124264',
@@ -145,9 +150,10 @@ const myDevice: Device[] = [
     tongluotphat: 100,
     memory: '0.00GB/32GB',
     isCheck: false,
+    img: d1,
   },
   {
-    stt: 2,
+    stt: '2',
     tenthietbi: 'Device A12323',
     MACAdress: '192.168.1.6',
     SKUID: '232124262',
@@ -159,9 +165,10 @@ const myDevice: Device[] = [
     tongluotphat: 100,
     memory: '0.00GB/32GB',
     isCheck: false,
+    img: d2,
   },
   {
-    stt: 3,
+    stt: '3',
     tenthietbi: 'Device A123161',
     MACAdress: '192.168.1.1',
     SKUID: '232124264',
@@ -173,9 +180,10 @@ const myDevice: Device[] = [
     tongluotphat: 100,
     memory: '0.00GB/32GB',
     isCheck: false,
+    img: d3,
   },
   {
-    stt: 4,
+    stt: '4',
     tenthietbi: 'Device A125353',
     MACAdress: '192.168.1.2',
     SKUID: '232124264',
@@ -187,6 +195,7 @@ const myDevice: Device[] = [
     tongluotphat: 100,
     memory: '0.00GB/32GB',
     isCheck: false,
+    img: d4,
   },
 ];
 
