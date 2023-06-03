@@ -1,8 +1,19 @@
 import styled from 'styled-components';
-import { RightOutlined } from '@ant-design/icons';
+import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
 import { Button, Form, Input, Select } from 'antd';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
+import { Link } from 'react-router-dom';
+import { nanoid } from 'nanoid';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from '@firebase/firestore';
+import { db } from '../../firebase';
 
 const { Option } = Select;
 
@@ -13,19 +24,32 @@ const options = [
   { value: 'other', label: 'Khác' },
 ];
 
+interface FormData {
+  issue: string;
+  content: string;
+}
+
 const Feedback = () => {
   const [form] = Form.useForm();
   const { currentUser } = useContext(UserContext);
+  console.log(currentUser);
 
-  const handleSubmit = () => {
+  const handleSubmit = async (values: FormData) => {
+    const feedback = { ...values, id: nanoid() };
+    await addDoc(collection(db, 'users'), feedback);
+
     form.resetFields();
   };
   return (
     <Wrapper>
       <div className="content">
-        <h4 style={{ color: 'white' }}>
-          Hổ trợ <RightOutlined /> Feedback
-        </h4>
+        <div className="header-text">
+          <span>
+            {' '}
+            Hổ trợ <RightOutlined />
+          </span>
+          <span> Feedback</span>
+        </div>
         <h1>Feedback</h1>
         <div
           style={{
@@ -52,9 +76,7 @@ const Feedback = () => {
                   background: '#727288',
                   border: 'none',
                 }}
-                placeholder={
-                  currentUser?.displayName ? currentUser.displayName : ''
-                }
+                value={currentUser?.displayName ? currentUser.displayName : ''}
                 disabled
               />
             </Form.Item>
@@ -115,6 +137,10 @@ const Feedback = () => {
             </Form.Item>
           </Form>
         </div>
+        <Link to="/help/watch-feedback" className="link-option">
+          <PlusCircleOutlined />
+          <p>Xem Feedback</p>
+        </Link>
       </div>
     </Wrapper>
   );
@@ -133,6 +159,53 @@ const Wrapper = styled.div`
     margin-left: 50px;
     margin-right: 70px;
     flex: 1;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
+    .link-option {
+      flex-direction: column;
+      position: fixed;
+      top: 30%;
+      right: 0;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      background: #2f2f41;
+      border: none;
+      width: 110px;
+      height: 130px;
+      .icon {
+        background-color: rgba(114, 114, 136, 0.5);
+        margin-left: 15px;
+        width: 50px;
+        font-size: 2rem;
+        border: 1px solid rgba(114, 114, 136, 0.5);
+        border-radius: 50%;
+      }
+      p {
+        color: #fff;
+        opacity: 0.5;
+        font-size: 12px;
+      }
+      svg {
+        color: #ff7506;
+
+        font-size: 2rem;
+        margin-left: 7px;
+      }
+    }
     label {
       color: white;
     }

@@ -1,84 +1,79 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { auth } from '../firebase';
+import firebase from 'firebase/compat/app';
+import 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  query,
+  onSnapshot,
+  Timestamp,
+  doc,
+} from 'firebase/firestore';
+import { db } from '../firebase';
 
-interface User {
-  displayName: string | null;
-  email: string | null;
-  photoURL: string | null;
-  uid: string;
-  phoneNumber: string | null;
-  datePorn: string | null;
+export interface DataProps {
+  STT: number;
+  'Số hợp đồng': string;
+  'Tên hợp đồng': string;
+  'Quyền sở hữu': string;
+  'Người ủy quyền': string;
+  'Ngày tạo': firebase.firestore.Timestamp;
+  'Ngày hết hạn': firebase.firestore.Timestamp;
+  'Ngày hiệu lực': firebase.firestore.Timestamp;
+  'Khách hàng': string;
+  'Hiệu lực hợp đồng': string[];
+  'Ngày tải': firebase.firestore.Timestamp;
+  'Tác giả': string;
+  'Tên bản ghi': string;
+  'Tình trạng': string[];
+  'Mã ISRC': string;
+  'Trạng thái': boolean;
+  'Tên tài khoản quản trị': string;
+  Admin: string;
+  'Người dùng': string;
+  'Thiết bị chỉ định': string;
 }
 
-interface UserContextValue {
-  currentUser: User | null;
-  setCurrentUser: (user: User | null) => void;
-  isLogin: boolean;
-  setIsLogin: (isLogin: boolean) => void;
+interface DataContextValue {
+  data: DataProps[];
+  setData: (data: DataProps[]) => void;
+  isKhoBanGhi: boolean;
+  setIsKhoBanGhi: (isKhoBanGhi: boolean) => void;
 }
 
-export const UserContext = createContext<UserContextValue>({
-  currentUser: null,
-  setCurrentUser: () => {},
-  isLogin: false,
-  setIsLogin: () => {},
+export const DataContext = createContext<DataContextValue>({
+  data: [],
+  setData: () => {},
+  isKhoBanGhi: true,
+  setIsKhoBanGhi: () => {},
 });
 
-export const useUser = () => useContext(UserContext);
+export const useData = () => useContext(DataContext);
 
-export const UserProvider: React.FC<React.PropsWithChildren> = ({
+export const DataProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [isLogin, setIsLogin] = useState<boolean>(() => {
-    const storedIsLogin = localStorage.getItem('isLogin');
-    return storedIsLogin ? JSON.parse(storedIsLogin) : false;
-  });
+  const [data, setData] = useState<DataProps[]>([]);
+  const [isKhoBanGhi, setIsKhoBanGhi] = useState<boolean>(true);
 
   useEffect(() => {
-    if (isLogin) {
-      const unsubscribe = auth.onAuthStateChanged((user) => {
-        if (user) {
-          const newData = user.providerData[0];
-          const providerData = { ...newData, datePorn: '10-12-2000' };
-          const { displayName, email, photoURL, uid, phoneNumber, datePorn } =
-            providerData;
-          setCurrentUser({
-            displayName: 'Ngoc Thanh',
-            email,
-            photoURL:
-              'https://pbs.twimg.com/profile_images/1534202050304614402/CCmKYCSS_400x400.jpg',
-            uid,
-            phoneNumber: '+84 123456789',
-            datePorn: '10-12-2000',
-          });
-        } else {
-          setCurrentUser(null);
-        }
+    const getData = async () => {
+      const q = query(collection(db, 'contract'));
+      const querySnapshot = await getDocs(q);
+      const tempData: DataProps[] = [];
+      querySnapshot.forEach((doc) => {
+        tempData.push(doc.data() as DataProps);
       });
-
-      return () => unsubscribe();
-    }
-  }, [isLogin]);
-
-  useEffect(() => {
-    localStorage.setItem('isLogin', JSON.stringify(isLogin));
-
-    // Clear user data from local storage after 1 minute
-    const clearUserData = setTimeout(() => {
-      setCurrentUser(null);
-      setIsLogin(false);
-      localStorage.removeItem('isLogin');
-    }, 6000000);
-
-    return () => clearTimeout(clearUserData);
-  }, [isLogin]);
-
+      setData(tempData);
+    };
+    getData();
+  }, []);
   return (
-    <UserContext.Provider
-      value={{ currentUser, setCurrentUser, isLogin, setIsLogin }}
+    <DataContext.Provider
+      value={{ data, setData, isKhoBanGhi, setIsKhoBanGhi }}
     >
       {children}
-    </UserContext.Provider>
+    </DataContext.Provider>
   );
 };
