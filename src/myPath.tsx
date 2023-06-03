@@ -52,6 +52,7 @@ import AddDevice from './pages/Management/Equip/AddDevice';
 import InfoDevice from './pages/Management/Equip/InfoDevice';
 import InfoMiningContract from './pages/Management/Contract/InfoMiningContract';
 import CopyContract from './pages/Management/Contract/CopyContract';
+import WatchFeedback from './pages/Help/WatchFeedback';
 
 export const myPath = [
   {
@@ -228,6 +229,14 @@ export const myPath = [
     element: (
       <MainLayout>
         <Feedback />
+      </MainLayout>
+    ),
+  },
+  {
+    path: '/help/watch-feedback',
+    element: (
+      <MainLayout>
+        <WatchFeedback />
       </MainLayout>
     ),
   },
