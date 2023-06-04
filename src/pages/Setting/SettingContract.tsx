@@ -17,10 +17,14 @@ const SettingContract = () => {
   return (
     <Wrapper>
       <div className="content">
-        <p style={{ opacity: '0.5' }}>
-          Cài đặt <RightOutlined style={{ color: 'var(--text-primary)' }} />{' '}
-          Quản lý loại hợp đồng{' '}
-        </p>
+        <div className="header-text">
+          <span>
+            {' '}
+            Cài đặt <RightOutlined />
+          </span>
+          <span> Quản lý loại hợp đồng </span>
+        </div>
+
         <h1>Loại hợp đồng</h1>
         {isExpired ? (
           <div className="board-expired">
@@ -321,6 +325,17 @@ const Wrapper = styled.div`
     width: 1541px;
     margin-top: 50px;
     margin-left: 50px;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     .board-2 {
       width: 600px;
       background: rgba(47, 47, 65, 0.7);

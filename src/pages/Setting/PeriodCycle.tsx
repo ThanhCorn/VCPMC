@@ -41,12 +41,18 @@ const PeriodCycle = () => {
   return (
     <Wrapper>
       <div className="content">
-        <p style={{ color: 'white', opacity: '0.5' }}>
-          Trang chủ
-          <RightOutlined style={{ color: 'var(--text-primary)' }} /> Cài đặt hệ
-          thống <RightOutlined style={{ color: 'var(--text-primary)' }} /> Thông
-          tin tác phẩm
-        </p>
+        <div className="header-text">
+          <span>
+            {' '}
+            Trang chủ
+            <RightOutlined />
+          </span>
+          <span>
+            Cài đặt hệ thống <RightOutlined />
+          </span>
+          <span>Thông tin tác phẩm</span>
+        </div>
+
         <h1>Cài đặt hệ thống</h1>
         <div className="content-radio">
           <h2>Cài đặt chu kì đối soát</h2>
@@ -132,6 +138,17 @@ const Wrapper = styled.div`
     margin-left: 50px;
     margin-right: 70px;
     flex: 1;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     .content-radio {
       display: flex;
       flex-direction: column;

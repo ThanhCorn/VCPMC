@@ -30,24 +30,24 @@ const InfoCreation = () => {
     <Wrapper>
       <div className="content">
         {!isEdit ? (
-          <>
-            <p style={{ opacity: '0.5' }}>
-              Trang chủ{' '}
-              <RightOutlined style={{ color: 'var(--text-primary)' }} /> Cài đặt
-              hệ thống{' '}
-            </p>
-            <h1>Cập nhật thông tin</h1>
-          </>
+          <div className="header-text">
+            <span>
+              {' '}
+              Trang chủ <RightOutlined />
+            </span>
+            <span> Cài đặt hệ thống </span>
+          </div>
         ) : (
-          <>
-            <p style={{ opacity: '0.5' }}>
+          <div className="header-text">
+            <span>
+              {' '}
               Cài đặt hệ thống
-              <RightOutlined style={{ color: 'var(--text-primary)' }} /> Chỉnh
-              sửa thông tin{' '}
-            </p>
-            <h1>Cập nhật thông tin</h1>
-          </>
+              <RightOutlined />
+            </span>
+            <span>Chỉnh sửa thông tin </span>
+          </div>
         )}
+        <h1>Thông tin tác phẩm</h1>
         <h3>Thể loại tác phẩm</h3>
         <Container>
           <Row className="row-1">
@@ -191,6 +191,17 @@ const Wrapper = styled.div`
     width: 1541px;
     margin-top: 50px;
     margin-left: 50px;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     .option {
       display: flex;
       flex-direction: column;

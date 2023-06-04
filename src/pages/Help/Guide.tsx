@@ -6,9 +6,14 @@ const Guide = () => {
   return (
     <Wrapper>
       <div className="content">
-        <h4 style={{ color: 'white' }}>
-          Hổ trợ <RightOutlined /> Hướng dẫn sử dụng
-        </h4>
+        <div className="header-text">
+          <span>
+            {' '}
+            Hổ trợ <RightOutlined />
+          </span>
+          <span>Hướng dẫn sử dụng</span>
+        </div>
+
         <h1>Hướng dẫn sử dụng</h1>
         <div style={{ display: 'flex' }}>
           <Space
@@ -225,22 +230,25 @@ const Wrapper = styled.div`
     margin-left: 50px;
     margin-right: 70px;
     flex: 1;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     h1 {
-      margin-top: -20px;
       width: 600px;
       height: 48px;
       font-size: 36px;
       line-height: 48px;
       color: #ffffff;
     }
-    h4 {
-      font-weight: 200;
-      opacity: 0.5;
-      font-size: 16px;
-      svg {
-        color: #ffac69;
-      }
-    }
+
     .space-1 {
       background: #2b2b3f;
       .ant-card-bordered {

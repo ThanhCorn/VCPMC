@@ -22,15 +22,25 @@ const DetailInComeProfit = () => {
   return (
     <Wrapper>
       <div className="content">
-        <p style={{ color: 'white', opacity: '0.5' }}>
-          Doanh thu
-          <RightOutlined style={{ color: '#FFAC69' }} />
-          Báo cáo doanh thu
-          <RightOutlined style={{ color: '#FFAC69' }} />
-          Báo cáo chi tiết
-          <RightOutlined style={{ color: '#FFAC69' }} />
-          Lích sử đồng bộ thiết bị
-        </p>
+        <div className="header-text">
+          <span>
+            {' '}
+            Doanh thu
+            <RightOutlined />
+          </span>
+          <span>
+            {' '}
+            Báo cáo doanh thu
+            <RightOutlined />
+          </span>
+          <span>
+            {' '}
+            Báo cáo chi tiết
+            <RightOutlined />
+          </span>
+          <span> Lịch sử đồng bộ thiết bị</span>
+        </div>
+
         <h1>Hợp đồng UQ123 - Kỳ tháng 3/2021 </h1>
         <div className="main-container">
           <div className="container-2">
@@ -245,26 +255,29 @@ const Wrapper = styled.div`
     margin-left: 50px;
     margin-right: 70px;
     flex: 1;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     .main-container {
       display: flex;
       width: 1541px;
     }
     h1 {
-      margin-top: -20px;
       width: 700px;
       height: 48px;
       font-size: 36px;
       line-height: 48px;
       color: #ffffff;
     }
-    h4 {
-      font-weight: 200;
-      opacity: 0.5;
-      font-size: 16px;
-      svg {
-        color: #ffac69;
-      }
-    }
+
     .search-btn {
       display: flex;
       flex-direction: column;

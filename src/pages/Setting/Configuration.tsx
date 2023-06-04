@@ -38,11 +38,15 @@ const Configuration = () => {
   return (
     <Wrapper>
       <div className="content">
-        <p style={{ opacity: '0.5' }}>
-          Cài đặt
-          <RightOutlined style={{ color: 'var(--text-primary)' }} /> Cài đặt hệ
-          thống{' '}
-        </p>
+        <div className="header-text">
+          <span>
+            {' '}
+            Cài đặt
+            <RightOutlined />
+          </span>
+          <span>Cài đặt hệ thống </span>
+        </div>
+
         <h1>Cài đặt cấu hình</h1>
 
         <Container>
@@ -168,6 +172,17 @@ const Wrapper = styled.div`
     width: 1541px;
     margin-top: 50px;
     margin-left: 50px;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     .option {
       display: flex;
       flex-direction: column

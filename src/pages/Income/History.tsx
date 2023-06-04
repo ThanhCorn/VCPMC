@@ -18,11 +18,13 @@ const History = () => {
   return (
     <Wrapper>
       <div className="content">
-        <p style={{ color: 'white', opacity: '0.5' }}>
-          Doanh thu
-          <RightOutlined style={{ color: '#FFAC69' }} />
-          Lịch sử đối soát
-        </p>
+        <div className="header-text">
+          <span>
+            Doanh thu
+            <RightOutlined />
+          </span>
+          <span> Lịch sử đối soát</span>
+        </div>
         <h1>Lịch sử đối soát doanh thu doanh thu</h1>
         <div className="search-btn">
           <div className="datepick">
@@ -188,22 +190,24 @@ const Wrapper = styled.div`
     margin-left: 50px;
     margin-right: 70px;
     flex: 1;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     h1 {
-      margin-top: -20px;
       width: 700px;
       height: 48px;
       font-size: 36px;
       line-height: 48px;
       color: #ffffff;
     }
-    h4 {
-      font-weight: 200;
-      opacity: 0.5;
-      font-size: 16px;
-      svg {
-        color: #ffac69;
-      }
-    }
+
     .search-btn {
       display: flex;
       justify-content: space-between;

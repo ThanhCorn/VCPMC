@@ -5,9 +5,13 @@ const DownloadApp = () => {
   return (
     <Wrapper>
       <div className="content">
-        <h4 style={{ color: 'white' }}>
-          Hổ trợ <RightOutlined /> Tải App
-        </h4>
+        <div className="header-text">
+          <span>
+            Hổ trợ <RightOutlined />
+          </span>
+          <span>Tải App</span>
+        </div>
+
         <h1>Tải App</h1>
         <div className="content-svg">
           <svg
@@ -302,22 +306,25 @@ const Wrapper = styled.div`
     margin-left: 50px;
     margin-right: 70px;
     flex: 1;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     h1 {
-      margin-top: -20px;
       width: 600px;
       height: 48px;
       font-size: 36px;
       line-height: 48px;
       color: #ffffff;
     }
-    h4 {
-      font-weight: 200;
-      opacity: 0.5;
-      font-size: 16px;
-      svg {
-        color: #ffac69;
-      }
-    }
+
     .content-download {
       display: flex;
       margin-top: 50px;
@@ -358,12 +365,12 @@ const Wrapper = styled.div`
     .svg-2 {
       position: fixed;
       right: 0;
-      transform: translate(-200%, 150%);
+      transform: translate(-200%, 70%);
     }
     .svg-3 {
       position: fixed;
       right: 0;
-      transform: translate(-250%, 200%);
+      transform: translate(-250%, 100%);
     }
     .svg-1 {
       position: fixed;
