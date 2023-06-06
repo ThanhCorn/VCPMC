@@ -1,170 +1,150 @@
-import styled from 'styled-components';
-import type { MenuProps } from 'antd';
-import React, { useState, useEffect } from 'react';
-import {
-  Button,
-  Checkbox,
-  Dropdown,
-  Space,
-  Input,
-  Modal,
-  Row,
-  Col,
-  List,
-} from 'antd';
-import {
-  ClockCircleFilled,
-  DownOutlined,
-  FormOutlined,
-  MehOutlined,
-  PlusOutlined,
-} from '@ant-design/icons';
-import { Device, myDevice } from '../../../myData';
-import Page from '../../../components/Page';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { CheckboxChangeEvent } from 'antd/lib/checkbox';
-import { FaTrash } from 'react-icons/fa';
-import InfoDevice from './InfoDevice';
-import MainLayout from '../../MainLayout';
-import { set } from 'immer/dist/internal';
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+import styled from 'styled-components'
+import type { MenuProps } from 'antd'
+import React, { useState, useEffect } from 'react'
+import { Button, Checkbox, Dropdown, Space, Input, Modal, Row, Col, List } from 'antd'
+import { ClockCircleFilled, DownOutlined, FormOutlined, MehOutlined, PlusOutlined } from '@ant-design/icons'
+import { Device, myDevice } from '../../../myData'
+import Page from '../../../components/Page'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { CheckboxChangeEvent } from 'antd/lib/checkbox'
+import { FaTrash } from 'react-icons/fa'
+import InfoDevice from './InfoDevice'
+import MainLayout from '../../MainLayout'
+import { set } from 'immer/dist/internal'
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
 
 const items: MenuProps['items'] = [
   {
     key: '1',
-    label: ' Tất cả',
+    label: ' Tất cả'
   },
   {
     key: '2',
-    label: ' Công ty TMCP Bách Hóa Xanh',
+    label: ' Công ty TMCP Bách Hóa Xanh'
   },
   {
     key: '3',
-    label: ' Công ty TNHH XYZ',
+    label: ' Công ty TNHH XYZ'
   },
   {
     key: '4',
-    label: ' Công ty TMCP Adora',
-  },
-];
+    label: ' Công ty TMCP Adora'
+  }
+]
 
 const items2: MenuProps['items'] = [
   {
     key: '1',
-    label: <Checkbox>Mac Address</Checkbox>,
+    label: <Checkbox>Mac Address</Checkbox>
   },
   {
     key: '2',
-    label: <Checkbox>Memory</Checkbox>,
+    label: <Checkbox>Memory</Checkbox>
   },
   {
     key: '3',
-    label: <Checkbox>SKU/ID</Checkbox>,
+    label: <Checkbox>SKU/ID</Checkbox>
   },
   {
     key: '4',
-    label: <Checkbox>Hạn bảo hành</Checkbox>,
+    label: <Checkbox>Hạn bảo hành</Checkbox>
   },
   {
     key: '5',
-    label: <Checkbox>Tên đăng nhập</Checkbox>,
+    label: <Checkbox>Tên đăng nhập</Checkbox>
   },
   {
     key: '6',
-    label: <Checkbox>Trạng thái</Checkbox>,
+    label: <Checkbox>Trạng thái</Checkbox>
   },
   {
     key: '7',
-    label: <Checkbox>Địa điểm</Checkbox>,
+    label: <Checkbox>Địa điểm</Checkbox>
   },
   {
     key: '8',
-    label: <Checkbox>Hạn hợp đồng</Checkbox>,
-  },
-];
+    label: <Checkbox>Hạn hợp đồng</Checkbox>
+  }
+]
 
 const EquipManagement = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [myData, setMyData] = useState<Device[]>(myDevice);
-  const [selectedDevice, setSelectedDevice] = useState<Device | null>(null);
-  const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [myData, setMyData] = useState<Device[]>(myDevice)
+  const [selectedDevice, setSelectedDevice] = useState<Device | null>(null)
+  const navigate = useNavigate()
   const onChange = (event: CheckboxChangeEvent, song: Device) => {
-    const { checked } = event.target;
+    const { checked } = event.target
 
     if (checked) {
-      song.isCheck = true;
-      setSelectedDevice(song);
+      song.isCheck = true
+      setSelectedDevice(song)
     } else {
-      setSelectedDevice(null);
-      song.isCheck = false;
+      setSelectedDevice(null)
+      song.isCheck = false
     }
-  };
+  }
 
   const handleDelete = () => {
-    const newData = myData.filter((item) => item.isCheck !== true);
-    setMyData(newData);
-  };
+    const newData = myData.filter((item) => item.isCheck !== true)
+    setMyData(newData)
+  }
 
   const infoDevice = (song: Device) => {
-    setSelectedDevice(song);
-    navigate(`/management/equip/${song.stt}`);
-  };
+    setSelectedDevice(song)
+    navigate(`/management/equip/${song.stt}`)
+  }
   const handleClockDevice = () => {
     const newData = myData.map((item) => {
       if (item.isCheck === true) {
-        return { ...item, trangthai: false };
+        return { ...item, trangthai: false }
       }
-      return item;
-    });
-    setMyData(newData);
-    setSelectedDevice(null);
-  };
+      return item
+    })
+    setMyData(newData)
+    setSelectedDevice(null)
+  }
 
   const handleStopDevice = () => {
     const newData = myData.map((item) => {
       if (item.isCheck === true) {
         // Omit the trangthai property
-        const { trangthai, ...rest } = item;
-        return rest;
+        const { trangthai, ...rest } = item
+        return rest
       }
-      return item;
-    });
-    setMyData(newData);
-    setSelectedDevice(null);
-  };
-  useEffect(() => {}, [selectedDevice, myData]);
+      return item
+    })
+    setMyData(newData)
+    setSelectedDevice(null)
+  }
+  useEffect(() => {}, [selectedDevice, myData])
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <h1>Danh sách thiết bị</h1>
-        <div className="option">
-          <div className="dropdown-menu">
-            <Space className="space" style={{ marginRight: '20px' }}>
-              <Dropdown menu={{ items }} placement="bottomLeft">
+        <div className='option'>
+          <div className='dropdown-menu'>
+            <Space className='space' style={{ marginRight: '20px' }}>
+              <Dropdown menu={{ items }} placement='bottomLeft'>
                 <Button>
                   Chọn nhóm tài khoản <DownOutlined />
                 </Button>
               </Dropdown>
             </Space>
-            <Space className="space">
-              <Dropdown menu={{ items: items2 }} placement="bottomLeft">
+            <Space className='space'>
+              <Dropdown menu={{ items: items2 }} placement='bottomLeft'>
                 <Button>
                   Ẩn hiện cột <DownOutlined />
                 </Button>
               </Dropdown>
             </Space>
           </div>
-          <div className="search-btn">
-            <Search
-              placeholder="Nhập tên người dùng..."
-              onSearch={onSearch}
-              style={{ width: 200 }}
-            />
+          <div className='search-btn'>
+            <Search placeholder='Nhập tên người dùng...' onSearch={onSearch} style={{ width: 200 }} />
           </div>
         </div>
         <Container>
-          <Row className="row-1">
+          <Row className='row-1'>
             <Checkbox />
             <Col span={1} style={{ marginLeft: '10px' }}>
               <p>STT</p>
@@ -189,21 +169,18 @@ const EquipManagement = () => {
             </Col>
           </Row>
           <List
-            itemLayout="horizontal"
+            itemLayout='horizontal'
             dataSource={myData}
             renderItem={(song: Device) => (
-              <List.Item
-                key={song.stt}
-                style={{ alignItems: 'center', display: 'flex' }}
-              >
+              <List.Item key={song.stt} style={{ alignItems: 'center', display: 'flex' }}>
                 <Row
-                  className="row-2"
+                  className='row-2'
                   onClick={(event) => {
-                    const target = event.target as HTMLElement;
+                    const target = event.target as HTMLElement
                     if (target.tagName.toLowerCase() === 'input') {
-                      return; // Skip the onClick event if the target is an input element (checkbox)
+                      return // Skip the onClick event if the target is an input element (checkbox)
                     }
-                    infoDevice(song);
+                    infoDevice(song)
                   }}
                 >
                   <Col span={1}>
@@ -211,7 +188,7 @@ const EquipManagement = () => {
                       {' '}
                       <Checkbox
                         onChange={(event) => {
-                          onChange(event, song);
+                          onChange(event, song)
                         }}
                         style={{ marginLeft: '-10px', marginRight: '10px' }}
                       />
@@ -242,26 +219,23 @@ const EquipManagement = () => {
                   </Col>
                 </Row>
                 {isModalOpen && (
-                  <ModalContent
-                    visible={isModalOpen}
-                    onCancel={() => setIsModalOpen(false)}
-                  ></ModalContent>
+                  <ModalContent visible={isModalOpen} onCancel={() => setIsModalOpen(false)}></ModalContent>
                 )}
               </List.Item>
             )}
           ></List>
           <Page data={myDevice} />
         </Container>
-        <div className="option-2">
-          <Link to="/management/equip/add" className="link-option">
-            <div className="icon">
+        <div className='option-2'>
+          <Link to='/management/equip/add' className='link-option'>
+            <div className='icon'>
               <PlusOutlined />
             </div>
             <p>Thêm thiết bị</p>
           </Link>
           {selectedDevice?.isCheck === true ? (
-            <Button onClick={handleStopDevice} className="button-option">
-              <div className="icon">
+            <Button onClick={handleStopDevice} className='button-option'>
+              <div className='icon'>
                 <MehOutlined />
               </div>
               <p>
@@ -270,8 +244,8 @@ const EquipManagement = () => {
               </p>
             </Button>
           ) : (
-            <Button className="button-option">
-              <div className="icon">
+            <Button className='button-option'>
+              <div className='icon'>
                 <MehOutlined />
               </div>
               <p>
@@ -281,14 +255,14 @@ const EquipManagement = () => {
             </Button>
           )}
 
-          <Button onClick={handleClockDevice} className="button-option">
-            <div className="icon">
+          <Button onClick={handleClockDevice} className='button-option'>
+            <div className='icon'>
               <ClockCircleFilled />
             </div>
             <p>Khóa thiết bị</p>
           </Button>
-          <Button onClick={handleDelete} className="button-option">
-            <div className="icon">
+          <Button onClick={handleDelete} className='button-option'>
+            <div className='icon'>
               <FaTrash style={{ color: 'red' }} />
             </div>
             <p>Xóa thiết bị</p>
@@ -296,10 +270,10 @@ const EquipManagement = () => {
         </div>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default EquipManagement;
+export default EquipManagement
 
 const ModalContent = styled(Modal)`
   img {
@@ -337,7 +311,7 @@ const ModalContent = styled(Modal)`
       display: none;
     }
   }
-`;
+`
 
 const Container = styled.div`
   width: 1541px;
@@ -370,7 +344,7 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -488,4 +462,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react';
-import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import { Button, Dropdown, Input, Space } from 'antd';
+import React, { useContext, useEffect } from 'react'
+import styled from 'styled-components'
+import SideMenu from '../../components/SideMenu'
+import PageContent from '../../components/PageContent'
+import { Button, Dropdown, Input, Space } from 'antd'
 import {
   AppstoreOutlined,
   CheckOutlined,
@@ -10,38 +10,38 @@ import {
   DownOutlined,
   FormOutlined,
   RightOutlined,
-  UnorderedListOutlined,
-} from '@ant-design/icons';
-import { items, items2, items3, items4 } from '../../MenuDropDown';
-import ListView from '../../components/ListView';
-import GridView from '../../components/GridView';
-import { useDispatch } from 'react-redux';
-import { setGridView, setListView } from '../../features/layoutSlice';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store';
-import { Link } from 'react-router-dom';
-import { DataContext } from '../../context/DataContext';
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+  UnorderedListOutlined
+} from '@ant-design/icons'
+import { items, items2, items3, items4 } from '../../MenuDropDown'
+import ListView from '../../components/Management/Contract/ListView'
+import GridView from '../../components/Management/Contract/GridView'
+import { useDispatch, useSelector } from 'react-redux'
+import { setGridView, setListView } from '../../features/layoutSlice'
+
+import { RootState } from '../../app/store'
+import { Link } from 'react-router-dom'
+import { DataContext } from '../../context/DataContext'
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
 
 const RecordStore = () => {
-  const isListView = useSelector((state: RootState) => state.view.isListView);
-  const [isChecked, setIsChecked] = React.useState(false);
-  const { isKhoBanGhi, setIsKhoBanGhi } = useContext(DataContext);
-  const dispatch = useDispatch();
+  const isListView = useSelector((state: RootState) => state.view.isListView)
+  const [isChecked, setIsChecked] = React.useState(false)
+  const { isKhoBanGhi, setIsKhoBanGhi } = useContext(DataContext)
+  const dispatch = useDispatch()
 
-  useEffect(() => {}, [isKhoBanGhi]);
+  useEffect(() => {}, [isKhoBanGhi])
 
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <h1>Kho bản ghi</h1>
-        <Search onSearch={onSearch} placeholder="Tên bản ghi, tên ca sĩ,..." />
-        <div className="option-1">
-          <Space className="space-1">
+        <Search onSearch={onSearch} placeholder='Tên bản ghi, tên ca sĩ,...' />
+        <div className='option-1'>
+          <Space className='space-1'>
             <p>Thể loại:</p>
             <Dropdown menu={{ items: items }}>
-              <Button className="button-1">
+              <Button className='button-1'>
                 <Space>
                   Tất cả
                   <DownOutlined />
@@ -49,10 +49,10 @@ const RecordStore = () => {
               </Button>
             </Dropdown>
           </Space>
-          <Space className="space-2">
+          <Space className='space-2'>
             <p>Định dạng:</p>
             <Dropdown menu={{ items: items2 }}>
-              <Button className="button-1">
+              <Button className='button-1'>
                 <Space>
                   Tất cả
                   <DownOutlined />
@@ -60,10 +60,10 @@ const RecordStore = () => {
               </Button>
             </Dropdown>
           </Space>
-          <Space className="space-3">
+          <Space className='space-3'>
             <p>Thời gian sử dụng:</p>
             <Dropdown menu={{ items: items3 }}>
-              <Button className="button-1">
+              <Button className='button-1'>
                 <Space>
                   Tất cả
                   <DownOutlined />
@@ -71,10 +71,10 @@ const RecordStore = () => {
               </Button>
             </Dropdown>
           </Space>
-          <Space className="space-4">
+          <Space className='space-4'>
             <p>Trạng thái:</p>
             <Dropdown menu={{ items: items4 }}>
-              <Button className="button-2">
+              <Button className='button-2'>
                 <Space>
                   Tất cả
                   <DownOutlined />
@@ -82,33 +82,25 @@ const RecordStore = () => {
               </Button>
             </Dropdown>
           </Space>
-          <Space className="space-5">
+          <Space className='space-5'>
             <Button
               onClick={() => {
-                dispatch(setListView(false));
+                dispatch(setListView(false))
               }}
             >
-              <UnorderedListOutlined
-                className={`${isListView ? 'svg-active' : null}`}
-              />
+              <UnorderedListOutlined className={`${isListView ? 'svg-active' : null}`} />
             </Button>
             <Button
               onClick={() => {
-                dispatch(setGridView(true));
+                dispatch(setGridView(true))
               }}
             >
-              <AppstoreOutlined
-                className={`${!isListView ? 'svg-active' : null}`}
-              />
+              <AppstoreOutlined className={`${!isListView ? 'svg-active' : null}`} />
             </Button>
           </Space>
-          <div className="option">
-            <Link
-              to="/record-approval"
-              className="link-option"
-              onClick={() => setIsKhoBanGhi(false)}
-            >
-              <div className="icon">
+          <div className='option'>
+            <Link to='/record-approval' className='link-option' onClick={() => setIsKhoBanGhi(false)}>
+              <div className='icon'>
                 <FormOutlined />
               </div>
               <p>
@@ -121,18 +113,14 @@ const RecordStore = () => {
         {isListView ? (
           <ListView listView={isListView} isKhoBanGhi={isKhoBanGhi} />
         ) : (
-          <GridView
-            gridView={isListView}
-            isKhoBanGhi={isKhoBanGhi}
-            isChecked={isChecked}
-          />
+          <GridView gridView={isListView} isKhoBanGhi={isKhoBanGhi} isChecked={isChecked} />
         )}
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default RecordStore;
+export default RecordStore
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -272,4 +260,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

@@ -4,20 +4,20 @@ import {
   FormOutlined,
   PlusOutlined,
   RightOutlined,
-  SnippetsOutlined,
-} from '@ant-design/icons';
-import { Button, Col, List, Row } from 'antd';
-import styled from 'styled-components';
-import React, { useEffect } from 'react';
+  SnippetsOutlined
+} from '@ant-design/icons'
+import { Button, Col, List, Row } from 'antd'
+import styled from 'styled-components'
+import React, { useEffect } from 'react'
 
 const SettingContract = () => {
-  const [isExpired, setIsExpired] = React.useState(false);
-  const [isEdit, setIsEdit] = React.useState(false);
-  const [isAddCalender, setIsAddCalender] = React.useState(false);
+  const [isExpired, setIsExpired] = React.useState(false)
+  const [isEdit, setIsEdit] = React.useState(false)
+  const [isAddCalender, setIsAddCalender] = React.useState(false)
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             {' '}
             Cài đặt <RightOutlined />
@@ -27,21 +27,18 @@ const SettingContract = () => {
 
         <h1>Loại hợp đồng</h1>
         {isExpired ? (
-          <div className="board-expired">
+          <div className='board-expired'>
             <div>
-              <h2 style={{ marginBottom: '30px' }}>
-                Cảnh báo hết hạn khai báo tác phẩm
-              </h2>
+              <h2 style={{ marginBottom: '30px' }}>Cảnh báo hết hạn khai báo tác phẩm</h2>
               <p style={{}}>
-                Hợp đồng được cảnh báo trước thời gian hết hạn{' '}
-                <span style={{ opacity: '0.7' }}>365 </span>ngày
+                Hợp đồng được cảnh báo trước thời gian hết hạn <span style={{ opacity: '0.7' }}>365 </span>ngày
               </p>
             </div>
           </div>
         ) : (
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <Container style={{ marginRight: '20px' }}>
-              <Row className="row-1">
+              <Row className='row-1'>
                 <Col span={2}>
                   <span style={{ color: '#ffac69' }}>STT</span>
                 </Col>
@@ -57,116 +54,77 @@ const SettingContract = () => {
                   </Col>
                 )}
               </Row>
-              <Row className="row-2" style={{ marginBottom: '10px' }}>
+              <Row className='row-2' style={{ marginBottom: '10px' }}>
                 <Col span={2}>
                   <span style={{ color: '#fff' }}>1</span>
                 </Col>
                 <Col span={7}>
-                  <p
-                    className={`${isEdit && !isAddCalender ? 'active-1' : ''}`}
-                  >
-                    Trọn gói
-                  </p>
+                  <p className={`${isEdit && !isAddCalender ? 'active-1' : ''}`}>Trọn gói</p>
                 </Col>
                 <Col span={10}>
-                  <p
-                    className={`${isEdit && !isAddCalender ? 'active-1' : ''}`}
-                  >
-                    20%
-                  </p>
+                  <p className={`${isEdit && !isAddCalender ? 'active-1' : ''}`}>20%</p>
                 </Col>
                 {(isEdit || isAddCalender) && (
                   <Col span={5}>
-                    <p
-                      className={`${
-                        isEdit && !isAddCalender ? 'active-1' : ''
-                      }`}
-                    >
-                      20/12/2023 13:00:00
-                    </p>
+                    <p className={`${isEdit && !isAddCalender ? 'active-1' : ''}`}>20/12/2023 13:00:00</p>
                   </Col>
                 )}
               </Row>
-              <Row className="row-2" style={{ marginBottom: '10px' }}>
+              <Row className='row-2' style={{ marginBottom: '10px' }}>
                 <Col span={2}>
                   <span style={{ color: '#fff' }}>2</span>
                 </Col>
                 <Col span={7}>
-                  <p
-                    className={`${isEdit && !isAddCalender ? 'active-1' : ''}`}
-                  >
-                    Giá trị bài hát / lượt phát
-                  </p>
+                  <p className={`${isEdit && !isAddCalender ? 'active-1' : ''}`}>Giá trị bài hát / lượt phát</p>
                 </Col>
                 <Col span={10}>
-                  <p
-                    className={`${isEdit && !isAddCalender ? 'active-1' : ''}`}
-                  >
-                    20%
-                  </p>
+                  <p className={`${isEdit && !isAddCalender ? 'active-1' : ''}`}>20%</p>
                 </Col>
                 {(isEdit || isAddCalender) && (
                   <Col span={5}>
-                    <p
-                      className={`${
-                        isEdit && !isAddCalender ? 'active-1' : ''
-                      }`}
-                    >
-                      20/12/2023 13:00:00
-                    </p>
+                    <p className={`${isEdit && !isAddCalender ? 'active-1' : ''}`}>20/12/2023 13:00:00</p>
                   </Col>
                 )}
               </Row>
               {isAddCalender && (
                 <>
-                  <Row className="row-2" style={{ marginBottom: '10px' }}>
+                  <Row className='row-2' style={{ marginBottom: '10px' }}>
                     <Col span={2}>
                       <span style={{ color: '#fff' }}>3</span>
                     </Col>
                     <Col span={7}>
-                      <p className={`${isAddCalender && 'active-1'}`}>
-                        Trọn gói
-                      </p>
+                      <p className={`${isAddCalender && 'active-1'}`}>Trọn gói</p>
                     </Col>
                     <Col span={10}>
                       <p className={`${isAddCalender && 'active-1'}`}>20%</p>
                     </Col>
                     <Col span={5}>
-                      <p className={`${isAddCalender && 'active-1'}`}>
-                        20/12/2023 13:00:00
-                      </p>
+                      <p className={`${isAddCalender && 'active-1'}`}>20/12/2023 13:00:00</p>
                     </Col>
                   </Row>
-                  <Row className="row-2">
+                  <Row className='row-2'>
                     <Col span={2}>
                       <span style={{ color: '#fff' }}>4</span>
                     </Col>
                     <Col span={7}>
-                      <p className={`${isAddCalender && 'active-1'}`}>
-                        Giá trị bài hát / lượt phát
-                      </p>
+                      <p className={`${isAddCalender && 'active-1'}`}>Giá trị bài hát / lượt phát</p>
                     </Col>
                     <Col span={10}>
                       <p className={`${isAddCalender && 'active-1'}`}>20%</p>
                     </Col>
                     <Col span={5}>
-                      <p className={`${isAddCalender && 'active-1'}`}>
-                        20/12/2023 13:00:00
-                      </p>
+                      <p className={`${isAddCalender && 'active-1'}`}>20/12/2023 13:00:00</p>
                     </Col>
                   </Row>
                 </>
               )}
             </Container>
             {!isEdit && (
-              <div className="board-2">
+              <div className='board-2'>
                 <div style={{ padding: '0 20px' }}>
-                  <h2 style={{ marginBottom: '30px' }}>
-                    Cảnh báo hết hạn khai báo tác phẩm
-                  </h2>
+                  <h2 style={{ marginBottom: '30px' }}>Cảnh báo hết hạn khai báo tác phẩm</h2>
                   <p style={{}}>
-                    Hợp đồng được cảnh báo trước thời gian hết hạn{' '}
-                    <span style={{ opacity: '0.7' }}>365 ngày</span>
+                    Hợp đồng được cảnh báo trước thời gian hết hạn <span style={{ opacity: '0.7' }}>365 ngày</span>
                   </p>
                 </div>
               </div>
@@ -174,11 +132,11 @@ const SettingContract = () => {
           </div>
         )}
         {isEdit && (
-          <div className="option">
+          <div className='option'>
             {isAddCalender ? (
               <>
-                <Button className="button-option">
-                  <div className="icon">
+                <Button className='button-option'>
+                  <div className='icon'>
                     <PlusOutlined />
                   </div>
                   <p style={{ marginLeft: '0px' }}>Thêm mới</p>
@@ -188,11 +146,11 @@ const SettingContract = () => {
               <>
                 <Button
                   onClick={() => {
-                    setIsAddCalender(true);
+                    setIsAddCalender(true)
                   }}
-                  className="button-option"
+                  className='button-option'
                 >
-                  <div className="icon">
+                  <div className='icon'>
                     <PlusOutlined />
                   </div>
                   <p style={{ marginLeft: '0px' }}>
@@ -202,8 +160,8 @@ const SettingContract = () => {
               </>
             )}
 
-            <Button className="button-option">
-              <div className="icon">
+            <Button className='button-option'>
+              <div className='icon'>
                 <CloseOutlined style={{ color: 'red' }} />
               </div>
               <p>Xóa</p>
@@ -213,33 +171,30 @@ const SettingContract = () => {
 
         {isExpired || isEdit ? (
           <div style={{ position: 'fixed', bottom: '30%', right: '40%' }}>
-            <Button className="btn-huy">Hủy</Button>
+            <Button className='btn-huy'>Hủy</Button>
             <Button
-              className="btn-luu"
+              className='btn-luu'
               onClick={() => {
-                setIsExpired(false);
-                setIsEdit(false);
-                setIsAddCalender(false);
+                setIsExpired(false)
+                setIsEdit(false)
+                setIsAddCalender(false)
               }}
             >
               Lưu
             </Button>
           </div>
         ) : (
-          <div className="option">
-            <Button onClick={() => setIsEdit(true)} className="button-option">
-              <div className="icon">
+          <div className='option'>
+            <Button onClick={() => setIsEdit(true)} className='button-option'>
+              <div className='icon'>
                 <SnippetsOutlined />
               </div>
               <p style={{ marginLeft: '10px' }}>
                 Chỉnh sửa <br /> loại hợp <br /> đồng
               </p>
             </Button>
-            <Button
-              onClick={() => setIsExpired(true)}
-              className="button-option"
-            >
-              <div className="icon">
+            <Button onClick={() => setIsExpired(true)} className='button-option'>
+              <div className='icon'>
                 <CalendarOutlined />
               </div>
               <p>
@@ -251,10 +206,10 @@ const SettingContract = () => {
         )}
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default SettingContract;
+export default SettingContract
 
 const Container = styled.div`
   width: 840px;
@@ -309,7 +264,7 @@ const Container = styled.div`
     background: #33334d;
     border-radius: 4px;
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -416,4 +371,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

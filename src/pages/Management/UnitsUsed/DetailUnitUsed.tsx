@@ -1,15 +1,15 @@
-import styled from 'styled-components';
-import ListDetailUnitUsed from '../../../components/Management/ListDetailUnitUsed';
+import styled from 'styled-components'
+import ListDetailUnitUsed from '../../../components/Management/UnitUsed/ListDetailUnitUsed'
 
 const DetailUnitUsed = () => {
   return (
     <Wrapper>
       <ListDetailUnitUsed />
     </Wrapper>
-  );
-};
+  )
+}
 
-export default DetailUnitUsed;
+export default DetailUnitUsed
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -17,4 +17,4 @@ const Wrapper = styled.div`
   position: relative;
   flex: 1;
   background-color: var(--primary-color);
-`;
+`

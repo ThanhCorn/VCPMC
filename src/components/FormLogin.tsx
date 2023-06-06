@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Form, Checkbox, Input, Button } from 'antd';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase';
-import styled from 'styled-components';
-import ConfirmFormEmail from './ConfirmFormEmail';
-import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../context/UserContext';
+import React, { useState, useEffect, useContext } from 'react'
+import { Form, Checkbox, Input, Button } from 'antd'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth } from '../firebase'
+import styled from 'styled-components'
+import ConfirmFormEmail from './ConfirmFormEmail'
+import { useNavigate } from 'react-router-dom'
+import { UserContext } from '../context/UserContext'
 
 const FormContainer = styled(Form)`
   display: flex;
@@ -36,7 +36,7 @@ const FormContainer = styled(Form)`
       font-size: 16px;
     }
   }
-`;
+`
 
 const FormItem = styled(Form.Item)`
   position: relative;
@@ -66,89 +66,68 @@ const FormItem = styled(Form.Item)`
       color: none;
     }
   }
-`;
+`
 
 const FormLogin = () => {
-  const { isLogin, setIsLogin } = useContext(UserContext);
-  console.log(isLogin);
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [forgetPassword, setForgetPassword] = useState(true);
-  const navigate = useNavigate();
+  const { isLogin, setIsLogin } = useContext(UserContext)
+  console.log(isLogin)
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [forgetPassword, setForgetPassword] = useState(true)
+  const navigate = useNavigate()
 
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        setIsLogin(true);
-        navigate('/dashboard');
-        console.log(isLogin);
+        const user = userCredential.user
+        setIsLogin(true)
+        navigate('/dashboard')
+        console.log(isLogin)
       })
       .catch((error) => {
-        setIsLogin(false);
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
-  };
+        setIsLogin(false)
+        const errorCode = error.code
+        const errorMessage = error.message
+      })
+  }
 
   return (
     <>
       {forgetPassword ? (
-        <FormContainer
-          name="login-form"
-          layout="vertical"
-          onFinish={handleSignIn}
-        >
+        <FormContainer name='login-form' layout='vertical' onFinish={handleSignIn}>
           <h1>Đăng nhập</h1>
           <span style={{ color: '#fff' }}>Tên đăng nhập</span>
           <FormItem
             required={false}
-            name="email"
-            rules={[
-              { required: true, message: 'Hãy điền thông tin đăng nhập!' },
-            ]}
+            name='email'
+            rules={[{ required: true, message: 'Hãy điền thông tin đăng nhập!' }]}
           >
-            <Input
-              className="input"
-              value="email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <Input className='input' value='email' onChange={(e) => setEmail(e.target.value)} />
           </FormItem>
           <span style={{ color: '#fff' }}>Password</span>
           <FormItem
             required={false}
-            name="password"
+            name='password'
             rules={[{ required: true, message: 'Hãy điền mật khẩu của bạn!' }]}
           >
-            <Input.Password
-              className="input"
-              value="password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <Input.Password className='input' value='password' onChange={(e) => setPassword(e.target.value)} />
           </FormItem>
-          <FormItem
-            name="remember"
-            valuePropName="checked"
-            wrapperCol={{ span: 24 }}
-          >
+          <FormItem name='remember' valuePropName='checked' wrapperCol={{ span: 24 }}>
             <Checkbox style={{ color: '#fff' }}>Ghi nhớ đăng nhập</Checkbox>
           </FormItem>
           <FormItem>
             <Button
-              type="primary"
-              htmlType="submit"
+              type='primary'
+              htmlType='submit'
               block
-              size="large"
+              size='large'
               style={{ width: '150px', backgroundColor: '#FF7506' }}
             >
               Đăng nhập
             </Button>
           </FormItem>
           <FormItem>
-            <Button
-              className="btn-forget"
-              onClick={() => setForgetPassword(!forgetPassword)}
-            >
+            <Button className='btn-forget' onClick={() => setForgetPassword(!forgetPassword)}>
               Quên mật khẩu?
             </Button>
           </FormItem>
@@ -157,7 +136,7 @@ const FormLogin = () => {
         <ConfirmFormEmail />
       )}
     </>
-  );
-};
+  )
+}
 
-export default FormLogin;
+export default FormLogin

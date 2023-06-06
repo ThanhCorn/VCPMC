@@ -1,21 +1,21 @@
-import React, { Children, useState } from 'react';
-import styled from 'styled-components';
-import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
-import { Button, Col, DatePicker, List, Modal, Row, Switch } from 'antd';
-import { Link } from 'react-router-dom';
-import { Input } from 'antd';
-import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData';
-import Page from '../../components/Page';
+import React, { Children, useState } from 'react'
+import styled from 'styled-components'
+import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
+import { Button, Col, DatePicker, List, Modal, Row, Switch, Input } from 'antd'
+import { Link } from 'react-router-dom'
 
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData'
+import Page from '../../components/Page'
 
-const dateFormat = 'YYYY/MM/DD';
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
+
+const dateFormat = 'YYYY/MM/DD'
 const DetailInComeProfit = () => {
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             {' '}
             Doanh thu
@@ -35,9 +35,9 @@ const DetailInComeProfit = () => {
         </div>
 
         <h1>Hợp đồng UQ123 - Kỳ tháng 6/2021 </h1>
-        <div className="main-container">
-          <div className="container-1">
-            <div className="box-1">
+        <div className='main-container'>
+          <div className='container-1'>
+            <div className='box-1'>
               <h3>Thông tin hợp đồng</h3>
               <p>
                 Số hợp đông: <span>UQ123</span>
@@ -61,7 +61,7 @@ const DetailInComeProfit = () => {
                 Giá trị phân phối theo ngày: <span>365.000.000 VNĐ</span>
               </p>
             </div>
-            <div className="box-2">
+            <div className='box-2'>
               <h3>Thông tin đối soát</h3>
               <p>
                 Ký đối soát:<span>01/01/2020</span>
@@ -80,23 +80,19 @@ const DetailInComeProfit = () => {
               </p>
             </div>
           </div>
-          <div className="container-2">
+          <div className='container-2'>
             <h3>Danh sách bản ghi</h3>
-            <div className="option">
-              <div className="datepick">
+            <div className='option'>
+              <div className='datepick'>
                 <p>Xem theo ngày/tuần</p>
                 <DatePicker format={dateFormat} />
               </div>
-              <div className="search-btn">
-                <Search
-                  placeholder="Nhập tên người dùng..."
-                  onSearch={onSearch}
-                  style={{ width: 200 }}
-                />
+              <div className='search-btn'>
+                <Search placeholder='Nhập tên người dùng...' onSearch={onSearch} style={{ width: 200 }} />
               </div>
             </div>
             <Container>
-              <Row className="row-1">
+              <Row className='row-1'>
                 <Col span={1}>
                   <p>STT</p>
                 </Col>
@@ -122,14 +118,11 @@ const DetailInComeProfit = () => {
               </Row>
 
               <List
-                itemLayout="horizontal"
+                itemLayout='horizontal'
                 dataSource={myIncome}
                 renderItem={(myIncome: Income) => (
-                  <List.Item
-                    key={myIncome.stt}
-                    style={{ alignItems: 'center', display: 'flex' }}
-                  >
-                    <Row className="row-2">
+                  <List.Item key={myIncome.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                    <Row className='row-2'>
                       <Col span={1}>
                         <p> {myIncome.stt}</p>
                       </Col>
@@ -161,15 +154,15 @@ const DetailInComeProfit = () => {
           </div>
         </div>
       </div>
-      <Link to="" className="link-option">
+      <Link to='' className='link-option'>
         <PlusCircleOutlined />
         <p>Xuất dữ liệu</p>
       </Link>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default DetailInComeProfit;
+export default DetailInComeProfit
 
 const Container = styled.div`
   width: 970px;
@@ -210,7 +203,7 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -372,4 +365,4 @@ const Wrapper = styled.div`
       margin-left: 7px;
     }
   }
-`;
+`

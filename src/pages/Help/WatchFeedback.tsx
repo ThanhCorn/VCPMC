@@ -1,63 +1,54 @@
-import styled from 'styled-components';
-import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
-import { Button, Form, Input, Select } from 'antd';
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
-import { Link } from 'react-router-dom';
-import { nanoid } from 'nanoid';
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-} from '@firebase/firestore';
-import { db } from '../../firebase';
-import { useEffect } from 'react';
-import { DataFeedback, fetchFeedback } from '../../features/layoutSlice';
-import { useDispatch } from 'react-redux';
-import { AppDispatch, RootState } from '../../app/store';
-import { useSelector } from 'react-redux';
-import Image1 from '../../assets/starboy.png';
-import { useState } from 'react';
-const { Option } = Select;
+import styled from 'styled-components'
+import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
+import { Button, Form, Input, Select } from 'antd'
+import { useContext, useEffect, useState } from 'react'
+import { UserContext } from '../../context/UserContext'
+import { Link } from 'react-router-dom'
+import { nanoid } from 'nanoid'
+import { addDoc, collection, doc, getDoc, setDoc, updateDoc } from '@firebase/firestore'
+import { db } from '../../firebase'
+
+import { DataFeedback, fetchFeedback } from '../../features/layoutSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from '../../app/store'
+
+import Image1 from '../../assets/starboy.png'
+
+const { Option } = Select
 
 const options = [
   { value: 'account', label: 'Tài khoản' },
   { value: 'payment', label: 'Quản lý thanh toán' },
   { value: 'license', label: 'Vấn đề bản quyền' },
-  { value: 'other', label: 'Khác' },
-];
+  { value: 'other', label: 'Khác' }
+]
 
 interface FormData {
-  issue: string;
-  content: string;
+  issue: string
+  content: string
 }
 
 const WatchFeedback = () => {
-  const [form] = Form.useForm();
-  const { currentUser } = useContext(UserContext);
-  const [isActive, setIsActive] = useState(false);
-  const dataFeedback = useSelector<RootState, DataFeedback[]>(
-    (state) => state.view.dataFeedback,
-  );
-  const [dataActive, setDataActive] = useState<DataFeedback>();
-  const dispatch: AppDispatch = useDispatch();
+  const [form] = Form.useForm()
+  const { currentUser } = useContext(UserContext)
+  const [isActive, setIsActive] = useState(false)
+  const dataFeedback = useSelector<RootState, DataFeedback[]>((state) => state.view.dataFeedback)
+  const [dataActive, setDataActive] = useState<DataFeedback>()
+  const dispatch: AppDispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(fetchFeedback());
-  }, [dispatch, dataFeedback]);
+    dispatch(fetchFeedback())
+  }, [dispatch, dataFeedback])
 
   const handleClick = (item: DataFeedback) => {
-    setDataActive(item);
-    console.log(dataActive);
-  };
+    setDataActive(item)
+    console.log(dataActive)
+  }
 
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             {' '}
             Hổ trợ <RightOutlined />
@@ -66,45 +57,43 @@ const WatchFeedback = () => {
         </div>
         <h1>Feedback</h1>
         <Contaniner>
-          <div className="left">
-            <div className="content">
+          <div className='left'>
+            <div className='content'>
               {dataFeedback.map((item: DataFeedback) => {
                 return (
                   <div
-                    className={`item ${
-                      item.id === dataActive?.id ? 'active info' : 'info'
-                    }`}
+                    className={`item ${item.id === dataActive?.id ? 'active info' : 'info'}`}
                     key={item.id}
                     onClick={() => handleClick(item)}
                   >
-                    <img src={Image1} alt="hinh anh" />
-                    <div className="user">
+                    <img src={Image1} alt='hinh anh' />
+                    <div className='user'>
                       <h4>Thy Phạm</h4>
 
-                      <p className="truncate">
+                      <p className='truncate'>
                         Chủ đề: {item.issue} . {item.content}
                       </p>
                     </div>
                   </div>
-                );
+                )
               })}
             </div>
           </div>
-          <div className="right">
-            <div className="info" key={dataActive?.id}>
-              <img src={Image1} alt="" />
+          <div className='right'>
+            <div className='info' key={dataActive?.id}>
+              <img src={Image1} alt='' />
               <h4>Thy Pham</h4>
             </div>
             <p>Chủ đề: {dataActive?.issue}</p>
-            <div className="text">{dataActive?.content}</div>
+            <div className='text'>{dataActive?.content}</div>
           </div>
         </Contaniner>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default WatchFeedback;
+export default WatchFeedback
 
 const Contaniner = styled.div`
   width: 1541px;
@@ -183,7 +172,7 @@ const Contaniner = styled.div`
       }
     }
   }
-`;
+`
 const Wrapper = styled.div`
   height: 100vh;
   width: 100vw;
@@ -207,4 +196,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import logo1 from '../assets/logo1.png';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components'
+import logo1 from '../assets/logo1.png'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   VideoCameraOutlined,
   PlaySquareOutlined,
@@ -9,19 +9,19 @@ import {
   FileTextOutlined,
   DollarCircleOutlined,
   SettingOutlined,
-  QuestionCircleOutlined,
-} from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Button, Menu } from 'antd';
+  QuestionCircleOutlined
+} from '@ant-design/icons'
+import type { MenuProps } from 'antd'
+import { Button, Menu } from 'antd'
 
 type MenuItem = Required<MenuProps>['items'][number] & {
-  key: React.Key;
-  icon?: React.ReactNode;
-  label?: React.ReactNode;
-  children?: MenuItem[];
-  type?: 'group';
-  path?: string;
-};
+  key: React.Key
+  icon?: React.ReactNode
+  label?: React.ReactNode
+  children?: MenuItem[]
+  type?: 'group'
+  path?: string
+}
 
 function getItem(
   label: React.ReactNode,
@@ -29,21 +29,14 @@ function getItem(
   icon?: React.ReactNode,
   children?: MenuItem[],
   type?: 'group',
-  path?: string,
+  path?: string
 ): MenuItem {
   if (path) {
     return {
       key,
       icon,
       children: children?.map((child) =>
-        getItem(
-          child.label,
-          child.key,
-          child.icon,
-          child.children,
-          child.type,
-          child.path,
-        ),
+        getItem(child.label, child.key, child.icon, child.children, child.type, child.path)
       ),
       label: (
         <Link to={path} style={{ color: 'inherit' }}>
@@ -51,8 +44,8 @@ function getItem(
         </Link>
       ),
       type,
-      path,
-    } as MenuItem;
+      path
+    } as MenuItem
   }
   return {
     key,
@@ -60,8 +53,8 @@ function getItem(
     children,
     label,
     type,
-    path,
-  } as MenuItem;
+    path
+  } as MenuItem
 }
 const Wrapper = styled(Menu)`
   background-color: #020220;
@@ -156,170 +149,51 @@ const Wrapper = styled(Menu)`
       border-left: 2px solid #ff7506;
     }
   }
-`;
+`
 
 const items: MenuItem[] = [
-  getItem(
-    'Kho bản ghi',
-    '1',
-    <VideoCameraOutlined />,
-    undefined,
-    undefined,
-    '/record-store',
-  ),
-  getItem(
-    'Playlist',
-    '2',
-    <PlaySquareOutlined />,
-    undefined,
-    undefined,
-    '/playlist',
-  ),
-  getItem(
-    'Lập lịch phát',
-    '3',
-    <CalendarOutlined />,
-    undefined,
-    undefined,
-    '/schedule',
-  ),
+  getItem('Kho bản ghi', '1', <VideoCameraOutlined />, undefined, undefined, '/record-store'),
+  getItem('Playlist', '2', <PlaySquareOutlined />, undefined, undefined, '/playlist'),
+  getItem('Lập lịch phát', '3', <CalendarOutlined />, undefined, undefined, '/schedule'),
 
   getItem('Quản lý', 'sub1', <FileTextOutlined />, [
-    getItem(
-      'Quản lý hợp đồng',
-      '5',
-      undefined,
-      undefined,
-      undefined,
-      '/management/contract',
-    ),
-    getItem(
-      'Quản lý thiết bị',
-      '6',
-      undefined,
-      undefined,
-      undefined,
-      '/management/equip',
-    ),
-    getItem(
-      'Đơn vị ủy quyền',
-      '7',
-      undefined,
-      undefined,
-      undefined,
-      '/management/authority',
-    ),
-    getItem(
-      'Đơn vị sử dụng',
-      '8',
-      undefined,
-      undefined,
-      undefined,
-      '/management/used',
-    ),
+    getItem('Quản lý hợp đồng', '5', undefined, undefined, undefined, '/management/contract'),
+    getItem('Quản lý thiết bị', '6', undefined, undefined, undefined, '/management/equip'),
+    getItem('Đơn vị ủy quyền', '7', undefined, undefined, undefined, '/management/authority'),
+    getItem('Đơn vị sử dụng', '8', undefined, undefined, undefined, '/management/used')
   ]),
 
   getItem('Doanh thu', 'sub2', <DollarCircleOutlined />, [
-    getItem(
-      'Báo cáo doanh thu',
-      '9',
-      undefined,
-      undefined,
-      undefined,
-      '/income',
-    ),
-    getItem(
-      'Lịch sử đối soát',
-      '10',
-      undefined,
-      undefined,
-      undefined,
-      '/income/history',
-    ),
-    getItem(
-      'Phấn phối doanh thu',
-      '11',
-      undefined,
-      undefined,
-      undefined,
-      '/income/distribution',
-    ),
+    getItem('Báo cáo doanh thu', '9', undefined, undefined, undefined, '/income'),
+    getItem('Lịch sử đối soát', '10', undefined, undefined, undefined, '/income/history'),
+    getItem('Phấn phối doanh thu', '11', undefined, undefined, undefined, '/income/distribution')
   ]),
 
   getItem('Cài đặt', 'sub3', <SettingOutlined />, [
-    getItem(
-      'Phân quyền người dùng',
-      '12',
-      undefined,
-      undefined,
-      undefined,
-      '/setting/permission',
-    ),
-    getItem(
-      'Cấu hình',
-      '13',
-      undefined,
-      undefined,
-      undefined,
-      '/setting/config',
-    ),
-    getItem(
-      'Quản lý hợp đồng',
-      '14',
-      undefined,
-      undefined,
-      undefined,
-      '/setting/contract',
-    ),
-    getItem(
-      'Thông tin tác phẩm',
-      '15',
-      undefined,
-      undefined,
-      undefined,
-      '/setting/info-creation',
-    ),
-    getItem(
-      'Chu kỳ đối soát',
-      '16',
-      undefined,
-      undefined,
-      undefined,
-      '/setting/period',
-    ),
+    getItem('Phân quyền người dùng', '12', undefined, undefined, undefined, '/setting/permission'),
+    getItem('Cấu hình', '13', undefined, undefined, undefined, '/setting/config'),
+    getItem('Quản lý hợp đồng', '14', undefined, undefined, undefined, '/setting/contract'),
+    getItem('Thông tin tác phẩm', '15', undefined, undefined, undefined, '/setting/info-creation'),
+    getItem('Chu kỳ đối soát', '16', undefined, undefined, undefined, '/setting/period')
   ]),
   getItem('Hổ trợ', 'sub4', <QuestionCircleOutlined />, [
-    getItem(
-      'Hướng dẫn sử dụng',
-      '17',
-      undefined,
-      undefined,
-      undefined,
-      '/help/guide',
-    ),
+    getItem('Hướng dẫn sử dụng', '17', undefined, undefined, undefined, '/help/guide'),
     getItem('Tải app', '18', undefined, undefined, undefined, '/help/download'),
-    getItem(
-      'Feedback',
-      '19',
-      undefined,
-      undefined,
-      undefined,
-      '/help/feedback',
-    ),
-  ]),
-];
+    getItem('Feedback', '19', undefined, undefined, undefined, '/help/feedback')
+  ])
+]
 
 const SideMenu = () => {
   return (
     <Wrapper>
-      <div className="logo1">
-        <img src={logo1} alt="logo1" />
+      <div className='logo1'>
+        <img src={logo1} alt='logo1' />
       </div>
-      <div className="menu-item">
-        <Menu mode="vertical" items={items} className="list-item" />
+      <div className='menu-item'>
+        <Menu mode='vertical' items={items} className='list-item' />
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default SideMenu;
+export default SideMenu

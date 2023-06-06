@@ -1,20 +1,16 @@
-import { Checkbox, Col, Pagination, Row } from 'antd';
-import styled from 'styled-components';
-import { mySong, Song } from '../myData';
-import { FormOutlined } from '@ant-design/icons';
-import Page from './Page';
+import { Checkbox, Col, Pagination, Row } from 'antd'
+import styled from 'styled-components'
+import { mySong, Song } from '../../../myData'
+import { FormOutlined } from '@ant-design/icons'
+import Page from '../../Page'
 
 interface GrỉdViewProps {
-  gridView: boolean;
-  isKhoBanGhi: boolean;
-  isChecked: boolean;
+  gridView: boolean
+  isKhoBanGhi: boolean
+  isChecked: boolean
 }
 
-const GridView: React.FC<GrỉdViewProps> = ({
-  gridView,
-  isKhoBanGhi,
-  isChecked,
-}) => {
+const GridView: React.FC<GrỉdViewProps> = ({ gridView, isKhoBanGhi, isChecked }) => {
   return (
     <Container>
       <Row>
@@ -22,10 +18,8 @@ const GridView: React.FC<GrỉdViewProps> = ({
           <Col>
             <img src={song.hinhAnh} alt={song.tenBanGhi} />
             <div style={{ margin: '0 10px' }}>
-              <p style={{ fontSize: '16px', marginTop: '5px' }}>
-                {song.tenBanGhi}
-              </p>
-              <div className="info-song">
+              <p style={{ fontSize: '16px', marginTop: '5px' }}>{song.tenBanGhi}</p>
+              <div className='info-song'>
                 <p>
                   Ca sĩ: <span>{song.caSi}</span>
                 </p>
@@ -36,27 +30,23 @@ const GridView: React.FC<GrỉdViewProps> = ({
                   Số hợp đồng: <span>{song.maISRC}</span>
                 </p>
               </div>
-              <div className="type-song">
-                <div className="box-type">
+              <div className='type-song'>
+                <div className='box-type'>
                   <span>Thể loại</span>
 
                   <p>{song.theLoai}</p>
                 </div>
-                <div className="box-type">
+                <div className='box-type'>
                   <span>Định dạng</span>
 
                   <p>{song.dinhDang}</p>
                 </div>
-                <div className="box-type">
+                <div className='box-type'>
                   <span>Thời lượng</span>
                   <p>{song.thoiLuong}</p>
                 </div>
 
-                {isKhoBanGhi ? (
-                  <FormOutlined className="icon" />
-                ) : (
-                  <Checkbox className="icon" checked={isChecked} />
-                )}
+                {isKhoBanGhi ? <FormOutlined className='icon' /> : <Checkbox className='icon' checked={isChecked} />}
               </div>
             </div>
           </Col>
@@ -64,10 +54,10 @@ const GridView: React.FC<GrỉdViewProps> = ({
       </Row>
       <Page data={mySong} />
     </Container>
-  );
-};
+  )
+}
 
-export default GridView;
+export default GridView
 
 const Container = styled.div`
   width: 1541px;
@@ -133,4 +123,4 @@ const Container = styled.div`
       color: #ff7506;
     }
   }
-`;
+`

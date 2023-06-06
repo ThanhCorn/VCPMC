@@ -6,24 +6,23 @@ import {
   PlusCircleOutlined,
   PlusOutlined,
   RightOutlined,
-  UserDeleteOutlined,
-} from '@ant-design/icons';
-import { Button, DatePicker, Form, Input, Modal, Radio, Select } from 'antd';
-import dayjs from 'dayjs';
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import styled from 'styled-components';
-import { Device, myDevice } from '../../../myData';
-import { useState } from 'react';
+  UserDeleteOutlined
+} from '@ant-design/icons'
+import { Button, DatePicker, Form, Input, Modal, Radio, Select } from 'antd'
+import dayjs from 'dayjs'
+import React, { useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import styled from 'styled-components'
+import { Device, myDevice } from '../../../myData'
 
 const InfoDevice: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [device, setDevice] = useState<Device[] | null>(myDevice);
-  const { id } = useParams<{ id: string }>();
-  const deviceWithId = device?.find((device) => device.stt === id);
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const [device, setDevice] = useState<Device[] | null>(myDevice)
+  const { id } = useParams<{ id: string }>()
+  const deviceWithId = device?.find((device) => device.stt === id)
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <p style={{ color: 'white', opacity: '0.5' }}>
           Danh sách thiết bị
           <RightOutlined style={{ color: '#FFAC69' }} />
@@ -31,56 +30,53 @@ const InfoDevice: React.FC = () => {
         </p>
         <h1>Thông tin thiết bị - Device 1231243</h1>
         <Container>
-          <div className="container-1">
+          <div className='container-1'>
             <h3>Thông tin thiết bị</h3>
-            <img src={deviceWithId?.img} alt="" />
+            <img src={deviceWithId?.img} alt='' />
             <span style={{ color: '#fff', opacity: '0.7', fontSize: '12px' }}>
               {deviceWithId?.trangthai ? '😄Hoạt động' : '😄Ngưng hoạt động'}
             </span>
-            <div className="notice">
+            <div className='notice'>
               <p>Ghi chú:</p>
-              <span>
-                Văn bản này không những đã tồn tại năm thế kỉ, mà khi được áp
-                dụng vào tin học
-              </span>
+              <span>Văn bản này không những đã tồn tại năm thế kỉ, mà khi được áp dụng vào tin học</span>
             </div>
           </div>
-          <div className="container-2">
+          <div className='container-2'>
             <h3>Device 1231243</h3>
             <div style={{}}>
-              <div className="info-device">
+              <div className='info-device'>
                 <p>SKU/ID:</p>
                 <span>A23234523423</span>
               </div>
-              <div className="info-device">
+              <div className='info-device'>
                 <p>Địa chỉ MAC:</p>
                 <span>123.34.65.01</span>
               </div>
-              <div className="info-device">
+              <div className='info-device'>
                 <p>Tên đặng nhập:</p>
                 <span>User12321</span>
               </div>
-              <div className="info-device">
+              <div className='info-device'>
                 <p>Định dạng</p>
                 <span>Displayable</span>
               </div>
-              <div className="info-device">
+              <div className='info-device'>
                 <p>Vị trí</p>
                 <span>Hồ chí minh</span>
               </div>
-              <div className="info-device">
+              <div className='info-device'>
                 <p>Thời hạn bảo hành</p>
                 <span>22/05/2022</span>
               </div>
-              <div className="info-device">
+              <div className='info-device'>
                 <p>Trạng thái thiêt bị</p>
                 <span>Activated</span>
               </div>
             </div>
           </div>
-          <div className="container-3">
+          <div className='container-3'>
             <h3>Thông tin phiên bản</h3>
-            <div className="version">
+            <div className='version'>
               <p>Phiên bản củ nhất:</p>
               <div>
                 <span>12.3 (20/12/2022)</span>
@@ -89,29 +85,26 @@ const InfoDevice: React.FC = () => {
             </div>
             <h3>Dung lượng bộ nhớ</h3>
             <div>
-              <div className="capacity">
+              <div className='capacity'>
                 <p>Dung lượng</p>
                 <span>512GB</span>
               </div>
-              <div className="capacity">
+              <div className='capacity'>
                 <p>Còn trống</p>
                 <span>512GB</span>
               </div>
             </div>
           </div>
         </Container>
-        <div className="option">
-          <Button
-            onClick={() => setIsModalOpen(true)}
-            className="button-option"
-          >
-            <div className="icon">
+        <div className='option'>
+          <Button onClick={() => setIsModalOpen(true)} className='button-option'>
+            <div className='icon'>
               <FormOutlined />
             </div>
             <p>Chỉnh sửa</p>
           </Button>
-          <Button className="button-option">
-            <div className="icon">
+          <Button className='button-option'>
+            <div className='icon'>
               <MehOutlined />
             </div>
             <p>
@@ -121,8 +114,8 @@ const InfoDevice: React.FC = () => {
             </p>
           </Button>
 
-          <Button className="button-option">
-            <div className="icon">
+          <Button className='button-option'>
+            <div className='icon'>
               <ClockCircleFilled />
             </div>
             <p>
@@ -132,42 +125,35 @@ const InfoDevice: React.FC = () => {
           </Button>
         </div>
         {isModalOpen && (
-          <ModalContent
-            visible={isModalOpen}
-            onCancel={() => setIsModalOpen(false)}
-          >
+          <ModalContent visible={isModalOpen} onCancel={() => setIsModalOpen(false)}>
             <h3>Chỉnh sửa thông tin thiết bị</h3>
-            <Form layout="vertical" className="form">
-              <Form.Item label="Tên thiết bị">
-                <Input placeholder="Device 1231243" />
+            <Form layout='vertical' className='form'>
+              <Form.Item label='Tên thiết bị'>
+                <Input placeholder='Device 1231243' />
               </Form.Item>
-              <Form.Item label="SKU/ID">
-                <Input placeholder="A23234523423" />
+              <Form.Item label='SKU/ID'>
+                <Input placeholder='A23234523423' />
               </Form.Item>
-              <Form.Item label="Địa chỉ MAC">
-                <Input placeholder="123.34.65.01" />
+              <Form.Item label='Địa chỉ MAC'>
+                <Input placeholder='123.34.65.01' />
               </Form.Item>
-              <Form.Item label="Tên đăng nhập">
-                <Input placeholder="User12321" />
+              <Form.Item label='Tên đăng nhập'>
+                <Input placeholder='User12321' />
               </Form.Item>
-              <Form.Item label="Vị trí">
-                <Input placeholder="Hồ chí minh" />
+              <Form.Item label='Vị trí'>
+                <Input placeholder='Hồ chí minh' />
               </Form.Item>
             </Form>
-            <span
-              style={{ color: '#fff', fontSize: '16px', marginRight: '10px' }}
-            >
-              Trạng thái thiết bị:
-            </span>
+            <span style={{ color: '#fff', fontSize: '16px', marginRight: '10px' }}>Trạng thái thiết bị:</span>
             <Radio.Group>
-              <Radio value="Đã kích hoạt"> Đã kích hoạt </Radio>
-              <Radio value="Ngưng kích hoạt"> Ngưng kích hoạt </Radio>
+              <Radio value='Đã kích hoạt'> Đã kích hoạt </Radio>
+              <Radio value='Ngưng kích hoạt'> Ngưng kích hoạt </Radio>
             </Radio.Group>
-            <div className="btn">
-              <Button onClick={() => setIsModalOpen(false)} className="btn-huy">
+            <div className='btn'>
+              <Button onClick={() => setIsModalOpen(false)} className='btn-huy'>
                 Hủy
               </Button>
-              <Button onClick={() => setIsModalOpen(false)} className="btn-luu">
+              <Button onClick={() => setIsModalOpen(false)} className='btn-luu'>
                 Lưu
               </Button>
             </div>
@@ -175,10 +161,10 @@ const InfoDevice: React.FC = () => {
         )}
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default InfoDevice;
+export default InfoDevice
 
 const Container = styled.div`
   width: 1541px;
@@ -262,7 +248,7 @@ const Container = styled.div`
       }
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -364,7 +350,7 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`
 const ModalContent = styled(Modal)`
   .btn {
     margin-top: 30px;
@@ -418,4 +404,4 @@ const ModalContent = styled(Modal)`
       display: none;
     }
   }
-`;
+`

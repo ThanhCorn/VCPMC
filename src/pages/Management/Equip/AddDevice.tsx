@@ -1,22 +1,17 @@
-import {
-  KeyOutlined,
-  PlusCircleOutlined,
-  RightOutlined,
-  UserDeleteOutlined,
-} from '@ant-design/icons';
-import { Button, DatePicker, Input, Radio, Select } from 'antd';
-import dayjs from 'dayjs';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { KeyOutlined, PlusCircleOutlined, RightOutlined, UserDeleteOutlined } from '@ant-design/icons'
+import { Button, DatePicker, Input, Radio, Select } from 'antd'
+import dayjs from 'dayjs'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
-const { Option } = Select;
-const dateFormat = 'YYYY-MM-DD';
+const { Option } = Select
+const dateFormat = 'YYYY-MM-DD'
 
 const AddDevice = () => {
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <p style={{ color: 'white', opacity: '0.5' }}>
           Danh sách thiết bị
           <RightOutlined style={{ color: '#FFAC69' }} />
@@ -26,28 +21,28 @@ const AddDevice = () => {
         </p>
         <h1> Thêm thiết bị mới</h1>
         <Container>
-          <div className="container-1">
-            <div className="input-text">
+          <div className='container-1'>
+            <div className='input-text'>
               <h4>Tên Thiết bị:</h4>
               <Input />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>SKU/ID:</h4>
               <Input />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Địa chỉ MAC:</h4>
               <Input />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Thời hạn bảo hành</h4>
               <DatePicker />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Label:</h4>
               <Input />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Thông tin</h4>
               <div>
                 <Input />
@@ -57,44 +52,44 @@ const AddDevice = () => {
                 </p>
               </div>
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Ghi chú:</h4>
               <Input.TextArea rows={4} />
             </div>
           </div>
-          <div className="container-2">
-            <div className="input-text">
+          <div className='container-2'>
+            <div className='input-text'>
               <h4>Tên đăng nhập</h4>
               <Input />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Mật khẩu</h4>
               <Input.Password />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Nhập lại mật khẩu</h4>
               <Input.Password />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Vị trí</h4>
               <Input />
             </div>
           </div>
         </Container>
-        <div className="btn">
-          <Button className="btn-huy">Hủy</Button>
-          <Button className="btn-luu">Lưu</Button>
+        <div className='btn'>
+          <Button className='btn-huy'>Hủy</Button>
+          <Button className='btn-luu'>Lưu</Button>
         </div>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default AddDevice;
+export default AddDevice
 
 const Container = styled.div`
   display: flex;
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -201,4 +196,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

@@ -1,20 +1,20 @@
-import React, { Children, useState } from 'react';
-import styled from 'styled-components';
-import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
-import { Button, Col, DatePicker, List, Row, Switch } from 'antd';
-import { Link } from 'react-router-dom';
-import { Input } from 'antd';
-import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData';
-import Page from '../../components/Page';
+import React, { Children, useState } from 'react'
+import styled from 'styled-components'
+import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
+import { Button, Col, DatePicker, List, Row, Switch, Input } from 'antd'
+import { Link } from 'react-router-dom'
 
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData'
+import Page from '../../components/Page'
+
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
 
 const DetailDistribution = () => {
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             {' '}
             Doanh thu
@@ -29,23 +29,19 @@ const DetailDistribution = () => {
         </div>
 
         <h1>Hợp đồng ủy quyền UQ123 - Quý 1 </h1>
-        <div className="search-btn">
-          <div className="datepick">
+        <div className='search-btn'>
+          <div className='datepick'>
             <h3>Danh sách bản ghi</h3>
-            <Search
-              placeholder="Nhập tên bài hát..."
-              onSearch={onSearch}
-              style={{ width: 200 }}
-            />
+            <Search placeholder='Nhập tên bài hát...' onSearch={onSearch} style={{ width: 200 }} />
           </div>
-          <div className="">
+          <div className=''>
             <h3>Danh sách bản ghi</h3>
             <h2 style={{ color: '#FF7506' }}>Cuộc gọi nhỡ</h2>
           </div>
         </div>
         <Container>
-          <div className="container-1">
-            <Row className="row-1">
+          <div className='container-1'>
+            <Row className='row-1'>
               <Col span={1}>
                 <p>STT</p>
               </Col>
@@ -68,14 +64,11 @@ const DetailDistribution = () => {
             </Row>
 
             <List
-              itemLayout="horizontal"
+              itemLayout='horizontal'
               dataSource={myIncome}
               renderItem={(myIncome: Income) => (
-                <List.Item
-                  key={myIncome.stt}
-                  style={{ alignItems: 'center', display: 'flex' }}
-                >
-                  <Row className="row-2">
+                <List.Item key={myIncome.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                  <Row className='row-2'>
                     <Col span={1}>
                       <p> {myIncome.stt}</p>
                     </Col>
@@ -101,8 +94,8 @@ const DetailDistribution = () => {
             ></List>
             <Page data={myIncome} />
           </div>
-          <div className="container-2">
-            <Row className="row-3">
+          <div className='container-2'>
+            <Row className='row-3'>
               <Col span={3}>
                 <p>Đơn vị khai thác</p>
               </Col>
@@ -113,7 +106,7 @@ const DetailDistribution = () => {
                 <p>Doanh thu (VNĐ)</p>
               </Col>
             </Row>
-            <Row className="row-5">
+            <Row className='row-5'>
               <Col span={3}>
                 <p>Tổng</p>
               </Col>
@@ -125,14 +118,11 @@ const DetailDistribution = () => {
               </Col>
             </Row>
             <List
-              itemLayout="horizontal"
+              itemLayout='horizontal'
               dataSource={myIncome}
               renderItem={(myIncome: Income) => (
-                <List.Item
-                  key={myIncome.stt}
-                  style={{ alignItems: 'center', display: 'flex' }}
-                >
-                  <Row className="row-4">
+                <List.Item key={myIncome.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                  <Row className='row-4'>
                     <Col span={7}>
                       <p> {myIncome.donvikhaithac}</p>
                     </Col>
@@ -149,15 +139,15 @@ const DetailDistribution = () => {
           </div>
         </Container>
       </div>
-      <Link to="" className="link-option">
+      <Link to='' className='link-option'>
         <PlusCircleOutlined />
         <p>Xuất dữ liệu</p>
       </Link>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default DetailDistribution;
+export default DetailDistribution
 
 const Container = styled.div`
   width: 1541px;
@@ -245,7 +235,7 @@ const Container = styled.div`
       }
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -367,4 +357,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

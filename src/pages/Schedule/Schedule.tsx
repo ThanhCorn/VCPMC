@@ -1,21 +1,21 @@
-import React from 'react';
-import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import { mySchecule, Schecule } from '../../myData';
-import { Button, Pagination } from 'antd';
-import { Row, Col, List, Checkbox, Input, Modal } from 'antd';
-import { Link } from 'react-router-dom';
-import { PlusCircleOutlined, PlusSquareOutlined } from '@ant-design/icons';
-import Page from '../../components/Page';
+import React from 'react'
+import styled from 'styled-components'
+import SideMenu from '../../components/SideMenu'
+import PageContent from '../../components/PageContent'
+import { mySchecule, Schecule } from '../../myData'
+import { Button, Pagination, Row, Col, List, Checkbox, Input, Modal } from 'antd'
+
+import { Link } from 'react-router-dom'
+import { PlusCircleOutlined, PlusSquareOutlined } from '@ant-design/icons'
+import Page from '../../components/Page'
 
 export default function Schedule() {
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <h1>Danh sách lịch phát</h1>
         <Container>
-          <Row className="row-1">
+          <Row className='row-1'>
             <Col span={2}>
               <p>STT</p>
             </Col>
@@ -27,14 +27,11 @@ export default function Schedule() {
             </Col>
           </Row>
           <List
-            itemLayout="horizontal"
+            itemLayout='horizontal'
             dataSource={mySchecule}
             renderItem={(schedule: Schecule) => (
-              <List.Item
-                key={schedule.stt}
-                style={{ alignItems: 'center', display: 'flex' }}
-              >
-                <Row className="row-2">
+              <List.Item key={schedule.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                <Row className='row-2'>
                   <Col span={2}>
                     <p style={{ marginLeft: '18px' }}> {schedule.stt}</p>
                   </Col>
@@ -50,7 +47,7 @@ export default function Schedule() {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
+                      justifyContent: 'center'
                     }}
                   >
                     <Link
@@ -60,7 +57,7 @@ export default function Schedule() {
                         border: 'none',
                         textDecoration: 'underline',
                         color: '#ff7506',
-                        cursor: 'pointer',
+                        cursor: 'pointer'
                       }}
                     >
                       Xem chi tiết
@@ -71,7 +68,7 @@ export default function Schedule() {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
+                      justifyContent: 'center'
                     }}
                   >
                     <Button
@@ -79,7 +76,7 @@ export default function Schedule() {
                         background: 'transparent',
                         border: 'none',
                         textDecoration: 'underline',
-                        color: '#FF4747',
+                        color: '#FF4747'
                       }}
                     >
                       Xóa
@@ -91,10 +88,10 @@ export default function Schedule() {
           ></List>
           <Page data={mySchecule} />
         </Container>
-        <div className="side-option">
-          <div className="option">
-            <Link to="/add-schedule" className="link-option">
-              <div className="icon">
+        <div className='side-option'>
+          <div className='option'>
+            <Link to='/add-schedule' className='link-option'>
+              <div className='icon'>
                 <PlusCircleOutlined />
               </div>
               <p>
@@ -106,7 +103,7 @@ export default function Schedule() {
         </div>
       </div>
     </Wrapper>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -141,7 +138,7 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -199,4 +196,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

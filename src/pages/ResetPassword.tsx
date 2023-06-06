@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Form, Checkbox, Input, Button } from 'antd';
-import logo1 from '../assets/logo1.png';
-import FormLogin from '../components/FormLogin';
-import VN from '../assets/VNlogo.png';
-import { DownOutlined } from '@ant-design/icons';
-import FormResetPassword from '../components/FormResetPassword';
+import React from 'react'
+import styled from 'styled-components'
+import { Form, Checkbox, Input, Button } from 'antd'
+import logo1 from '../assets/logo1.png'
+import FormLogin from '../components/FormLogin'
+import VN from '../assets/VNlogo.png'
+import { DownOutlined } from '@ant-design/icons'
+import FormResetPassword from '../components/FormResetPassword'
 
 const Wrapper = styled.div`
   position: relative;
@@ -23,7 +23,7 @@ const Wrapper = styled.div`
     top: 0px;
     border-radius: 50%;
   }
-`;
+`
 
 const Language = styled.p`
   position: fixed;
@@ -46,19 +46,19 @@ const Language = styled.p`
     width: 22px;
     height: 22px;
   }
-`;
+`
 
 const ResetPassword = () => {
   return (
     <Wrapper>
       <Language>
-        Tiếng việt <img src={VN} alt="VN" />
+        Tiếng việt <img src={VN} alt='VN' />
         <DownOutlined />
       </Language>
-      <img src={logo1} alt="logo1" />
+      <img src={logo1} alt='logo1' />
       <FormResetPassword />
     </Wrapper>
-  );
-};
+  )
+}
 
-export default ResetPassword;
+export default ResetPassword

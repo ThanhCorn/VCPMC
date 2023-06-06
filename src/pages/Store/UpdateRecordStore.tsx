@@ -1,26 +1,31 @@
-import React from 'react';
-import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import { RightOutlined, StepForwardOutlined } from '@ant-design/icons';
-import { Button, Form, Input, Space } from 'antd';
-import { mySong, Song } from '../../myData';
+import React from 'react'
+import styled from 'styled-components'
+import SideMenu from '../../components/SideMenu'
+import PageContent from '../../components/PageContent'
+import { RightOutlined, StepForwardOutlined } from '@ant-design/icons'
+import { Button, Form, Input, Space } from 'antd'
+import { mySong, Song } from '../../myData'
+import { useNavigate } from 'react-router-dom'
 
 const UpdateRecordStore = () => {
-  const [form] = Form.useForm();
-  const data = mySong[0];
+  const [form] = Form.useForm()
+  const data = mySong[0]
+  const navigate = useNavigate()
   return (
     <Wrapper>
-      <div className="content">
-        <span style={{ color: '#fff', opacity: '0.5' }}>
-          Kho bản ghi <RightOutlined style={{ color: '#FF7506' }} /> Cập nhật
-          thông tin
-        </span>
+      <div className='content'>
+        <div className='header-text'>
+          <span>
+            Kho bản ghi <RightOutlined />
+          </span>
+          <span>Cập nhật thông tin</span>
+        </div>
+
         <h1>Bản ghi - Mất em</h1>
         <Container>
-          <div className="content-1">
-            <Space className="space-1">
-              <div className="info-record">
+          <div className='content-1'>
+            <Space className='space-1'>
+              <div className='info-record'>
                 <h2>Thông tin bản ghi</h2>
                 <img src={data.hinhAnh} alt={data.tenBanGhi} />
                 <span>
@@ -29,7 +34,7 @@ const UpdateRecordStore = () => {
                   Matem.mp3
                 </span>
               </div>
-              <div className="main-info">
+              <div className='main-info'>
                 <p>
                   Ngày thêm <span>07/04/2021 - 17:45:30</span>{' '}
                 </p>
@@ -48,9 +53,9 @@ const UpdateRecordStore = () => {
                 </p>
               </div>
             </Space>
-            <Space className="space-2">
+            <Space className='space-2'>
               <h2>Thông tin ủy quyền</h2>
-              <div className="main-info">
+              <div className='main-info'>
                 <p>
                   Số hợp đồng<span>Bh223</span>{' '}
                 </p>
@@ -67,33 +72,33 @@ const UpdateRecordStore = () => {
               </div>
             </Space>
           </div>
-          <div className="content-2 ">
-            <Space className="space-3">
+          <div className='content-2 '>
+            <Space className='space-3'>
               <h2>Chỉnh sửa thông tin</h2>
-              <Form layout="vertical" form={form} style={{ maxWidth: 600 }}>
-                <Form.Item label="Tên bản ghi" required>
-                  <Input placeholder="Mất em" disabled />
+              <Form layout='vertical' form={form} style={{ maxWidth: 600 }}>
+                <Form.Item label='Tên bản ghi' required>
+                  <Input placeholder='Mất em' disabled />
                 </Form.Item>
-                <Form.Item label="Mã ISRC" required>
-                  <Input placeholder="KRA0123123" disabled />
+                <Form.Item label='Mã ISRC' required>
+                  <Input placeholder='KRA0123123' disabled />
                 </Form.Item>
-                <Form.Item label="Ca sĩ" required>
-                  <Input placeholder="Phan Mạnh Quỳnh" disabled />
+                <Form.Item label='Ca sĩ' required>
+                  <Input placeholder='Phan Mạnh Quỳnh' disabled />
                 </Form.Item>
-                <Form.Item label="Tác giả" required>
-                  <Input placeholder="Phan Mạnh Quỳnh" disabled />
+                <Form.Item label='Tác giả' required>
+                  <Input placeholder='Phan Mạnh Quỳnh' disabled />
                 </Form.Item>
-                <Form.Item label="Nhà sản xuất" required>
-                  <Input placeholder="Nguyễn Nam Minh Thụy" disabled />
+                <Form.Item label='Nhà sản xuất' required>
+                  <Input placeholder='Nguyễn Nam Minh Thụy' disabled />
                 </Form.Item>
-                <Form.Item label="Thể loại" required>
-                  <Input placeholder="Ballad" disabled />
+                <Form.Item label='Thể loại' required>
+                  <Input placeholder='Ballad' disabled />
                 </Form.Item>
-                <Form.Item className="button">
-                  <Button type="primary" className="btn-huy">
+                <Form.Item className='button'>
+                  <Button type='primary' className='btn-huy'>
                     Hủy
                   </Button>
-                  <Button type="primary" className="btn-luu">
+                  <Button onClick={() => navigate('/record-store')} type='primary' className='btn-luu'>
                     Lưu
                   </Button>
                 </Form.Item>
@@ -103,10 +108,10 @@ const UpdateRecordStore = () => {
         </Container>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default UpdateRecordStore;
+export default UpdateRecordStore
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -117,8 +122,19 @@ const Wrapper = styled.div`
     width: 100%;
     margin-left: 50px;
     margin-top: 50px;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
   }
-`;
+`
 const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -245,4 +261,4 @@ const Container = styled.div`
       }
     }
   }
-`;
+`

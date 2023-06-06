@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import 'firebase/firestore';
-import { Modal, Input, Button, DatePicker, Checkbox, Radio } from 'antd';
+import React, { useState, useContext } from 'react'
+import styled from 'styled-components'
+import 'firebase/firestore'
+import { Modal, Input, Button, DatePicker, Checkbox, Radio } from 'antd'
 import {
   ContainerOutlined,
   CloseOutlined,
   FormOutlined,
   DownOutlined,
-} from '@ant-design/icons';
-import {
   FilePdfOutlined,
   InfoCircleOutlined,
   CloudUploadOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
-import { DataContext } from '../../context/DataContext';
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { UserContext } from '../../context/UserContext';
+  RightOutlined
+} from '@ant-design/icons'
 
-const { TextArea } = Input;
-const CheckboxGroup = Checkbox.Group;
+import { DataContext } from '../../../context/DataContext'
+
+import { Link } from 'react-router-dom'
+import { UserContext } from '../../../context/UserContext'
+
+const { TextArea } = Input
+const CheckboxGroup = Checkbox.Group
 
 const options = [
   {
@@ -33,7 +32,7 @@ const options = [
             border: '1px solid #727288',
             borderRadius: '4px',
             background: '#2B2B3F',
-            marginRight: '5px',
+            marginRight: '5px'
           }}
         >
           0{' '}
@@ -41,7 +40,7 @@ const options = [
         %
       </p>
     ),
-    value: 'performer',
+    value: 'performer'
   },
 
   {
@@ -54,7 +53,7 @@ const options = [
             border: '1px solid #727288',
             borderRadius: '4px',
             background: '#2B2B3F',
-            marginRight: '5px',
+            marginRight: '5px'
           }}
         >
           0{' '}
@@ -62,46 +61,45 @@ const options = [
         %
       </p>
     ),
-    value: 'producer',
-  },
-];
+    value: 'producer'
+  }
+]
 const onChange = (checkedValues: any) => {
-  console.log('checked = ', checkedValues);
-};
+  console.log('checked = ', checkedValues)
+}
 
 const InfoContractDetail: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalOpen2, setIsModalOpen2] = useState(false);
-  const { data } = useContext(DataContext);
-  const { currentUser } = useContext(UserContext);
-  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen2, setIsModalOpen2] = useState(false)
+  const { data } = useContext(DataContext)
+  const { currentUser } = useContext(UserContext)
+  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false)
 
   const showModal = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
   const showModal2 = () => {
-    setIsModalOpen2(true);
-  };
+    setIsModalOpen2(true)
+  }
 
   const handleOk = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
   const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <h4 style={{ color: 'white' }}>
-          Quản lý <RightOutlined /> Quản lý hợp đồng <RightOutlined /> Chi tiết{' '}
-          <RightOutlined /> Chỉnh sửa thông tin
+          Quản lý <RightOutlined /> Quản lý hợp đồng <RightOutlined /> Chi tiết <RightOutlined /> Chỉnh sửa thông tin
         </h4>
         <h1 style={{ width: '1000px' }}>Hợp đồng uỷ quyền bài hát - BH123</h1>
         <Container>
-          <div className="info-1">
-            <div className="info-content-1">
+          <div className='info-1'>
+            <div className='info-content-1'>
               <h4>
                 Số hợp đồng: <p style={{ marginLeft: '20px' }}> BH123</p>
               </h4>
@@ -117,8 +115,7 @@ const InfoContractDetail: React.FC = () => {
                 </p>
               </h4>
               <h4>
-                Ngày hết hạn:{' '}
-                <p>{data[0]['Ngày hết hạn'].toDate().toLocaleDateString()}</p>
+                Ngày hết hạn: <p>{data[0]['Ngày hết hạn'].toDate().toLocaleDateString()}</p>
               </h4>
               <h4>
                 Tình trạng:{' '}
@@ -128,7 +125,7 @@ const InfoContractDetail: React.FC = () => {
                 </p>{' '}
               </h4>
             </div>
-            <div className="info-content-2">
+            <div className='info-content-2'>
               <h3>Thông tin pháp nhân ủy quyền</h3>
               <h4>
                 Pháp nhân ủy quyền:{' '}
@@ -152,7 +149,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '10px',
+                    marginLeft: '10px'
                   }}
                 >
                   Nguyễn Văn A
@@ -167,7 +164,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '89px',
+                    marginLeft: '89px'
                   }}
                 >
                   10/01/1984
@@ -195,7 +192,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '89px',
+                    marginLeft: '89px'
                   }}
                 >
                   Việt Nam
@@ -210,7 +207,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '60px',
+                    marginLeft: '60px'
                   }}
                 >
                   (+84) 345 678 901
@@ -218,21 +215,21 @@ const InfoContractDetail: React.FC = () => {
               </h4>
             </div>
           </div>
-          <div className="info-2">
-            <div className="info-content-1">
+          <div className='info-2'>
+            <div className='info-content-1'>
               <h4>
                 Đính kèm tệp:
                 <div
                   style={{
                     transform: 'translateY(45px)',
-                    marginLeft: '10px',
+                    marginLeft: '10px'
                   }}
                 >
                   <Button
                     style={{
                       color: '#FFAC69',
                       border: '1px solid #FFAC69',
-                      background: 'transparent',
+                      background: 'transparent'
                     }}
                   >
                     {' '}
@@ -249,7 +246,7 @@ const InfoContractDetail: React.FC = () => {
                 </div>
               </h4>
             </div>
-            <div className="info-content-2">
+            <div className='info-content-2'>
               <h4>
                 Số CMND/ CCCD:{' '}
                 <p
@@ -262,7 +259,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '0px',
+                    marginLeft: '0px'
                   }}
                 >
                   123456789012
@@ -280,7 +277,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '55px',
+                    marginLeft: '55px'
                   }}
                 >
                   10/07/2011
@@ -298,7 +295,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '70px',
+                    marginLeft: '70px'
                   }}
                 >
                   Tp.HCM, Việt Nam
@@ -316,7 +313,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '40px',
+                    marginLeft: '40px'
                   }}
                 >
                   92387489
@@ -336,7 +333,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '50px',
+                    marginLeft: '50px'
                   }}
                 >
                   69/53, Nguyễn Gia Trí, Phường 25,
@@ -345,8 +342,8 @@ const InfoContractDetail: React.FC = () => {
               </h4>
             </div>
           </div>
-          <div className="info-3">
-            <div className="info-content-1">
+          <div className='info-3'>
+            <div className='info-content-1'>
               <h4>
                 <InfoCircleOutlined /> Mức nhuận bút
               </h4>
@@ -362,14 +359,14 @@ const InfoContractDetail: React.FC = () => {
                 <br /> (Bản ghi/video)
                 <p
                   style={{
-                    transform: 'translate(10px,-10px)',
+                    transform: 'translate(10px,-10px)'
                   }}
                 >
                   50%
                 </p>
               </h4>
             </div>
-            <div className="info-content-2">
+            <div className='info-content-2'>
               <h4>
                 Email:{' '}
                 <p
@@ -382,7 +379,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '50px',
+                    marginLeft: '50px'
                   }}
                 >
                   {currentUser?.email}
@@ -400,7 +397,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '22px',
+                    marginLeft: '22px'
                   }}
                 >
                   {currentUser?.email}
@@ -418,7 +415,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '20px',
+                    marginLeft: '20px'
                   }}
                 >
                   {' '}
@@ -437,7 +434,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '0px',
+                    marginLeft: '0px'
                   }}
                 >
                   1231123312211223
@@ -455,7 +452,7 @@ const InfoContractDetail: React.FC = () => {
                     background: '#2b2b3f',
                     border: '1px solid #727288',
                     borderRadius: '8px',
-                    marginLeft: '10px',
+                    marginLeft: '10px'
                   }}
                 >
                   ACB - Ngân hàng Á Châu
@@ -468,7 +465,7 @@ const InfoContractDetail: React.FC = () => {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            marginTop: '50px',
+            marginTop: '50px'
           }}
         >
           <Button
@@ -479,18 +476,18 @@ const InfoContractDetail: React.FC = () => {
               backgroundColor: 'transparent',
               width: '168px',
               color: '#FF7506',
-              border: '1px solid #FF7506',
+              border: '1px solid #FF7506'
             }}
           >
             Hủy
           </Button>
           <Button
-            type="primary"
-            htmlType="submit"
+            type='primary'
+            htmlType='submit'
             style={{
               height: '48px',
               width: '168px',
-              backgroundColor: '#FF7506',
+              backgroundColor: '#FF7506'
             }}
           >
             Lưu
@@ -498,8 +495,8 @@ const InfoContractDetail: React.FC = () => {
         </div>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
 const Wrapper = styled.div`
   position: relative;
@@ -667,7 +664,7 @@ const Wrapper = styled.div`
       cursor: pointer;
     }
   }
-`;
+`
 const ModalContent = styled(Modal)`
   .ant-modal-content {
     background: #2f2f41;
@@ -708,7 +705,7 @@ const ModalContent = styled(Modal)`
       background: #ff7506 !important;
     }
   }
-`;
+`
 const Container = styled.div`
   display: grid;
   padding-right: 0px !important;
@@ -850,6 +847,6 @@ const Container = styled.div`
       cursor: pointer;
     }
   }
-`;
+`
 
-export default InfoContractDetail;
+export default InfoContractDetail

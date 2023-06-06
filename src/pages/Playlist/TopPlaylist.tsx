@@ -7,90 +7,83 @@ import {
   PlusCircleOutlined,
   RedoOutlined,
   RightOutlined,
-  SmileOutlined,
-} from '@ant-design/icons';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import StarBoy from '../../assets/starboy.png';
-import {
-  Button,
-  Col,
-  Form,
-  Input,
-  List,
-  Modal,
-  Pagination,
-  Row,
-  Switch,
-  Tag,
-} from 'antd';
-import { Song, mySong } from '../../myData';
-import ImageSong from '../../assets/Song.png';
-import { Menu, Dropdown } from 'antd';
-import type { MenuProps } from 'antd';
+  SmileOutlined
+} from '@ant-design/icons'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import StarBoy from '../../assets/starboy.png'
+import { Button, Col, Form, Input, List, Modal, Pagination, Row, Switch, Tag, Menu, Dropdown } from 'antd'
+import { Song, mySong } from '../../myData'
+
+import type { MenuProps } from 'antd'
+import ListenButton from '../../components/ListenButton'
+import Page from '../../components/Page'
 
 const items: MenuProps['items'] = [
   {
     label: 'Tải lên hình ảnh',
-    key: '1',
+    key: '1'
   },
   {
     label: 'Xóa hình ảnh',
-    key: '1',
-  },
-];
+    key: '1'
+  }
+]
 export default function TopPlaylist() {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const [isEdit, setIsEdit] = React.useState(false);
+  const [isEdit, setIsEdit] = React.useState(false)
 
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         {isEdit ? (
-          <span style={{ color: '#fff', opacity: '0.5' }}>
-            Playlist <RightOutlined /> Chi tiết playlist <RightOutlined /> Chỉnh
-            sửa
-          </span>
+          <div className='header-text'>
+            <span>
+              {' '}
+              Playlist <RightOutlined />
+            </span>
+            <span>
+              Chi tiết playlist <RightOutlined />
+            </span>
+            <span>Chỉnh sửa</span>
+          </div>
         ) : (
-          <span style={{ color: '#fff', opacity: '0.5' }}>
-            Playlist <RightOutlined /> Chi tiết playlist
-          </span>
+          <div className='header-text'>
+            <span>
+              {' '}
+              Playlist <RightOutlined />{' '}
+            </span>
+            <span>Chi tiết playlist</span>
+          </div>
         )}
         <h1>Playlist top ca khúc 2023</h1>
         <Container>
-          <div className="left-table">
+          <div className='left-table'>
             <div style={{ position: 'relative' }}>
-              <img src={StarBoy} alt="starboy" />
+              <img src={StarBoy} alt='starboy' />
               {isEdit && (
                 <div
                   style={{
                     position: 'absolute',
                     top: '0',
-                    right: '0',
+                    right: '0'
                   }}
                 >
-                  <Dropdown
-                    menu={{ items }}
-                    placement="bottom"
-                    arrow={{ pointAtCenter: true }}
-                  >
+                  <Dropdown menu={{ items }} placement='bottom' arrow={{ pointAtCenter: true }}>
                     <Button
                       style={{
                         borderRadius: '50%',
                         background: '#FF7506',
                         border: 'none',
                         width: '40px',
-                        height: '40px',
+                        height: '40px'
                       }}
                     >
                       <MoreOutlined
                         style={{
                           color: '#fff',
                           fontSize: '20px',
-                          transform: 'translateX(-5px)',
+                          transform: 'translateX(-5px)'
                         }}
                       />
                     </Button>
@@ -100,16 +93,16 @@ export default function TopPlaylist() {
             </div>
 
             {isEdit ? (
-              <Form layout="vertical">
-                <Form.Item label="Tiêu đề" required>
+              <Form layout='vertical'>
+                <Form.Item label='Tiêu đề' required>
                   <Input
-                    value="Top Ca khúc 2023"
+                    value='Top Ca khúc 2023'
                     style={{
                       border: '1px solid #727288',
                       color: '#fff',
                       opacity: '0.5',
                       height: '40px',
-                      backgroundColor: '#2B2B3F',
+                      backgroundColor: '#2B2B3F'
                     }}
                   />
                 </Form.Item>
@@ -118,7 +111,7 @@ export default function TopPlaylist() {
               <h2>Top ca khúc 2023</h2>
             )}
             <div style={{ border: '1px solid #fff', opacity: '0.5' }}></div>
-            <div className="info-playlist">
+            <div className='info-playlist'>
               <p>
                 Người tạo: <span>Super Admin</span>
               </p>
@@ -131,81 +124,80 @@ export default function TopPlaylist() {
             </div>
             <div style={{ border: '1px solid #fff', opacity: '0.5' }}></div>
             {isEdit ? (
-              <Form layout="vertical">
-                <Form.Item label="Mô tả:">
+              <Form layout='vertical'>
+                <Form.Item label='Mô tả:'>
                   <Input.TextArea
                     style={{
                       border: '1px solid #727288',
                       color: '#fff',
                       opacity: '0.5',
-                      backgroundColor: '#2B2B3F',
+                      backgroundColor: '#2B2B3F'
                     }}
                     rows={4}
-                    value=" Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
-              quia non corrupti et fugit dolores harum nisi eum voluptate. Nemo? "
+                    value=' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
+              quia non corrupti et fugit dolores harum nisi eum voluptate. Nemo? '
                   />
                 </Form.Item>
               </Form>
             ) : (
-              <span className="info-lorem">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
-                quia non corrupti et fugit dolores harum nisi eum voluptate.
-                Nemo?
+              <span className='info-lorem'>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime quia non corrupti et fugit dolores
+                harum nisi eum voluptate. Nemo?
               </span>
             )}
             <div style={{ border: '1px solid #fff', opacity: '0.5' }}></div>
             {isEdit ? (
-              <Form layout="vertical" style={{ position: 'relative' }}>
-                <Form.Item label="Chủ đề:">
+              <Form layout='vertical' style={{ position: 'relative' }}>
+                <Form.Item label='Chủ đề:'>
                   <Input.TextArea
                     rows={3}
-                    placeholder="Nhập chủ đề"
+                    placeholder='Nhập chủ đề'
                     readOnly
                     style={{
                       border: '1px solid #727288',
-                      backgroundColor: '#2B2B3F',
+                      backgroundColor: '#2B2B3F'
                     }}
                   />
                   <div
                     style={{
                       position: 'absolute',
-                      top: '5%',
+                      top: '5%'
                     }}
                   >
                     <Tag
-                      className="tag-option"
-                      color="white"
+                      className='tag-option'
+                      color='white'
                       style={{
                         border: '1px solid #fff',
                         borderRadius: '4px',
                         margin: '4px',
-                        backgroundColor: '#2B2B3F',
+                        backgroundColor: '#2B2B3F'
                       }}
                     >
                       Chill <CloseOutlined style={{ color: 'red' }} />
                     </Tag>
                     <Tag
-                      className="tag-option"
-                      color="white"
+                      className='tag-option'
+                      color='white'
                       style={{
                         border: '1px solid #fff',
 
                         borderRadius: '4px',
                         margin: '4px',
-                        backgroundColor: '#2B2B3F',
+                        backgroundColor: '#2B2B3F'
                       }}
                     >
                       Lofi <CloseOutlined style={{ color: 'red' }} />
                     </Tag>
                     <Tag
-                      className="tag-option"
-                      color="white"
+                      className='tag-option'
+                      color='white'
                       style={{
                         border: '1px solid #fff',
 
                         borderRadius: '4px',
                         margin: '4px',
-                        backgroundColor: '#2B2B3F',
+                        backgroundColor: '#2B2B3F'
                       }}
                     >
                       Mashup <CloseOutlined style={{ color: 'red' }} />
@@ -220,12 +212,12 @@ export default function TopPlaylist() {
               </Form>
             ) : (
               <>
-                <div className="info-topic-1">
+                <div className='info-topic-1'>
                   <span>🌎Chủ đề 1</span>
                   <span>🌎Chủ đề 2</span>
                   <span>🌎Chủ đề 3</span>
                 </div>
-                <div className="info-topic-2">
+                <div className='info-topic-2'>
                   <span>🌎Chủ đề 1</span>
                   <span>🌎Chủ đề 2</span>
                   <span>🌎Chủ đề 3</span>
@@ -235,7 +227,7 @@ export default function TopPlaylist() {
             {!isEdit && (
               <>
                 <div style={{ border: '1px solid #fff', opacity: '0.5' }}></div>
-                <div className="play">
+                <div className='play'>
                   <p>
                     <CodepenCircleOutlined /> Hiển thị ở chế độ công khai
                   </p>
@@ -250,8 +242,8 @@ export default function TopPlaylist() {
             )}
           </div>
 
-          <div className="right-table">
-            <Row className="row-1">
+          <div className='right-table'>
+            <Row className='row-1'>
               <Col span={2}>
                 <p>STT</p>
               </Col>
@@ -266,14 +258,11 @@ export default function TopPlaylist() {
               </Col>
             </Row>
             <List
-              itemLayout="horizontal"
+              itemLayout='horizontal'
               dataSource={mySong}
               renderItem={(schedule: Song) => (
-                <List.Item
-                  key={schedule.stt}
-                  style={{ alignItems: 'center', display: 'flex' }}
-                >
-                  <Row className="row-2">
+                <List.Item key={schedule.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                  <Row className='row-2'>
                     <Col span={3}>
                       <p> {schedule.stt}</p>
                     </Col>
@@ -288,17 +277,7 @@ export default function TopPlaylist() {
                     </Col>
 
                     <Col>
-                      <Button
-                        onClick={() => setIsModalOpen(true)}
-                        style={{
-                          background: 'transparent',
-                          border: 'none',
-                          textDecoration: 'underline',
-                          color: '#ff7506',
-                        }}
-                      >
-                        Nghe
-                      </Button>
+                      <ListenButton />
                     </Col>
                     <Col>
                       <Button
@@ -306,94 +285,52 @@ export default function TopPlaylist() {
                           background: 'transparent',
                           border: 'none',
                           textDecoration: 'underline',
-                          color: '#ff7506',
+                          color: '#ff7506'
                         }}
                       >
                         Gỡ
                       </Button>
                     </Col>
                   </Row>
-                  {isModalOpen && (
-                    <ModalContent
-                      visible={isModalOpen}
-                      onCancel={() => setIsModalOpen(false)}
-                    >
-                      <img src={ImageSong} alt="" />
-                    </ModalContent>
-                  )}
                 </List.Item>
               )}
             ></List>
 
-            <div
-              style={{
-                position: 'absolute',
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                bottom: '0',
-              }}
-            >
-              <p
-                style={{
-                  display: 'flex',
-                  letterSpacing: ' 0.015em',
-                  marginLeft: '20px',
-                }}
-              >
-                Hiển thị{' '}
-                <span
-                  style={{
-                    padding: '0 10px',
-                    border: '1px solid #FF7506',
-                    borderRadius: '4px',
-                  }}
-                >
-                  {mySong.length}
-                </span>{' '}
-                hàng trong mỗi trang
-              </p>
-              <Pagination
-                defaultCurrent={1}
-                total={100}
-                style={{ marginRight: '20px' }}
-              />
-            </div>
+            <Page data={mySong} />
           </div>
         </Container>
         {isEdit && (
           <div style={{ transform: 'translate(40%, -100%)' }}>
-            <Button onClick={() => setIsEdit(false)} className="btn-huy">
+            <Button onClick={() => setIsEdit(false)} className='btn-huy'>
               Hủy
             </Button>
-            <Button onClick={() => setIsEdit(false)} className="btn-luu">
+            <Button onClick={() => setIsEdit(false)} className='btn-luu'>
               Lưu
             </Button>
           </div>
         )}
-        <div className="side-option">
+        <div className='side-option'>
           {isEdit ? (
-            <div className="option">
-              <Button className="button-option">
-                <div className="icon">
+            <div className='option'>
+              <Link to='/add-playlist' className='link-option'>
+                <div className='icon'>
                   <FormOutlined />
                 </div>
                 <p>
                   Thêm <br /> bản ghi
                 </p>
-              </Button>
+              </Link>
             </div>
           ) : (
-            <div className="option">
-              <Button onClick={() => setIsEdit(true)} className="button-option">
-                <div className="icon">
+            <div className='option'>
+              <Button onClick={() => setIsEdit(true)} className='button-option'>
+                <div className='icon'>
                   <FormOutlined />
                 </div>
                 <p>Chỉnh sửa</p>
               </Button>
-              <Link to="" className="link-option">
-                <div className="icon-2">
+              <Link to='' className='link-option'>
+                <div className='icon-2'>
                   <DislikeOutlined />
                 </div>
                 <p>Xóa playlist</p>
@@ -403,7 +340,7 @@ export default function TopPlaylist() {
         </div>
       </div>
     </Wrapper>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -508,7 +445,7 @@ const Container = styled.div`
       }
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   background-color: var(--primary-color);
@@ -516,6 +453,17 @@ const Wrapper = styled.div`
   .content {
     margin-left: 50px;
     margin-top: 50px;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
   }
   .option {
     display: flex;
@@ -576,41 +524,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
-const ModalContent = styled(Modal)`
-  img {
-    width: 100%;
-    margin-top: 30px;
-  }
-  .ant-modal-content {
-    background: #2f2f41;
-  }
-  .ant-modal-title {
-    background: #2f2f41;
-    color: #fff;
-    margin-bottom: 30px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .ant-input {
-    color: #fff;
-    border: 1px solid #727288;
-    background: #2b2b3f;
-    ::placeholder {
-      color: #727288;
-    }
-  }
-  .ant-modal-footer {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .ant-btn-default {
-      display: none;
-    }
-    .ant-btn-primary {
-      display: none;
-    }
-  }
-`;
+`

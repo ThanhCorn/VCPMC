@@ -1,44 +1,38 @@
-import {
-  FormOutlined,
-  LeftOutlined,
-  PlusOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
-import { Button, Col, List, Row } from 'antd';
-import styled from 'styled-components';
-import { CategorySong, Config, myCategorySong, myConfig } from '../../myData';
-import React, { useEffect } from 'react';
-import { DownOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Dropdown, Space } from 'antd';
+import { FormOutlined, LeftOutlined, PlusOutlined, RightOutlined, DownOutlined } from '@ant-design/icons'
+import { Button, Col, List, Row, Dropdown, Space } from 'antd'
+import styled from 'styled-components'
+import { CategorySong, Config, myCategorySong, myConfig } from '../../myData'
+import React, { useEffect } from 'react'
+
+import type { MenuProps } from 'antd'
 
 const items: MenuProps['items'] = [
   {
     label: 'Tiếng việt',
-    key: '1',
+    key: '1'
   },
   {
     label: 'Tiếng Anh',
-    key: '2',
-  },
-];
+    key: '2'
+  }
+]
 
 const Configuration = () => {
-  const [image, setImage] = React.useState<Config[]>(myConfig);
-  const [main, setMain] = React.useState(myConfig[0].image);
-  const displayedImages = image.slice(1, 4);
+  const [image, setImage] = React.useState<Config[]>(myConfig)
+  const [main, setMain] = React.useState(myConfig[0].image)
+  const displayedImages = image.slice(1, 4)
 
   const handleImageClick = (index: number, item: Config) => {
-    const updatedImages = [...image];
-    updatedImages[0] = item;
-    updatedImages[index + 1] = image[0];
-    setImage(updatedImages);
-    setMain(item.image);
-  };
+    const updatedImages = [...image]
+    updatedImages[0] = item
+    updatedImages[index + 1] = image[0]
+    setImage(updatedImages)
+    setMain(item.image)
+  }
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             {' '}
             Cài đặt
@@ -51,10 +45,10 @@ const Configuration = () => {
 
         <Container>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <img src={main} alt="" className="main-image" />
+            <img src={main} alt='' className='main-image' />
             <p style={{ transform: 'translateX(50%)' }}>Theme 1</p>
           </div>
-          <div className="extra-content">
+          <div className='extra-content'>
             <Button>
               <LeftOutlined />
             </Button>
@@ -62,14 +56,12 @@ const Configuration = () => {
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <img
                   src={item.image}
-                  alt=""
-                  className="extra-image"
+                  alt=''
+                  className='extra-image'
                   key={index}
                   onClick={() => handleImageClick(index, item)}
                 />
-                <p style={{ transform: 'translateX(30%)' }}>
-                  Theme {index + 2}
-                </p>
+                <p style={{ transform: 'translateX(30%)' }}>Theme {index + 2}</p>
               </div>
             ))}
             <Button>
@@ -77,7 +69,7 @@ const Configuration = () => {
             </Button>
           </div>
         </Container>
-        <div className="language">
+        <div className='language'>
           <h3>Ngôn ngữ hiển thị</h3>
           <Space>
             <Dropdown.Button icon={<DownOutlined />} menu={{ items }}>
@@ -87,10 +79,10 @@ const Configuration = () => {
         </div>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default Configuration;
+export default Configuration
 
 const Container = styled.div`
   width: 1541px;
@@ -130,7 +122,7 @@ const Container = styled.div`
     object-fit: cover;
     cursor: pointer;
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -242,4 +234,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

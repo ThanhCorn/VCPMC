@@ -1,24 +1,24 @@
-import React, { Children, useState } from 'react';
-import styled from 'styled-components';
-import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
-import { Button, Col, List, Row, Switch } from 'antd';
-import { Link } from 'react-router-dom';
-import { Input } from 'antd';
-import { PartnerAuthorizer, myPartner } from '../../myData';
-import Page from '../../components/Page';
-import ListUser from '../../components/Setting/ListUser';
-import ListRole from '../../components/Setting/ListRole';
+import React, { Children, useState } from 'react'
+import styled from 'styled-components'
+import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
+import { Button, Col, List, Row, Switch, Input } from 'antd'
+import { Link } from 'react-router-dom'
 
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+import { PartnerAuthorizer, myPartner } from '../../myData'
+import Page from '../../components/Page'
+import ListUser from '../../components/Setting/ListUser'
+import ListRole from '../../components/Setting/ListRole'
+
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
 
 const Permission = () => {
-  const [isRole, setIsRole] = useState(false);
+  const [isRole, setIsRole] = useState(false)
 
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             Cài đặt
             <RightOutlined />
@@ -26,43 +26,27 @@ const Permission = () => {
           <span> Phân quyền người dùng</span>
         </div>
 
-        {!isRole ? (
-          <h1>Danh sách người dùng</h1>
-        ) : (
-          <h1>Vai trò người dùng trên hệ thống</h1>
-        )}
-        <div className="search-btn">
-          <div className="btn">
-            <Button
-              type="primary"
-              onClick={() => setIsRole(false)}
-              className={`button-1 ${!isRole ? 'active' : ''}`}
-            >
+        {!isRole ? <h1>Danh sách người dùng</h1> : <h1>Vai trò người dùng trên hệ thống</h1>}
+        <div className='search-btn'>
+          <div className='btn'>
+            <Button type='primary' onClick={() => setIsRole(false)} className={`button-1 ${!isRole ? 'active' : ''}`}>
               Danh sách người dùng
             </Button>
-            <Button
-              onClick={() => setIsRole(true)}
-              type="primary"
-              className={`button-2 ${isRole ? 'active' : ''}`}
-            >
+            <Button onClick={() => setIsRole(true)} type='primary' className={`button-2 ${isRole ? 'active' : ''}`}>
               Vai trò người dùng
             </Button>
           </div>
-          <Search
-            placeholder="Nhập tên người dùng..."
-            onSearch={onSearch}
-            style={{ width: 200 }}
-          />
+          <Search placeholder='Nhập tên người dùng...' onSearch={onSearch} style={{ width: 200 }} />
         </div>
         {isRole ? <ListRole /> : <ListUser />}
       </div>
       {isRole ? (
-        <Link to="/setting/add-role" className="link-option">
+        <Link to='/setting/add-role' className='link-option'>
           <PlusCircleOutlined />
           <p>Thêm vai trò</p>
         </Link>
       ) : (
-        <Link to="/setting/add-user" className="link-option">
+        <Link to='/setting/add-user' className='link-option'>
           <PlusCircleOutlined />
           <p>
             Thêm người <br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dùng
@@ -70,10 +54,10 @@ const Permission = () => {
         </Link>
       )}
     </Wrapper>
-  );
-};
+  )
+}
 
-export default Permission;
+export default Permission
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -202,4 +186,4 @@ const Wrapper = styled.div`
       background: #b65100;
     }
   }
-`;
+`

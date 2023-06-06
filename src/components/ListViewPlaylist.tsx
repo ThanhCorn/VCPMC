@@ -1,37 +1,26 @@
-import {
-  Button,
-  Checkbox,
-  Col,
-  Input,
-  List,
-  Modal,
-  Pagination,
-  Row,
-} from 'antd';
-import React from 'react';
-import { mySchecule, mySong, Schecule, Song } from '../myData';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { RootState } from '../app/store';
-import ImageSong from '../assets/Song.png';
-import Page from './Page';
+import { Button, Checkbox, Col, Input, List, Modal, Pagination, Row } from 'antd'
+import React from 'react'
+import { mySchecule, mySong, Schecule, Song } from '../myData'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
 
-const { TextArea } = Input;
+import { RootState } from '../app/store'
+import ImageSong from '../assets/Song.png'
+import Page from './Page'
+
+const { TextArea } = Input
 
 const ListViewPlaylist: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const isListView = useSelector((state: RootState) => state.view.isListView);
-  const [isChecked, setIsChecked] = React.useState(false);
-  const dispatch = useDispatch();
-  const rowStyle = !isListView
-    ? { alignItems: 'center', marginLeft: '-15px' }
-    : {};
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const isListView = useSelector((state: RootState) => state.view.isListView)
+  const [isChecked, setIsChecked] = React.useState(false)
+  const dispatch = useDispatch()
+  const rowStyle = !isListView ? { alignItems: 'center', marginLeft: '-15px' } : {}
 
   return (
     <Container>
-      <Row className="row-1" style={rowStyle}>
+      <Row className='row-1' style={rowStyle}>
         <Col span={1}>
           <p>STT</p>
         </Col>
@@ -55,14 +44,11 @@ const ListViewPlaylist: React.FC = () => {
         </Col>
       </Row>
       <List
-        itemLayout="horizontal"
+        itemLayout='horizontal'
         dataSource={mySchecule}
         renderItem={(song: Schecule) => (
-          <List.Item
-            key={song.stt}
-            style={{ alignItems: 'center', display: 'flex' }}
-          >
-            <Row className="row-2">
+          <List.Item key={song.stt} style={{ alignItems: 'center', display: 'flex' }}>
+            <Row className='row-2'>
               <Col span={1}>
                 <p style={{ marginLeft: '18px' }}> {song.stt}</p>
               </Col>
@@ -86,7 +72,7 @@ const ListViewPlaylist: React.FC = () => {
                         borderRadius: '4px',
                         marginRight: '4px',
                         padding: '4px 6px',
-                        opacity: '0.5',
+                        opacity: '0.5'
                       }}
                     >
                       {item}
@@ -105,17 +91,17 @@ const ListViewPlaylist: React.FC = () => {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
+                  justifyContent: 'center'
                 }}
               >
                 <Link
-                  to="/top-playlist"
+                  to='/top-playlist'
                   style={{
                     background: 'transparent',
                     border: 'none',
                     textDecoration: 'underline',
                     color: '#ff7506',
-                    cursor: 'pointer',
+                    cursor: 'pointer'
                   }}
                 >
                   Chi tiết
@@ -123,11 +109,8 @@ const ListViewPlaylist: React.FC = () => {
               </Col>
             </Row>
             {isModalOpen && (
-              <ModalContent
-                visible={isModalOpen}
-                onCancel={() => setIsModalOpen(false)}
-              >
-                <img src={ImageSong} alt="" />
+              <ModalContent visible={isModalOpen} onCancel={() => setIsModalOpen(false)}>
+                <img src={ImageSong} alt='' />
               </ModalContent>
             )}
           </List.Item>
@@ -135,10 +118,10 @@ const ListViewPlaylist: React.FC = () => {
       ></List>
       <Page data={mySchecule} />
     </Container>
-  );
-};
+  )
+}
 
-export default ListViewPlaylist;
+export default ListViewPlaylist
 const ModalContent = styled(Modal)`
   img {
     width: 100%;
@@ -175,7 +158,7 @@ const ModalContent = styled(Modal)`
       display: none;
     }
   }
-`;
+`
 
 const Container = styled.div`
   width: 1541px;
@@ -208,4 +191,4 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`

@@ -1,15 +1,15 @@
-import React from 'react';
-import { List, Switch, Row, Col } from 'antd';
-import { Role, myRole } from '../../myData';
-import { Link } from 'react-router-dom';
-import Page from '../Page';
-import styled from 'styled-components';
+import React from 'react'
+import { List, Switch, Row, Col } from 'antd'
+import { Role, myRole } from '../../myData'
+import { Link } from 'react-router-dom'
+import Page from '../Page'
+import styled from 'styled-components'
 
 const ListRole = () => {
-  const [isUpdate, setIsUpdate] = React.useState(false);
+  const [isUpdate, setIsUpdate] = React.useState(false)
   return (
     <Container>
-      <Row className="row-1">
+      <Row className='row-1'>
         <Col span={1}>
           <p>STT</p>
         </Col>
@@ -27,14 +27,11 @@ const ListRole = () => {
         </Col>
       </Row>
       <List
-        itemLayout="horizontal"
+        itemLayout='horizontal'
         dataSource={myRole}
         renderItem={(myRole: Role) => (
-          <List.Item
-            key={myRole.stt}
-            style={{ alignItems: 'center', display: 'flex' }}
-          >
-            <Row className="row-2">
+          <List.Item key={myRole.stt} style={{ alignItems: 'center', display: 'flex' }}>
+            <Row className='row-2'>
               <Col span={1}>
                 <p style={{ marginLeft: '18px' }}> {myRole.stt}</p>
               </Col>
@@ -57,17 +54,17 @@ const ListRole = () => {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
+                  justifyContent: 'center'
                 }}
               >
                 <Link
-                  to="/setting/update-role"
+                  to='/setting/update-role'
                   style={{
                     background: 'transparent',
                     border: 'none',
                     textDecoration: 'underline',
                     color: '#ff7506',
-                    cursor: 'pointer',
+                    cursor: 'pointer'
                   }}
                 >
                   Cập nhật
@@ -79,17 +76,17 @@ const ListRole = () => {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
+                    justifyContent: 'center'
                   }}
                 >
                   <Link
-                    to=""
+                    to=''
                     style={{
                       background: 'transparent',
                       border: 'none',
                       textDecoration: 'underline',
                       color: '#ff7506',
-                      cursor: 'pointer',
+                      cursor: 'pointer'
                     }}
                   >
                     Xóa
@@ -102,10 +99,10 @@ const ListRole = () => {
       ></List>
       <Page data={myRole} />
     </Container>
-  );
-};
+  )
+}
 
-export default ListRole;
+export default ListRole
 
 const Container = styled.div`
   width: 1541px;
@@ -140,4 +137,4 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`

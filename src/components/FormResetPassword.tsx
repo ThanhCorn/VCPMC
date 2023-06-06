@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Form, Input, Button } from 'antd';
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import { Form, Input, Button } from 'antd'
+import styled from 'styled-components'
 
 const FormContainer = styled(Form)`
   display: flex;
@@ -37,7 +37,7 @@ const FormContainer = styled(Form)`
         }
       }
   }
-`;
+`
 
 const FormItem = styled(Form.Item)`
   position: relative;
@@ -67,42 +67,38 @@ const FormItem = styled(Form.Item)`
       color: none;
     }
   }
-`;
+`
 
 const FormResetPassword = () => {
-  const [forgetPassword, setForgetPassword] = useState(true);
-  const [isConnected, setIsConnected] = useState(true);
+  const [forgetPassword, setForgetPassword] = useState(true)
+  const [isConnected, setIsConnected] = useState(true)
   return (
     <>
       {!isConnected ? (
-        <FormContainer name="login-form" layout="vertical">
+        <FormContainer name='login-form' layout='vertical'>
           <h1>Đặt lại mật khẩu</h1>
           <span style={{ color: '#fff' }}>Mật khẩu mới</span>
           <FormItem
             required={false}
-            name="password"
-            rules={[
-              { required: true, message: 'Hãy điền thông tin mật khẩu!' },
-            ]}
+            name='password'
+            rules={[{ required: true, message: 'Hãy điền thông tin mật khẩu!' }]}
           >
-            <Input.Password className="input" />
+            <Input.Password className='input' />
           </FormItem>
           <span style={{ color: '#fff' }}>Nhập lại mật khẩu mới</span>
           <FormItem
             required={false}
-            name="confirmPassword"
-            rules={[
-              { required: true, message: 'Hãy xác nhận mật khẩu của bạn!' },
-            ]}
+            name='confirmPassword'
+            rules={[{ required: true, message: 'Hãy xác nhận mật khẩu của bạn!' }]}
           >
-            <Input.Password className="input" />
+            <Input.Password className='input' />
           </FormItem>
           <FormItem>
             <Button
-              type="primary"
-              htmlType="submit"
+              type='primary'
+              htmlType='submit'
               block
-              size="large"
+              size='large'
               style={{ width: '150px', backgroundColor: '#FF7506' }}
             >
               Lưu mật khẩu
@@ -110,26 +106,26 @@ const FormResetPassword = () => {
           </FormItem>
         </FormContainer>
       ) : (
-        <FormContainer name="login-form" layout="vertical">
-          <div className="text-content">
+        <FormContainer name='login-form' layout='vertical'>
+          <div className='text-content'>
             <h1>Không thể kết nối!!</h1>
             <h3>
-              Dường như đã có chút trục trặc hoặc link này đã hết hạn. Vui lòng
-              thử lại hoặc yêu cầu gửi lại link để đặt lại mật khẩu của bạn.
+              Dường như đã có chút trục trặc hoặc link này đã hết hạn. Vui lòng thử lại hoặc yêu cầu gửi lại link để đặt
+              lại mật khẩu của bạn.
             </h3>
           </div>
           <FormItem>
             <Button
-              type="primary"
-              htmlType="submit"
+              type='primary'
+              htmlType='submit'
               block
-              size="large"
+              size='large'
               style={{
                 width: '150px',
                 backgroundColor: 'transparent',
                 color: '#FF7506',
                 border: '1px solid #FF7506',
-                marginTop: '20px',
+                marginTop: '20px'
               }}
             >
               Yêu cầu gửi lại link
@@ -138,7 +134,7 @@ const FormResetPassword = () => {
         </FormContainer>
       )}
     </>
-  );
-};
+  )
+}
 
-export default FormResetPassword;
+export default FormResetPassword

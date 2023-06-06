@@ -1,8 +1,8 @@
-import { Checkbox, Col, Pagination, Row } from 'antd';
-import styled from 'styled-components';
-import { mySchecule, Schecule } from '../myData';
-import { InfoCircleOutlined } from '@ant-design/icons';
-import Page from './Page';
+import { Checkbox, Col, Pagination, Row } from 'antd'
+import styled from 'styled-components'
+import { mySchecule, Schecule } from '../myData'
+import { InfoCircleOutlined } from '@ant-design/icons'
+import Page from './Page'
 
 const GridViewPlaylist: React.FC = () => {
   return (
@@ -16,18 +16,18 @@ const GridViewPlaylist: React.FC = () => {
                 style={{
                   fontSize: '16px',
                   marginTop: '5px',
-                  marginBottom: '8px',
+                  marginBottom: '8px'
                 }}
               >
                 {song.tenplaylist}
               </p>
-              <div className="box-topic">
+              <div className='box-topic'>
                 <span>Chủ đề ví dụ</span>
                 <span>Pop</span>
                 <span>Trending</span>
                 <span>Good</span>
               </div>
-              <div className="info-song">
+              <div className='info-song'>
                 <p>
                   Người tạo: <span>{song.nguoitao}</span>
                 </p>
@@ -35,18 +35,18 @@ const GridViewPlaylist: React.FC = () => {
                   Ngày tạo: <span>{song.ngaytao}</span>
                 </p>
               </div>
-              <div className="type-song">
-                <div className="box-type">
+              <div className='type-song'>
+                <div className='box-type'>
                   <span>Số bản ghi</span>
 
                   <p>{song.sobanghi}</p>
                 </div>
 
-                <div className="box-type">
+                <div className='box-type'>
                   <span>Thời lượng</span>
                   <p>{song.thoiluong}</p>
                 </div>
-                <InfoCircleOutlined className="icon" />
+                <InfoCircleOutlined className='icon' />
               </div>
             </div>
           </Col>
@@ -55,10 +55,10 @@ const GridViewPlaylist: React.FC = () => {
 
       <Page data={mySchecule} />
     </Container>
-  );
-};
+  )
+}
 
-export default GridViewPlaylist;
+export default GridViewPlaylist
 
 const Container = styled.div`
   width: 1541px;
@@ -144,4 +144,4 @@ const Container = styled.div`
       color: #ff7506;
     }
   }
-`;
+`

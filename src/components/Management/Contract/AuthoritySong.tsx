@@ -1,49 +1,40 @@
-import React, { useContext, useState } from 'react';
-import { DataContext } from '../../context/DataContext';
-import {
-  List,
-  Pagination,
-  Space,
-  Dropdown,
-  Button,
-  Modal,
-  DatePicker,
-  Input,
-  Checkbox,
-} from 'antd';
-import styled from 'styled-components';
+import React, { useContext, useState } from 'react'
+import { DataContext } from '../../../context/DataContext'
+import { List, Pagination, Space, Dropdown, Button, Modal, DatePicker, Input, Checkbox } from 'antd'
+import styled from 'styled-components'
 import {
   CloudUploadOutlined,
   DownOutlined,
   FilePdfOutlined,
-} from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import {
   ContainerOutlined,
   CloseOutlined,
   FormOutlined,
-  PlusCircleOutlined,
-} from '@ant-design/icons';
-import { Link } from 'react-router-dom';
-const CheckboxGroup = Checkbox.Group;
+  PlusCircleOutlined
+} from '@ant-design/icons'
+import type { MenuProps } from 'antd'
+
+import { Link } from 'react-router-dom'
+import ListenButton from '../../ListenButton'
+import Page from '../../Page'
+const CheckboxGroup = Checkbox.Group
 const items: MenuProps['items'] = [
   {
     label: 'Người biểu diễn',
-    key: '1',
+    key: '1'
   },
   {
     label: 'Nhà diễn xuất',
-    key: '2',
-  },
-];
-const { TextArea } = Input;
+    key: '2'
+  }
+]
+const { TextArea } = Input
 const handleMenuClick: MenuProps['onClick'] = (e) => {
-  console.log('click', e);
-};
+  console.log('click', e)
+}
 const menuProps = {
   items,
-  onClick: handleMenuClick,
-};
+  onClick: handleMenuClick
+}
 
 const options = [
   {
@@ -56,7 +47,7 @@ const options = [
             border: '1px solid #727288',
             borderRadius: '4px',
             background: '#2B2B3F',
-            marginRight: '5px',
+            marginRight: '5px'
           }}
         >
           0{' '}
@@ -64,7 +55,7 @@ const options = [
         %
       </p>
     ),
-    value: 'performer',
+    value: 'performer'
   },
 
   {
@@ -77,7 +68,7 @@ const options = [
             border: '1px solid #727288',
             borderRadius: '4px',
             background: '#2B2B3F',
-            marginRight: '5px',
+            marginRight: '5px'
           }}
         >
           0{' '}
@@ -85,32 +76,22 @@ const options = [
         %
       </p>
     ),
-    value: 'producer',
-  },
-];
+    value: 'producer'
+  }
+]
 const onChange = (checkedValues: any) => {
-  console.log('checked = ', checkedValues);
-};
+  console.log('checked = ', checkedValues)
+}
 
 const AuthoritySong = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalOpen2, setIsModalOpen2] = useState(false);
-  const { data } = useContext(DataContext);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen2, setIsModalOpen2] = useState(false)
+  const { data } = useContext(DataContext)
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const showModal2 = () => {
-    setIsModalOpen2(true);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
   return (
     <Container>
-      <div className="option-1">
-        <Space className="space-1">
+      <div className='option-1'>
+        <Space className='space-1'>
           <p>Tình trạng phê duyệt:</p>
           <Dropdown menu={menuProps}>
             <Button>
@@ -129,9 +110,9 @@ const AuthoritySong = () => {
           width: '73.6vw',
           border: '1px solid #727288',
           borderRadius: '16px',
-          background: 'rgba(47, 47, 65, 0.7)',
+          background: 'rgba(47, 47, 65, 0.7)'
         }}
-        itemLayout="horizontal"
+        itemLayout='horizontal'
       >
         {data.map((item, index) => (
           <List.Item key={item['STT']} style={{ color: '#fff' }}>
@@ -150,21 +131,11 @@ const AuthoritySong = () => {
               description={item['Mã ISRC']}
               style={{ maxWidth: '309px' }}
             />
-            <List.Item.Meta
-              title={`${index === 0 ? 'Ca sĩ' : ''}`}
-              description={item['Người ủy quyền']}
-            />
-            <List.Item.Meta
-              title={`${index === 0 ? 'Tác giả' : ''}`}
-              description={item['Tác giả']}
-            />
+            <List.Item.Meta title={`${index === 0 ? 'Ca sĩ' : ''}`} description={item['Người ủy quyền']} />
+            <List.Item.Meta title={`${index === 0 ? 'Tác giả' : ''}`} description={item['Tác giả']} />
             <List.Item.Meta
               title={`${index === 0 ? 'Ngày tải' : ''}`}
-              description={
-                item['Ngày tải']
-                  ? item['Ngày tải'].toDate().toLocaleString()
-                  : ''
-              }
+              description={item['Ngày tải'] ? item['Ngày tải'].toDate().toLocaleString() : ''}
             />
             <List.Item.Meta
               title={`${index === 0 ? 'Tình trạng' : ''}`}
@@ -175,46 +146,15 @@ const AuthoritySong = () => {
               }
             />
             <div style={{ width: '170px' }}>
-              <button
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  textDecoration: 'underline',
-                  color: '#ff7506',
-                  cursor: 'pointer',
-                }}
-              >
-                Nghe
-              </button>
+              <ListenButton />
             </div>
           </List.Item>
         ))}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            padding: '0 23px',
-          }}
-        >
-          <p style={{ display: 'flex', letterSpacing: ' 0.015em' }}>
-            Hiển thị{' '}
-            <span
-              style={{
-                padding: '0 10px',
-                border: '1px solid #FF7506',
-                borderRadius: '4px',
-              }}
-            >
-              {data.length}
-            </span>{' '}
-            hàng trong mỗi trang
-          </p>
-          <Pagination defaultCurrent={1} total={100} />
-        </div>
+        <Page data={data} />
       </List>
-      <div className="option">
-        <Link to="/management/contract/1/detail" className="link-option">
-          <div className="icon">
+      <div className='option'>
+        <Link to='/management/contract/1/detail' className='link-option'>
+          <div className='icon'>
             <FormOutlined style={{ color: '#FF7506' }} />
           </div>
           <p>
@@ -222,8 +162,8 @@ const AuthoritySong = () => {
             tác phẩm
           </p>
         </Link>
-        <Button className="button-option" onClick={() => setIsModalOpen2(true)}>
-          <div className="icon">
+        <Button className='button-option' onClick={() => setIsModalOpen2(true)}>
+          <div className='icon'>
             <ContainerOutlined style={{ color: '#FF7506' }} />
           </div>
           <p>
@@ -231,8 +171,8 @@ const AuthoritySong = () => {
             hợp đồng
           </p>
         </Button>
-        <Button className="button-option" onClick={() => setIsModalOpen(true)}>
-          <div className="icon">
+        <Button className='button-option' onClick={() => setIsModalOpen(true)}>
+          <div className='icon'>
             <CloseOutlined style={{ color: 'red' }} />
           </div>
           <p>
@@ -240,8 +180,8 @@ const AuthoritySong = () => {
             hợp đồng
           </p>
         </Button>
-        <Button className="button-option" onClick={() => setIsModalOpen(true)}>
-          <div className="icon">
+        <Button className='button-option' onClick={() => setIsModalOpen(true)}>
+          <div className='icon'>
             <PlusCircleOutlined style={{ color: '#FF7506' }} />
           </div>
           <p>
@@ -249,8 +189,8 @@ const AuthoritySong = () => {
             ghi
           </p>
         </Button>
-        <Link to="/detail-product/1" className="link-option">
-          <div className="icon">
+        <Link to='/detail-product/1' className='link-option'>
+          <div className='icon'>
             <PlusCircleOutlined style={{ color: '#FF7506' }} />
           </div>
           <p>Chi Tiết</p>
@@ -258,21 +198,18 @@ const AuthoritySong = () => {
 
         {isModalOpen && (
           <ModalContent
-            title="Hủy hợp đồng ủy quyền"
+            title='Hủy hợp đồng ủy quyền'
             visible={isModalOpen}
             onOk={() => setIsModalOpen(false)}
             onCancel={() => setIsModalOpen(false)}
           >
-            <TextArea
-              placeholder="Cho chúng tôi biết lý do bạn muốn huỷ hợp đồng uỷ quyền này..."
-              rows={4}
-            />
+            <TextArea placeholder='Cho chúng tôi biết lý do bạn muốn huỷ hợp đồng uỷ quyền này...' rows={4} />
           </ModalContent>
         )}
         {isModalOpen2 && (
           <ModalContent
             width={900}
-            title="Gia hạn ủy quyền tác phẩm"
+            title='Gia hạn ủy quyền tác phẩm'
             visible={isModalOpen2}
             onOk={() => setIsModalOpen2(false)}
             onCancel={() => setIsModalOpen2(false)}
@@ -280,7 +217,7 @@ const AuthoritySong = () => {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
+                gridTemplateColumns: '1fr 1fr'
               }}
             >
               <div
@@ -288,13 +225,12 @@ const AuthoritySong = () => {
                   color: '#fff',
                   width: '10vw',
                   display: 'flex',
-                  flexDirection: 'column',
+                  flexDirection: 'column'
                 }}
               >
                 <h4>Thời gian gia hạn</h4>
                 <p style={{ marginTop: '0' }}>
-                  Từ ngày:{' '}
-                  {`${data[0]['Ngày hết hạn'].toDate().toLocaleDateString()}  `}{' '}
+                  Từ ngày: {`${data[0]['Ngày hết hạn'].toDate().toLocaleDateString()}  `}{' '}
                 </p>
                 <p style={{ display: 'flex', width: '50vw' }}>
                   Đến ngày:{' '}
@@ -302,24 +238,23 @@ const AuthoritySong = () => {
                     style={{
                       background: 'transparent',
                       color: '#FFAC69',
-                      border: ' 1px solid #727288',
+                      border: ' 1px solid #727288'
                     }}
                   />
                 </p>
                 <span style={{ opacity: '0.3' }}>
-                  Lưu ý: Thời gian bắt đầu gia hạn hợp đồng mới được tính sau
-                  ngày hết hạn hợp đồng cũ một ngày.
+                  Lưu ý: Thời gian bắt đầu gia hạn hợp đồng mới được tính sau ngày hết hạn hợp đồng cũ một ngày.
                 </span>
               </div>
               <div
                 style={{
                   color: '#fff',
                   display: 'flex',
-                  flexDirection: 'column',
+                  flexDirection: 'column'
                 }}
               >
                 <h4>Mức nhuận bút</h4>
-                <Checkbox value="checked" style={{ color: '#fff' }}>
+                <Checkbox value='checked' style={{ color: '#fff' }}>
                   Quyền tác giả{' '}
                   <span
                     style={{
@@ -327,7 +262,7 @@ const AuthoritySong = () => {
                       border: '1px solid #727288',
                       borderRadius: '4px',
                       background: '#2B2B3F',
-                      marginRight: '5px',
+                      marginRight: '5px'
                     }}
                   >
                     0
@@ -335,7 +270,7 @@ const AuthoritySong = () => {
                   %
                 </Checkbox>
                 <br />
-                <Checkbox value="checked" style={{ color: '#fff' }}>
+                <Checkbox value='checked' style={{ color: '#fff' }}>
                   Quyền liên quan{' '}
                   <span
                     style={{
@@ -343,7 +278,7 @@ const AuthoritySong = () => {
                       border: '1px solid #727288',
                       borderRadius: '4px',
                       background: '#2B2B3F',
-                      marginRight: '5px',
+                      marginRight: '5px'
                     }}
                   >
                     0
@@ -356,7 +291,7 @@ const AuthoritySong = () => {
                       marginTop: '10px',
                       alignItems: 'center',
                       display: 'flex',
-                      justifyContent: 'center',
+                      justifyContent: 'center'
                     }}
                   >
                     {' '}
@@ -366,14 +301,12 @@ const AuthoritySong = () => {
             </div>
             <div style={{ color: '#fff', display: 'flex' }}>
               <h4 style={{ color: '#fff' }}>Đính kèm tệp</h4>
-              <div
-                style={{ transform: 'translateY(15px)', marginLeft: '10px' }}
-              >
+              <div style={{ transform: 'translateY(15px)', marginLeft: '10px' }}>
                 <Button
                   style={{
                     color: '#FFAC69',
                     border: '1px solid #FFAC69',
-                    background: 'transparent',
+                    background: 'transparent'
                   }}
                 >
                   {' '}
@@ -393,8 +326,8 @@ const AuthoritySong = () => {
         )}
       </div>
     </Container>
-  );
-};
+  )
+}
 const ModalContent = styled(Modal)`
   .ant-modal-content {
     background: #2f2f41;
@@ -435,7 +368,7 @@ const ModalContent = styled(Modal)`
       background: #ff7506 !important;
     }
   }
-`;
+`
 
 const Container = styled.div`
   .jmDaKB .ant-modal-content {
@@ -570,5 +503,5 @@ const Container = styled.div`
       }
     }
   }
-`;
-export default AuthoritySong;
+`
+export default AuthoritySong

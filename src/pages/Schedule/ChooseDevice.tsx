@@ -1,45 +1,36 @@
-import React from 'react';
-import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import { myDevice, Device } from '../../myData';
-import { Button, Pagination } from 'antd';
-import { Row, Col, List, Checkbox, Input, Modal } from 'antd';
-import { Link } from 'react-router-dom';
-import {
-  CheckOutlined,
-  CloseOutlined,
-  PlusCircleOutlined,
-  PlusSquareOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
-import type { CheckboxChangeEvent } from 'antd/es/checkbox';
+import React from 'react'
+import styled from 'styled-components'
+import SideMenu from '../../components/SideMenu'
+import PageContent from '../../components/PageContent'
+import { myDevice, Device } from '../../myData'
+import { Button, Pagination, Row, Col, List, Checkbox, Input, Modal } from 'antd'
+
+import { Link } from 'react-router-dom'
+import { CheckOutlined, CloseOutlined, PlusCircleOutlined, PlusSquareOutlined, RightOutlined } from '@ant-design/icons'
+import type { CheckboxChangeEvent } from 'antd/es/checkbox'
 
 export default function ChooseDevice() {
-  const [isChecked, setIsChecked] = React.useState(false);
+  const [isChecked, setIsChecked] = React.useState(false)
 
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <span style={{ color: '#fff', opacity: '0.5' }}>
-          Lập lịch phát <RightOutlined /> Chi tiết <RightOutlined /> Chỉnh sửa
-          lịch phát <RightOutlined /> Áp lịch cho thiết bị
+          Lập lịch phát <RightOutlined /> Chi tiết <RightOutlined /> Chỉnh sửa lịch phát <RightOutlined /> Áp lịch cho
+          thiết bị
         </span>
         <h1>Chọn thiết bị</h1>
         <Container>
-          <Row className="row-1">
+          <Row className='row-1'>
             <Col
               span={2}
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-around',
+                justifyContent: 'space-around'
               }}
             >
-              <Checkbox
-                checked={isChecked}
-                onChange={(e) => setIsChecked(e.target.checked)}
-              />
+              <Checkbox checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} />
               <p>STT</p>
             </Col>
             <Col span={3}>
@@ -62,20 +53,17 @@ export default function ChooseDevice() {
             </Col>
           </Row>
           <List
-            itemLayout="horizontal"
+            itemLayout='horizontal'
             dataSource={myDevice}
             renderItem={(schedule: Device) => (
-              <List.Item
-                key={schedule.stt}
-                style={{ alignItems: 'center', display: 'flex' }}
-              >
-                <Row className="row-2">
+              <List.Item key={schedule.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                <Row className='row-2'>
                   <Col
                     span={2}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'space-around',
+                      justifyContent: 'space-around'
                     }}
                   >
                     <Checkbox checked={isChecked} />
@@ -108,7 +96,7 @@ export default function ChooseDevice() {
               display: 'flex',
               justifyContent: 'space-between',
               padding: '0 23px',
-              marginTop: '20px',
+              marginTop: '20px'
             }}
           >
             <p style={{ display: 'flex', letterSpacing: ' 0.015em' }}>
@@ -117,7 +105,7 @@ export default function ChooseDevice() {
                 style={{
                   padding: '0 10px',
                   border: '1px solid #FF7506',
-                  borderRadius: '4px',
+                  borderRadius: '4px'
                 }}
               >
                 {myDevice.length}
@@ -127,15 +115,15 @@ export default function ChooseDevice() {
             <Pagination defaultCurrent={1} total={100} />
           </div>
         </Container>
-        <div className="option">
-          <Button className="button-option">
-            <div className="icon">
+        <div className='option'>
+          <Button className='button-option'>
+            <div className='icon'>
               <CheckOutlined style={{ color: '#FF7506' }} />
             </div>
             <p>Chọn</p>
           </Button>
-          <Button className="button-option">
-            <div className="icon">
+          <Button className='button-option'>
+            <div className='icon'>
               <CloseOutlined style={{ color: '#FF7506' }} />
             </div>
             <p>Hủy</p>
@@ -143,7 +131,7 @@ export default function ChooseDevice() {
         </div>
       </div>
     </Wrapper>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -176,7 +164,7 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -219,4 +207,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

@@ -1,118 +1,108 @@
-import React, { Children, useState } from 'react';
-import styled from 'styled-components';
-import {
-  LineChartOutlined,
-  PlusCircleOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
-import { Button, Col, DatePicker, List, Row, Switch } from 'antd';
-import { Link } from 'react-router-dom';
-import { Input } from 'antd';
-import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData';
-import Page from '../../components/Page';
-import { DownOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Dropdown, message, Space } from 'antd';
-import { Line } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-} from 'chart.js';
+import React, { Children, useState } from 'react'
+import styled from 'styled-components'
+import { LineChartOutlined, PlusCircleOutlined, RightOutlined, DownOutlined } from '@ant-design/icons'
+import { Button, Col, DatePicker, List, Row, Switch, Input, Dropdown, message, Space } from 'antd'
+import { Link } from 'react-router-dom'
 
-ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale);
+import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData'
+import Page from '../../components/Page'
+
+import type { MenuProps } from 'antd'
+
+import { Line } from 'react-chartjs-2'
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js'
+
+ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale)
 const items: MenuProps['items'] = [
   {
     label: 'Theo tháng',
-    key: '1',
+    key: '1'
   },
   {
     label: 'Theo quý',
-    key: '2',
-  },
-];
+    key: '2'
+  }
+]
 
 const items2: MenuProps['items'] = [
   {
     label: 'Tháng 1',
-    key: '1',
+    key: '1'
   },
   {
     label: 'Tháng 2',
-    key: '2',
+    key: '2'
   },
   {
     label: 'Tháng 3',
-    key: '3',
+    key: '3'
   },
   {
     label: 'Tháng 4',
-    key: '4',
+    key: '4'
   },
   {
     label: 'Tháng 5',
-    key: '5',
+    key: '5'
   },
   {
     label: 'Tháng 6',
-    key: '6',
+    key: '6'
   },
   {
     label: 'Tháng 7',
-    key: '7',
+    key: '7'
   },
   {
     label: 'Tháng 8',
-    key: '8',
+    key: '8'
   },
   {
     label: 'Tháng 9',
-    key: '9',
+    key: '9'
   },
   {
     label: 'Tháng 10',
-    key: '10',
+    key: '10'
   },
   {
     label: 'Tháng 11',
-    key: '11',
+    key: '11'
   },
   {
     label: 'Tháng 12',
-    key: '12',
-  },
-];
+    key: '12'
+  }
+]
 
 const items3: MenuProps['items'] = [
   {
     label: 'Quý 1',
-    key: '1',
+    key: '1'
   },
   {
     label: 'Quý 2',
-    key: '2',
+    key: '2'
   },
   {
     label: 'Quý 3',
-    key: '3',
+    key: '3'
   },
   {
     label: 'Quý 4',
-    key: '4',
-  },
-];
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+    key: '4'
+  }
+]
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
 
 const InCome = () => {
-  const [isForMonth, setIsForMonth] = useState(true);
+  const [isForMonth, setIsForMonth] = useState(true)
   const onClick: MenuProps['onClick'] = ({ key }) => {
-    if (key === '1') setIsForMonth(true);
-    else setIsForMonth(false);
-  };
-  const items4 = isForMonth ? items2 : items3;
+    if (key === '1') setIsForMonth(true)
+    else setIsForMonth(false)
+  }
+  const items4 = isForMonth ? items2 : items3
   const data = {
     labels: [
       '1',
@@ -145,26 +135,23 @@ const InCome = () => {
       '28',
       '29',
       '30',
-      '31',
+      '31'
     ],
 
     datasets: [
       {
         label: 'Data',
-        data: [
-          0, 1, 2, 2, 1.5, 1, 2, 2.5, 3, 3, 5, 4, 4.5, 5, 5.7, 5, 4.5, 5, 5.5,
-          6, 5.5, 5, 4.5, 4, 3.4, 3, 2, 3,
-        ],
+        data: [0, 1, 2, 2, 1.5, 1, 2, 2.5, 3, 3, 5, 4, 4.5, 5, 5.7, 5, 4.5, 5, 5.5, 6, 5.5, 5, 4.5, 4, 3.4, 3, 2, 3],
         backgroundColor: 'rgba(75,192,192,0.4)',
         borderColor: 'rgba(75,192,192,1)',
-        borderWidth: 1,
-      },
-    ],
-  };
+        borderWidth: 1
+      }
+    ]
+  }
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             {' '}
             Doanh thu
@@ -174,11 +161,9 @@ const InCome = () => {
         </div>
 
         <h1>Báo cáo doanh thu</h1>
-        <div className="month-pick">
-          <p style={{ marginRight: '20px' }}>
-            Theo {`${isForMonth ? 'tháng:' : 'quý:'}`}
-          </p>
-          <div className="datepick">
+        <div className='month-pick'>
+          <p style={{ marginRight: '20px' }}>Theo {`${isForMonth ? 'tháng:' : 'quý:'}`}</p>
+          <div className='datepick'>
             <Dropdown menu={{ items: items, onClick }}>
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
@@ -188,7 +173,7 @@ const InCome = () => {
               </a>
             </Dropdown>
           </div>
-          <div className="datepick">
+          <div className='datepick'>
             <Dropdown menu={{ items: items4 }}>
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
@@ -199,44 +184,44 @@ const InCome = () => {
             </Dropdown>
           </div>
         </div>
-        <div className="nav-content">
-          <div className="nav-text">
+        <div className='nav-content'>
+          <div className='nav-text'>
             <p>Doanh thu</p>
             <h3>100</h3>
           </div>
-          <div className="nav-text">
+          <div className='nav-text'>
             <p>Tổng số lượt phát</p>
             <h3>32.000.000</h3>
           </div>
-          <div className="nav-text">
+          <div className='nav-text'>
             <p>Doanh thu trên lượt phát</p>
             <h3>100.000.000.000đ</h3>
           </div>
-          <div className="nav-text">
+          <div className='nav-text'>
             <p>Doanh thu chưa phân phối</p>
             <h3>100.000.000.000đ</h3>
           </div>
-          <div className="nav-text">
+          <div className='nav-text'>
             <p>Hành chính phí</p>
             <h3>100.000.000đ</h3>
           </div>
         </div>
         <h3>Biểu đồ theo dõi lượt phát - 20-7-2023</h3>
         <div>
-          <div className="chart">
+          <div className='chart'>
             <Line data={data}></Line>
           </div>
         </div>
       </div>
-      <Link to="/income/detail" className="link-option">
+      <Link to='/income/detail' className='link-option'>
         <PlusCircleOutlined />
         <p>Xuất dữ liệu</p>
       </Link>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default InCome;
+export default InCome
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -356,4 +341,4 @@ const Wrapper = styled.div`
       color: #ffac69;
     }
   }
-`;
+`

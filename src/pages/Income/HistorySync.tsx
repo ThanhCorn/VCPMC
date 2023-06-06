@@ -1,28 +1,21 @@
-import React, { Children, useState } from 'react';
-import styled from 'styled-components';
-import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
-import { Button, Col, DatePicker, List, Modal, Row, Switch } from 'antd';
-import { Link } from 'react-router-dom';
-import { Input } from 'antd';
-import {
-  Device,
-  Income,
-  PartnerAuthorizer,
-  myDevice,
-  myIncome,
-  myPartner,
-} from '../../myData';
-import Page from '../../components/Page';
+import React, { Children, useState } from 'react'
+import styled from 'styled-components'
+import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
+import { Button, Col, DatePicker, List, Modal, Row, Switch, Input } from 'antd'
+import { Link } from 'react-router-dom'
 
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+import { Device, Income, PartnerAuthorizer, myDevice, myIncome, myPartner } from '../../myData'
+import Page from '../../components/Page'
 
-const dateFormat = 'YYYY/MM/DD';
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
+
+const dateFormat = 'YYYY/MM/DD'
 const DetailInComeProfit = () => {
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             {' '}
             Doanh thu
@@ -42,16 +35,12 @@ const DetailInComeProfit = () => {
         </div>
 
         <h1>Hợp đồng UQ123 - Kỳ tháng 3/2021 </h1>
-        <div className="main-container">
-          <div className="container-2">
+        <div className='main-container'>
+          <div className='container-2'>
             <h3>Danh sách thiết bị</h3>
 
-            <div className="search-btn">
-              <Search
-                placeholder="Nhập tên người dùng..."
-                onSearch={onSearch}
-                style={{ width: 200 }}
-              />
+            <div className='search-btn'>
+              <Search placeholder='Nhập tên người dùng...' onSearch={onSearch} style={{ width: 200 }} />
             </div>
             <div style={{ display: 'flex' }}>
               <p style={{ marginRight: '20px' }}>
@@ -62,8 +51,8 @@ const DetailInComeProfit = () => {
               </p>
             </div>
             <Container>
-              <div className="container-1">
-                <Row className="row-1">
+              <div className='container-1'>
+                <Row className='row-1'>
                   <Col span={2}>
                     <p>STT</p>
                   </Col>
@@ -83,14 +72,11 @@ const DetailInComeProfit = () => {
                 </Row>
 
                 <List
-                  itemLayout="horizontal"
+                  itemLayout='horizontal'
                   dataSource={myDevice}
                   renderItem={(myDevice: Device) => (
-                    <List.Item
-                      key={myDevice.stt}
-                      style={{ alignItems: 'center', display: 'flex' }}
-                    >
-                      <Row className="row-2">
+                    <List.Item key={myDevice.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                      <Row className='row-2'>
                         <Col span={2}>
                           <p> {myDevice.stt}</p>
                         </Col>
@@ -98,11 +84,7 @@ const DetailInComeProfit = () => {
                           <p>{myDevice.tenthietbi}</p>
                         </Col>
                         <Col span={4}>
-                          <p>{`${
-                            myDevice.trangthai
-                              ? 'Đang hoạt động'
-                              : 'Ngưng hoạt động'
-                          }`}</p>
+                          <p>{`${myDevice.trangthai ? 'Đang hoạt động' : 'Ngưng hoạt động'}`}</p>
                         </Col>
 
                         <Col span={6}>
@@ -117,8 +99,8 @@ const DetailInComeProfit = () => {
                 ></List>
                 <Page data={myDevice} />
               </div>
-              <div className="container-2">
-                <Row className="row-1">
+              <div className='container-2'>
+                <Row className='row-1'>
                   <Col span={3}>
                     <p>STT</p>
                   </Col>
@@ -131,14 +113,11 @@ const DetailInComeProfit = () => {
                 </Row>
 
                 <List
-                  itemLayout="horizontal"
+                  itemLayout='horizontal'
                   dataSource={myIncome}
                   renderItem={(myIncome: Income) => (
-                    <List.Item
-                      key={myIncome.stt}
-                      style={{ alignItems: 'center', display: 'flex' }}
-                    >
-                      <Row className="row-2">
+                    <List.Item key={myIncome.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                      <Row className='row-2'>
                         <Col span={3}>
                           <p> {myIncome.stt}</p>
                         </Col>
@@ -158,15 +137,15 @@ const DetailInComeProfit = () => {
           </div>
         </div>
       </div>
-      <Link to="" className="link-option">
+      <Link to='' className='link-option'>
         <PlusCircleOutlined />
         <p>Xuất dữ liệu</p>
       </Link>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default DetailInComeProfit;
+export default DetailInComeProfit
 
 const Container = styled.div`
   width: 1541px;
@@ -241,7 +220,7 @@ const Container = styled.div`
       }
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -349,4 +328,4 @@ const Wrapper = styled.div`
       margin-left: 7px;
     }
   }
-`;
+`

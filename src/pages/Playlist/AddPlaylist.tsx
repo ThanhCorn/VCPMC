@@ -1,66 +1,36 @@
-import {
-  CloseOutlined,
-  CloudUploadOutlined,
-  CodepenCircleOutlined,
-  DislikeOutlined,
-  FormOutlined,
-  MoreOutlined,
-  PlusCircleOutlined,
-  PlusOutlined,
-  RedoOutlined,
-  RightOutlined,
-  SmileOutlined,
-} from '@ant-design/icons';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import StarBoy from '../../assets/starboy.png';
-import {
-  Button,
-  Col,
-  Form,
-  Input,
-  List,
-  Modal,
-  Pagination,
-  Row,
-  Switch,
-  Tag,
-} from 'antd';
-import { Song, mySong } from '../../myData';
-import ImageSong from '../../assets/Song.png';
-import { Menu, Dropdown } from 'antd';
-import type { MenuProps } from 'antd';
-import Page from '../../components/Page';
+import { CloseOutlined, CloudUploadOutlined, PlusOutlined, RightOutlined } from '@ant-design/icons'
+import React from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import styled from 'styled-components'
+import { Button, Col, Form, Input, List, Modal, Row, Switch, Tag } from 'antd'
+import { Song, mySong } from '../../myData'
+import Page from '../../components/Page'
+import { useSelector } from 'react-redux'
+import ListenButton from '../../components/ListenButton'
 
-const items: MenuProps['items'] = [
-  {
-    label: 'Tải lên hình ảnh',
-    key: '1',
-  },
-  {
-    label: 'Xóa hình ảnh',
-    key: '1',
-  },
-];
 export default function AddPlaylist() {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const playlist = useSelector((state: any) => state.playlist.value)
+  const navigate = useNavigate()
 
   return (
     <Wrapper>
-      <div className="content">
-        <span style={{ color: '#fff', opacity: '0.5' }}>
-          Playlist <RightOutlined /> Thêm playlist mới
-        </span>
+      <div className='content'>
+        <div className='header-text'>
+          <span>
+            {' '}
+            Playlist <RightOutlined />
+          </span>
+          <span>Thêm playlist mới</span>
+          <span></span>
+        </div>
+
         <h1>Playlist top ca khúc 2023</h1>
         <Container>
-          <div className="left-table">
-            <Form layout="vertical">
+          <div className='left-table'>
+            <Form layout='vertical'>
               <Form.Item
-                label="
-            Ảnh bìa"
+                label='
+            Ảnh bìa'
               >
                 <p
                   style={{
@@ -68,29 +38,29 @@ export default function AddPlaylist() {
                     padding: '10px',
                     border: '1px solid #FFAC69',
                     borderRadius: '4px',
-                    color: '#FFAC69',
+                    color: '#FFAC69'
                   }}
                 >
                   <CloudUploadOutlined /> Tải lên
                 </p>
               </Form.Item>
               <div style={{ border: '1px solid #fff', opacity: '0.5' }}></div>
-              <Form.Item label="Tiêu đề" required>
+              <Form.Item label='Tiêu đề' required>
                 <Input
-                  value="Top Ca khúc 2023"
+                  value='Top Ca khúc 2023'
                   style={{
                     border: '1px solid #727288',
                     color: '#fff',
                     opacity: '0.5',
                     height: '40px',
-                    backgroundColor: '#2B2B3F',
+                    backgroundColor: '#2B2B3F'
                   }}
                 />
               </Form.Item>
             </Form>
 
             <div style={{ border: '1px solid #fff', opacity: '0.5' }}></div>
-            <div className="info-playlist">
+            <div className='info-playlist'>
               <p>
                 Tổng số: <span>0 bản ghi</span>
               </p>
@@ -100,75 +70,75 @@ export default function AddPlaylist() {
             </div>
             <div style={{ border: '1px solid #fff', opacity: '0.5' }}></div>
 
-            <Form layout="vertical">
-              <Form.Item label="Mô tả:">
+            <Form layout='vertical'>
+              <Form.Item label='Mô tả:'>
                 <Input.TextArea
                   style={{
                     border: '1px solid #727288',
                     color: '#fff',
                     opacity: '0.5',
-                    backgroundColor: '#2B2B3F',
+                    backgroundColor: '#2B2B3F'
                   }}
                   rows={4}
-                  value=" Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
-              quia non corrupti et fugit dolores harum nisi eum voluptate. Nemo? "
+                  value=' Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
+              quia non corrupti et fugit dolores harum nisi eum voluptate. Nemo? '
                 />
               </Form.Item>
             </Form>
 
             <div style={{ border: '1px solid #fff', opacity: '0.5' }}></div>
 
-            <Form layout="vertical" style={{ position: 'relative' }}>
-              <Form.Item label="Chủ đề:">
+            <Form layout='vertical' style={{ position: 'relative' }}>
+              <Form.Item label='Chủ đề:'>
                 <Input.TextArea
                   rows={3}
-                  placeholder="Nhập chủ đề"
+                  placeholder='Nhập chủ đề'
                   readOnly
                   style={{
                     border: '1px solid #727288',
-                    backgroundColor: '#2B2B3F',
+                    backgroundColor: '#2B2B3F'
                   }}
                 />
                 <div
                   style={{
                     position: 'absolute',
-                    top: '5%',
+                    top: '5%'
                   }}
                 >
                   <Tag
-                    className="tag-option"
-                    color="white"
+                    className='tag-option'
+                    color='white'
                     style={{
                       border: '1px solid #fff',
                       borderRadius: '4px',
                       margin: '4px',
-                      backgroundColor: '#2B2B3F',
+                      backgroundColor: '#2B2B3F'
                     }}
                   >
                     Chill <CloseOutlined style={{ color: 'red' }} />
                   </Tag>
                   <Tag
-                    className="tag-option"
-                    color="white"
+                    className='tag-option'
+                    color='white'
                     style={{
                       border: '1px solid #fff',
 
                       borderRadius: '4px',
                       margin: '4px',
-                      backgroundColor: '#2B2B3F',
+                      backgroundColor: '#2B2B3F'
                     }}
                   >
                     Lofi <CloseOutlined style={{ color: 'red' }} />
                   </Tag>
                   <Tag
-                    className="tag-option"
-                    color="white"
+                    className='tag-option'
+                    color='white'
                     style={{
                       border: '1px solid #fff',
 
                       borderRadius: '4px',
                       margin: '4px',
-                      backgroundColor: '#2B2B3F',
+                      backgroundColor: '#2B2B3F'
                     }}
                   >
                     Mashup <CloseOutlined style={{ color: 'red' }} />
@@ -183,8 +153,8 @@ export default function AddPlaylist() {
             </Form>
           </div>
 
-          <div className="right-table">
-            <Row className="row-1">
+          <div className='right-table'>
+            <Row className='row-1'>
               <Col span={2}>
                 <p>STT</p>
               </Col>
@@ -199,14 +169,11 @@ export default function AddPlaylist() {
               </Col>
             </Row>
             <List
-              itemLayout="horizontal"
-              dataSource={mySong}
+              itemLayout='horizontal'
+              dataSource={playlist}
               renderItem={(schedule: Song) => (
-                <List.Item
-                  key={schedule.stt}
-                  style={{ alignItems: 'center', display: 'flex' }}
-                >
-                  {/* <Row className="row-2">
+                <List.Item key={schedule.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                  <Row className='row-2'>
                     <Col span={3}>
                       <p> {schedule.stt}</p>
                     </Col>
@@ -221,17 +188,7 @@ export default function AddPlaylist() {
                     </Col>
 
                     <Col>
-                      <Button
-                        onClick={() => setIsModalOpen(true)}
-                        style={{
-                          background: 'transparent',
-                          border: 'none',
-                          textDecoration: 'underline',
-                          color: '#ff7506',
-                        }}
-                      >
-                        Nghe
-                      </Button>
+                      <ListenButton />
                     </Col>
                     <Col>
                       <Button
@@ -239,66 +196,29 @@ export default function AddPlaylist() {
                           background: 'transparent',
                           border: 'none',
                           textDecoration: 'underline',
-                          color: '#ff7506',
+                          color: '#ff7506'
                         }}
                       >
                         Gỡ
                       </Button>
                     </Col>
-                  </Row> */}
-                  {isModalOpen && (
-                    <ModalContent
-                      visible={isModalOpen}
-                      onCancel={() => setIsModalOpen(false)}
-                    >
-                      <img src={ImageSong} alt="" />
-                    </ModalContent>
-                  )}
+                  </Row>
                 </List.Item>
               )}
             ></List>
-
-            <div
-              style={{
-                position: 'absolute',
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                bottom: '0',
-              }}
-            >
-              <p
-                style={{
-                  display: 'flex',
-                  letterSpacing: ' 0.015em',
-                  marginLeft: '20px',
-                }}
-              >
-                Hiển thị{' '}
-                <span
-                  style={{
-                    padding: '0 10px',
-                    border: '1px solid #FF7506',
-                    borderRadius: '4px',
-                  }}
-                >
-                  {mySong.length}
-                </span>{' '}
-                hàng trong mỗi trang
-              </p>
-              <Page data={mySong} />
-            </div>
+            <Page data={playlist} />
           </div>
         </Container>
         <div style={{ transform: 'translate(40%,50%)' }}>
-          <Button className="btn-huy">Hủy</Button>
-          <Button className="btn-luu">Lưu</Button>
+          <Button className='btn-huy'>Hủy</Button>
+          <Button onClick={() => navigate('/playlist')} className='btn-luu'>
+            Lưu
+          </Button>
         </div>
-        <div className="side-option">
-          <div className="option">
-            <Link to="/add-record" className="link-option">
-              <div className="icon-2">
+        <div className='side-option'>
+          <div className='option'>
+            <Link to='/add-record' className='link-option'>
+              <div className='icon-2'>
                 <PlusOutlined />
               </div>
               <p>Thêm bản ghi</p>
@@ -307,7 +227,7 @@ export default function AddPlaylist() {
         </div>
       </div>
     </Wrapper>
-  );
+  )
 }
 
 const Container = styled.div`
@@ -410,7 +330,7 @@ const Container = styled.div`
       }
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -420,6 +340,17 @@ const Wrapper = styled.div`
   .content {
     margin-left: 50px;
     margin-top: 50px;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
   }
   .option {
     display: flex;
@@ -480,7 +411,7 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`
 const ModalContent = styled(Modal)`
   img {
     width: 100%;
@@ -517,4 +448,4 @@ const ModalContent = styled(Modal)`
       display: none;
     }
   }
-`;
+`

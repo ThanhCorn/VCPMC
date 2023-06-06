@@ -1,21 +1,21 @@
-import React from 'react';
-import styled from 'styled-components';
-import VN from '../assets/VNlogo.png';
-import { DownOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
-import { Link } from 'react-router-dom';
-import Nouser from '../assets/nouser.png';
+import React from 'react'
+import styled from 'styled-components'
+import VN from '../assets/VNlogo.png'
+import { DownOutlined } from '@ant-design/icons'
+import { Button } from 'antd'
+import { Link } from 'react-router-dom'
+import Nouser from '../assets/nouser.png'
 interface User {
-  displayName: string | null;
-  email: string | null;
-  photoURL: string | null;
-  uid: string;
-  phoneNumber: string | null;
-  datePorn: string | null;
+  displayName: string | null
+  email: string | null
+  photoURL: string | null
+  uid: string
+  phoneNumber: string | null
+  datePorn: string | null
 }
 
 interface NavbarProps {
-  user: User | null;
+  user: User | null
 }
 const Language = styled.p`
   position: fixed;
@@ -76,27 +76,27 @@ const Language = styled.p`
       }
     }
   }
-`;
+`
 
 const Navbar: React.FC<NavbarProps> = ({ user }) => {
-  const { displayName, photoURL } = user || {};
+  const { displayName, photoURL } = user || {}
   return (
     <>
       <Language>
-        <div className="language">
-          Tiếng việt <img src={VN} alt="VN" />
+        <div className='language'>
+          Tiếng việt <img src={VN} alt='VN' />
           <DownOutlined />
         </div>
-        <Link to="/dashboard" className="avatar">
-          <img src={`${photoURL ? photoURL : Nouser} `} alt="avatar" />
-          <div className="user-info">
+        <Link to='/dashboard' className='avatar'>
+          <img src={`${photoURL ? photoURL : Nouser} `} alt='avatar' />
+          <div className='user-info'>
             <h3>{displayName}</h3>
             <p>Admin</p>
           </div>
         </Link>
       </Language>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

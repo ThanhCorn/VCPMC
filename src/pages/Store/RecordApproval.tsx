@@ -1,8 +1,8 @@
-import React, { useEffect, useContext } from 'react';
-import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import { Button, Checkbox, Dropdown, Input, Modal, Space } from 'antd';
+import React, { useEffect, useContext } from 'react'
+import styled from 'styled-components'
+import SideMenu from '../../components/SideMenu'
+import PageContent from '../../components/PageContent'
+import { Button, Checkbox, Dropdown, Input, Modal, Space } from 'antd'
 import {
   AppstoreOutlined,
   CheckOutlined,
@@ -10,43 +10,42 @@ import {
   DownOutlined,
   FormOutlined,
   RightOutlined,
-  UnorderedListOutlined,
-} from '@ant-design/icons';
-import { items, items2, items3, items4 } from '../../MenuDropDown';
-import ListView from '../../components/ListView';
-import GridView from '../../components/GridView';
-import { useDispatch } from 'react-redux';
-import { setGridView, setListView } from '../../features/layoutSlice';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store';
-import { DataContext } from '../../context/DataContext';
-import { Link } from 'react-router-dom';
-const { Search } = Input;
-const { TextArea } = Input;
-const onSearch = (value: string) => console.log(value);
+  UnorderedListOutlined
+} from '@ant-design/icons'
+import { items, items2, items3, items4 } from '../../MenuDropDown'
+import ListView from '../../components/Management/Contract/ListView'
+import GridView from '../../components/Management/Contract/GridView'
+import { useDispatch, useSelector } from 'react-redux'
+import { setGridView, setListView } from '../../features/layoutSlice'
+
+import { RootState } from '../../app/store'
+import { DataContext } from '../../context/DataContext'
+import { Link } from 'react-router-dom'
+const { Search } = Input
+const { TextArea } = Input
+const onSearch = (value: string) => console.log(value)
 
 const RecordApproval = () => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const isListView = useSelector((state: RootState) => state.view.isListView);
-  const { isKhoBanGhi, setIsKhoBanGhi } = useContext(DataContext);
-  const [isChecked, setIsChecked] = React.useState(false);
-  const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
+  const isListView = useSelector((state: RootState) => state.view.isListView)
+  const { isKhoBanGhi, setIsKhoBanGhi } = useContext(DataContext)
+  const [isChecked, setIsChecked] = React.useState(false)
+  const dispatch = useDispatch()
 
-  useEffect(() => {}, [isKhoBanGhi]);
+  useEffect(() => {}, [isKhoBanGhi])
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <span style={{ color: '#fff', opacity: '0.5' }}>
-          Kho bản ghi <RightOutlined style={{ color: '#FF7506' }} /> Quản lý phê
-          duyệt
+          Kho bản ghi <RightOutlined style={{ color: '#FF7506' }} /> Quản lý phê duyệt
         </span>
         <h1>Phê duyệt bản ghi</h1>
-        <Search onSearch={onSearch} placeholder="Tên bản ghi, tên ca sĩ,..." />
-        <div className="option-1">
-          <Space className="space-1">
+        <Search onSearch={onSearch} placeholder='Tên bản ghi, tên ca sĩ,...' />
+        <div className='option-1'>
+          <Space className='space-1'>
             <p>Thể loại:</p>
             <Dropdown menu={{ items: items }}>
-              <Button className="button-1">
+              <Button className='button-1'>
                 <Space>
                   Tất cả
                   <DownOutlined />
@@ -55,15 +54,15 @@ const RecordApproval = () => {
             </Dropdown>
           </Space>
           <Space
-            className="space-2"
+            className='space-2'
             style={{
               margin: isListView === true ? 'auto' : '0',
-              marginLeft: isListView === true ? '0' : undefined,
+              marginLeft: isListView === true ? '0' : undefined
             }}
           >
             <p>Định dạng:</p>
             <Dropdown menu={{ items: items2 }}>
-              <Button className="button-1">
+              <Button className='button-1'>
                 <Space>
                   Tất cả
                   <DownOutlined />
@@ -72,48 +71,33 @@ const RecordApproval = () => {
             </Dropdown>
           </Space>
           {isListView === false && (
-            <Space
-              className="space-1"
-              style={{ margin: 'auto', marginLeft: '20px' }}
-            >
+            <Space className='space-1' style={{ margin: 'auto', marginLeft: '20px' }}>
               <p>
-                <Checkbox
-                  checked={isChecked}
-                  onChange={(e) => setIsChecked(e.target.checked)}
-                />{' '}
-                Chọn tất cả
+                <Checkbox checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} /> Chọn tất cả
               </p>
             </Space>
           )}
 
-          <Space className="space-5">
+          <Space className='space-5'>
             <Button
               onClick={() => {
-                dispatch(setListView(true));
+                dispatch(setListView(true))
               }}
             >
-              <UnorderedListOutlined
-                className={`${isListView ? 'svg-active' : null}`}
-              />
+              <UnorderedListOutlined className={`${isListView ? 'svg-active' : null}`} />
             </Button>
             <Button
               onClick={() => {
-                dispatch(setGridView(false));
+                dispatch(setGridView(false))
               }}
             >
-              <AppstoreOutlined
-                className={`${!isListView ? 'svg-active' : null}`}
-              />
+              <AppstoreOutlined className={`${!isListView ? 'svg-active' : null}`} />
             </Button>
           </Space>
         </div>
-        <div className="option">
-          <Link
-            to="/record-store"
-            className="link-option"
-            onClick={() => setIsKhoBanGhi(true)}
-          >
-            <div className="icon">
+        <div className='option'>
+          <Link to='/record-store' className='link-option' onClick={() => setIsKhoBanGhi(true)}>
+            <div className='icon'>
               <CheckOutlined style={{ color: 'green' }} />
             </div>
             <p>
@@ -121,11 +105,8 @@ const RecordApproval = () => {
               phê duyệt
             </p>
           </Link>
-          <Button
-            className="button-option"
-            onClick={() => setIsModalOpen(true)}
-          >
-            <div className="icon">
+          <Button className='button-option' onClick={() => setIsModalOpen(true)}>
+            <div className='icon'>
               <CloseOutlined style={{ color: 'red' }} />
             </div>
             <p>Từ chối</p>
@@ -134,31 +115,24 @@ const RecordApproval = () => {
         {isListView ? (
           <ListView listView={isListView} isKhoBanGhi={isKhoBanGhi} />
         ) : (
-          <GridView
-            gridView={isListView}
-            isKhoBanGhi={isKhoBanGhi}
-            isChecked={isChecked}
-          />
+          <GridView gridView={isListView} isKhoBanGhi={isKhoBanGhi} isChecked={isChecked} />
         )}
         {isModalOpen && (
           <ModalContent
-            title="Lý do từ chối phê duyệt"
+            title='Lý do từ chối phê duyệt'
             visible={isModalOpen}
             onOk={() => setIsModalOpen(false)}
             onCancel={() => setIsModalOpen(false)}
           >
-            <TextArea
-              placeholder="Cho chúng tôi biết lý do bạn muốn từ chối phê duyệt bản ghi này..."
-              rows={4}
-            />
+            <TextArea placeholder='Cho chúng tôi biết lý do bạn muốn từ chối phê duyệt bản ghi này...' rows={4} />
           </ModalContent>
         )}
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default RecordApproval;
+export default RecordApproval
 const ModalContent = styled(Modal)`
   .ant-modal-content {
     background: #2f2f41;
@@ -199,7 +173,7 @@ const ModalContent = styled(Modal)`
       background: #ff7506 !important;
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -339,4 +313,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

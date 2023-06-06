@@ -1,22 +1,17 @@
-import {
-  KeyOutlined,
-  PlusCircleOutlined,
-  RightOutlined,
-  UserDeleteOutlined,
-} from '@ant-design/icons';
-import { Button, DatePicker, Input, Radio, Select } from 'antd';
-import dayjs from 'dayjs';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { KeyOutlined, PlusCircleOutlined, RightOutlined, UserDeleteOutlined } from '@ant-design/icons'
+import { Button, DatePicker, Input, Radio, Select } from 'antd'
+import dayjs from 'dayjs'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
-const { Option } = Select;
-const dateFormat = 'YYYY-MM-DD';
+const { Option } = Select
+const dateFormat = 'YYYY-MM-DD'
 
 const EditUser = () => {
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <p style={{ color: 'white', opacity: '0.5' }}>
           Cài đặt
           <RightOutlined style={{ color: '#FFAC69' }} />
@@ -26,54 +21,54 @@ const EditUser = () => {
         </p>
         <h1>Chỉnh sửa thông tin người dùng</h1>
         <Container>
-          <div className="container-1">
-            <div className="input-text">
+          <div className='container-1'>
+            <div className='input-text'>
               <h4>Tên người dùng</h4>
-              <Input value="Phan Mạnh Quỳnh" />
+              <Input value='Phan Mạnh Quỳnh' />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Số điện thoại</h4>
-              <Input value="0123466457" />
+              <Input value='0123466457' />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Ngày hết hạn</h4>
               <DatePicker defaultValue={dayjs('2015-01-01', 'YYYY-MM-DD')} />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Vai trò</h4>
-              <Select defaultValue="QC">
-                <Option value="Super Admin">Super Admin</Option>
-                <Option value="Group Admin">Group Admin</Option>
-                <Option value="Sub-user">Sub-user</Option>
-                <Option value="ContentManager">ContentManager</Option>
+              <Select defaultValue='QC'>
+                <Option value='Super Admin'>Super Admin</Option>
+                <Option value='Group Admin'>Group Admin</Option>
+                <Option value='Sub-user'>Sub-user</Option>
+                <Option value='ContentManager'>ContentManager</Option>
               </Select>
             </div>
           </div>
-          <div className="container-2">
-            <div className="input-text">
+          <div className='container-2'>
+            <div className='input-text'>
               <h4>Email</h4>
-              <Input value="tuyendungngoc@alta.com.vn" />
+              <Input value='tuyendungngoc@alta.com.vn' />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Tên đăng nhập</h4>
-              <Input value="PMQ-1" />
+              <Input value='PMQ-1' />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Mật khẩu</h4>
-              <Input.Password value="111111" />
+              <Input.Password value='111111' />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Trạng thái</h4>
-              <Radio.Group name="radiogroup" defaultValue={1}>
+              <Radio.Group name='radiogroup' defaultValue={1}>
                 <Radio value={1}>Đã kích hoạt</Radio>
                 <Radio value={2}>Ngưng kích hoạt</Radio>
               </Radio.Group>
             </div>
           </div>
         </Container>
-        <div className="option">
-          <Link to="/management/contract/1/detail" className="link-option">
-            <div className="icon">
+        <div className='option'>
+          <Link to='/management/contract/1/detail' className='link-option'>
+            <div className='icon'>
               <UserDeleteOutlined style={{ color: '#FF7506' }} />
             </div>
             <p>
@@ -81,8 +76,8 @@ const EditUser = () => {
               tác phẩm
             </p>
           </Link>
-          <Button className="button-option">
-            <div className="icon">
+          <Button className='button-option'>
+            <div className='icon'>
               <KeyOutlined style={{ color: '#FF7506' }} />
             </div>
             <p>
@@ -91,22 +86,22 @@ const EditUser = () => {
             </p>
           </Button>
         </div>
-        <div className="btn">
-          <Button className="btn-huy">Hủy</Button>
-          <Button className="btn-luu">Lưu</Button>
+        <div className='btn'>
+          <Button className='btn-huy'>Hủy</Button>
+          <Button className='btn-luu'>Lưu</Button>
         </div>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default EditUser;
+export default EditUser
 
 const Container = styled.div`
   width: 700px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -208,4 +203,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

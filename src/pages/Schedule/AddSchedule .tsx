@@ -1,80 +1,70 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import {
-  Button,
-  Checkbox,
-  Col,
-  DatePicker,
-  Form,
-  Input,
-  Modal,
-  Row,
-  Table,
-} from 'antd';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
-import { mySchecule, Schecule } from '../../myData';
-import dayjs from 'dayjs';
-import { MouseEvent } from 'react';
-import { CheckboxValueType } from 'antd/lib/checkbox/Group';
+import React, { useEffect, MouseEvent } from 'react'
+import styled from 'styled-components'
+import { Button, Checkbox, Col, DatePicker, Form, Input, Modal, Row, Table } from 'antd'
+import SideMenu from '../../components/SideMenu'
+import PageContent from '../../components/PageContent'
+import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
+import { Link } from 'react-router-dom'
+import { mySchecule, Schecule } from '../../myData'
+import dayjs from 'dayjs'
+
+import { CheckboxValueType } from 'antd/lib/checkbox/Group'
 
 interface TimeSlot {
-  key: number;
-  time: string;
-  monday?: string | React.ReactNode;
-  tuesday?: string;
-  wednesday?: string;
-  thursday?: string;
-  friday?: string;
-  saturday?: string;
-  sunday?: string;
+  key: number
+  time: string
+  monday?: string | React.ReactNode
+  tuesday?: string
+  wednesday?: string
+  thursday?: string
+  friday?: string
+  saturday?: string
+  sunday?: string
 }
 
 const columns: Array<{
-  title: string;
-  dataIndex: string;
-  width?: number;
-  fixed?: 'left';
+  title: string
+  dataIndex: string
+  width?: number
+  fixed?: 'left'
 }> = [
   {
     title: 'Time',
     dataIndex: 'time',
     width: 100,
-    fixed: 'left',
+    fixed: 'left'
   },
   {
     title: 'Thứ hai',
-    dataIndex: 'monday',
+    dataIndex: 'monday'
   },
   {
     title: 'Thứ ba',
-    dataIndex: 'tuesday',
+    dataIndex: 'tuesday'
   },
   {
     title: 'Thứ tư',
-    dataIndex: 'wednesday',
+    dataIndex: 'wednesday'
   },
   {
     title: 'Thứ năm',
-    dataIndex: 'thursday',
+    dataIndex: 'thursday'
   },
   {
     title: 'Thứ sáu',
-    dataIndex: 'friday',
+    dataIndex: 'friday'
   },
   {
     title: 'Thứ bảy',
-    dataIndex: 'saturday',
+    dataIndex: 'saturday'
   },
   {
     title: 'Chủ nhật',
-    dataIndex: 'sunday',
-  },
-];
+    dataIndex: 'sunday'
+  }
+]
 
-const data: TimeSlot[] = [];
+const data: TimeSlot[] = []
 for (let i = 1; i <= 16; i++) {
   data.push({
     key: i,
@@ -85,83 +75,67 @@ for (let i = 1; i <= 16; i++) {
     thursday: '',
     friday: '',
     saturday: '',
-    sunday: '',
-  });
+    sunday: ''
+  })
 }
-const daysOfWeek = [
-  'Thứ hai',
-  'Thứ ba',
-  'Thứ Tư',
-  'Thứ năm',
-  'Thứ sáu',
-  'Thứ bảy',
-  'Chủ nhật',
-];
+const daysOfWeek = ['Thứ hai', 'Thứ ba', 'Thứ Tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy', 'Chủ nhật']
 
 const onChange = (checkedValues: CheckboxValueType[]) => {
-  console.log('checked = ', checkedValues);
-};
+  console.log('checked = ', checkedValues)
+}
 
 export default function AddSchedule() {
-  const schedule: Schecule[] = mySchecule;
-  const [selectedPlaylist, setSelectedPlaylist] =
-    React.useState<Schecule | null>(null);
-  const [tableData, setTableData] = React.useState<TimeSlot[]>(data);
+  const schedule: Schecule[] = mySchecule
+  const [selectedPlaylist, setSelectedPlaylist] = React.useState<Schecule | null>(null)
+  const [tableData, setTableData] = React.useState<TimeSlot[]>(data)
 
   useEffect(() => {
     if (selectedPlaylist && selectedPlaylist.batdauketthuc) {
-      const timeRange = selectedPlaylist.batdauketthuc.split(' - ');
-      const startTime = parseInt(timeRange[0].split(':')[0], 10);
-      const endTime = parseInt(timeRange[1].split(':')[0], 10);
-      console.log(startTime);
+      const timeRange = selectedPlaylist.batdauketthuc.split(' - ')
+      const startTime = parseInt(timeRange[0].split(':')[0], 10)
+      const endTime = parseInt(timeRange[1].split(':')[0], 10)
+      console.log(startTime)
       const updatedTableData = tableData.map((item) => {
         return {
           ...item,
           monday: (
             <Button
               onClick={ModalButtonBody}
-              type="primary"
+              type='primary'
               key={item.key}
               style={{
                 height: '94px',
                 width: '163px',
                 background: '#3e3e5b',
                 marginLeft: '-20px',
-                zIndex: '1',
+                zIndex: '1'
               }}
             >
               {item.key === startTime && (
                 <div>
-                  <button
-                    onClick={(event: MouseEvent) => ModalDeletePlaylist(event)}
-                    className="button-delete"
-                  >
+                  <button onClick={(event: MouseEvent) => ModalDeletePlaylist(event)} className='button-delete'>
                     x
                   </button>
-                  <p style={{ color: '#FFAC69', marginTop: '-10px' }}>
-                    {selectedPlaylist.tenplaylist}
-                  </p>
+                  <p style={{ color: '#FFAC69', marginTop: '-10px' }}>{selectedPlaylist.tenplaylist}</p>
                   <span>{selectedPlaylist.batdauketthuc}</span>
                 </div>
               )}
             </Button>
-          ),
-        };
-      });
-      setTableData(updatedTableData);
+          )
+        }
+      })
+      setTableData(updatedTableData)
     }
-  }, [selectedPlaylist]);
+  }, [selectedPlaylist])
 
   const ModalDeletePlaylist = (event: MouseEvent) => {
     const handleCancel = () => {
-      Modal.destroyAll();
+      Modal.destroyAll()
       if (selectedPlaylist) {
-        setTableData((prevTableData) =>
-          prevTableData.filter((item) => item.key !== selectedPlaylist.stt),
-        );
+        setTableData((prevTableData) => prevTableData.filter((item) => item.key !== selectedPlaylist.stt))
       }
-    };
-    event.stopPropagation();
+    }
+    event.stopPropagation()
     Modal.warning({
       title: 'Xóa playlist',
       content: (
@@ -169,40 +143,38 @@ export default function AddSchedule() {
           <h2>Xóa lịch phát</h2>
           <p style={{ fontSize: '14px' }}>Xóa tất cả lịch phát trong ngày </p>
           <Checkbox.Group style={{}} onChange={onChange}>
-            <div className="checkbox-group-row">
-              <div className="checkbox-wrapper">
-                <Checkbox value={selectedPlaylist?.chukyphat}>
-                  {selectedPlaylist?.chukyphat}
-                </Checkbox>
+            <div className='checkbox-group-row'>
+              <div className='checkbox-wrapper'>
+                <Checkbox value={selectedPlaylist?.chukyphat}>{selectedPlaylist?.chukyphat}</Checkbox>
               </div>
             </div>
           </Checkbox.Group>
-          <div className="btn-modal">
-            <Button type="primary" className="btn-huy" onClick={handleCancel}>
+          <div className='btn-modal'>
+            <Button type='primary' className='btn-huy' onClick={handleCancel}>
               Huy
             </Button>
-            <Button type="primary" className="btn-luu" onClick={handleCancel}>
+            <Button type='primary' className='btn-luu' onClick={handleCancel}>
               Luu
             </Button>
           </div>
         </ModalContent>
-      ),
-    });
-  };
+      )
+    })
+  }
 
   const ModalButtonBody = () => {
     const handleCancel = () => {
-      Modal.destroyAll();
-    };
+      Modal.destroyAll()
+    }
     Modal.info({
       content: (
         <ModalContent>
           <h2>{selectedPlaylist?.tenplaylist}</h2>
           <p style={{ fontSize: '14px' }}>Lặp lại trong tuần </p>
           <Checkbox.Group style={{}} onChange={onChange}>
-            <div className="checkbox-group-row">
+            <div className='checkbox-group-row'>
               {daysOfWeek.map((day, index) => (
-                <div className="checkbox-wrapper" key={day}>
+                <div className='checkbox-wrapper' key={day}>
                   <Checkbox value={day}>{day}</Checkbox>
                 </div>
               ))}
@@ -211,111 +183,88 @@ export default function AddSchedule() {
           <div style={{ borderBottom: '1px solid #fff' }}></div>
           <p>Thứ hai</p>
           <p>{selectedPlaylist?.batdauketthuc}</p>
-          <div className="btn-modal">
-            <Button type="primary" className="btn-huy" onClick={handleCancel}>
+          <div className='btn-modal'>
+            <Button type='primary' className='btn-huy' onClick={handleCancel}>
               Huy
             </Button>
-            <Button type="primary" className="btn-luu" onClick={handleCancel}>
+            <Button type='primary' className='btn-luu' onClick={handleCancel}>
               Luu
             </Button>
           </div>
         </ModalContent>
-      ),
-    });
-  };
+      )
+    })
+  }
 
-  const starDateString = selectedPlaylist?.thoigian.split(' - ');
-  const startDate =
-    starDateString && starDateString.length > 0
-      ? new Date(starDateString[0])
-      : null;
-  const endDate =
-    starDateString && starDateString.length > 1
-      ? new Date(starDateString[1])
-      : null;
-  const startDateDayjs = startDate ? dayjs(startDate) : null;
-  const endDateDayjs = endDate ? dayjs(endDate) : null;
+  const starDateString = selectedPlaylist?.thoigian.split(' - ')
+  const startDate = starDateString && starDateString.length > 0 ? new Date(starDateString[0]) : null
+  const endDate = starDateString && starDateString.length > 1 ? new Date(starDateString[1]) : null
+  const startDateDayjs = startDate ? dayjs(startDate) : null
+  const endDateDayjs = endDate ? dayjs(endDate) : null
 
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <span style={{ color: '#fff', opacity: '0.5' }}>
           Lập lịch phát <RightOutlined /> Thêm lịch phát mới
         </span>
         <h1>Lập lịch phát</h1>
         <Container>
-          <div className="left-table">
-            <div className="table-1">
+          <div className='left-table'>
+            <div className='table-1'>
               <h3>Thông tin lịch phát</h3>
-              <Form layout="vertical">
-                <Form.Item label="Tên lịch phát">
-                  <Input
-                    placeholder="Nhập tên lịch phát"
-                    value={selectedPlaylist?.tenplaylist}
-                  />
+              <Form layout='vertical'>
+                <Form.Item label='Tên lịch phát'>
+                  <Input placeholder='Nhập tên lịch phát' value={selectedPlaylist?.tenplaylist} />
                 </Form.Item>
-                <Form.Item label="Từ ngày">
-                  <DatePicker
-                    placeholder="dd/mm/yyyy"
-                    value={startDateDayjs}
-                    className="myDatePicker"
-                  />
+                <Form.Item label='Từ ngày'>
+                  <DatePicker placeholder='dd/mm/yyyy' value={startDateDayjs} className='myDatePicker' />
                 </Form.Item>
-                <Form.Item label="Đến ngày">
-                  <DatePicker placeholder="dd/mm/yyyy" value={endDateDayjs} />
+                <Form.Item label='Đến ngày'>
+                  <DatePicker placeholder='dd/mm/yyyy' value={endDateDayjs} />
                 </Form.Item>
               </Form>
             </div>
-            <div className="table-2">
+            <div className='table-2'>
               <h3>Danh sách Playlist</h3>
               {schedule.map((item, index) => {
                 if (item.tenplaylist) {
                   return (
-                    <Button
-                      type="primary"
-                      key={item.stt}
-                      onClick={() => setSelectedPlaylist(item)}
-                    >
+                    <Button type='primary' key={item.stt} onClick={() => setSelectedPlaylist(item)}>
                       {item.tenplaylist}
                       <p>
                         Thời lượng: <span>{item.thoiluong}</span>
                       </p>
                     </Button>
-                  );
+                  )
                 }
-                return null; // Skip mapping if `tenplaylist` is falsy
+                return null // Skip mapping if `tenplaylist` is falsy
               })}
               <div style={{ borderTop: '2px solid #fff' }}></div>
               <h3>Playlist mới</h3>
               {schedule.map((item, index) => {
                 if (item.tenplaylist) {
                   return (
-                    <Button type="primary" key={item.stt}>
+                    <Button type='primary' key={item.stt}>
                       {item.tenplaylist}
                       <p>
                         Thời lượng: <span>{item.thoiluong}</span>
                       </p>
                     </Button>
-                  );
+                  )
                 }
-                return null; // Skip mapping if `tenplaylist` is falsy
+                return null // Skip mapping if `tenplaylist` is falsy
               })}
             </div>
           </div>
-          <div className="right-table">
-            <Table
-              columns={columns}
-              dataSource={tableData}
-              bordered
-              pagination={false}
-              scroll={{ y: 735, x: 100 }}
-            />
+          <div className='right-table'>
+            <Table columns={columns} dataSource={tableData} bordered pagination={false} scroll={{ y: 735, x: 100 }} />
           </div>
         </Container>
-        <div className="side-option">
-          <div className="option">
-            <Link to="" className="link-option">
-              <div className="icon">
+        <div className='side-option'>
+          <div className='option'>
+            <Link to='' className='link-option'>
+              <div className='icon'>
                 <PlusCircleOutlined />
               </div>
               <p>
@@ -327,7 +276,7 @@ export default function AddSchedule() {
         </div>
       </div>
     </Wrapper>
-  );
+  )
 }
 const ModalContent = styled.div`
   .ant-modal-confirm-btns {
@@ -360,7 +309,7 @@ const ModalContent = styled.div`
   .checkbox-wrapper:last-child {
     margin-right: 0;
   }
-`;
+`
 const Container = styled.div`
   display: flex;
   width: 1541px;
@@ -480,7 +429,7 @@ const Container = styled.div`
       cursor: pointer;
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -536,4 +485,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

@@ -1,72 +1,52 @@
-import React, { useContext, useEffect } from 'react';
-import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import { Button, Dropdown, Input, Space } from 'antd';
-import {
-  AppstoreOutlined,
-  CheckOutlined,
-  CloseOutlined,
-  DownOutlined,
-  FormOutlined,
-  RightOutlined,
-  UnorderedListOutlined,
-} from '@ant-design/icons';
-import { items, items2, items3, items4 } from '../../MenuDropDown';
-import ListView from '../../components/ListView';
-import GridView from '../../components/GridView';
-import { useDispatch } from 'react-redux';
-import { setGridView, setListView } from '../../features/layoutSlice';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store';
-import { Link } from 'react-router-dom';
-import { DataContext } from '../../context/DataContext';
-import ListViewPlaylist from '../../components/ListViewPlaylist';
-import GridViewPlaylist from '../../components/GridViewPlaylist';
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+import React, { useContext, useEffect } from 'react'
+import styled from 'styled-components'
+
+import { Button, Input, Space } from 'antd'
+import { AppstoreOutlined, FormOutlined, UnorderedListOutlined } from '@ant-design/icons'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { setGridView, setListView } from '../../features/layoutSlice'
+
+import { RootState } from '../../app/store'
+import { Link } from 'react-router-dom'
+import { DataContext } from '../../context/DataContext'
+import ListViewPlaylist from '../../components/ListViewPlaylist'
+import GridViewPlaylist from '../../components/GridViewPlaylist'
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
 
 const Playlist = () => {
-  const isListView = useSelector((state: RootState) => state.view.isListView);
-  const [isChecked, setIsChecked] = React.useState(false);
-  const { isKhoBanGhi, setIsKhoBanGhi } = useContext(DataContext);
-  const dispatch = useDispatch();
+  const isListView = useSelector((state: RootState) => state.view.isListView)
+  const { isKhoBanGhi, setIsKhoBanGhi } = useContext(DataContext)
+  const dispatch = useDispatch()
 
-  useEffect(() => {}, [isKhoBanGhi]);
+  useEffect(() => {}, [isKhoBanGhi])
 
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <h1>Playlist</h1>
-        <div className="option-1">
-          <Search onSearch={onSearch} placeholder="Tên chủ đề, người tạo,..." />
-          <Space className="space-5">
+        <div className='option-1'>
+          <Search onSearch={onSearch} placeholder='Tên chủ đề, người tạo,...' />
+          <Space className='space-5'>
             <Button
               onClick={() => {
-                dispatch(setListView(false));
+                dispatch(setListView(false))
               }}
             >
-              <UnorderedListOutlined
-                className={`${isListView ? 'svg-active' : null}`}
-              />
+              <UnorderedListOutlined className={`${isListView ? 'svg-active' : null}`} />
             </Button>
             <Button
               onClick={() => {
-                dispatch(setGridView(true));
+                dispatch(setGridView(true))
               }}
             >
-              <AppstoreOutlined
-                className={`${!isListView ? 'svg-active' : null}`}
-              />
+              <AppstoreOutlined className={`${!isListView ? 'svg-active' : null}`} />
             </Button>
           </Space>
-          <div className="option">
-            <Link
-              to="/record-approval"
-              className="link-option"
-              onClick={() => setIsKhoBanGhi(false)}
-            >
-              <div className="icon">
+          <div className='option'>
+            <Link to='/add-playlist' className='link-option' onClick={() => setIsKhoBanGhi(false)}>
+              <div className='icon'>
                 <FormOutlined />
               </div>
               <p>
@@ -79,10 +59,10 @@ const Playlist = () => {
         {isListView ? <ListViewPlaylist /> : <GridViewPlaylist />}
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default Playlist;
+export default Playlist
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -221,4 +201,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

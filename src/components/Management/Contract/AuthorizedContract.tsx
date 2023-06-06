@@ -1,70 +1,62 @@
-import React, { useState, useEffect, useContext } from 'react';
-import type { MenuProps } from 'antd';
-import { Space, Button, Dropdown, Input, List, Pagination, Modal } from 'antd';
-import {
-  DownOutlined,
-  PlusCircleOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
-import styled from 'styled-components';
-import { toast } from 'react-toastify';
-import 'firebase/firestore';
-import InfoContract from './FormContract';
-import { DataContext, DataProps } from '../../context/DataContext';
-import AuthoritySong from './AuthoritySong';
-import { Link } from 'react-router-dom';
-import Page from '../Page';
-import { AppDispatch, RootState } from '../../app/store';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { fetchData } from '../../features/layoutSlice';
+import React, { useState, useEffect, useContext } from 'react'
+import type { MenuProps } from 'antd'
+import { Space, Button, Dropdown, Input, List, Pagination, Modal } from 'antd'
+import { DownOutlined, PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
+import styled from 'styled-components'
+import { toast } from 'react-toastify'
+import 'firebase/firestore'
+import InfoContract from './FormContract'
+import { DataContext, DataProps } from '../../../context/DataContext'
+import AuthoritySong from './AuthoritySong'
+import { Link } from 'react-router-dom'
+import Page from '../../Page'
+import { AppDispatch, RootState } from '../../../app/store'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { fetchData } from '../../../features/layoutSlice'
 
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
 
 const items: MenuProps['items'] = [
   {
     label: 'Người biểu diễn',
-    key: '1',
+    key: '1'
   },
   {
     label: 'Nhà diễn xuất',
-    key: '2',
-  },
-];
+    key: '2'
+  }
+]
 const handleMenuClick: MenuProps['onClick'] = (e) => {
-  console.log('click', e);
-};
+  console.log('click', e)
+}
 const menuProps = {
   items,
-  onClick: handleMenuClick,
-};
+  onClick: handleMenuClick
+}
 
 type Props = {
-  children?: React.ReactNode | null;
-};
+  children?: React.ReactNode | null
+}
 
 const AuthorizedContract = ({ children }: Props) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isInfoOrAuthority, setIsisInfoOrAuthority] = useState(false);
-  const dispatch: AppDispatch = useDispatch();
-  const data2 = useSelector<RootState, DataProps[]>(
-    (state) => state.view.data2,
-  );
+  const dispatch: AppDispatch = useDispatch()
+  const data2 = useSelector<RootState, DataProps[]>((state) => state.view.data2)
   useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch]);
-  const HieuLucHopDong = data2.length > 0 ? data2[0]['Hiệu lực hợp đồng'] : [];
+    dispatch(fetchData())
+  }, [dispatch])
+  const HieuLucHopDong = data2.length > 0 ? data2[0]['Hiệu lực hợp đồng'] : []
   const HieuLucHopDongOptions = HieuLucHopDong.map((option, index) => ({
     label: option,
-    key: index.toString(),
-  }));
+    key: index.toString()
+  }))
 
   return (
     <>
-      <Wrapper className="option">
-        <div className="option-1">
-          <Space className="space-1">
+      <Wrapper className='option'>
+        <div className='option-1'>
+          <Space className='space-1'>
             <p>Quyền sở hữu:</p>
             <Dropdown menu={menuProps}>
               <Button>
@@ -75,7 +67,7 @@ const AuthorizedContract = ({ children }: Props) => {
               </Button>
             </Dropdown>
           </Space>
-          <Space className="space-2">
+          <Space className='space-2'>
             <p>Hợp đồng ủy quyền:</p>
             <Dropdown menu={{ items: HieuLucHopDongOptions }}>
               <Button>
@@ -87,9 +79,9 @@ const AuthorizedContract = ({ children }: Props) => {
             </Dropdown>
           </Space>
         </div>
-        <div className="option-2">
+        <div className='option-2'>
           <Search
-            placeholder="Tên hợp đồng, số hợp đồng, người uỷ quyền..."
+            placeholder='Tên hợp đồng, số hợp đồng, người uỷ quyền...'
             onSearch={onSearch}
             style={{ width: 200 }}
           />
@@ -102,9 +94,9 @@ const AuthorizedContract = ({ children }: Props) => {
               width: '73.6vw',
               border: '1px solid #727288',
               borderRadius: '16px',
-              background: 'rgba(47, 47, 65, 0.7)',
+              background: 'rgba(47, 47, 65, 0.7)'
             }}
-            itemLayout="horizontal"
+            itemLayout='horizontal'
           >
             {data2.map((item, index) => (
               <List.Item key={item['STT']} style={{ color: '#fff' }}>
@@ -123,14 +115,8 @@ const AuthorizedContract = ({ children }: Props) => {
                   description={item['Tên hợp đồng']}
                   style={{ maxWidth: '309px' }}
                 />
-                <List.Item.Meta
-                  title={`${index === 0 ? 'Quyền sở hữu' : ''}`}
-                  description={item['Quyền sở hữu']}
-                />
-                <List.Item.Meta
-                  title={`${index === 0 ? 'Người ủy quyền' : ''}`}
-                  description={item['Người ủy quyền']}
-                />
+                <List.Item.Meta title={`${index === 0 ? 'Quyền sở hữu' : ''}`} description={item['Quyền sở hữu']} />
+                <List.Item.Meta title={`${index === 0 ? 'Người ủy quyền' : ''}`} description={item['Người ủy quyền']} />
                 <List.Item.Meta
                   title={`${index === 0 ? 'Hiệu lực hợp đồng' : ''}`}
                   description={`${
@@ -141,21 +127,17 @@ const AuthorizedContract = ({ children }: Props) => {
                 />
                 <List.Item.Meta
                   title={`${index === 0 ? 'Ngày tạo' : ''}`}
-                  description={
-                    item['Ngày tạo']
-                      ? item['Ngày tạo'].toDate().toLocaleString()
-                      : ''
-                  }
+                  description={item['Ngày tạo'] ? item['Ngày tạo'].toDate().toLocaleString() : ''}
                 />
                 <div style={{ width: '170px' }}>
                   <Link
-                    to="/management/contract/detail-authority"
+                    to='/management/contract/detail-authority'
                     style={{
                       background: 'transparent',
                       border: 'none',
                       textDecoration: 'underline',
                       color: '#ff7506',
-                      cursor: 'pointer',
+                      cursor: 'pointer'
                     }}
                   >
                     Xem chi tiết
@@ -168,7 +150,7 @@ const AuthorizedContract = ({ children }: Props) => {
                         background: 'transparent',
                         border: 'none',
                         textDecoration: 'underline',
-                        color: '#ff7506',
+                        color: '#ff7506'
                       }}
                     >
                       Lý do hủy
@@ -182,8 +164,8 @@ const AuthorizedContract = ({ children }: Props) => {
         </Container>
       </Wrapper>
     </>
-  );
-};
+  )
+}
 
 const Wrapper = styled.div`
   position: relative;
@@ -307,7 +289,7 @@ const Wrapper = styled.div`
       color: #ff7506;
     }
   }
-`;
+`
 
 const Container = styled.div`
   position: absolute;
@@ -334,7 +316,7 @@ const Container = styled.div`
   .ant-list-bordered .ant-list-item {
     border-top: 1px solid #727288;
   }
-`;
+`
 
 const ModalContainer = styled(Modal)`
   background: #1e1e2e;
@@ -371,5 +353,5 @@ const ModalContainer = styled(Modal)`
       background: #b65100;
     }
   }
-`;
-export default AuthorizedContract;
+`
+export default AuthorizedContract

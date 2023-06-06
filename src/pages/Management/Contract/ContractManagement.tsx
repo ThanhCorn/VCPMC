@@ -1,30 +1,30 @@
-import React, { Children, useState } from 'react';
-import styled from 'styled-components';
-import SideMenu from '../../../components/SideMenu';
-import PageContent from '../../../components/PageContent';
-import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
-import { Button } from 'antd';
-import AuthorizedContract from '../../../components/Management/AuthorizedContract';
-import MiningContract from '../../../components/Management/MiningContract';
-import { Link } from 'react-router-dom';
+import React, { Children, useState } from 'react'
+import styled from 'styled-components'
+import SideMenu from '../../../components/SideMenu'
+import PageContent from '../../../components/PageContent'
+import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
+import { Button } from 'antd'
+import AuthorizedContract from '../../../components/Management/Contract/AuthorizedContract'
+import MiningContract from '../../../components/Management/Contract/MiningContract'
+import { Link } from 'react-router-dom'
 
 const ContractManagement = () => {
-  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);
+  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false)
 
   return (
     <Wrapper>
-      <div className="content">
-        <h4 style={{ color: 'white' }}>
-          Quản lý <RightOutlined /> Quản lý hợp đồng
-        </h4>
-        {!isAuthorizingOrMining ? (
-          <h1>Danh sách hợp đồng</h1>
-        ) : (
-          <h1>Danh sách hợp đồng khai thác</h1>
-        )}
-        <div className="btn">
+      <div className='content'>
+        <div className='header-text'>
+          <span>
+            Quản lý <RightOutlined />
+          </span>
+          <span>Quản lý hợp đồng</span>
+        </div>
+
+        {!isAuthorizingOrMining ? <h1>Danh sách hợp đồng</h1> : <h1>Danh sách hợp đồng khai thác</h1>}
+        <div className='btn'>
           <Button
-            type="primary"
+            type='primary'
             onClick={() => setIsisAuthorizingOrMining(false)}
             className={`button-1 ${!isAuthorizingOrMining ? 'active' : ''}`}
           >
@@ -32,28 +32,26 @@ const ContractManagement = () => {
           </Button>
           <Button
             onClick={() => setIsisAuthorizingOrMining(true)}
-            type="primary"
+            type='primary'
             className={`button-2 ${isAuthorizingOrMining ? 'active' : ''}`}
           >
             Hợp đồng khai thác
           </Button>
         </div>
-        <div>
-          {isAuthorizingOrMining ? <MiningContract /> : <AuthorizedContract />}
-        </div>
+        <div>{isAuthorizingOrMining ? <MiningContract /> : <AuthorizedContract />}</div>
       </div>
 
-      <Link to="/new-contract" className="link-option">
+      <Link to='/new-contract' className='link-option'>
         <PlusCircleOutlined />
         <p>
           Thêm hợp <br /> &nbsp;&nbsp;&nbsp;&nbsp; đồng
         </p>
       </Link>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default ContractManagement;
+export default ContractManagement
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -66,21 +64,23 @@ const Wrapper = styled.div`
     margin-left: 50px;
     margin-right: 70px;
     flex: 1;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     h1 {
-      margin-top: -20px;
       width: 600px;
       height: 48px;
       font-size: 36px;
       line-height: 48px;
       color: #ffffff;
-    }
-    h4 {
-      font-weight: 200;
-      opacity: 0.5;
-      font-size: 16px;
-      svg {
-        color: #ffac69;
-      }
     }
   }
   .link-option {
@@ -145,4 +145,4 @@ const Wrapper = styled.div`
       background: #b65100;
     }
   }
-`;
+`

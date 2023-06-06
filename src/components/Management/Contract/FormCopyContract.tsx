@@ -1,211 +1,129 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import 'firebase/firestore';
-import { Modal, Input, Button, DatePicker, Checkbox, Radio, Row } from 'antd';
-import {
-  ContainerOutlined,
-  CloseOutlined,
-  FormOutlined,
-  DownOutlined,
-  UploadOutlined,
-  FileOutlined,
-} from '@ant-design/icons';
-import {
-  FilePdfOutlined,
-  InfoCircleOutlined,
-  CloudUploadOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
-import { DataContext } from '../../context/DataContext';
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { UserContext } from '../../context/UserContext';
+import React, { useState, useContext } from 'react'
+import styled from 'styled-components'
+import 'firebase/firestore'
+import { Modal, Input, Button, DatePicker, Checkbox, Radio, Row } from 'antd'
+import { UploadOutlined, FileOutlined, RightOutlined } from '@ant-design/icons'
 
-const { TextArea } = Input;
-const CheckboxGroup = Checkbox.Group;
-
-const options = [
-  {
-    label: (
-      <p style={{ marginTop: '0px !important' }}>
-        Quyền của người biểu diễn{' '}
-        <span
-          style={{
-            padding: '5px',
-            border: '1px solid #727288',
-            borderRadius: '4px',
-            background: '#2B2B3F',
-            marginRight: '5px',
-          }}
-        >
-          0{' '}
-        </span>
-        %
-      </p>
-    ),
-    value: 'performer',
-  },
-
-  {
-    label: (
-      <p style={{ marginTop: '0 !important' }}>
-        Quyền của nhà sản xuất{' '}
-        <span
-          style={{
-            padding: '5px',
-            border: '1px solid #727288',
-            borderRadius: '4px',
-            background: '#2B2B3F',
-            marginRight: '5px',
-          }}
-        >
-          0{' '}
-        </span>
-        %
-      </p>
-    ),
-    value: 'producer',
-  },
-];
 const onChange = (checkedValues: any) => {
-  console.log('checked = ', checkedValues);
-};
-
+  console.log('checked = ', checkedValues)
+}
 const FormCopyContract: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalOpen2, setIsModalOpen2] = useState(false);
-  const { data } = useContext(DataContext);
-  const { currentUser } = useContext(UserContext);
-  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-  const showModal2 = () => {
-    setIsModalOpen2(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
   return (
     <Wrapper>
-      <div className="content">
-        <h4 style={{ color: 'white' }}>
-          Quản lý <RightOutlined /> Quản lý hợp đồng <RightOutlined /> Sao chép
-          hợp đông
-        </h4>
+      <div className='content'>
+        <div className='header-text'>
+          <span>
+            Quản lý <RightOutlined />
+          </span>
+          <span>
+            Quản lý hợp đồng <RightOutlined />
+          </span>
+          <span>Sao chép hợp đồng</span>
+        </div>
+
         <h1 style={{ width: '1000px' }}>Bản sao hợp đồng khai thác - BH123</h1>
         <Container>
           <Row>
-            <div className="row-1">
-              <div className="content-row">
+            <div className='row-1'>
+              <div className='content-row'>
                 <p>Tên hợp đông</p>
-                <Input placeholder="Hợp đồng kinh doanh" />
+                <Input placeholder='Hợp đồng kinh doanh' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Số hợp đồng:</p>
-                <Input placeholder="123" />
+                <Input placeholder='123' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Ngày hiệu lực:</p>
-                <DatePicker className="Hợp đồng kinh doanh" />
+                <DatePicker className='Hợp đồng kinh doanh' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Ngày hết hạn:</p>
-                <DatePicker className="Hợp đồng kinh doanh" />
+                <DatePicker className='Hợp đồng kinh doanh' />
               </div>
             </div>
-            <div className="row-2">
-              <div className="content-row">
+            <div className='row-2'>
+              <div className='content-row'>
                 <p>
                   Đính kèm tệp:{' '}
-                  <span className="upload">
+                  <span className='upload'>
                     <UploadOutlined /> Tải lên
                   </span>
                 </p>
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p style={{ marginLeft: '100px' }}>
                   <FileOutlined /> hetthuongcannho.doc <br />
                   <FileOutlined /> hetthuongcannho.doc
                 </p>
               </div>
             </div>
-            <div className="row-3">
+            <div className='row-3'>
               <p>Loại hợp đồng</p>
-              <div className="content-row">
+              <div className='content-row'>
                 <Checkbox style={{ marginRight: '70px' }}>
                   <p>Trọn gói</p>
                 </Checkbox>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <div className="price">
+                  <div className='price'>
                     <p>Giá trị hợp đồng (VNĐ)</p>
-                    <Input placeholder="213.000.000"></Input>
+                    <Input placeholder='213.000.000'></Input>
                   </div>
-                  <div className="price">
+                  <div className='price'>
                     <p>Giá trị Phân phối (VNĐ)</p>
-                    <Input placeholder="213.000.000"></Input>
+                    <Input placeholder='213.000.000'></Input>
                   </div>
                 </div>
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <Checkbox style={{ marginRight: '70px' }}>
                   <p>Lượt phát</p>
                 </Checkbox>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <div className="price">
+                  <div className='price'>
                     <p>Giá trị Lượt phát VNĐ/Ngày</p>
-                    <Input placeholder="213.000.000"></Input>
+                    <Input placeholder='213.000.000'></Input>
                   </div>
                 </div>
               </div>
             </div>
           </Row>
           <Row>
-            <div className="row-1">
-              <div className="content-row">
+            <div className='row-1'>
+              <div className='content-row'>
                 <p>Tên đơn vị sử dụng:</p>
-                <Input placeholder="Công ty TNHH MTV  Âu Lạc" />
+                <Input placeholder='Công ty TNHH MTV  Âu Lạc' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Người đại diện:</p>
-                <Input placeholder="Nguyễn văn A" />
+                <Input placeholder='Nguyễn văn A' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Chức vụ:</p>
-                <Input placeholder="Giám đốc" />
+                <Input placeholder='Giám đốc' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Ngày sinh:</p>
                 <DatePicker />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Quốc tịch:</p>
-                <Input placeholder="Việt Nam" />
+                <Input placeholder='Việt Nam' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Số điện thoại:</p>
-                <Input placeholder="123456789012" />
+                <Input placeholder='123456789012' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Email:</p>
-                <Input placeholder="nguyenvana@gmail.com" />
+                <Input placeholder='nguyenvana@gmail.com' />
               </div>
             </div>
-            <div className="row-1">
-              <div className="content-row-1">
+            <div className='row-1'>
+              <div className='content-row-1'>
                 <p>
                   Giới tính
-                  <Radio.Group
-                    onChange={onChange}
-                    style={{ marginLeft: '30px' }}
-                  >
+                  <Radio.Group onChange={onChange} style={{ marginLeft: '30px' }}>
                     <Radio style={{ color: '#fff' }} value={1}>
                       Cá nhân
                     </Radio>
@@ -215,43 +133,43 @@ const FormCopyContract: React.FC = () => {
                   </Radio.Group>
                 </p>
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>CMND/ CCCD:</p>
-                <Input placeholder="123456789012" />
+                <Input placeholder='123456789012' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Ngày cấp:</p>
                 <DatePicker />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Nơi cấp:</p>
-                <Input placeholder="Việt Nam" />
+                <Input placeholder='Việt Nam' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Mã số thuế:</p>
-                <Input placeholder="123456789012" />
+                <Input placeholder='123456789012' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Nơi cư trú:</p>
-                <Input.TextArea placeholder="69/53, Nguyễn Gia Trí, Phường 25, Quận Bình Thạnh, Thành phố Hồ Chí Minh" />
+                <Input.TextArea placeholder='69/53, Nguyễn Gia Trí, Phường 25, Quận Bình Thạnh, Thành phố Hồ Chí Minh' />
               </div>
             </div>
-            <div className="row-3">
-              <div className="content-row">
+            <div className='row-3'>
+              <div className='content-row'>
                 <p>Tên đăng nhập:</p>
-                <Input placeholder="vuonganhtu123" />
+                <Input placeholder='vuonganhtu123' />
               </div>
-              <div className="content-row-1">
+              <div className='content-row-1'>
                 <p>Mật khẩu:</p>
-                <Input.Password value="ddddddđ" />
+                <Input.Password value='ddddddđ' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Số tài khoản:</p>
-                <Input placeholder="1231123312211223" />
+                <Input placeholder='1231123312211223' />
               </div>
-              <div className="content-row">
+              <div className='content-row'>
                 <p>Ngân hàng:</p>
-                <Input placeholder="Ngân hàng Phương Đông - OCB" />
+                <Input placeholder='Ngân hàng Phương Đông - OCB' />
               </div>
             </div>
           </Row>
@@ -260,7 +178,7 @@ const FormCopyContract: React.FC = () => {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            marginTop: '50px',
+            marginTop: '50px'
           }}
         >
           <Button
@@ -271,18 +189,18 @@ const FormCopyContract: React.FC = () => {
               backgroundColor: 'transparent',
               width: '168px',
               color: '#FF7506',
-              border: '1px solid #FF7506',
+              border: '1px solid #FF7506'
             }}
           >
             Hủy
           </Button>
           <Button
-            type="primary"
-            htmlType="submit"
+            type='primary'
+            htmlType='submit'
             style={{
               height: '48px',
               width: '168px',
-              backgroundColor: '#FF7506',
+              backgroundColor: '#FF7506'
             }}
           >
             Lưu
@@ -290,8 +208,8 @@ const FormCopyContract: React.FC = () => {
         </div>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
 const Container = styled.div`
   padding-right: 0px !important;
@@ -399,7 +317,7 @@ const Container = styled.div`
       }
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   position: relative;
@@ -411,6 +329,17 @@ const Wrapper = styled.div`
     margin-left: 50px;
     margin-right: 10px;
     flex: 1;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     .option-1 {
       flex-direction: column;
       display: flex;
@@ -447,21 +376,13 @@ const Wrapper = styled.div`
       }
     }
     h1 {
-      margin-top: -20px;
       width: 600px;
       height: 48px;
       font-size: 36px;
       line-height: 48px;
       color: #ffffff;
     }
-    h4 {
-      font-weight: 200;
-      opacity: 0.5;
-      font-size: 16px;
-      svg {
-        color: #ffac69;
-      }
-    }
+
     .btn {
       margin-bottom: 20px;
       width: 309px;
@@ -567,47 +488,6 @@ const Wrapper = styled.div`
       cursor: pointer;
     }
   }
-`;
-const ModalContent = styled(Modal)`
-  .ant-modal-content {
-    background: #2f2f41;
-  }
-  .ant-modal-title {
-    background: #2f2f41;
-    color: #fff;
-    margin-bottom: 30px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .ant-input {
-    color: #fff;
-    border: 1px solid #727288;
-    background: #2b2b3f;
-    ::placeholder {
-      color: #727288;
-    }
-  }
-  .ant-modal-footer {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .ant-btn-default {
-      background: transparent !important;
-      border: 1px solid #ff7506 !important;
-      :hover {
-        background: transparent !important;
-        border: 1px solid #ff7506 !important;
-      }
-      span {
-        color: #ff7506;
-      }
-    }
-    .ant-btn-primary {
-      background: #ff7506 !important;
-    }
-  }
-`;
+`
 
-export default FormCopyContract;
+export default FormCopyContract

@@ -1,133 +1,122 @@
-import React, { Children, useState } from 'react';
-import styled from 'styled-components';
-import {
-  LineChartOutlined,
-  PlusCircleOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
-import { Button, Col, DatePicker, List, Modal, Row, Switch } from 'antd';
-import { Link } from 'react-router-dom';
-import { Input } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Dropdown, message, Space } from 'antd';
-import { Line } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-} from 'chart.js';
-import { Income, myIncome } from '../../myData';
-import Page from '../../components/Page';
-import { toast } from 'react-toastify';
+import React, { Children, useState } from 'react'
+import styled from 'styled-components'
+import { LineChartOutlined, PlusCircleOutlined, RightOutlined, DownOutlined } from '@ant-design/icons'
+import { Button, Col, DatePicker, List, Modal, Row, Switch, Input, Dropdown, message, Space } from 'antd'
+import { Link } from 'react-router-dom'
 
-ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale);
+import type { MenuProps } from 'antd'
+
+import { Line } from 'react-chartjs-2'
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js'
+import { Income, myIncome } from '../../myData'
+import Page from '../../components/Page'
+import { toast } from 'react-toastify'
+
+ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale)
 const items: MenuProps['items'] = [
   {
     label: 'Theo tháng',
-    key: '1',
+    key: '1'
   },
   {
     label: 'Theo quý',
-    key: '2',
-  },
-];
+    key: '2'
+  }
+]
 
 const items2: MenuProps['items'] = [
   {
     label: 'Tháng 1',
-    key: '1',
+    key: '1'
   },
   {
     label: 'Tháng 2',
-    key: '2',
+    key: '2'
   },
   {
     label: 'Tháng 3',
-    key: '3',
+    key: '3'
   },
   {
     label: 'Tháng 4',
-    key: '4',
+    key: '4'
   },
   {
     label: 'Tháng 5',
-    key: '5',
+    key: '5'
   },
   {
     label: 'Tháng 6',
-    key: '6',
+    key: '6'
   },
   {
     label: 'Tháng 7',
-    key: '7',
+    key: '7'
   },
   {
     label: 'Tháng 8',
-    key: '8',
+    key: '8'
   },
   {
     label: 'Tháng 9',
-    key: '9',
+    key: '9'
   },
   {
     label: 'Tháng 10',
-    key: '10',
+    key: '10'
   },
   {
     label: 'Tháng 11',
-    key: '11',
+    key: '11'
   },
   {
     label: 'Tháng 12',
-    key: '12',
-  },
-];
+    key: '12'
+  }
+]
 
 const items3: MenuProps['items'] = [
   {
     label: 'Quý 1',
-    key: '1',
+    key: '1'
   },
   {
     label: 'Quý 2',
-    key: '2',
+    key: '2'
   },
   {
     label: 'Quý 3',
-    key: '3',
+    key: '3'
   },
   {
     label: 'Quý 4',
-    key: '4',
-  },
-];
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+    key: '4'
+  }
+]
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
 
 const DetailInCome = () => {
-  const [isForMonth, setIsForMonth] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isForMonth, setIsForMonth] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const showModal = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
 
   const handleOk = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
   const onClick: MenuProps['onClick'] = ({ key }) => {
-    if (key === '1') setIsForMonth(true);
-    else setIsForMonth(false);
-  };
-  const items4 = isForMonth ? items2 : items3;
+    if (key === '1') setIsForMonth(true)
+    else setIsForMonth(false)
+  }
+  const items4 = isForMonth ? items2 : items3
 
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             {' '}
             Doanh thu
@@ -141,11 +130,9 @@ const DetailInCome = () => {
         </div>
 
         <h1>Báo cáo doanh thu</h1>
-        <div className="month-pick">
-          <p style={{ marginRight: '20px' }}>
-            Theo {`${isForMonth ? 'tháng:' : 'quý:'}`}
-          </p>
-          <div className="datepick">
+        <div className='month-pick'>
+          <p style={{ marginRight: '20px' }}>Theo {`${isForMonth ? 'tháng:' : 'quý:'}`}</p>
+          <div className='datepick'>
             <Dropdown menu={{ items: items, onClick }}>
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
@@ -155,7 +142,7 @@ const DetailInCome = () => {
               </a>
             </Dropdown>
           </div>
-          <div className="datepick">
+          <div className='datepick'>
             <Dropdown menu={{ items: items4 }}>
               <a onClick={(e) => e.preventDefault()}>
                 <Space>
@@ -165,16 +152,12 @@ const DetailInCome = () => {
               </a>
             </Dropdown>
           </div>
-          <div className="search">
-            <Search
-              placeholder="Nhập tên người dùng..."
-              onSearch={onSearch}
-              style={{ width: 200 }}
-            />
+          <div className='search'>
+            <Search placeholder='Nhập tên người dùng...' onSearch={onSearch} style={{ width: 200 }} />
           </div>
         </div>
         <Container>
-          <Row className="row-1">
+          <Row className='row-1'>
             <Col span={1}>
               <p>STT</p>
             </Col>
@@ -203,14 +186,11 @@ const DetailInCome = () => {
           </Row>
 
           <List
-            itemLayout="horizontal"
+            itemLayout='horizontal'
             dataSource={myIncome}
             renderItem={(myIncome: Income) => (
-              <List.Item
-                key={myIncome.stt}
-                style={{ alignItems: 'center', display: 'flex' }}
-              >
-                <Row className="row-2">
+              <List.Item key={myIncome.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                <Row className='row-2'>
                   <Col span={1}>
                     <p> {myIncome.stt}</p>
                   </Col>
@@ -241,17 +221,17 @@ const DetailInCome = () => {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
+                      justifyContent: 'center'
                     }}
                   >
                     <Link
-                      to="/income/detail/profit"
+                      to='/income/detail/profit'
                       style={{
                         background: 'transparent',
                         border: 'none',
                         textDecoration: 'underline',
                         color: '#ff7506',
-                        cursor: 'pointer',
+                        cursor: 'pointer'
                       }}
                     >
                       Chi tiết doanh thu
@@ -262,17 +242,17 @@ const DetailInCome = () => {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
+                      justifyContent: 'center'
                     }}
                   >
                     <Link
-                      to="/income/history-sync"
+                      to='/income/history-sync'
                       style={{
                         background: 'transparent',
                         border: 'none',
                         textDecoration: 'underline',
                         color: '#ff7506',
-                        cursor: 'pointer',
+                        cursor: 'pointer'
                       }}
                     >
                       Lịch sử đồng bộ trên thiết bị
@@ -285,7 +265,7 @@ const DetailInCome = () => {
           <Page data={myIncome} />
         </Container>
       </div>
-      <Button onClick={() => setIsModalOpen(true)} className="link-option">
+      <Button onClick={() => setIsModalOpen(true)} className='link-option'>
         <PlusCircleOutlined />
         <p>
           Chốt doanh
@@ -297,26 +277,24 @@ const DetailInCome = () => {
         <ModalContainer open={isModalOpen} onOk={handleOk}>
           <h3>Chốt doanh thu</h3>
           <p>
-            Doanh thu sẽ được chốt từ ngày 01/05/2021 đến ngày 14/05/2021 trên
-            tất cả các hợp đồng sử dụng.
+            Doanh thu sẽ được chốt từ ngày 01/05/2021 đến ngày 14/05/2021 trên tất cả các hợp đồng sử dụng.
             <br />
-            Nhấn Tiếp tục để chốt doanh thu. Nhấn Hủy để hủy bỏ và không chốt
-            doanh thu
+            Nhấn Tiếp tục để chốt doanh thu. Nhấn Hủy để hủy bỏ và không chốt doanh thu
           </p>
-          <div className="btn">
-            <Button className="btn-huy" onClick={() => setIsModalOpen(false)}>
+          <div className='btn'>
+            <Button className='btn-huy' onClick={() => setIsModalOpen(false)}>
               Hủy
             </Button>
             <Link
-              to="/income/detail/profit"
-              type="primary"
+              to='/income/detail/profit'
+              type='primary'
               onClick={() => setIsModalOpen(false)}
               style={{
                 color: '#fff',
                 padding: '12px 50px',
                 borderRadius: '4px',
                 background: '#ff7506',
-                border: '1px solid #ff7506',
+                border: '1px solid #ff7506'
               }}
             >
               Tiếp tục
@@ -325,10 +303,10 @@ const DetailInCome = () => {
         </ModalContainer>
       )}
     </Wrapper>
-  );
-};
+  )
+}
 
-export default DetailInCome;
+export default DetailInCome
 
 const ModalContainer = styled(Modal)`
   .ant-modal-content {
@@ -353,7 +331,7 @@ const ModalContainer = styled(Modal)`
   .ant-modal-footer {
     display: none;
   }
-`;
+`
 
 const Container = styled.div`
   width: 1541px;
@@ -395,7 +373,7 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -543,4 +521,4 @@ const Wrapper = styled.div`
       color: #ffac69;
     }
   }
-`;
+`

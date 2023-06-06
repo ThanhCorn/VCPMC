@@ -1,25 +1,21 @@
-import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import {
-  FormOutlined,
-  PlusCircleOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
-import { mySchecule, Schecule } from '../../myData';
-import { Row, Col, List, Checkbox, Input, Modal } from 'antd';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components'
+import SideMenu from '../../components/SideMenu'
+import PageContent from '../../components/PageContent'
+import { FormOutlined, PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
+import { mySchecule, Schecule } from '../../myData'
+import { Row, Col, List, Checkbox, Input, Modal } from 'antd'
+import { Link } from 'react-router-dom'
 export default function ScheduleDetail1() {
   return (
     <Wrapper>
-      <div className="content">
-        <span className="path-title">
+      <div className='content'>
+        <span className='path-title'>
           Lập lịch phát <RightOutlined /> Chi tiết
         </span>
         <h1 style={{ fontSize: '36px' }}>Lịch phát số 1</h1>
         <h2 style={{ marginTop: '40px' }}>Danh sách Playlist</h2>
         <Container>
-          <Row className="row-1">
+          <Row className='row-1'>
             <Col span={2}>
               <p>STT</p>
             </Col>
@@ -40,14 +36,11 @@ export default function ScheduleDetail1() {
             </Col>
           </Row>
           <List
-            itemLayout="horizontal"
+            itemLayout='horizontal'
             dataSource={mySchecule}
             renderItem={(schedule: Schecule) => (
-              <List.Item
-                key={schedule.stt}
-                style={{ alignItems: 'center', display: 'flex' }}
-              >
-                <Row className="row-2">
+              <List.Item key={schedule.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                <Row className='row-2'>
                   {schedule.tenplaylist && (
                     <Col span={2}>
                       <p style={{ marginLeft: '18px' }}> {schedule.stt}</p>
@@ -73,10 +66,10 @@ export default function ScheduleDetail1() {
             )}
           ></List>
         </Container>
-        <div className="side-option">
-          <div className="option">
-            <Link to="/edit-schedule" className="link-option">
-              <div className="icon">
+        <div className='side-option'>
+          <div className='option'>
+            <Link to='/edit-schedule' className='link-option'>
+              <div className='icon'>
                 <FormOutlined />
               </div>
               <p>
@@ -88,7 +81,7 @@ export default function ScheduleDetail1() {
         </div>
       </div>
     </Wrapper>
-  );
+  )
 }
 const Wrapper = styled.div`
   height: 100vh;
@@ -154,7 +147,7 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`
 
 const Container = styled.div`
   width: 1541px;
@@ -186,4 +179,4 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`

@@ -1,71 +1,63 @@
-import React, { useState, useEffect, useContext } from 'react';
-import type { MenuProps } from 'antd';
-import { Input, List, Pagination } from 'antd';
-import styled from 'styled-components';
-import firebase from 'firebase/compat/app';
-import 'firebase/firestore';
-import { DataContext } from '../../context/DataContext';
-import { Link } from 'react-router-dom';
-import Page from '../Page';
+import React, { useState, useEffect, useContext } from 'react'
+import type { MenuProps } from 'antd'
+import { Input, List, Pagination } from 'antd'
+import styled from 'styled-components'
+import firebase from 'firebase/compat/app'
+import 'firebase/firestore'
+import { DataContext } from '../../../context/DataContext'
+import { Link } from 'react-router-dom'
+import Page from '../../Page'
 
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
 
 interface DataProps {
-  STT: number;
-  'Số hợp đồng': string;
-  'Tên hợp đồng': string;
-  'Quyền sở hữu': string;
-  'Người ủy quyền': string;
-  'Ngày tạo': firebase.firestore.Timestamp;
-  'Ngày hết hạn': firebase.firestore.Timestamp;
-  'Ngày hiệu lực': firebase.firestore.Timestamp;
-  'Khách hàng': string;
-  'Hiệu lực hợp đồng': string[];
+  STT: number
+  'Số hợp đồng': string
+  'Tên hợp đồng': string
+  'Quyền sở hữu': string
+  'Người ủy quyền': string
+  'Ngày tạo': firebase.firestore.Timestamp
+  'Ngày hết hạn': firebase.firestore.Timestamp
+  'Ngày hiệu lực': firebase.firestore.Timestamp
+  'Khách hàng': string
+  'Hiệu lực hợp đồng': string[]
 }
 
 const items: MenuProps['items'] = [
   {
     label: 'Người biểu diễn',
-    key: '1',
+    key: '1'
   },
   {
     label: 'Nhà diễn xuất',
-    key: '2',
-  },
-];
+    key: '2'
+  }
+]
 const handleMenuClick: MenuProps['onClick'] = (e) => {
-  console.log('click', e);
-};
+  console.log('click', e)
+}
 const menuProps = {
   items,
-  onClick: handleMenuClick,
-};
+  onClick: handleMenuClick
+}
 
 const MiningContract = () => {
-  const { data } = useContext(DataContext);
-  const HieuLucHopDong = data.length > 0 ? data[0]['Hiệu lực hợp đồng'] : [];
+  const { data } = useContext(DataContext)
+  const HieuLucHopDong = data.length > 0 ? data[0]['Hiệu lực hợp đồng'] : []
   const HieuLucHopDongOptions = HieuLucHopDong.map((option, index) => ({
     label: option,
-    key: index.toString(),
-  }));
+    key: index.toString()
+  }))
 
   return (
     <>
-      <Wrapper className="option">
-        <div className="option-1">
-          <Search
-            placeholder="Tên hợp đồng, tên tác giả,..."
-            onSearch={onSearch}
-            style={{ width: '200px' }}
-          />
+      <Wrapper className='option'>
+        <div className='option-1'>
+          <Search placeholder='Tên hợp đồng, tên tác giả,...' onSearch={onSearch} style={{ width: '200px' }} />
         </div>
         <Container>
-          <List
-            bordered
-            style={{ color: '#fff', width: '73.6vw' }}
-            itemLayout="horizontal"
-          >
+          <List bordered style={{ color: '#fff', width: '73.6vw' }} itemLayout='horizontal'>
             {data.map((item, index) => (
               <List.Item key={item['STT']} style={{ color: '#fff' }}>
                 <List.Item.Meta
@@ -85,33 +77,17 @@ const MiningContract = () => {
                 />
                 <List.Item.Meta
                   title={`${index === 0 ? 'Ngày tạo' : ''}`}
-                  description={
-                    item['Ngày tạo']
-                      ? item['Ngày tạo'].toDate().toLocaleString()
-                      : ''
-                  }
+                  description={item['Ngày tạo'] ? item['Ngày tạo'].toDate().toLocaleString() : ''}
                 />
                 <List.Item.Meta
                   title={`${index === 0 ? 'Ngày hiệu lực' : ''}`}
                   description={
-                    item['Ngày hiệu lực']
-                      ? item['Ngày hiệu lực']
-                          .toDate()
-                          .toLocaleString()
-                          .slice(8, 18)
-                      : ''
+                    item['Ngày hiệu lực'] ? item['Ngày hiệu lực'].toDate().toLocaleString().slice(8, 18) : ''
                   }
                 />
                 <List.Item.Meta
                   title={`${index === 0 ? 'Ngày hết hạn' : ''}`}
-                  description={
-                    item['Ngày hết hạn']
-                      ? item['Ngày hết hạn']
-                          .toDate()
-                          .toLocaleString()
-                          .slice(8, 18)
-                      : ''
-                  }
+                  description={item['Ngày hết hạn'] ? item['Ngày hết hạn'].toDate().toLocaleString().slice(8, 18) : ''}
                 />
                 <List.Item.Meta
                   title={`${index === 0 ? 'Hiệu lực hợp đồng' : ''}`}
@@ -119,27 +95,27 @@ const MiningContract = () => {
                 />
                 <div>
                   <Link
-                    to="/management/contract/detail-mining"
+                    to='/management/contract/detail-mining'
                     style={{
                       background: 'transparent',
                       border: 'none',
                       textDecoration: 'underline',
                       color: '#ff7506',
                       cursor: 'pointer',
-                      marginRight: '10px',
+                      marginRight: '10px'
                     }}
                   >
                     Xem chi tiết
                   </Link>
 
                   <Link
-                    to="/management/contract/copy"
+                    to='/management/contract/copy'
                     style={{
                       background: 'transparent',
                       border: 'none',
                       textDecoration: 'underline',
                       color: '#ff7506',
-                      cursor: 'pointer',
+                      cursor: 'pointer'
                     }}
                   >
                     Sao chép hợp đồng
@@ -152,8 +128,8 @@ const MiningContract = () => {
         </Container>
       </Wrapper>
     </>
-  );
-};
+  )
+}
 
 const Wrapper = styled.div`
   margin-bottom: 20px;
@@ -242,7 +218,7 @@ const Wrapper = styled.div`
       color: #ff7506;
     }
   }
-`;
+`
 
 const Container = styled.div`
   position: absolute;
@@ -269,6 +245,6 @@ const Container = styled.div`
   .ant-list-bordered .ant-list-item {
     border-top: 1px solid #727288;
   }
-`;
+`
 
-export default MiningContract;
+export default MiningContract

@@ -1,13 +1,13 @@
-import { RightOutlined } from '@ant-design/icons';
-import { Button, Col, Input, List, Pagination, Row, Switch } from 'antd';
-import React from 'react';
-import styled from 'styled-components';
-import { PartnerAuthorizer, myPartner } from '../../myData';
-import { Link } from 'react-router-dom';
-import Page from '../Page';
+import { RightOutlined } from '@ant-design/icons'
+import { Button, Col, Input, List, Pagination, Row, Switch } from 'antd'
+import React from 'react'
+import styled from 'styled-components'
+import { PartnerAuthorizer, myPartner } from '../../../myData'
+import { Link } from 'react-router-dom'
+import Page from '../../Page'
 
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
 const ListAuthorized = () => {
   return (
     <Wrapper>
@@ -16,13 +16,13 @@ const ListAuthorized = () => {
       </p>
       <h1>Danh sách đối tác ủy quyền</h1>
       <Search
-        className="search"
-        placeholder="Họ tên, đăng nhập, email,...."
+        className='search'
+        placeholder='Họ tên, đăng nhập, email,....'
         onSearch={onSearch}
         style={{ width: '200px', marginBottom: '20px' }}
       />
       <Container>
-        <Row className="row-1">
+        <Row className='row-1'>
           <Col span={1}>
             <p>STT</p>
           </Col>
@@ -46,14 +46,11 @@ const ListAuthorized = () => {
           </Col>
         </Row>
         <List
-          itemLayout="horizontal"
+          itemLayout='horizontal'
           dataSource={myPartner}
           renderItem={(myPartner: PartnerAuthorizer) => (
-            <List.Item
-              key={myPartner.stt}
-              style={{ alignItems: 'center', display: 'flex' }}
-            >
-              <Row className="row-2">
+            <List.Item key={myPartner.stt} style={{ alignItems: 'center', display: 'flex' }}>
+              <Row className='row-2'>
                 <Col span={1}>
                   <p style={{ marginLeft: '18px' }}> {myPartner.stt}</p>
                 </Col>
@@ -75,9 +72,7 @@ const ListAuthorized = () => {
                 <Col span={4}>
                   <p>
                     <Switch checked={myPartner.trangthai} />
-                    {myPartner.trangthai
-                      ? 'Đang kích hoạt'
-                      : ' Ngừng kích hoạt'}
+                    {myPartner.trangthai ? 'Đang kích hoạt' : ' Ngừng kích hoạt'}
                   </p>
                 </Col>
 
@@ -86,17 +81,17 @@ const ListAuthorized = () => {
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
+                    justifyContent: 'center'
                   }}
                 >
                   <Link
-                    to="/management/authority/update"
+                    to='/management/authority/update'
                     style={{
                       background: 'transparent',
                       border: 'none',
                       textDecoration: 'underline',
                       color: '#ff7506',
-                      cursor: 'pointer',
+                      cursor: 'pointer'
                     }}
                   >
                     Cập nhật
@@ -109,10 +104,10 @@ const ListAuthorized = () => {
         <Page data={myPartner} />
       </Container>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default ListAuthorized;
+export default ListAuthorized
 
 const Container = styled.div`
   width: 1541px;
@@ -147,7 +142,7 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   display: flex;
@@ -186,4 +181,4 @@ const Wrapper = styled.div`
       height: 48px;
     }
   }
-`;
+`

@@ -1,43 +1,37 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import 'firebase/firestore';
-import { Modal, Button } from 'antd';
-import { RightOutlined } from '@ant-design/icons';
-import InfoContract from './InfoContract';
-import AuthoritySong from './AuthoritySong';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import 'firebase/firestore'
+import { Modal, Button } from 'antd'
+import { RightOutlined } from '@ant-design/icons'
+import InfoContract from './InfoContract'
+import AuthoritySong from './AuthoritySong'
 
 const Contract: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);
-
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false)
 
   return (
     <Wrapper>
-      <div className="content">
-        <h4 style={{ color: 'white' }}>
-          Quản lý <RightOutlined /> Quản lý hợp đồng <RightOutlined /> Chi tiết
-        </h4>
+      <div className='content'>
+        <div className='header-text'>
+          <span>
+            {' '}
+            Quản lý <RightOutlined />
+          </span>
+          <span>
+            Quản lý hợp đồng <RightOutlined />
+          </span>
+          <span> Chi tiết</span>
+        </div>
+
         {!isAuthorizingOrMining ? (
-          <h1 style={{ width: '1000px' }}>
-            Chi tiết hợp đồng uỷ quyền bài hát - BH123
-          </h1>
+          <h1 style={{ width: '1000px' }}>Chi tiết hợp đồng uỷ quyền bài hát - BH123</h1>
         ) : (
           <h1 style={{ width: '1000px' }}>Hợp đồng ủy quyền bài hát - BH123</h1>
         )}
-        <div className="btn">
+        <div className='btn'>
           <Button
-            type="primary"
+            type='primary'
             onClick={() => setIsisAuthorizingOrMining(false)}
             className={`button-1 ${!isAuthorizingOrMining ? 'active' : ''}`}
           >
@@ -45,19 +39,17 @@ const Contract: React.FC = () => {
           </Button>
           <Button
             onClick={() => setIsisAuthorizingOrMining(true)}
-            type="primary"
+            type='primary'
             className={`button-2 ${isAuthorizingOrMining ? 'active' : ''}`}
           >
             Tác phẩm ủy quyền
           </Button>
         </div>
-        <div>
-          {isAuthorizingOrMining ? <AuthoritySong /> : <InfoContract />}
-        </div>
+        <div>{isAuthorizingOrMining ? <AuthoritySong /> : <InfoContract />}</div>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
 const Wrapper = styled.div`
   display: flex;
@@ -68,21 +60,25 @@ const Wrapper = styled.div`
     margin-left: 50px;
     margin-right: 10px;
     flex: 1;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     h1 {
-      margin-top: -20px;
       width: 600px;
       height: 48px;
       font-size: 36px;
       line-height: 48px;
       color: #ffffff;
     }
-    h4 {
-      font-weight: 200;
-      font-size: 16px;
-      svg {
-        color: #ffac69;
-      }
-    }
+
     .btn {
       margin-bottom: 20px;
       width: 309px;
@@ -109,7 +105,7 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`
 const ModalContent = styled(Modal)`
   .ant-modal-content {
     background: #2f2f41;
@@ -150,7 +146,7 @@ const ModalContent = styled(Modal)`
       background: #ff7506 !important;
     }
   }
-`;
+`
 const Container = styled.div`
   position: relative;
   display: grid;
@@ -270,6 +266,6 @@ const Container = styled.div`
       cursor: pointer;
     }
   }
-`;
+`
 
-export default Contract;
+export default Contract

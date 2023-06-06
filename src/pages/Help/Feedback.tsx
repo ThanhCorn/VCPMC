@@ -1,49 +1,42 @@
-import styled from 'styled-components';
-import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
-import { Button, Form, Input, Select } from 'antd';
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
-import { Link } from 'react-router-dom';
-import { nanoid } from 'nanoid';
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-} from '@firebase/firestore';
-import { db } from '../../firebase';
+import styled from 'styled-components'
+import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
+import { Button, Form, Input, Select } from 'antd'
+import { useContext } from 'react'
+import { UserContext } from '../../context/UserContext'
+import { Link } from 'react-router-dom'
+import { nanoid } from 'nanoid'
+import { addDoc, collection, doc, getDoc, setDoc, updateDoc } from '@firebase/firestore'
+import { db } from '../../firebase'
 
-const { Option } = Select;
+const { Option } = Select
 
 const options = [
   { value: 'account', label: 'Tài khoản' },
   { value: 'payment', label: 'Quản lý thanh toán' },
   { value: 'license', label: 'Vấn đề bản quyền' },
-  { value: 'other', label: 'Khác' },
-];
+  { value: 'other', label: 'Khác' }
+]
 
 interface FormData {
-  issue: string;
-  content: string;
+  issue: string
+  content: string
 }
 
 const Feedback = () => {
-  const [form] = Form.useForm();
-  const { currentUser } = useContext(UserContext);
-  console.log(currentUser);
+  const [form] = Form.useForm()
+  const { currentUser } = useContext(UserContext)
+  console.log(currentUser)
 
   const handleSubmit = async (values: FormData) => {
-    const feedback = { ...values, id: nanoid() };
-    await addDoc(collection(db, 'users'), feedback);
+    const feedback = { ...values, id: nanoid() }
+    await addDoc(collection(db, 'users'), feedback)
 
-    form.resetFields();
-  };
+    form.resetFields()
+  }
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             {' '}
             Hổ trợ <RightOutlined />
@@ -57,48 +50,46 @@ const Feedback = () => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'center'
           }}
         >
           <Form
             form={form}
             onFinish={handleSubmit}
-            layout="vertical"
+            layout='vertical'
             style={{
               width: '764px',
               background: '#2F2F41',
-              padding: '30px',
+              padding: '30px'
             }}
           >
-            <Form.Item label="Tên người dùng">
+            <Form.Item label='Tên người dùng'>
               <Input
                 style={{
                   background: '#727288',
-                  border: 'none',
+                  border: 'none'
                 }}
                 value={currentUser?.displayName ? currentUser.displayName : ''}
                 disabled
               />
             </Form.Item>
             <Form.Item
-              label="Bạn muốn được hỗ trợ vấn đề gì?"
-              name="issue"
-              rules={[
-                { required: true, message: 'Vui lòng chọn vấn đề của bạn!' },
-              ]}
+              label='Bạn muốn được hỗ trợ vấn đề gì?'
+              name='issue'
+              rules={[{ required: true, message: 'Vui lòng chọn vấn đề của bạn!' }]}
             >
               <Select
                 style={{
                   background: '#727288',
-                  border: 'none',
+                  border: 'none'
                 }}
-                placeholder="Chọn vấn đề"
+                placeholder='Chọn vấn đề'
               >
                 {options.map((option) => (
                   <Option
                     style={{
                       background: 'rgba(47, 47, 65, 0.7)',
-                      color: 'white',
+                      color: 'white'
                     }}
                     key={option.value}
                     value={option.value}
@@ -108,17 +99,13 @@ const Feedback = () => {
                 ))}
               </Select>
             </Form.Item>
-            <Form.Item
-              label="Nội dung"
-              name="content"
-              rules={[{ required: true, message: 'Vui lòng nhập nội dung!' }]}
-            >
+            <Form.Item label='Nội dung' name='content' rules={[{ required: true, message: 'Vui lòng nhập nội dung!' }]}>
               <Input.TextArea
                 style={{
                   background: '#727288',
-                  border: '1px solid #2B2B3F',
+                  border: '1px solid #2B2B3F'
                 }}
-                placeholder="Nhập nội dung"
+                placeholder='Nhập nội dung'
                 rows={10}
               />
             </Form.Item>
@@ -127,26 +114,26 @@ const Feedback = () => {
                 style={{
                   background: '#FF7506',
                   width: '168px',
-                  height: '40px',
+                  height: '40px'
                 }}
-                type="primary"
-                htmlType="submit"
+                type='primary'
+                htmlType='submit'
               >
                 Gửi
               </Button>
             </Form.Item>
           </Form>
         </div>
-        <Link to="/help/watch-feedback" className="link-option">
+        <Link to='/help/watch-feedback' className='link-option'>
           <PlusCircleOutlined />
           <p>Xem Feedback</p>
         </Link>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default Feedback;
+export default Feedback
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -228,4 +215,4 @@ const Wrapper = styled.div`
       color: white;
     }
   }
-`;
+`

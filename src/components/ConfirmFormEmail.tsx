@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Form, Input, Button } from 'antd';
-import styled from 'styled-components';
-import FormLogin from './FormLogin';
+import React, { useState } from 'react'
+import { Form, Input, Button } from 'antd'
+import styled from 'styled-components'
+import FormLogin from './FormLogin'
 
 const FormContainer = styled(Form)`
   display: flex;
@@ -32,7 +32,7 @@ const FormContainer = styled(Form)`
       font-size: 16px;
     }
   }
-`;
+`
 
 const FormItem = styled(Form.Item)`
   position: relative;
@@ -62,33 +62,28 @@ const FormItem = styled(Form.Item)`
       color: none;
     }
   }
-`;
+`
 
 const ConfirmFormEmail = () => {
-  const [forgetPassword, setForgetPassword] = useState(true);
-  const [hideElements, setHideElements] = useState(false);
+  const [forgetPassword, setForgetPassword] = useState(true)
+  const [hideElements, setHideElements] = useState(false)
 
   const onFinish = (values: any) => {
-    setHideElements(!hideElements);
-  };
+    setHideElements(!hideElements)
+  }
   return (
     <>
       {forgetPassword ? (
-        <FormContainer name="login-form" layout="vertical" onFinish={onFinish}>
-          <div className="text-content">
+        <FormContainer name='login-form' layout='vertical' onFinish={onFinish}>
+          <div className='text-content'>
             <h1>Khôi phục lại mật khẩu</h1>
             {!hideElements ? (
-              <h3>
-                Vui lòng nhập địa chỉ email đã đăng ký để yêu cầu khôi phục mật
-                khẩu
-              </h3>
+              <h3>Vui lòng nhập địa chỉ email đã đăng ký để yêu cầu khôi phục mật khẩu</h3>
             ) : (
               <h3>
-                Link khôi phục mật khẩu đã được gửi vào mail của bạn. Vui lòng
-                kiểm tra mail.
+                Link khôi phục mật khẩu đã được gửi vào mail của bạn. Vui lòng kiểm tra mail.
                 <br />
-                Click vào đường link được đính kèm trong mail để chuyển đến
-                trang đặt lại mật khẩu.
+                Click vào đường link được đính kèm trong mail để chuyển đến trang đặt lại mật khẩu.
               </h3>
             )}
           </div>
@@ -97,33 +92,33 @@ const ConfirmFormEmail = () => {
               <span style={{ color: '#fff' }}>Email</span>
               <FormItem
                 required={false}
-                name="email"
+                name='email'
                 rules={[
                   {
                     required: true,
-                    message: 'Hãy điền thông tin email của bạn!',
+                    message: 'Hãy điền thông tin email của bạn!'
                   },
                   {
                     type: 'email',
-                    message: 'Email không hợp lệ!',
-                  },
+                    message: 'Email không hợp lệ!'
+                  }
                 ]}
               >
-                <Input className="input" style={{ width: '550px' }} />
+                <Input className='input' style={{ width: '550px' }} />
               </FormItem>
             </>
           )}
           {!hideElements && (
             <FormItem>
               <Button
-                type="primary"
-                htmlType="submit"
+                type='primary'
+                htmlType='submit'
                 block
-                size="large"
+                size='large'
                 style={{
                   width: '150px',
                   backgroundColor: '#FF7506',
-                  marginTop: '10px',
+                  marginTop: '10px'
                 }}
               >
                 Xác nhận
@@ -131,10 +126,7 @@ const ConfirmFormEmail = () => {
             </FormItem>
           )}
           <FormItem>
-            <Button
-              className="btn-forget"
-              onClick={() => setForgetPassword(!forgetPassword)}
-            >
+            <Button className='btn-forget' onClick={() => setForgetPassword(!forgetPassword)}>
               Quay lại đăng nhập
             </Button>
           </FormItem>
@@ -143,7 +135,7 @@ const ConfirmFormEmail = () => {
         <FormLogin />
       )}
     </>
-  );
-};
+  )
+}
 
-export default ConfirmFormEmail;
+export default ConfirmFormEmail

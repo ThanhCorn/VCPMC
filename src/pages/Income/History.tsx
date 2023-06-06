@@ -1,24 +1,24 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons';
-import { Button, Col, DatePicker, List, Row, Switch } from 'antd';
-import { Link } from 'react-router-dom';
-import { Input } from 'antd';
-import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData';
-import Page from '../../components/Page';
-import { useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../app/store';
-import { useDispatch } from 'react-redux';
-import { fetchData } from '../../features/layoutSlice';
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
+import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
+import { Button, Col, DatePicker, List, Row, Switch, Input } from 'antd'
+import { Link } from 'react-router-dom'
 
-const { Search } = Input;
-const onSearch = (value: string) => console.log(value);
+import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData'
+import Page from '../../components/Page'
+import { useSelector, useDispatch } from 'react-redux'
+import { AppDispatch, RootState } from '../../app/store'
+
+import { fetchData } from '../../features/layoutSlice'
+
+const { Search } = Input
+const onSearch = (value: string) => console.log(value)
 
 const History = () => {
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             Doanh thu
             <RightOutlined />
@@ -26,20 +26,16 @@ const History = () => {
           <span> Lịch sử đối soát</span>
         </div>
         <h1>Lịch sử đối soát doanh thu doanh thu</h1>
-        <div className="search-btn">
-          <div className="datepick">
+        <div className='search-btn'>
+          <div className='datepick'>
             <p>Thời gian thực hiện</p>
-            <DatePicker picker="month" />
+            <DatePicker picker='month' />
           </div>
-          <Search
-            placeholder="Nhập tên người dùng..."
-            onSearch={onSearch}
-            style={{ width: 200 }}
-          />
+          <Search placeholder='Nhập tên người dùng...' onSearch={onSearch} style={{ width: 200 }} />
         </div>
         <h3>Danh sách hợp đồng khai thác đã đối soát</h3>
         <Container>
-          <Row className="row-1">
+          <Row className='row-1'>
             <Col span={1}>
               <p>STT</p>
             </Col>
@@ -69,14 +65,11 @@ const History = () => {
             </Col>
           </Row>
           <List
-            itemLayout="horizontal"
+            itemLayout='horizontal'
             dataSource={myIncome}
             renderItem={(myIncome: Income) => (
-              <List.Item
-                key={myIncome.stt}
-                style={{ alignItems: 'center', display: 'flex' }}
-              >
-                <Row className="row-2">
+              <List.Item key={myIncome.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                <Row className='row-2'>
                   <Col span={1}>
                     <p style={{ marginLeft: '18px' }}> {myIncome.stt}</p>
                   </Col>
@@ -111,17 +104,17 @@ const History = () => {
                     style={{
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
+                      justifyContent: 'center'
                     }}
                   >
                     <Link
-                      to="/income/detail/profit"
+                      to='/income/detail/profit'
                       style={{
                         background: 'transparent',
                         border: 'none',
                         textDecoration: 'underline',
                         color: '#ff7506',
-                        cursor: 'pointer',
+                        cursor: 'pointer'
                       }}
                     >
                       Xem chi tiết
@@ -134,15 +127,15 @@ const History = () => {
           <Page data={myIncome} />
         </Container>
       </div>
-      <Link to="" className="link-option">
+      <Link to='' className='link-option'>
         <PlusCircleOutlined />
         <p>Xuất file</p>
       </Link>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default History;
+export default History
 
 const Container = styled.div`
   width: 1541px;
@@ -177,7 +170,7 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -299,4 +292,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

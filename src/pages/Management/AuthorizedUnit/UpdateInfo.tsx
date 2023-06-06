@@ -1,25 +1,23 @@
-import { RightOutlined } from '@ant-design/icons';
-import styled from 'styled-components';
-import FormUpdateInfo from '../../../components/Management/FormUpdateInfo';
+import { RightOutlined } from '@ant-design/icons'
+import styled from 'styled-components'
+import FormUpdateInfo from '../../../components/Management/Authority/FormUpdateInfo'
 
 const UpdateInfo = () => {
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <p style={{ opacity: '0.5' }}>
-          Quản lý <RightOutlined style={{ color: 'var(--text-primary)' }} /> Đối
-          tác ủy quyền{' '}
-          <RightOutlined style={{ color: 'var(--text-primary)' }} /> Cập nhật
-          thông tin người dùng
+          Quản lý <RightOutlined style={{ color: 'var(--text-primary)' }} /> Đối tác ủy quyền{' '}
+          <RightOutlined style={{ color: 'var(--text-primary)' }} /> Cập nhật thông tin người dùng
         </p>
         <h1>Cập nhật thông tin</h1>
         <FormUpdateInfo />
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default UpdateInfo;
+export default UpdateInfo
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -32,4 +30,4 @@ const Wrapper = styled.div`
     margin-top: 50px;
     margin-left: 50px;
   }
-`;
+`

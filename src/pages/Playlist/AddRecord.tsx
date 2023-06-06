@@ -1,81 +1,83 @@
-import React, { useEffect } from 'react';
-import { Song, mySong } from '../../myData';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import { DownOutlined, RightOutlined } from '@ant-design/icons';
-import {
-  Button,
-  Dropdown,
-  Space,
-  Input,
-  Row,
-  Col,
-  List,
-  Pagination,
-} from 'antd';
-import { items, items2, items3, items4 } from '../../MenuDropDown';
-import { addPlaylist, deletePlaylist } from '../../features/playlistSlice';
-import { addRecord, deleteRecord } from '../../features/recordSlice';
+import React, { useEffect } from 'react'
+import { Song, mySong } from '../../myData'
+import { useDispatch, useSelector } from 'react-redux'
 
-const { Search } = Input;
+import styled from 'styled-components'
+import SideMenu from '../../components/SideMenu'
+import PageContent from '../../components/PageContent'
+import { DownOutlined, RightOutlined } from '@ant-design/icons'
+import { Button, Dropdown, Space, Input, Row, Col, List, Pagination } from 'antd'
+import { items, items2, items3, items4 } from '../../MenuDropDown'
+import { addPlaylist, deletePlaylist } from '../../features/playlistSlice'
+import { addRecord, deleteRecord } from '../../features/recordSlice'
+import ListenButton from '../../components/ListenButton'
+import Page from '../../components/Page'
+import { useNavigate } from 'react-router-dom'
 
-const onSearch = (value: string) => console.log(value);
+const { Search } = Input
+
+const onSearch = (value: string) => console.log(value)
 const AddRecord: React.FC<Song> = () => {
-  const playlist = useSelector((state: any) => state.playlist.value);
-  const record = useSelector((state: any) => state.record.value);
+  const playlist = useSelector((state: any) => state.playlist.value)
+  const record = useSelector((state: any) => state.record.value)
+  const navigate = useNavigate()
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const handleAddRecord = (record: Song) => {
-    dispatch(addPlaylist({ ...record, stt: playlist.length + 1 }));
+    dispatch(addPlaylist({ ...record, stt: playlist.length + 1 }))
     if (record.stt !== undefined) {
-      dispatch(deleteRecord(record.stt));
+      dispatch(deleteRecord(record.stt))
     }
-  };
+  }
   const handleRemovePlaylist = (playlist: Song) => {
-    const usedIds = record.map((item: Song) => item.stt);
-    const playlistId = playlist.stt;
+    const usedIds = record.map((item: Song) => item.stt)
+    const playlistId = playlist.stt
 
-    let newStt;
+    let newStt
     if (playlistId !== undefined && usedIds.includes(playlistId)) {
-      let index = 1;
+      let index = 1
       while (usedIds.includes(index)) {
-        index++;
+        index++
       }
-      newStt = index;
+      newStt = index
     } else {
-      newStt = playlistId;
+      newStt = playlistId
     }
 
     // Delete the playlist
     if (playlistId !== undefined) {
-      dispatch(deletePlaylist(playlistId));
+      dispatch(deletePlaylist(playlistId))
     }
 
     // Add the record with the new stt value
-    dispatch(addRecord({ ...playlist, stt: newStt }));
-  };
+    dispatch(addRecord({ ...playlist, stt: newStt }))
+  }
 
-  useEffect(() => {}, [playlist]);
-  console.log(playlist);
+  useEffect(() => {}, [playlist])
+  console.log(playlist)
   return (
     <Wrapper>
-      <div className="content">
-        <span style={{ color: '#fff', opacity: '0.5' }}>
-          Playlist <RightOutlined /> Thêm playlist mới <RightOutlined /> Thêm
-          bản ghi vào playlist
-        </span>
+      <div className='content'>
+        <div className='header-text'>
+          <span>
+            {' '}
+            Playlist <RightOutlined />
+          </span>
+          <span>
+            Thêm playlist mới <RightOutlined />
+          </span>
+          <span>Thêm bản ghi vào playlist</span>
+        </div>
+
         <h1>Thêm bản ghi</h1>
-        <div className="space-content">
-          <Space className="space-1">
+        <div className='space-content'>
+          <Space className='space-1'>
             <h4>Kho bản ghi</h4>
-            <div className="option-record">
-              <div className="option-box">
+            <div className='option-record'>
+              <div className='option-box'>
                 <p>Thể loại:</p>
                 <Dropdown menu={{ items: items }}>
-                  <Button className="button-1">
+                  <Button className='button-1'>
                     <Space>
                       Tất cả
                       <DownOutlined />
@@ -83,10 +85,10 @@ const AddRecord: React.FC<Song> = () => {
                   </Button>
                 </Dropdown>
               </div>
-              <div className="option-box">
+              <div className='option-box'>
                 <p>Playlist mẫu:</p>
                 <Dropdown menu={{ items: items }}>
-                  <Button className="button-1">
+                  <Button className='button-1'>
                     <Space>
                       Tất cả
                       <DownOutlined />
@@ -95,12 +97,8 @@ const AddRecord: React.FC<Song> = () => {
                 </Dropdown>
               </div>
             </div>
-            <Search
-              className="search"
-              onSearch={onSearch}
-              placeholder="Tên bản ghi, tên ca sĩ,..."
-            />
-            <Row className="row-playlist-title">
+            <Search className='search' onSearch={onSearch} placeholder='Tên bản ghi, tên ca sĩ,...' />
+            <Row className='row-playlist-title'>
               <Col span={2}>
                 <p>STT</p>
               </Col>
@@ -115,14 +113,11 @@ const AddRecord: React.FC<Song> = () => {
               </Col>
             </Row>
             <List
-              itemLayout="horizontal"
+              itemLayout='horizontal'
               dataSource={record}
               renderItem={(record: Song) => (
-                <List.Item
-                  key={record.stt}
-                  style={{ alignItems: 'center', display: 'flex' }}
-                >
-                  <Row className="row-playlist-list">
+                <List.Item key={record.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                  <Row className='row-playlist-list'>
                     <Col span={2}>
                       <p> {record.stt}</p>
                     </Col>
@@ -133,11 +128,10 @@ const AddRecord: React.FC<Song> = () => {
                           fontSize: '12px',
                           color: '#fff',
                           opacity: '0.5',
-                          fontWeight: '200',
+                          fontWeight: '200'
                         }}
                       >
-                        {record.theLoai} 🐏 {record.dinhDang} 🐏{' '}
-                        {record.thoiLuong}
+                        {record.theLoai} 🐏 {record.dinhDang} 🐏 {record.thoiLuong}
                       </span>
                     </Col>
                     <Col span={5}>
@@ -147,26 +141,17 @@ const AddRecord: React.FC<Song> = () => {
                       <p>{record.tacGia}</p>
                     </Col>
 
-                    <Col className="col-btn">
-                      <Button
-                        style={{
-                          background: 'transparent',
-                          border: 'none',
-                          textDecoration: 'underline',
-                          color: '#ff7506',
-                        }}
-                      >
-                        Nghe
-                      </Button>
+                    <Col className='col-btn'>
+                      <ListenButton />
                     </Col>
-                    <Col className="col-btn">
+                    <Col className='col-btn'>
                       <Button
                         onClick={() => handleAddRecord(record)}
                         style={{
                           background: 'transparent',
                           border: 'none',
                           textDecoration: 'underline',
-                          color: '#ff7506',
+                          color: '#ff7506'
                         }}
                       >
                         Thêm
@@ -176,63 +161,20 @@ const AddRecord: React.FC<Song> = () => {
                 </List.Item>
               )}
             ></List>
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '0',
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
-            >
-              <p
-                style={{
-                  display: 'flex',
-                  letterSpacing: ' 0.015em',
-                  marginLeft: '20px',
-                }}
-              >
-                Hiển thị{' '}
-                <span
-                  style={{
-                    padding: '0 10px',
-                    border: '1px solid #FF7506',
-                    borderRadius: '4px',
-                  }}
-                >
-                  {record.length}
-                </span>{' '}
-                hàng trong mỗi trang
-              </p>
-              <Pagination
-                defaultCurrent={1}
-                total={100}
-                style={{ marginRight: '30px' }}
-              />
-            </div>
+            <Page data={record} />
           </Space>
-          <Space className="space-2">
-            <h4 style={{ color: '#fff', marginBottom: '10px' }}>
-              Danh sách bản ghi được thêm vào Playlist
-            </h4>
-            <div className="info-song">
+          <Space className='space-2'>
+            <h4 style={{ color: '#fff', marginBottom: '10px' }}>Danh sách bản ghi được thêm vào Playlist</h4>
+            <div className='info-song'>
               <p>
                 Tổng số: <span>{playlist.length} bản ghi</span>
               </p>
               <p>
-                Tổng thời lượng:{' '}
-                <span>{`${
-                  playlist[0] ? playlist[0].thoiLuong : '--:--:--'
-                }`}</span>
+                Tổng thời lượng: <span>{`${playlist[0] ? playlist[0].thoiLuong : '--:--:--'}`}</span>
               </p>
             </div>
-            <Search
-              className="search"
-              onSearch={onSearch}
-              placeholder="Tên bản ghi, tên ca sĩ,..."
-            />
-            <Row className="row-playlist-title">
+            <Search className='search' onSearch={onSearch} placeholder='Tên bản ghi, tên ca sĩ,...' />
+            <Row className='row-playlist-title'>
               <Col span={2}>
                 <p>STT</p>
               </Col>
@@ -247,15 +189,12 @@ const AddRecord: React.FC<Song> = () => {
               </Col>
             </Row>
             <List
-              itemLayout="horizontal"
+              itemLayout='horizontal'
               dataSource={playlist}
               locale={{ emptyText: 'Không có bản ghi nào' }}
               renderItem={(record: Song) => (
-                <List.Item
-                  key={record.stt}
-                  style={{ alignItems: 'center', display: 'flex' }}
-                >
-                  <Row className="row-playlist-list">
+                <List.Item key={record.stt} style={{ alignItems: 'center', display: 'flex' }}>
+                  <Row className='row-playlist-list'>
                     <Col span={2}>
                       <p> {record.stt}</p>
                     </Col>
@@ -266,11 +205,10 @@ const AddRecord: React.FC<Song> = () => {
                           fontSize: '12px',
                           color: '#fff',
                           opacity: '0.5',
-                          fontWeight: '200',
+                          fontWeight: '200'
                         }}
                       >
-                        {record.theLoai} 👉🏿 {record.dinhDang} 👉🏿{' '}
-                        {record.thoiLuong}
+                        {record.theLoai} 👉🏿 {record.dinhDang} 👉🏿 {record.thoiLuong}
                       </span>
                     </Col>
                     <Col span={5}>
@@ -280,26 +218,17 @@ const AddRecord: React.FC<Song> = () => {
                       <p>{record.tacGia}</p>
                     </Col>
 
-                    <Col className="col-btn">
-                      <Button
-                        style={{
-                          background: 'transparent',
-                          border: 'none',
-                          textDecoration: 'underline',
-                          color: '#ff7506',
-                        }}
-                      >
-                        Nghe
-                      </Button>
+                    <Col className='col-btn'>
+                      <ListenButton />
                     </Col>
-                    <Col className="col-btn">
+                    <Col className='col-btn'>
                       <Button
                         onClick={() => handleRemovePlaylist(record)}
                         style={{
                           background: 'transparent',
                           border: 'none',
                           textDecoration: 'underline',
-                          color: '#ff7506',
+                          color: '#ff7506'
                         }}
                       >
                         Gỡ
@@ -309,49 +238,21 @@ const AddRecord: React.FC<Song> = () => {
                 </List.Item>
               )}
             ></List>
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '0',
-                width: '100%',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
-            >
-              <p
-                style={{
-                  display: 'flex',
-                  letterSpacing: ' 0.015em',
-                  marginLeft: '20px',
-                }}
-              >
-                Hiển thị{' '}
-                <span
-                  style={{
-                    padding: '0 10px',
-                    border: '1px solid #FF7506',
-                    borderRadius: '4px',
-                  }}
-                >
-                  {playlist.length}
-                </span>{' '}
-                hàng trong mỗi trang
-              </p>
-              <Pagination
-                defaultCurrent={1}
-                total={100}
-                style={{ marginRight: '30px' }}
-              />
-            </div>
+            <Page data={playlist} />
           </Space>
+        </div>
+        <div style={{ transform: 'translate(40%,100%)' }}>
+          <Button className='btn-huy'>Hủy</Button>
+          <Button onClick={() => navigate('/add-playlist')} className='btn-luu'>
+            Lưu
+          </Button>
         </div>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default AddRecord;
+export default AddRecord
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -361,6 +262,17 @@ const Wrapper = styled.div`
   .content {
     margin-left: 50px;
     margin-top: 50px;
+    .header-text {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      opacity: 0.5;
+
+      svg {
+        color: #ffac69;
+        margin-right: 5px;
+      }
+    }
     .space-content {
       display: flex;
       .search {
@@ -510,4 +422,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

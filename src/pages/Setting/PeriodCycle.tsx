@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import SideMenu from '../../components/SideMenu';
-import PageContent from '../../components/PageContent';
-import { RightOutlined } from '@ant-design/icons';
-import { Button, DatePicker, Radio, Select } from 'antd';
-import { ToastContainer, toast } from 'react-toastify';
-const { Group } = Radio;
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import SideMenu from '../../components/SideMenu'
+import PageContent from '../../components/PageContent'
+import { RightOutlined } from '@ant-design/icons'
+import { Button, DatePicker, Radio, Select } from 'antd'
+import { ToastContainer, toast } from 'react-toastify'
+const { Group } = Radio
 
 const PeriodCycle = () => {
-  const [value, setValue] = useState<string>('quarterly');
+  const [value, setValue] = useState<string>('quarterly')
 
   const handleRadioChange = (e: any) => {
-    setValue(e.target.value);
-  };
+    setValue(e.target.value)
+  }
 
   const handleSave = () => {
     toast('🦄 Lưu cài đặt chu kỳ đối soát thành công!', {
@@ -23,25 +23,25 @@ const PeriodCycle = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: 'light',
-    });
-  };
+      theme: 'light'
+    })
+  }
 
   const quyOptions = [
     { label: 'Quý 1: 1/06-30/7', value: 'quy1' },
     { label: 'Quý 2: 1/08-30/9', value: 'quy2' },
     { label: 'Quý 3: 1/10-30/11', value: 'quy3' },
-    { label: 'Quý 4: 1/12-30/12', value: 'quy4' },
-  ];
+    { label: 'Quý 4: 1/12-30/12', value: 'quy4' }
+  ]
 
   const startDateOption = [
     { label: 'Ngày bắt đầu:', value: 'startDate' },
-    { label: 'Ngày kết thúc:', value: 'endDate' },
-  ];
+    { label: 'Ngày kết thúc:', value: 'endDate' }
+  ]
   return (
     <Wrapper>
-      <div className="content">
-        <div className="header-text">
+      <div className='content'>
+        <div className='header-text'>
           <span>
             {' '}
             Trang chủ
@@ -54,14 +54,10 @@ const PeriodCycle = () => {
         </div>
 
         <h1>Cài đặt hệ thống</h1>
-        <div className="content-radio">
+        <div className='content-radio'>
           <h2>Cài đặt chu kì đối soát</h2>
-          <Group
-            onChange={handleRadioChange}
-            value={value}
-            style={{ marginBottom: '20px' }}
-          >
-            <Radio value="quarterly">Đối soát theo quý</Radio>
+          <Group onChange={handleRadioChange} value={value} style={{ marginBottom: '20px' }}>
+            <Radio value='quarterly'>Đối soát theo quý</Radio>
           </Group>
           {value === 'quarterly' && (
             <div style={{ marginTop: '-20px' }}>
@@ -78,10 +74,10 @@ const PeriodCycle = () => {
             style={{
               display: 'flex',
               flexDirection: 'column',
-              marginBottom: '20px',
+              marginBottom: '20px'
             }}
           >
-            <Radio value="monthly">Đối soát theo tháng</Radio>{' '}
+            <Radio value='monthly'>Đối soát theo tháng</Radio>{' '}
           </Group>
 
           {value === 'monthly' && (
@@ -94,7 +90,7 @@ const PeriodCycle = () => {
                       width: '300px',
                       marginLeft: '50px',
                       background: '#727288',
-                      border: 'none',
+                      border: 'none'
                     }}
                   />
                 </p>
@@ -107,14 +103,10 @@ const PeriodCycle = () => {
             marginTop: '20px',
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center',
+            alignItems: 'center'
           }}
         >
-          <Button
-            onClick={handleSave}
-            style={{ width: '168px', height: '40px', background: '#FF7506' }}
-            type="primary"
-          >
+          <Button onClick={handleSave} style={{ width: '168px', height: '40px', background: '#FF7506' }} type='primary'>
             {' '}
             Lưu
           </Button>
@@ -122,10 +114,10 @@ const PeriodCycle = () => {
         <ToastContainer toastStyle={{ width: '350px' }} />
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default PeriodCycle;
+export default PeriodCycle
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -167,4 +159,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

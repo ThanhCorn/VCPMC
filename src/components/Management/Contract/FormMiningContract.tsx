@@ -1,48 +1,48 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import 'firebase/firestore';
-import { Modal, Button, Checkbox, Input } from 'antd';
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import 'firebase/firestore'
+import { Modal, Button, Checkbox, Input } from 'antd'
 import {
   CloseOutlined,
   CloudUploadOutlined,
   FilePdfOutlined,
   FormOutlined,
   InfoCircleOutlined,
-  RightOutlined,
-} from '@ant-design/icons';
-import InfoContract from './InfoContract';
-import AuthoritySong from './AuthoritySong';
-import { Link } from 'react-router-dom';
-const { TextArea } = Input;
-const CheckboxGroup = Checkbox.Group;
+  RightOutlined
+} from '@ant-design/icons'
+import InfoContract from './InfoContract'
+import AuthoritySong from './AuthoritySong'
+import { Link } from 'react-router-dom'
+const { TextArea } = Input
+const CheckboxGroup = Checkbox.Group
 
 const FormMiningContract: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isAuthorizingOrMining, setIsisAuthorizingOrMining] = useState(false)
 
   const showModal = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
 
   const handleOk = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
   const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <h4 style={{ color: 'white' }}>
           Quản lý <RightOutlined /> Quản lý hợp đồng <RightOutlined /> Chi tiết
         </h4>
         <h1>Hợp đồng khai thác - HD123</h1>
 
         <Container>
-          <div className="info-1">
-            <div className="info-content-1" style={{ height: '300px' }}>
+          <div className='info-1'>
+            <div className='info-content-1' style={{ height: '300px' }}>
               <h4>
                 Số hợp đồng: <p>BH123</p>
               </h4>
@@ -56,7 +56,7 @@ const FormMiningContract: React.FC = () => {
                 Ngày hết hạn: <p>20/12/2023</p>
               </h4>
             </div>
-            <div className="info-content-2">
+            <div className='info-content-2'>
               <h4>
                 Tên đơn vị sử dụng: <p>Công ty TNHH MTV Âu Lạc</p>
               </h4>
@@ -80,8 +80,8 @@ const FormMiningContract: React.FC = () => {
               </h4>
             </div>
           </div>
-          <div className="info-2">
-            <div className="info-content-1">
+          <div className='info-2'>
+            <div className='info-content-1'>
               <h4>
                 Đính kèm tệp:
                 <p style={{ transform: 'translate(10px, 12px)' }}>
@@ -90,7 +90,7 @@ const FormMiningContract: React.FC = () => {
                 </p>
               </h4>
             </div>
-            <div className="info-content-2">
+            <div className='info-content-2'>
               <h4>
                 Số CMND/ CCCD: <p>123456789012</p>
               </h4>
@@ -108,7 +108,7 @@ const FormMiningContract: React.FC = () => {
                 <p
                   style={{
                     transform: 'translate(10px,0px)',
-                    marginBottom: '-10px',
+                    marginBottom: '-10px'
                   }}
                 >
                   69/53, Nguyễn Gia Trí, Phường 25,
@@ -117,8 +117,8 @@ const FormMiningContract: React.FC = () => {
               </h4>
             </div>
           </div>
-          <div className="info-3">
-            <div className="info-content-1">
+          <div className='info-3'>
+            <div className='info-content-1'>
               <h4>
                 Loại hợp đồng:<p>Trọn gói</p>
               </h4>
@@ -133,7 +133,7 @@ const FormMiningContract: React.FC = () => {
                 <p>Đang hiệu lực</p>
               </h4>
             </div>
-            <div className="info-content-2">
+            <div className='info-content-2'>
               <h4>
                 Tên đăng nhập: <p>vuonganhtu123</p>
               </h4>
@@ -149,9 +149,9 @@ const FormMiningContract: React.FC = () => {
               </h4>
             </div>
           </div>
-          <div className="option">
-            <Button className="button-option">
-              <div className="icon">
+          <div className='option'>
+            <Button className='button-option'>
+              <div className='icon'>
                 <FormOutlined style={{ color: '#FF7506' }} />
               </div>
               <p>
@@ -159,11 +159,8 @@ const FormMiningContract: React.FC = () => {
                 hợp đồng
               </p>
             </Button>
-            <Button
-              onClick={() => setIsModalOpen(true)}
-              className="button-option"
-            >
-              <div className="icon">
+            <Button onClick={() => setIsModalOpen(true)} className='button-option'>
+              <div className='icon'>
                 <CloseOutlined style={{ color: 'red' }} />
               </div>
               <p>
@@ -172,23 +169,20 @@ const FormMiningContract: React.FC = () => {
             </Button>
             {isModalOpen && (
               <ModalContent
-                title="Lý do hủy hợp đồng uỷ quyền HĐUQ 1234"
+                title='Lý do hủy hợp đồng uỷ quyền HĐUQ 1234'
                 visible={isModalOpen}
                 onOk={() => setIsModalOpen(false)}
                 onCancel={() => setIsModalOpen(false)}
               >
-                <TextArea
-                  placeholder="Hủy hợp đồng để tạo hợp đồng mới với giá trị và thời hạn lâu hơn."
-                  rows={4}
-                />
+                <TextArea placeholder='Hủy hợp đồng để tạo hợp đồng mới với giá trị và thời hạn lâu hơn.' rows={4} />
               </ModalContent>
             )}
           </div>
         </Container>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
 const ModalContent = styled(Modal)`
   .ant-modal-content {
@@ -230,7 +224,7 @@ const ModalContent = styled(Modal)`
       background: #ff7506 !important;
     }
   }
-`;
+`
 const Container = styled.div`
   position: relative;
   display: grid;
@@ -365,7 +359,7 @@ const Container = styled.div`
       }
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   display: flex;
@@ -417,6 +411,6 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`
 
-export default FormMiningContract;
+export default FormMiningContract

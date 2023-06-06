@@ -1,22 +1,17 @@
-import {
-  KeyOutlined,
-  PlusCircleOutlined,
-  RightOutlined,
-  UserDeleteOutlined,
-} from '@ant-design/icons';
-import { Button, DatePicker, Input, Radio, Select } from 'antd';
-import dayjs from 'dayjs';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { KeyOutlined, PlusCircleOutlined, RightOutlined, UserDeleteOutlined } from '@ant-design/icons'
+import { Button, DatePicker, Input, Radio, Select } from 'antd'
+import dayjs from 'dayjs'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
-const { Option } = Select;
-const dateFormat = 'YYYY-MM-DD';
+const { Option } = Select
+const dateFormat = 'YYYY-MM-DD'
 
 const AddUser = () => {
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <p style={{ color: 'white', opacity: '0.5' }}>
           Cài đặt
           <RightOutlined style={{ color: '#FFAC69' }} />
@@ -26,60 +21,60 @@ const AddUser = () => {
         </p>
         <h1>Thêm người dùng mới</h1>
         <Container>
-          <div className="container-1">
-            <div className="input-text">
+          <div className='container-1'>
+            <div className='input-text'>
               <h4>Tên người dùng</h4>
               <Input />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Số điện thoại</h4>
               <Input />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Ngày hết hạn</h4>
               <DatePicker />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Vai trò</h4>
-              <Select defaultValue="Chọn vai trò">
-                <Option value="Super Admin">Super Admin</Option>
-                <Option value="Group Admin">Group Admin</Option>
-                <Option value="Sub-user">Sub-user</Option>
-                <Option value="ContentManager">ContentManager</Option>
+              <Select defaultValue='Chọn vai trò'>
+                <Option value='Super Admin'>Super Admin</Option>
+                <Option value='Group Admin'>Group Admin</Option>
+                <Option value='Sub-user'>Sub-user</Option>
+                <Option value='ContentManager'>ContentManager</Option>
               </Select>
             </div>
           </div>
-          <div className="container-2">
-            <div className="input-text">
+          <div className='container-2'>
+            <div className='input-text'>
               <h4>Email</h4>
               <Input />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Tên đăng nhập</h4>
               <Input />
             </div>
-            <div className="input-text">
+            <div className='input-text'>
               <h4>Mật khẩu</h4>
               <Input.Password />
             </div>
           </div>
         </Container>
-        <div className="btn">
-          <Button className="btn-huy">Hủy</Button>
-          <Button className="btn-luu">Lưu</Button>
+        <div className='btn'>
+          <Button className='btn-huy'>Hủy</Button>
+          <Button className='btn-luu'>Lưu</Button>
         </div>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default AddUser;
+export default AddUser
 
 const Container = styled.div`
   width: 700px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -181,4 +176,4 @@ const Wrapper = styled.div`
       }
     }
   }
-`;
+`

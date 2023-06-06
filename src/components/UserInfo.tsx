@@ -1,37 +1,39 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { auth } from '../firebase';
-import styled from 'styled-components';
-import Navbar from './Navbar';
-import Nouser from '../assets/nouser.png';
-import { CameraOutlined } from '@ant-design/icons';
-import { Button, Form, Input, DatePicker, Modal, notification } from 'antd';
-import { FaEdit, FaLock, FaSignOutAlt } from 'react-icons/fa';
-import FormResetPassword from './FormResetPassword';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { UserContext } from '../context/UserContext';
-import PageContent from './PageContent';
-
+import React, { useContext, useEffect, useState } from 'react'
+import { auth } from '../firebase'
+import styled from 'styled-components'
+import Navbar from './Navbar'
+import Nouser from '../assets/nouser.png'
+import { CameraOutlined } from '@ant-design/icons'
+import { Button, Form, Input, DatePicker, Modal, notification } from 'antd'
+import { FaEdit, FaLock, FaSignOutAlt } from 'react-icons/fa'
+import FormResetPassword from './FormResetPassword'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { UserContext } from '../context/UserContext'
+import PageContent from './PageContent'
+import { signOut } from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
 interface User {
-  displayName: string | null;
-  email: string | null;
-  photoURL: string | null;
-  uid: string;
-  phoneNumber: string | null;
-  datePorn: string | null;
+  displayName: string | null
+  email: string | null
+  photoURL: string | null
+  uid: string
+  phoneNumber: string | null
+  datePorn: string | null
 }
 
 const UserInfo = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [form] = Form.useForm<{ name: string; age: number }>();
-  const { currentUser } = useContext(UserContext);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [form] = Form.useForm<{ name: string; age: number }>()
+  const { currentUser } = useContext(UserContext)
+  const navigate = useNavigate()
 
   const showModal = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
 
   const handleOk = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(false)
     toast.success('🦄 Đổi mật khẩu thành công!', {
       position: 'bottom-center',
       autoClose: 5000,
@@ -40,60 +42,62 @@ const UserInfo = () => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: 'light',
-    });
-  };
+      theme: 'light'
+    })
+  }
 
   const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
-  const handleSaveButton = async (values: any) => {};
+  const handleSaveButton = async (values: any) => {}
+  const handleSignOut = () => {
+    signOut(auth)
+      .then(() => {
+        navigate('/')
+      })
+      .catch((error) => {
+        alert('can not')
+      })
+  }
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (!user) {
+        navigate('/')
+      }
+    })
+  }, [])
 
   return (
     <Wrapper>
       <PageContent />
-      <div className="basic-info">
+      <div className='basic-info'>
         <h1>Thông tin cơ bản</h1>
-        <div className="avatar">
+        <div className='avatar'>
           <img
             src={`${currentUser?.photoURL ? currentUser.photoURL : Nouser} `}
             alt={`${currentUser?.photoURL ? 'User image' : 'No user image'} `}
           />
-          <CameraOutlined className="icon-camera" />
+          <CameraOutlined className='icon-camera' />
           <h4>{currentUser?.displayName}</h4>
         </div>
       </div>
-      <div className="user-info">
-        <Form
-          form={form}
-          layout="vertical"
-          autoComplete="off"
-          onFinish={handleSaveButton}
-        >
-          <div className="row-1">
-            <Form.Item name="name" label="Họ">
+      <div className='user-info'>
+        <Form form={form} layout='vertical' autoComplete='off' onFinish={handleSaveButton}>
+          <div className='row-1'>
+            <Form.Item name='name' label='Họ'>
               <Input
-                type="text"
-                placeholder={`${
-                  currentUser?.displayName
-                    ? currentUser.displayName.split(' ')[0]
-                    : 'No name'
-                } `}
+                type='text'
+                placeholder={`${currentUser?.displayName ? currentUser.displayName.split(' ')[0] : 'No name'} `}
               />
             </Form.Item>
-            <Form.Item name="Ten" label="Tên">
-              <Input
-                placeholder={`${
-                  currentUser?.displayName
-                    ? currentUser.displayName.split(' ')[1]
-                    : 'No name'
-                } `}
-              />
+            <Form.Item name='Ten' label='Tên'>
+              <Input placeholder={`${currentUser?.displayName ? currentUser.displayName.split(' ')[1] : 'No name'} `} />
             </Form.Item>
           </div>
-          <div className="row-2">
-            <Form.Item name="namsinh" label="Ngày sinh">
+          <div className='row-2'>
+            <Form.Item name='namsinh' label='Ngày sinh'>
               <DatePicker
                 placeholder={`${currentUser?.datePorn} `}
                 style={{
@@ -102,90 +106,80 @@ const UserInfo = () => {
                   border: 'none',
                   color: '#fff',
                   width: '274px',
-                  height: '42px',
+                  height: '42px'
                 }}
               />
             </Form.Item>
-            <Form.Item name="phone" label="Số điện thoại">
-              <Input
-                placeholder={`${
-                  currentUser?.phoneNumber
-                    ? currentUser.phoneNumber
-                    : 'No phone number'
-                } `}
-              />
+            <Form.Item name='phone' label='Số điện thoại'>
+              <Input placeholder={`${currentUser?.phoneNumber ? currentUser.phoneNumber : 'No phone number'} `} />
             </Form.Item>
           </div>
-          <div className="row-3">
-            <Form.Item name="Email" label="Email">
+          <div className='row-3'>
+            <Form.Item name='Email' label='Email'>
               <Input
-                placeholder="nnnt10122000@gmail.con"
+                placeholder='nnnt10122000@gmail.con'
                 readOnly
                 style={{ width: '590px' }}
-                className="custom-input"
+                className='custom-input'
               />
             </Form.Item>
-            <Form.Item name="Tên Đăng nhập" label="Tên Đăng nhập ">
+            <Form.Item name='Tên Đăng nhập' label='Tên Đăng nhập '>
               <Input
-                placeholder="nnnt10122000@gmail.con"
+                placeholder='nnnt10122000@gmail.con'
                 readOnly
                 style={{ width: '590px' }}
-                className="custom-input"
+                className='custom-input'
               />
             </Form.Item>
-            <Form.Item name="Phân quyền" label="Phân quyền">
-              <Input placeholder="Admin" readOnly className="custom-input" />
+            <Form.Item name='Phân quyền' label='Phân quyền'>
+              <Input placeholder='Admin' readOnly className='custom-input' />
             </Form.Item>
           </div>
-          <div className="button-confirm">
-            <Button danger className="btn-huy">
+          <div className='button-confirm'>
+            <Button danger className='btn-huy'>
               Hủy
             </Button>
-            <Button type="primary" htmlType="submit" className="btn-luu">
+            <Button type='primary' htmlType='submit' className='btn-luu'>
               Lưu
             </Button>
           </div>
         </Form>
       </div>
-      <div className="side-option">
+      <div className='side-option'>
         <Button style={{ borderTopLeftRadius: '16px' }}>
-          <FaEdit className="icon-setting" />
+          <FaEdit className='icon-setting' />
           <h3>
             Sửa Thông <br /> tin
           </h3>
         </Button>
         <Button onClick={showModal}>
-          <FaLock className="icon-setting" />
+          <FaLock className='icon-setting' />
           <h3>
             Đổi mật <br />
             khẩu
           </h3>
         </Button>
-        <ModalContainer
-          open={isModalOpen}
-          onOk={handleOk}
-          onCancel={handleCancel}
-        >
+        <ModalContainer open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
           <h1>Đặt lại mật khẩu</h1>
           <span style={{ color: '#fff' }}>Mật khẩu củ</span>
-          <Input.Password className="input" />
+          <Input.Password className='input' />
           <span style={{ color: '#fff' }}>Mật khẩu mới</span>
-          <Input.Password className="input" />
+          <Input.Password className='input' />
           <span style={{ color: '#fff' }}>Nhập lại mật khẩu mới</span>
-          <Input.Password className="input" />
+          <Input.Password className='input' />
         </ModalContainer>
 
-        <Button style={{ borderBottomLeftRadius: '16px' }}>
-          <FaSignOutAlt className="icon-setting" />
+        <Button onClick={handleSignOut} style={{ borderBottomLeftRadius: '16px' }}>
+          <FaSignOutAlt className='icon-setting' />
           <h3>Đăng xuất</h3>
         </Button>
       </div>
       <ToastContainer />
     </Wrapper>
-  );
-};
+  )
+}
 
-export default UserInfo;
+export default UserInfo
 
 const Wrapper = styled.div`
   position: relative;
@@ -309,7 +303,7 @@ const Wrapper = styled.div`
       opacity: 0.2;
     }
   }
-`;
+`
 
 const ModalContainer = styled(Modal)`
   .ant-modal-footer {
@@ -366,4 +360,4 @@ const ModalContainer = styled(Modal)`
     font-weight: 100;
     font-size: 16px;
   }
-`;
+`

@@ -26,33 +26,33 @@ import {
   TopPlaylist,
   AddPlaylist,
   AddRecord,
-  MainLayout,
-} from './pages';
-import AddInfoRecord from './pages/Management/Contract/AddInfoRecord';
-import UpdateInfo from './pages/Management/AuthorizedUnit/UpdateInfo';
-import DetailUnitUsed from './pages/Management/UnitsUsed/DetailUnitUsed';
-import DetailUserUsed from './pages/Management/UnitsUsed/DetailUserUsed';
-import AddUser from './pages/Management/UnitsUsed/AddUser';
-import InfoCreation from './pages/Setting/InfoCreation';
-import SettingContract from './pages/Setting/SettingContract';
-import Configuration from './pages/Setting/Configuration';
-import Permission from './pages/Setting/Permission';
-import EditUser from './components/Setting/EditUser';
-import AddUser1 from './components/Setting/AddUser';
-import UpdateRole from './components/Setting/UpdateRole';
-import AddRole from './components/Setting/AddRole';
-import Distribution from './pages/Income/Distribution';
-import DetailDistribution from './pages/Income/DetailDistribution';
-import InCome from './pages/Income/InCome';
-import DetailInCome from './pages/Income/DetailInCome';
-import DetailInComeProfit from './pages/Income/DetailInComeProfit';
-import HistorySync from './pages/Income/HistorySync';
-import History from './pages/Income/History';
-import AddDevice from './pages/Management/Equip/AddDevice';
-import InfoDevice from './pages/Management/Equip/InfoDevice';
-import InfoMiningContract from './pages/Management/Contract/InfoMiningContract';
-import CopyContract from './pages/Management/Contract/CopyContract';
-import WatchFeedback from './pages/Help/WatchFeedback';
+  MainLayout
+} from './pages'
+
+import UpdateInfo from './pages/Management/AuthorizedUnit/UpdateInfo'
+import DetailUnitUsed from './pages/Management/UnitsUsed/DetailUnitUsed'
+import DetailUserUsed from './pages/Management/UnitsUsed/DetailUserUsed'
+import AddUser from './pages/Management/UnitsUsed/AddUser'
+import InfoCreation from './pages/Setting/InfoCreation'
+import SettingContract from './pages/Setting/SettingContract'
+import Configuration from './pages/Setting/Configuration'
+import Permission from './pages/Setting/Permission'
+import EditUser from './components/Setting/EditUser'
+import AddUser1 from './components/Setting/AddUser'
+import UpdateRole from './components/Setting/UpdateRole'
+import AddRole from './components/Setting/AddRole'
+import Distribution from './pages/Income/Distribution'
+import DetailDistribution from './pages/Income/DetailDistribution'
+import InCome from './pages/Income/InCome'
+import DetailInCome from './pages/Income/DetailInCome'
+import DetailInComeProfit from './pages/Income/DetailInComeProfit'
+import HistorySync from './pages/Income/HistorySync'
+import History from './pages/Income/History'
+import AddDevice from './pages/Management/Equip/AddDevice'
+import InfoDevice from './pages/Management/Equip/InfoDevice'
+import InfoMiningContract from './pages/Management/Contract/InfoMiningContract'
+import CopyContract from './pages/Management/Contract/CopyContract'
+import WatchFeedback from './pages/Help/WatchFeedback'
 
 export const myPath = [
   {
@@ -61,7 +61,7 @@ export const myPath = [
       <MainLayout>
         <Dashboard />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/contract',
@@ -69,7 +69,7 @@ export const myPath = [
       <MainLayout>
         <ContractManagement />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/equip',
@@ -77,7 +77,7 @@ export const myPath = [
       <MainLayout>
         <EquipManagement />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/equip/:id',
@@ -85,7 +85,7 @@ export const myPath = [
       <MainLayout>
         <InfoDevice />
       </MainLayout>
-    ),
+    )
   },
 
   {
@@ -94,7 +94,7 @@ export const myPath = [
       <MainLayout>
         <AddDevice />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/authority',
@@ -102,7 +102,7 @@ export const myPath = [
       <MainLayout>
         <AuthorizedUnit />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/authority/update',
@@ -110,7 +110,7 @@ export const myPath = [
       <MainLayout>
         <UpdateInfo />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/used',
@@ -118,7 +118,7 @@ export const myPath = [
       <MainLayout>
         <UnitUsed />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/used/add-user',
@@ -126,7 +126,7 @@ export const myPath = [
       <MainLayout>
         <AddUser />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/used/detail-user',
@@ -134,7 +134,7 @@ export const myPath = [
       <MainLayout>
         <DetailUserUsed />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/used/detail',
@@ -142,23 +142,16 @@ export const myPath = [
       <MainLayout>
         <DetailUnitUsed />
       </MainLayout>
-    ),
+    )
   },
-  {
-    path: '/management/add-info-record',
-    element: (
-      <MainLayout>
-        <AddInfoRecord />
-      </MainLayout>
-    ),
-  },
+
   {
     path: '/management/contract/detail-authority',
     element: (
       <MainLayout>
         <InfoContract />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/contract/detail-mining',
@@ -166,7 +159,7 @@ export const myPath = [
       <MainLayout>
         <InfoMiningContract />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/contract/1/detail',
@@ -174,7 +167,7 @@ export const myPath = [
       <MainLayout>
         <InfoContractDetail />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/contract/copy',
@@ -182,7 +175,7 @@ export const myPath = [
       <MainLayout>
         <CopyContract />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/management/contract/detail-mining',
@@ -190,7 +183,7 @@ export const myPath = [
       <MainLayout>
         <InfoMiningContract />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/detail-product/1',
@@ -198,7 +191,7 @@ export const myPath = [
       <MainLayout>
         <DetailProduct />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/new-contract',
@@ -206,7 +199,7 @@ export const myPath = [
       <MainLayout>
         <AddNewContractAuthority />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/help/guide',
@@ -214,7 +207,7 @@ export const myPath = [
       <MainLayout>
         <Guide />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/help/download',
@@ -222,7 +215,7 @@ export const myPath = [
       <MainLayout>
         <DownloadApp />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/help/feedback',
@@ -230,7 +223,7 @@ export const myPath = [
       <MainLayout>
         <Feedback />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/help/watch-feedback',
@@ -238,7 +231,7 @@ export const myPath = [
       <MainLayout>
         <WatchFeedback />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/income/distribution',
@@ -246,7 +239,7 @@ export const myPath = [
       <MainLayout>
         <Distribution />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/income/distribution/detail',
@@ -254,7 +247,7 @@ export const myPath = [
       <MainLayout>
         <DetailDistribution />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/income',
@@ -262,7 +255,7 @@ export const myPath = [
       <MainLayout>
         <InCome />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/income/detail',
@@ -270,7 +263,7 @@ export const myPath = [
       <MainLayout>
         <DetailInCome />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/income/detail/profit',
@@ -278,7 +271,7 @@ export const myPath = [
       <MainLayout>
         <DetailInComeProfit />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/income/history-sync',
@@ -286,7 +279,7 @@ export const myPath = [
       <MainLayout>
         <HistorySync />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/income/history',
@@ -294,7 +287,7 @@ export const myPath = [
       <MainLayout>
         <History />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/setting/period',
@@ -302,7 +295,7 @@ export const myPath = [
       <MainLayout>
         <PeriodCycle />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/setting/info-creation',
@@ -310,7 +303,7 @@ export const myPath = [
       <MainLayout>
         <InfoCreation />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/setting/config',
@@ -318,7 +311,7 @@ export const myPath = [
       <MainLayout>
         <Configuration />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/setting/permission',
@@ -326,7 +319,7 @@ export const myPath = [
       <MainLayout>
         <Permission />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/setting/edit-user',
@@ -334,7 +327,7 @@ export const myPath = [
       <MainLayout>
         <EditUser />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/setting/add-user',
@@ -342,7 +335,7 @@ export const myPath = [
       <MainLayout>
         <AddUser1 />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/setting/update-role',
@@ -350,7 +343,7 @@ export const myPath = [
       <MainLayout>
         <UpdateRole />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/setting/add-role',
@@ -358,7 +351,7 @@ export const myPath = [
       <MainLayout>
         <AddRole />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/setting/contract',
@@ -366,7 +359,7 @@ export const myPath = [
       <MainLayout>
         <SettingContract />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/record-store',
@@ -374,7 +367,7 @@ export const myPath = [
       <MainLayout>
         <RecordStore />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/record-approval',
@@ -382,7 +375,7 @@ export const myPath = [
       <MainLayout>
         <RecordApproval />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/update-record',
@@ -390,7 +383,7 @@ export const myPath = [
       <MainLayout>
         <UpdateRecordStore />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/schedule',
@@ -398,7 +391,7 @@ export const myPath = [
       <MainLayout>
         <Schedule />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/schedule/:id',
@@ -406,7 +399,7 @@ export const myPath = [
       <MainLayout>
         <ScheduleDetail1 />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/add-schedule',
@@ -414,7 +407,7 @@ export const myPath = [
       <MainLayout>
         <AddSchedule />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/edit-schedule',
@@ -422,7 +415,7 @@ export const myPath = [
       <MainLayout>
         <EditSchedule />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/choose-device',
@@ -430,7 +423,7 @@ export const myPath = [
       <MainLayout>
         <ChooseDevice />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/playlist',
@@ -438,7 +431,7 @@ export const myPath = [
       <MainLayout>
         <Playlist />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/top-playlist',
@@ -446,7 +439,7 @@ export const myPath = [
       <MainLayout>
         <TopPlaylist />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/add-playlist',
@@ -454,7 +447,7 @@ export const myPath = [
       <MainLayout>
         <AddPlaylist />
       </MainLayout>
-    ),
+    )
   },
   {
     path: '/add-record',
@@ -462,6 +455,6 @@ export const myPath = [
       <MainLayout>
         <AddRecord />
       </MainLayout>
-    ),
-  },
-];
+    )
+  }
+]

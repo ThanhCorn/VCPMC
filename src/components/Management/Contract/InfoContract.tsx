@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import 'firebase/firestore';
-import { Modal, Input, Button, DatePicker, Checkbox } from 'antd';
+import React, { useState, useContext } from 'react'
+import styled from 'styled-components'
+import 'firebase/firestore'
+import { Modal, Input, Button, DatePicker, Checkbox } from 'antd'
 import {
   ContainerOutlined,
   CloseOutlined,
   FormOutlined,
-} from '@ant-design/icons';
-import {
   FilePdfOutlined,
   InfoCircleOutlined,
-  CloudUploadOutlined,
-} from '@ant-design/icons';
-import { DataContext } from '../../context/DataContext';
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+  CloudUploadOutlined
+} from '@ant-design/icons'
 
-const { TextArea } = Input;
-const CheckboxGroup = Checkbox.Group;
+import { DataContext } from '../../../context/DataContext'
+
+import { Link } from 'react-router-dom'
+
+const { TextArea } = Input
+const CheckboxGroup = Checkbox.Group
 
 const options = [
   {
@@ -30,7 +29,7 @@ const options = [
             border: '1px solid #727288',
             borderRadius: '4px',
             background: '#2B2B3F',
-            marginRight: '5px',
+            marginRight: '5px'
           }}
         >
           0{' '}
@@ -38,7 +37,7 @@ const options = [
         %
       </p>
     ),
-    value: 'performer',
+    value: 'performer'
   },
 
   {
@@ -51,7 +50,7 @@ const options = [
             border: '1px solid #727288',
             borderRadius: '4px',
             background: '#2B2B3F',
-            marginRight: '5px',
+            marginRight: '5px'
           }}
         >
           0{' '}
@@ -59,37 +58,37 @@ const options = [
         %
       </p>
     ),
-    value: 'producer',
-  },
-];
+    value: 'producer'
+  }
+]
 const onChange = (checkedValues: any) => {
-  console.log('checked = ', checkedValues);
-};
+  console.log('checked = ', checkedValues)
+}
 
 const InfoContract: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalOpen2, setIsModalOpen2] = useState(false);
-  const { data } = useContext(DataContext);
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen2, setIsModalOpen2] = useState(false)
+  const { data } = useContext(DataContext)
 
   const showModal = () => {
-    setIsModalOpen(true);
-  };
+    setIsModalOpen(true)
+  }
   const showModal2 = () => {
-    setIsModalOpen2(true);
-  };
+    setIsModalOpen2(true)
+  }
 
   const handleOk = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
   const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+    setIsModalOpen(false)
+  }
 
   return (
     <Container>
-      <div className="info-1">
-        <div className="info-content-1">
+      <div className='info-1'>
+        <div className='info-content-1'>
           <h4>
             Số hợp đồng: <p>BH123</p>
           </h4>
@@ -106,7 +105,7 @@ const InfoContract: React.FC = () => {
             Tình trạng: <p>🌱 Còn thời hạn</p>
           </h4>
         </div>
-        <div className="info-content-2">
+        <div className='info-content-2'>
           <h3>Thông tin pháp nhân ủy quyền</h3>
           <h4>
             Pháp nhân ủy quyền: <p>Cá nhân</p>
@@ -128,8 +127,8 @@ const InfoContract: React.FC = () => {
           </h4>
         </div>
       </div>
-      <div className="info-2">
-        <div className="info-content-1">
+      <div className='info-2'>
+        <div className='info-content-1'>
           <h4>
             Đính kèm tệp:
             <p style={{ transform: 'translate(10px, 12px)' }}>
@@ -138,7 +137,7 @@ const InfoContract: React.FC = () => {
             </p>
           </h4>
         </div>
-        <div className="info-content-2">
+        <div className='info-content-2'>
           <h4>
             Số CMND/ CCCD: <p>123456789012</p>
           </h4>
@@ -156,7 +155,7 @@ const InfoContract: React.FC = () => {
             <p
               style={{
                 transform: 'translate(10px,0px)',
-                marginBottom: '-10px',
+                marginBottom: '-10px'
               }}
             >
               69/53, Nguyễn Gia Trí, Phường 25,
@@ -165,8 +164,8 @@ const InfoContract: React.FC = () => {
           </h4>
         </div>
       </div>
-      <div className="info-3">
-        <div className="info-content-1">
+      <div className='info-3'>
+        <div className='info-content-1'>
           <h4>
             <InfoCircleOutlined /> Mức nhuận bút
           </h4>
@@ -182,14 +181,14 @@ const InfoContract: React.FC = () => {
             <br /> (Bản ghi/video)
             <p
               style={{
-                transform: 'translate(10px,-10px)',
+                transform: 'translate(10px,-10px)'
               }}
             >
               50%
             </p>
           </h4>
         </div>
-        <div className="info-content-2">
+        <div className='info-content-2'>
           <h4>
             Email: <p>nguyenvana@gmail.com</p>
           </h4>
@@ -208,9 +207,9 @@ const InfoContract: React.FC = () => {
           </h4>
         </div>
       </div>
-      <div className="option">
-        <Link to="/management/contract/1/detail" className="link-option">
-          <div className="icon">
+      <div className='option'>
+        <Link to='/management/contract/1/detail' className='link-option'>
+          <div className='icon'>
             <FormOutlined style={{ color: '#FF7506' }} />
           </div>
           <p>
@@ -218,8 +217,8 @@ const InfoContract: React.FC = () => {
             hợp đồng
           </p>
         </Link>
-        <Button className="button-option" onClick={() => setIsModalOpen2(true)}>
-          <div className="icon">
+        <Button className='button-option' onClick={() => setIsModalOpen2(true)}>
+          <div className='icon'>
             <ContainerOutlined style={{ color: '#FF7506' }} />
           </div>
           <p>
@@ -227,8 +226,8 @@ const InfoContract: React.FC = () => {
             hợp đồng
           </p>
         </Button>
-        <Button className="button-option" onClick={() => setIsModalOpen(true)}>
-          <div className="icon">
+        <Button className='button-option' onClick={() => setIsModalOpen(true)}>
+          <div className='icon'>
             <CloseOutlined style={{ color: 'red' }} />
           </div>
           <p>
@@ -238,21 +237,18 @@ const InfoContract: React.FC = () => {
         </Button>
         {isModalOpen && (
           <ModalContent
-            title="Lý do hủy hợp đồng uỷ quyền HĐUQ 1234"
+            title='Lý do hủy hợp đồng uỷ quyền HĐUQ 1234'
             visible={isModalOpen}
             onOk={() => setIsModalOpen(false)}
             onCancel={() => setIsModalOpen(false)}
           >
-            <TextArea
-              placeholder="Hủy hợp đồng để tạo hợp đồng mới với giá trị và thời hạn lâu hơn."
-              rows={4}
-            />
+            <TextArea placeholder='Hủy hợp đồng để tạo hợp đồng mới với giá trị và thời hạn lâu hơn.' rows={4} />
           </ModalContent>
         )}
         {isModalOpen2 && (
           <ModalContent
             width={900}
-            title="Gia hạn ủy quyền tác phẩm"
+            title='Gia hạn ủy quyền tác phẩm'
             visible={isModalOpen2}
             onOk={() => setIsModalOpen2(false)}
             onCancel={() => setIsModalOpen2(false)}
@@ -260,7 +256,7 @@ const InfoContract: React.FC = () => {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
+                gridTemplateColumns: '1fr 1fr'
               }}
             >
               <div
@@ -268,13 +264,12 @@ const InfoContract: React.FC = () => {
                   color: '#fff',
                   width: '10vw',
                   display: 'flex',
-                  flexDirection: 'column',
+                  flexDirection: 'column'
                 }}
               >
                 <h4>Thời gian gia hạn</h4>
                 <p style={{ marginTop: '0' }}>
-                  Từ ngày:{' '}
-                  {`${data[0]['Ngày hết hạn'].toDate().toLocaleDateString()}  `}{' '}
+                  Từ ngày: {`${data[0]['Ngày hết hạn'].toDate().toLocaleDateString()}  `}{' '}
                 </p>
                 <p style={{ display: 'flex', width: '50vw' }}>
                   Đến ngày:{' '}
@@ -282,24 +277,23 @@ const InfoContract: React.FC = () => {
                     style={{
                       background: 'transparent',
                       color: '#FFAC69',
-                      border: ' 1px solid #727288',
+                      border: ' 1px solid #727288'
                     }}
                   />
                 </p>
                 <span style={{ opacity: '0.3' }}>
-                  Lưu ý: Thời gian bắt đầu gia hạn hợp đồng mới được tính sau
-                  ngày hết hạn hợp đồng cũ một ngày.
+                  Lưu ý: Thời gian bắt đầu gia hạn hợp đồng mới được tính sau ngày hết hạn hợp đồng cũ một ngày.
                 </span>
               </div>
               <div
                 style={{
                   color: '#fff',
                   display: 'flex',
-                  flexDirection: 'column',
+                  flexDirection: 'column'
                 }}
               >
                 <h4>Mức nhuận bút</h4>
-                <Checkbox value="checked" style={{ color: '#fff' }}>
+                <Checkbox value='checked' style={{ color: '#fff' }}>
                   Quyền tác giả{' '}
                   <span
                     style={{
@@ -307,7 +301,7 @@ const InfoContract: React.FC = () => {
                       border: '1px solid #727288',
                       borderRadius: '4px',
                       background: '#2B2B3F',
-                      marginRight: '5px',
+                      marginRight: '5px'
                     }}
                   >
                     0
@@ -315,7 +309,7 @@ const InfoContract: React.FC = () => {
                   %
                 </Checkbox>
                 <br />
-                <Checkbox value="checked" style={{ color: '#fff' }}>
+                <Checkbox value='checked' style={{ color: '#fff' }}>
                   Quyền liên quan{' '}
                   <span
                     style={{
@@ -323,7 +317,7 @@ const InfoContract: React.FC = () => {
                       border: '1px solid #727288',
                       borderRadius: '4px',
                       background: '#2B2B3F',
-                      marginRight: '5px',
+                      marginRight: '5px'
                     }}
                   >
                     0
@@ -336,7 +330,7 @@ const InfoContract: React.FC = () => {
                       marginTop: '10px',
                       alignItems: 'center',
                       display: 'flex',
-                      justifyContent: 'center',
+                      justifyContent: 'center'
                     }}
                   >
                     {' '}
@@ -346,14 +340,12 @@ const InfoContract: React.FC = () => {
             </div>
             <div style={{ color: '#fff', display: 'flex' }}>
               <h4 style={{ color: '#fff' }}>Đính kèm tệp</h4>
-              <div
-                style={{ transform: 'translateY(15px)', marginLeft: '10px' }}
-              >
+              <div style={{ transform: 'translateY(15px)', marginLeft: '10px' }}>
                 <Button
                   style={{
                     color: '#FFAC69',
                     border: '1px solid #FFAC69',
-                    background: 'transparent',
+                    background: 'transparent'
                   }}
                 >
                   {' '}
@@ -373,8 +365,8 @@ const InfoContract: React.FC = () => {
         )}
       </div>
     </Container>
-  );
-};
+  )
+}
 
 const ModalContent = styled(Modal)`
   .ant-modal-content {
@@ -416,7 +408,7 @@ const ModalContent = styled(Modal)`
       background: #ff7506 !important;
     }
   }
-`;
+`
 const Container = styled.div`
   position: relative;
   display: grid;
@@ -551,6 +543,6 @@ const Container = styled.div`
       }
     }
   }
-`;
+`
 
-export default InfoContract;
+export default InfoContract

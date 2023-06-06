@@ -1,31 +1,31 @@
-import Matem from './assets/matem.jpg';
-import Starboy from './assets/starboy.png';
-import DoubleFantasy from './assets/DF.jpg';
-import People from './assets/Libianca.jpg';
-import SixFeetUnder from './assets/theweeknd.jpg';
-import NTH from './assets/thaihoc.jpg';
-import Love from './assets/lovesong.jpg';
-import One from './assets/one.jpg';
-import Theme1 from './assets/theme1.jpg';
-import Theme2 from './assets/theme2.jpg';
-import Theme3 from './assets/theme3.jpg';
-import Theme4 from './assets/theme4.jpg';
-import d1 from './assets/d1.jpg';
-import d2 from './assets/d2.jpg';
-import d3 from './assets/d3.jpg';
-import d4 from './assets/d4.jpg';
+import Matem from './assets/matem.jpg'
+import Starboy from './assets/starboy.png'
+import DoubleFantasy from './assets/DF.jpg'
+import People from './assets/Libianca.jpg'
+import SixFeetUnder from './assets/theweeknd.jpg'
+import NTH from './assets/thaihoc.jpg'
+import Love from './assets/lovesong.jpg'
+import One from './assets/one.jpg'
+import Theme1 from './assets/theme1.jpg'
+import Theme2 from './assets/theme2.jpg'
+import Theme3 from './assets/theme3.jpg'
+import Theme4 from './assets/theme4.jpg'
+import d1 from './assets/d1.jpg'
+import d2 from './assets/d2.jpg'
+import d3 from './assets/d3.jpg'
+import d4 from './assets/d4.jpg'
 
 export interface Song {
-  stt?: number;
-  tenBanGhi?: string;
-  maISRC?: string;
-  thoiLuong?: string;
-  caSi?: string;
-  tacGia?: string;
-  theLoai?: string;
-  dinhDang?: string;
-  thoiGianSuDung?: string;
-  hinhAnh?: string; // Thêm trường hình ảnh
+  stt?: number
+  tenBanGhi?: string
+  maISRC?: string
+  thoiLuong?: string
+  caSi?: string
+  tacGia?: string
+  theLoai?: string
+  dinhDang?: string
+  thoiGianSuDung?: string
+  hinhAnh?: string // Thêm trường hình ảnh
 }
 
 const mySong: Song[] = [
@@ -39,7 +39,7 @@ const mySong: Song[] = [
     theLoai: 'Ballad',
     dinhDang: 'Audio',
     thoiGianSuDung: 'Còn thời hạn',
-    hinhAnh: Matem,
+    hinhAnh: Matem
   },
   {
     stt: 2,
@@ -51,7 +51,7 @@ const mySong: Song[] = [
     theLoai: 'Ballad',
     dinhDang: 'Audio',
     thoiGianSuDung: 'Còn thời hạn',
-    hinhAnh: SixFeetUnder,
+    hinhAnh: SixFeetUnder
   },
   {
     stt: 3,
@@ -63,7 +63,7 @@ const mySong: Song[] = [
     theLoai: 'Ballad',
     dinhDang: 'Audio',
     thoiGianSuDung: 'Còn thời hạn',
-    hinhAnh: NTH,
+    hinhAnh: NTH
   },
   {
     stt: 4,
@@ -75,7 +75,7 @@ const mySong: Song[] = [
     theLoai: 'Ballad',
     dinhDang: 'Audio',
     thoiGianSuDung: 'Còn thời hạn',
-    hinhAnh: Starboy,
+    hinhAnh: Starboy
   },
   {
     stt: 5,
@@ -87,7 +87,7 @@ const mySong: Song[] = [
     theLoai: 'Ballad',
     dinhDang: 'Audio',
     thoiGianSuDung: 'Còn thời hạn',
-    hinhAnh: DoubleFantasy,
+    hinhAnh: DoubleFantasy
   },
   {
     stt: 6,
@@ -99,41 +99,41 @@ const mySong: Song[] = [
     theLoai: 'Ballad',
     dinhDang: 'Audio',
     thoiGianSuDung: 'Còn thời hạn',
-    hinhAnh: People,
-  },
-];
+    hinhAnh: People
+  }
+]
 
 export interface Schecule {
-  stt: number;
-  tenlich: string;
-  thoigian: string;
-  tenplaylist?: string;
-  ngayphatplaylist?: string;
-  batdauketthuc?: string;
-  chukyphat?: string;
-  thietbi?: string;
-  thoiluong?: string;
-  sobanghi?: string;
-  chude?: string[];
-  ngaytao?: string;
-  nguoitao?: string;
-  hinhanh?: string;
+  stt: number
+  tenlich: string
+  thoigian: string
+  tenplaylist?: string
+  ngayphatplaylist?: string
+  batdauketthuc?: string
+  chukyphat?: string
+  thietbi?: string
+  thoiluong?: string
+  sobanghi?: string
+  chude?: string[]
+  ngaytao?: string
+  nguoitao?: string
+  hinhanh?: string
 }
 
 export interface Device {
-  stt: string;
-  tenthietbi: string;
-  MACAdress: string;
-  SKUID: string;
-  donvisudung: string;
-  tendangnhap: string;
-  diadiem: string;
-  trangthai?: boolean;
-  thoigiandongbo: string;
-  tongluotphat: number;
-  memory: string;
-  isCheck?: boolean;
-  img: string;
+  stt: string
+  tenthietbi: string
+  MACAdress: string
+  SKUID: string
+  donvisudung: string
+  tendangnhap: string
+  diadiem: string
+  trangthai?: boolean
+  thoigiandongbo: string
+  tongluotphat: number
+  memory: string
+  isCheck?: boolean
+  img: string
 }
 
 const myDevice: Device[] = [
@@ -150,7 +150,7 @@ const myDevice: Device[] = [
     tongluotphat: 100,
     memory: '0.00GB/32GB',
     isCheck: false,
-    img: d1,
+    img: d1
   },
   {
     stt: '2',
@@ -165,7 +165,7 @@ const myDevice: Device[] = [
     tongluotphat: 100,
     memory: '0.00GB/32GB',
     isCheck: false,
-    img: d2,
+    img: d2
   },
   {
     stt: '3',
@@ -180,7 +180,7 @@ const myDevice: Device[] = [
     tongluotphat: 100,
     memory: '0.00GB/32GB',
     isCheck: false,
-    img: d3,
+    img: d3
   },
   {
     stt: '4',
@@ -195,9 +195,9 @@ const myDevice: Device[] = [
     tongluotphat: 100,
     memory: '0.00GB/32GB',
     isCheck: false,
-    img: d4,
-  },
-];
+    img: d4
+  }
+]
 
 const mySchecule: Schecule[] = [
   {
@@ -214,7 +214,7 @@ const mySchecule: Schecule[] = [
     chude: ['Pop', 'Chill', 'Trending', 'Songs', 'Lofi'],
     ngaytao: '20/10/2023',
     nguoitao: 'Cindy Cường',
-    hinhanh: Matem,
+    hinhanh: Matem
   },
   {
     stt: 2,
@@ -230,7 +230,7 @@ const mySchecule: Schecule[] = [
     chude: ['Pop', 'Chill', 'Trending', 'Songs', 'Lofi'],
     ngaytao: '20/10/2023',
     nguoitao: 'Cindy Dương',
-    hinhanh: Love,
+    hinhanh: Love
   },
   {
     stt: 3,
@@ -246,7 +246,7 @@ const mySchecule: Schecule[] = [
     chude: ['Pop', 'Chill', 'Trending', 'Songs', 'Lofi'],
     ngaytao: '20/10/2023',
     nguoitao: 'Cindy Thành',
-    hinhanh: People,
+    hinhanh: People
   },
   {
     stt: 4,
@@ -262,7 +262,7 @@ const mySchecule: Schecule[] = [
     ngayphatplaylist: '8/12/2023 - 10/12/2023',
     batdauketthuc: '11:00:00 - 13:00:00',
     chukyphat: 'Thứ 2 | Thứ 6',
-    thietbi: 'Thiết bị 1 | Thiết bị 2 | Thiết bị 3 | Thiết bị 4',
+    thietbi: 'Thiết bị 1 | Thiết bị 2 | Thiết bị 3 | Thiết bị 4'
   },
   {
     stt: 5,
@@ -278,20 +278,20 @@ const mySchecule: Schecule[] = [
     ngayphatplaylist: '8/12/2023 - 10/12/2023',
     batdauketthuc: '11:00:00 - 13:00:00',
     chukyphat: 'Thứ 2 | Thứ 6',
-    thietbi: 'Thiết bị 1 | Thiết bị 2 | Thiết bị 3 | Thiết bị 4',
-  },
-];
+    thietbi: 'Thiết bị 1 | Thiết bị 2 | Thiết bị 3 | Thiết bị 4'
+  }
+]
 
 export interface PartnerAuthorizer {
-  stt: string;
-  hoten: string;
-  tendangnhap: string;
-  email: string;
-  ngayhethan: string;
-  sdt: string;
-  trangthai: boolean;
-  vaitro: string;
-  ngaycapnhat: string;
+  stt: string
+  hoten: string
+  tendangnhap: string
+  email: string
+  ngayhethan: string
+  sdt: string
+  trangthai: boolean
+  vaitro: string
+  ngaycapnhat: string
 }
 
 const myPartner: PartnerAuthorizer[] = [
@@ -304,7 +304,7 @@ const myPartner: PartnerAuthorizer[] = [
     sdt: '0123456789',
     vaitro: 'Group Admin',
     ngaycapnhat: '20/12/2023',
-    trangthai: true,
+    trangthai: true
   },
   {
     stt: '2',
@@ -315,7 +315,7 @@ const myPartner: PartnerAuthorizer[] = [
     sdt: '0123456789',
     vaitro: 'QC',
     ngaycapnhat: '20/12/2023',
-    trangthai: true,
+    trangthai: true
   },
   {
     stt: '3',
@@ -326,7 +326,7 @@ const myPartner: PartnerAuthorizer[] = [
     sdt: '0123456789',
     vaitro: 'License',
     ngaycapnhat: '20/12/2023',
-    trangthai: true,
+    trangthai: true
   },
   {
     stt: '4',
@@ -337,91 +337,91 @@ const myPartner: PartnerAuthorizer[] = [
     sdt: '0123456789',
     vaitro: 'Super Admin',
     ngaycapnhat: '20/12/2023',
-    trangthai: false,
-  },
-];
+    trangthai: false
+  }
+]
 
 export interface CategorySong {
-  stt: number;
-  tentheloai: string;
-  mota: string;
-  length?: number;
+  stt: number
+  tentheloai: string
+  mota: string
+  length?: number
 }
 
 const myCategorySong: CategorySong[] = [
   {
     stt: 1,
     tentheloai: 'Pop',
-    mota: 'Nhạc pop là một thể loại của nhạc đương đại và rất phổ biến trong làng nhạc đại chúng.',
+    mota: 'Nhạc pop là một thể loại của nhạc đương đại và rất phổ biến trong làng nhạc đại chúng.'
   },
   {
     stt: 2,
     tentheloai: 'Bolero',
-    mota: 'Quay về với một thời hoa bướm đầy mơ mộng khi nghe các tuyệt phẩm nhạc bolero trữ tình này.',
+    mota: 'Quay về với một thời hoa bướm đầy mơ mộng khi nghe các tuyệt phẩm nhạc bolero trữ tình này.'
   },
   {
     stt: 3,
     tentheloai: 'Ballad',
-    mota: 'Ballad là dòng nhạc nhẹ nhàng, trữ tình bắt nguồn từ dòng nhạc country và folk vì giai điệu chậm, thong thả. ',
+    mota: 'Ballad là dòng nhạc nhẹ nhàng, trữ tình bắt nguồn từ dòng nhạc country và folk vì giai điệu chậm, thong thả. '
   },
   {
     stt: 4,
     tentheloai: 'Lofi',
-    mota: 'Lo-fi là một thể loại nhạc trong đó có chứa các yếu tố không hoàn hảo trong quá trình ghi âm và trình diễn.',
+    mota: 'Lo-fi là một thể loại nhạc trong đó có chứa các yếu tố không hoàn hảo trong quá trình ghi âm và trình diễn.'
   },
   {
     stt: 5,
     tentheloai: 'Blues',
-    mota: 'Nhạc Blues có nguồn gốc từ những điệu hát của miền tây Phi Châu được các nô lệ da đen mang sang Bắc Mỹ.',
+    mota: 'Nhạc Blues có nguồn gốc từ những điệu hát của miền tây Phi Châu được các nô lệ da đen mang sang Bắc Mỹ.'
   },
   {
     stt: 6,
     tentheloai: 'Country',
-    mota: 'Nhạc đồng quê là một thể loại nhạc pha trộn truyền thống được tìm thấy phổ biến ở Mỹ và Canada.',
+    mota: 'Nhạc đồng quê là một thể loại nhạc pha trộn truyền thống được tìm thấy phổ biến ở Mỹ và Canada.'
   },
   {
     stt: 7,
     tentheloai: 'Jazz',
-    mota: 'Jazz là một thể loại âm nhạc bắt nguồn từ cộng đồng người châu Phi ở Hoa Kỳ vào cuối thế kỷ 19 và đầu thế kỷ 20.',
+    mota: 'Jazz là một thể loại âm nhạc bắt nguồn từ cộng đồng người châu Phi ở Hoa Kỳ vào cuối thế kỷ 19 và đầu thế kỷ 20.'
   },
 
   {
     stt: 8,
     tentheloai: 'Rock',
-    mota: 'Rock là một thể loại âm nhạc quần chúng được bắt nguồn từ cách gọi ngắn gọn của cụm từ "rock and roll" vào những năm 1950 ở Mỹ.',
-  },
-];
+    mota: 'Rock là một thể loại âm nhạc quần chúng được bắt nguồn từ cách gọi ngắn gọn của cụm từ "rock and roll" vào những năm 1950 ở Mỹ.'
+  }
+]
 
 export interface Config {
-  stt: number;
-  image: string;
+  stt: number
+  image: string
 }
 
 const myConfig: Config[] = [
   {
     stt: 1,
-    image: Theme1,
+    image: Theme1
   },
   {
     stt: 2,
-    image: Theme2,
+    image: Theme2
   },
   {
     stt: 3,
-    image: Theme3,
+    image: Theme3
   },
   {
     stt: 4,
-    image: Theme4,
-  },
-];
+    image: Theme4
+  }
+]
 
 export interface Role {
-  stt: number;
-  tennhom: string;
-  soluong: number;
-  vaitro: string;
-  mota: string;
+  stt: number
+  tennhom: string
+  soluong: number
+  vaitro: string
+  mota: string
 }
 
 const myRole: Role[] = [
@@ -430,56 +430,56 @@ const myRole: Role[] = [
     tennhom: 'Super Admin',
     soluong: 1,
     vaitro: 'System Admin',
-    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
   },
   {
     stt: 2,
     tennhom: 'Group Admin',
     soluong: 8,
     vaitro: 'System Admin',
-    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
   },
   {
     stt: 3,
     tennhom: 'Sub-user',
     soluong: 30,
     vaitro: 'Super Admin',
-    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
   },
   {
     stt: 4,
     tennhom: 'Content Manager',
     soluong: 5,
     vaitro: 'License',
-    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
   },
   {
     stt: 5,
     tennhom: 'QC',
     soluong: 5,
     vaitro: 'License',
-    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-  },
-];
+    mota: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
+  }
+]
 
 export interface Income {
-  stt: number;
-  hopdong: string;
-  nguoiuyquyen: string;
-  sobaihatuyquyen: number;
-  doanhthu: number;
-  hanhchinhphi: number;
-  mucnhuanbut: number;
-  ngaychot: string;
-  tenbaihat: string;
-  donvikhaithac: string;
-  soluotphat: number;
-  thoihanhopdong: string;
-  loaihopdong: string;
-  sothietbidongbo: string;
-  tongsoluotphat: number;
-  danhsachbaihat: string;
-  doanhthuchuaphanphoi: number;
+  stt: number
+  hopdong: string
+  nguoiuyquyen: string
+  sobaihatuyquyen: number
+  doanhthu: number
+  hanhchinhphi: number
+  mucnhuanbut: number
+  ngaychot: string
+  tenbaihat: string
+  donvikhaithac: string
+  soluotphat: number
+  thoihanhopdong: string
+  loaihopdong: string
+  sothietbidongbo: string
+  tongsoluotphat: number
+  danhsachbaihat: string
+  doanhthuchuaphanphoi: number
 }
 
 const myIncome: Income[] = [
@@ -500,7 +500,7 @@ const myIncome: Income[] = [
     sothietbidongbo: '5/7',
     tongsoluotphat: 100,
     danhsachbaihat: 'Bài hát 1',
-    doanhthuchuaphanphoi: 100000000,
+    doanhthuchuaphanphoi: 100000000
   },
   {
     stt: 2,
@@ -519,7 +519,7 @@ const myIncome: Income[] = [
     loaihopdong: 'Trọn gói',
     sothietbidongbo: '7/7',
     tongsoluotphat: 100,
-    doanhthuchuaphanphoi: 200000000,
+    doanhthuchuaphanphoi: 200000000
   },
   {
     stt: 3,
@@ -538,7 +538,7 @@ const myIncome: Income[] = [
     loaihopdong: 'Trọn gói',
     sothietbidongbo: '7/7',
     tongsoluotphat: 100,
-    doanhthuchuaphanphoi: 300000000,
+    doanhthuchuaphanphoi: 300000000
   },
   {
     stt: 4,
@@ -557,7 +557,7 @@ const myIncome: Income[] = [
     loaihopdong: 'Theo lượt phát',
     sothietbidongbo: '7/7',
     tongsoluotphat: 100,
-    doanhthuchuaphanphoi: 400000000,
+    doanhthuchuaphanphoi: 400000000
   },
   {
     stt: 5,
@@ -576,16 +576,7 @@ const myIncome: Income[] = [
     sothietbidongbo: '7/7',
     tongsoluotphat: 100,
     danhsachbaihat: 'Bài hát 5',
-    doanhthuchuaphanphoi: 500000000,
-  },
-];
-export {
-  mySong,
-  mySchecule,
-  myDevice,
-  myPartner,
-  myCategorySong,
-  myConfig,
-  myRole,
-  myIncome,
-};
+    doanhthuchuaphanphoi: 500000000
+  }
+]
+export { mySong, mySchecule, myDevice, myPartner, myCategorySong, myConfig, myRole, myIncome }

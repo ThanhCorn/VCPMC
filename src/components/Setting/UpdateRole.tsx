@@ -1,31 +1,17 @@
-import {
-  KeyOutlined,
-  PlusCircleOutlined,
-  RightOutlined,
-  UserDeleteOutlined,
-} from '@ant-design/icons';
-import {
-  Button,
-  Checkbox,
-  Col,
-  DatePicker,
-  Input,
-  Radio,
-  Row,
-  Select,
-} from 'antd';
-import dayjs from 'dayjs';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { KeyOutlined, PlusCircleOutlined, RightOutlined, UserDeleteOutlined } from '@ant-design/icons'
+import { Button, Checkbox, Col, DatePicker, Input, Radio, Row, Select } from 'antd'
+import dayjs from 'dayjs'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
-const { Option } = Select;
-const dateFormat = 'YYYY-MM-DD';
+const { Option } = Select
+const dateFormat = 'YYYY-MM-DD'
 
 const UpdateRole = () => {
   return (
     <Wrapper>
-      <div className="content">
+      <div className='content'>
         <p style={{ color: 'white', opacity: '0.5' }}>
           Cài đặt
           <RightOutlined style={{ color: '#FFAC69' }} />
@@ -35,33 +21,33 @@ const UpdateRole = () => {
         </p>
         <h1>Cập nhật vai trò người dùng</h1>
         <Container>
-          <div className="container-1">
-            <div className="input-text">
+          <div className='container-1'>
+            <div className='input-text'>
               <h4>Tên vai trò</h4>
-              <Input value="Kế toán" />
+              <Input value='Kế toán' />
             </div>
-            <div className="input-text-2">
+            <div className='input-text-2'>
               <h4>Mô tả</h4>
               <Input.TextArea
                 rows={4}
-                value="Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, sed voluptatem quidem voluptatibus id iusto veniam nam vel aspernatur nihil?"
+                value='Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, sed voluptatem quidem voluptatibus id iusto veniam nam vel aspernatur nihil?'
               />
             </div>
           </div>
-          <div className="container-2">
-            <div className="content">
-              <Row className="row-1">
+          <div className='container-2'>
+            <div className='content'>
+              <Row className='row-1'>
                 <Col span={12}>
-                  <div className="">
+                  <div className=''>
                     <h4>Tên nhóm chức năng</h4>
                     <p style={{ marginTop: '100px' }}>Quản lý người dùng</p>
                     <p style={{ marginTop: '150px' }}>Quản lý thư viện</p>
                   </div>
                 </Col>
               </Row>
-              <Row className="row-2">
+              <Row className='row-2'>
                 <Col span={12}>
-                  <div className="">
+                  <div className=''>
                     <h4>
                       <Checkbox />
                       Phân quyền người dùng
@@ -100,16 +86,14 @@ const UpdateRole = () => {
                 </Col>
               </Row>
 
-              <Row className="row-3">
+              <Row className='row-3'>
                 <Col span={12}>
-                  <div className="">
+                  <div className=''>
                     <h4>Mã chức năng</h4>
                     <p>nguoidung_phanquyen</p>
                     <p>nguoidung_tao</p>
                     <p>nguoidung_capnhat</p>
-                    <p style={{ borderBottom: '1px solid #fff' }}>
-                      nguoidung_xoa
-                    </p>
+                    <p style={{ borderBottom: '1px solid #fff' }}>nguoidung_xoa</p>
                     <p>nguoidung_xemchitiet</p>
                     <p>nguoidung_xemdanhsach</p>
                     <p>nguoidung_tailentep</p>
@@ -121,16 +105,16 @@ const UpdateRole = () => {
             </div>
           </div>
         </Container>
-        <div className="btn">
-          <Button className="btn-huy">Hủy</Button>
-          <Button className="btn-luu">Lưu</Button>
+        <div className='btn'>
+          <Button className='btn-huy'>Hủy</Button>
+          <Button className='btn-luu'>Lưu</Button>
         </div>
       </div>
     </Wrapper>
-  );
-};
+  )
+}
 
-export default UpdateRole;
+export default UpdateRole
 
 const Container = styled.div`
   width: 1541px;
@@ -222,7 +206,7 @@ const Container = styled.div`
       }
     }
   }
-`;
+`
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -288,4 +272,4 @@ const Wrapper = styled.div`
       width: 100%;
     }
   }
-`;
+`

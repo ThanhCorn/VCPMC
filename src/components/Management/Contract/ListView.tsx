@@ -1,48 +1,28 @@
-import {
-  Button,
-  Checkbox,
-  Col,
-  Input,
-  List,
-  Modal,
-  Pagination,
-  Row,
-} from 'antd';
-import React from 'react';
-import { mySong, Song } from '../myData';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { RootState } from '../app/store';
-import ImageSong from '../assets/Song.png';
-import Page from './Page';
+import { Checkbox, Col, Input, List, Modal, Pagination, Row } from 'antd'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { useSelector, useDispatch } from 'react-redux'
+
+import Page from '../../Page'
+import ListenButton from '../../ListenButton'
+import { mySong, Song } from '../../../myData'
+import { RootState } from '../../../app/store'
 
 interface ListViewProps {
-  listView: boolean;
-  isKhoBanGhi: boolean;
+  listView: boolean
+  isKhoBanGhi: boolean
 }
 
-const { TextArea } = Input;
-
 const ListView: React.FC<ListViewProps> = ({ listView, isKhoBanGhi }) => {
-  const [isModalOpen, setIsModalOpen] = React.useState(false);
-  const isListView = useSelector((state: RootState) => state.view.isListView);
-  const [isChecked, setIsChecked] = React.useState(false);
-  const dispatch = useDispatch();
-  const rowStyle = !isListView
-    ? { alignItems: 'center', marginLeft: '-15px' }
-    : {};
+  const isListView = useSelector((state: RootState) => state.view.isListView)
+  const [isChecked, setIsChecked] = React.useState(false)
+  const rowStyle = !isListView ? { alignItems: 'center', marginLeft: '-15px' } : {}
 
   return (
     <Container>
-      <Row className="row-1" style={rowStyle}>
-        {isKhoBanGhi === false && (
-          <Checkbox
-            checked={isChecked}
-            onChange={(e) => setIsChecked(e.target.checked)}
-          />
-        )}
+      <Row className='row-1' style={rowStyle}>
+        {isKhoBanGhi === false && <Checkbox checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} />}
 
         <Col span={1} style={{ marginLeft: '10px' }}>
           <p>STT</p>
@@ -73,14 +53,11 @@ const ListView: React.FC<ListViewProps> = ({ listView, isKhoBanGhi }) => {
         </Col>
       </Row>
       <List
-        itemLayout="horizontal"
+        itemLayout='horizontal'
         dataSource={mySong}
         renderItem={(song: Song) => (
-          <List.Item
-            key={song.stt}
-            style={{ alignItems: 'center', display: 'flex' }}
-          >
-            <Row className="row-2">
+          <List.Item key={song.stt} style={{ alignItems: 'center', display: 'flex' }}>
+            <Row className='row-2'>
               {isKhoBanGhi === false && <Checkbox checked={isChecked} />}
 
               <Col span={1}>
@@ -113,7 +90,7 @@ const ListView: React.FC<ListViewProps> = ({ listView, isKhoBanGhi }) => {
                   style={{
                     color: '#fff',
                     opacity: '0.5',
-                    fontSize: '12px',
+                    fontSize: '12px'
                   }}
                 >
                   20/12/2023
@@ -122,13 +99,13 @@ const ListView: React.FC<ListViewProps> = ({ listView, isKhoBanGhi }) => {
               {isKhoBanGhi === true && (
                 <Col span={2}>
                   <Link
-                    to="/update-record"
+                    to='/update-record'
                     style={{
                       background: 'transparent',
                       border: 'none',
                       textDecoration: 'underline',
                       color: '#ff7506',
-                      cursor: 'pointer',
+                      cursor: 'pointer'
                     }}
                   >
                     Cập nhật
@@ -137,73 +114,18 @@ const ListView: React.FC<ListViewProps> = ({ listView, isKhoBanGhi }) => {
               )}
 
               <Col>
-                <Button
-                  onClick={() => setIsModalOpen(true)}
-                  style={{
-                    background: 'transparent',
-                    border: 'none',
-                    textDecoration: 'underline',
-                    color: '#ff7506',
-                  }}
-                >
-                  Nghe
-                </Button>
+                <ListenButton />
               </Col>
             </Row>
-            {isModalOpen && (
-              <ModalContent
-                visible={isModalOpen}
-                onCancel={() => setIsModalOpen(false)}
-              >
-                <img src={ImageSong} alt="" />
-              </ModalContent>
-            )}
           </List.Item>
         )}
       ></List>
       <Page data={mySong} />
     </Container>
-  );
-};
+  )
+}
 
-export default ListView;
-const ModalContent = styled(Modal)`
-  img {
-    width: 100%;
-    margin-top: 30px;
-  }
-  .ant-modal-content {
-    background: #2f2f41;
-  }
-  .ant-modal-title {
-    background: #2f2f41;
-    color: #fff;
-    margin-bottom: 30px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-  .ant-input {
-    color: #fff;
-    border: 1px solid #727288;
-    background: #2b2b3f;
-    ::placeholder {
-      color: #727288;
-    }
-  }
-  .ant-modal-footer {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .ant-btn-default {
-      display: none;
-    }
-    .ant-btn-primary {
-      display: none;
-    }
-  }
-`;
+export default ListView
 
 const Container = styled.div`
   width: 1541px;
@@ -236,4 +158,4 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`

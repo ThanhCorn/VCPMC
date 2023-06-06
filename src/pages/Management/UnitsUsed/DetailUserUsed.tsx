@@ -1,21 +1,18 @@
-import { FormOutlined, RightOutlined, TeamOutlined } from '@ant-design/icons';
-import { Button, Input, Radio, Select } from 'antd';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { useState } from 'react';
+import { FormOutlined, RightOutlined, TeamOutlined } from '@ant-design/icons'
+import { Button, Input, Radio, Select } from 'antd'
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { useState } from 'react'
 
-const { Option } = Select;
+const { Option } = Select
 const DetailUserUsed = () => {
-  const [isEdit, setIsEdit] = useState<boolean>(true);
+  const [isEdit, setIsEdit] = useState<boolean>(true)
   return (
     <Wrapper>
       <Container>
         <p style={{ opacity: '0.5', marginBottom: '0' }}>
           Quản lý <RightOutlined style={{ color: '#FFAC69' }} />
-          <Link
-            style={{ color: '#fff', textDecoration: 'none' }}
-            to="/management/used"
-          >
+          <Link style={{ color: '#fff', textDecoration: 'none' }} to='/management/used'>
             Đơn vị sử dụng{' '}
           </Link>{' '}
           <RightOutlined style={{ color: '#FFAC69' }} />
@@ -30,65 +27,53 @@ const DetailUserUsed = () => {
           )}
         </p>
         <h1>Thông tin người dùng</h1>
-        <div className="content">
+        <div className='content'>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr' }}>
-            <div className="grid-1">
-              <div className="same">
+            <div className='grid-1'>
+              <div className='same'>
                 <p>Tên người dùng:</p>
-                {isEdit ? (
-                  <span>Nguyễn văn A</span>
-                ) : (
-                  <Input value="Nguyễn văn A" />
-                )}
+                {isEdit ? <span>Nguyễn văn A</span> : <Input value='Nguyễn văn A' />}
               </div>
-              <div className="same">
+              <div className='same'>
                 <p>Vai trò:</p>
                 {isEdit ? (
                   <span>QC</span>
                 ) : (
-                  <Select defaultValue="QC" style={{ background: '#2f2f41' }}>
-                    <Option value="Super Admin">Super Admin</Option>
-                    <Option value="Group Admin">Group Admin</Option>
-                    <Option value="Sub-user">Sub-user</Option>
-                    <Option value="ContentManager">ContentManager</Option>
+                  <Select defaultValue='QC' style={{ background: '#2f2f41' }}>
+                    <Option value='Super Admin'>Super Admin</Option>
+                    <Option value='Group Admin'>Group Admin</Option>
+                    <Option value='Sub-user'>Sub-user</Option>
+                    <Option value='ContentManager'>ContentManager</Option>
                   </Select>
                 )}
               </div>
-              <div className="same">
+              <div className='same'>
                 <p>Email:</p>
-                {isEdit ? (
-                  <span>nguyena@gmail.com</span>
-                ) : (
-                  <Input value="nguyena@gmail.com" />
-                )}
+                {isEdit ? <span>nguyena@gmail.com</span> : <Input value='nguyena@gmail.com' />}
               </div>
             </div>
-            <div className="grid-2">
-              <div className="same">
+            <div className='grid-2'>
+              <div className='same'>
                 <p>Tên Đăng dùng:</p>
-                {isEdit ? (
-                  <span>nguyena@gmail.com</span>
-                ) : (
-                  <Input value="nguyena@gmail.com" />
-                )}
+                {isEdit ? <span>nguyena@gmail.com</span> : <Input value='nguyena@gmail.com' />}
               </div>
-              <div className="same">
+              <div className='same'>
                 <p>Mật khẩu:</p>
                 {isEdit ? (
                   <span>💀💀💀💀💀</span>
                 ) : (
                   <div>
-                    <Input.Password value="💀💀💀💀💀" />
+                    <Input.Password value='💀💀💀💀💀' />
                   </div>
                 )}
               </div>
-              <div className="same">
+              <div className='same'>
                 <p>Trạng thái người dùng:</p>
                 {isEdit ? (
                   <span>Đã kích hoạt</span>
                 ) : (
                   <>
-                    <Radio.Group name="radiogroup" defaultValue={1}>
+                    <Radio.Group name='radiogroup' defaultValue={1}>
                       <Radio value={1}>Đã kích hoạt</Radio>
                       <Radio value={2}>Ngưng kích hoạt</Radio>
                     </Radio.Group>
@@ -100,21 +85,18 @@ const DetailUserUsed = () => {
         </div>
       </Container>
       {!isEdit && (
-        <div className="btn">
-          <Button className="btn-huy">Hủy</Button>
-          <Button onClick={() => setIsEdit(!isEdit)} className="btn-luu">
+        <div className='btn'>
+          <Button className='btn-huy'>Hủy</Button>
+          <Button onClick={() => setIsEdit(!isEdit)} className='btn-luu'>
             Lưu
           </Button>
         </div>
       )}
       {isEdit && (
-        <div className="side-option">
-          <div className="option">
-            <Button
-              onClick={() => setIsEdit(!isEdit)}
-              className="button-option"
-            >
-              <div className="icon-2">
+        <div className='side-option'>
+          <div className='option'>
+            <Button onClick={() => setIsEdit(!isEdit)} className='button-option'>
+              <div className='icon-2'>
                 <FormOutlined style={{ color: '#FF7506' }} />
               </div>
               <p>Chỉnh sửa</p>
@@ -123,10 +105,10 @@ const DetailUserUsed = () => {
         </div>
       )}
     </Wrapper>
-  );
-};
+  )
+}
 
-export default DetailUserUsed;
+export default DetailUserUsed
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -209,7 +191,7 @@ const Wrapper = styled.div`
       border: none;
     }
   }
-`;
+`
 
 const Container = styled.div`
   display: flex;
@@ -236,4 +218,4 @@ const Container = styled.div`
       opacity: 0.5;
     }
   }
-`;
+`

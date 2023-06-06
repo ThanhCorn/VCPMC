@@ -1,14 +1,14 @@
-import React from 'react';
-import { List, Switch, Row, Col } from 'antd';
-import { PartnerAuthorizer, myPartner } from '../../myData';
-import { Link } from 'react-router-dom';
-import Page from '../Page';
-import styled from 'styled-components';
+import React from 'react'
+import { List, Switch, Row, Col } from 'antd'
+import { PartnerAuthorizer, myPartner } from '../../myData'
+import { Link } from 'react-router-dom'
+import Page from '../Page'
+import styled from 'styled-components'
 
 const ListUser = () => {
   return (
     <Container>
-      <Row className="row-1">
+      <Row className='row-1'>
         <Col span={1}>
           <p>STT</p>
         </Col>
@@ -35,14 +35,11 @@ const ListUser = () => {
         </Col>
       </Row>
       <List
-        itemLayout="horizontal"
+        itemLayout='horizontal'
         dataSource={myPartner}
         renderItem={(myPartner: PartnerAuthorizer) => (
-          <List.Item
-            key={myPartner.stt}
-            style={{ alignItems: 'center', display: 'flex' }}
-          >
-            <Row className="row-2">
+          <List.Item key={myPartner.stt} style={{ alignItems: 'center', display: 'flex' }}>
+            <Row className='row-2'>
               <Col span={1}>
                 <p style={{ marginLeft: '18px' }}> {myPartner.stt}</p>
               </Col>
@@ -76,17 +73,17 @@ const ListUser = () => {
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
+                  justifyContent: 'center'
                 }}
               >
                 <Link
-                  to="/setting/edit-user"
+                  to='/setting/edit-user'
                   style={{
                     background: 'transparent',
                     border: 'none',
                     textDecoration: 'underline',
                     color: '#ff7506',
-                    cursor: 'pointer',
+                    cursor: 'pointer'
                   }}
                 >
                   Chỉnh sửa
@@ -98,10 +95,10 @@ const ListUser = () => {
       ></List>
       <Page data={myPartner} />
     </Container>
-  );
-};
+  )
+}
 
-export default ListUser;
+export default ListUser
 
 const Container = styled.div`
   width: 1541px;
@@ -136,4 +133,4 @@ const Container = styled.div`
       opacity: 1;
     }
   }
-`;
+`
