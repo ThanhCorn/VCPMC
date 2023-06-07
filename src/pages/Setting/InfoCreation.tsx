@@ -1,9 +1,11 @@
 import { FormOutlined, PlusOutlined, RightOutlined } from '@ant-design/icons'
 import { Button, Col, List, Row } from 'antd'
 import styled from 'styled-components'
-import { CategorySong, myCategorySong } from '../../myData'
+import { myCategorySong } from '../../myData'
+
 import Page from '../../components/Page'
 import React, { useEffect } from 'react'
+import { CategorySong } from '../../@types/myType'
 const InfoCreation = () => {
   const [isEdit, setIsEdit] = React.useState(false)
   const [add, setAdd] = React.useState(false)
@@ -25,7 +27,7 @@ const InfoCreation = () => {
     }
     setData([...data, newItem])
   }
-  useEffect(() => {}, [data])
+
   return (
     <Wrapper>
       <div className='content'>

@@ -50,7 +50,6 @@ const UserInfo = () => {
     setIsModalOpen(false)
   }
 
-  const handleSaveButton = async (values: any) => {}
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -84,7 +83,7 @@ const UserInfo = () => {
         </div>
       </div>
       <div className='user-info'>
-        <Form form={form} layout='vertical' autoComplete='off' onFinish={handleSaveButton}>
+        <Form form={form} layout='vertical' autoComplete='off'>
           <div className='row-1'>
             <Form.Item name='name' label='Họ'>
               <Input

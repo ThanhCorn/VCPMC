@@ -4,7 +4,6 @@ import {
   Dashboard,
   ContractManagement,
   EquipManagement,
-  UnitUsed,
   AuthorizedUnit,
   InfoContract,
   DetailProduct,
@@ -26,7 +25,8 @@ import {
   TopPlaylist,
   AddPlaylist,
   AddRecord,
-  MainLayout
+  MainLayout,
+  UnitUsed
 } from './pages'
 
 import UpdateInfo from './pages/Management/AuthorizedUnit/UpdateInfo'

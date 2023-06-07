@@ -8,7 +8,7 @@ import { nanoid } from 'nanoid'
 import { addDoc, collection, doc, getDoc, setDoc, updateDoc } from '@firebase/firestore'
 import { db } from '../../firebase'
 
-import { DataFeedback, fetchFeedback } from '../../features/layoutSlice'
+import { DataFeedback, fetchFeedback } from '../../features/dataSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppDispatch, RootState } from '../../app/store'
 
@@ -32,7 +32,7 @@ const WatchFeedback = () => {
   const [form] = Form.useForm()
   const { currentUser } = useContext(UserContext)
   const [isActive, setIsActive] = useState(false)
-  const dataFeedback = useSelector<RootState, DataFeedback[]>((state) => state.view.dataFeedback)
+  const dataFeedback = useSelector<RootState, DataFeedback[]>((state) => state.data.dataFeedback)
   const [dataActive, setDataActive] = useState<DataFeedback>()
   const dispatch: AppDispatch = useDispatch()
 
@@ -65,10 +65,17 @@ const WatchFeedback = () => {
                     className={`item ${item.id === dataActive?.id ? 'active info' : 'info'}`}
                     key={item.id}
                     onClick={() => handleClick(item)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === 'Space') {
+                        handleClick(item)
+                      }
+                    }}
+                    role='button'
+                    tabIndex={0}
                   >
                     <img src={Image1} alt='hinh anh' />
                     <div className='user'>
-                      <h4>Thy Phạm</h4>
+                      <h4>Ngọc Thành</h4>
 
                       <p className='truncate'>
                         Chủ đề: {item.issue} . {item.content}
@@ -82,7 +89,7 @@ const WatchFeedback = () => {
           <div className='right'>
             <div className='info' key={dataActive?.id}>
               <img src={Image1} alt='' />
-              <h4>Thy Pham</h4>
+              <h4>Ngọc Thành</h4>
             </div>
             <p>Chủ đề: {dataActive?.issue}</p>
             <div className='text'>{dataActive?.content}</div>
@@ -150,7 +157,7 @@ const Contaniner = styled.div`
   .right {
     padding: 32px;
     width: 1014px;
-    height: 834px;
+    height: 770px;
     background: #2b2b3f;
     border-radius: 16px;
     p {

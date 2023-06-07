@@ -13,7 +13,8 @@ import dayjs from 'dayjs'
 import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import { Device, myDevice } from '../../../myData'
+import { myDevice } from '../../../myData'
+import { Device } from '../../../@types/myType'
 
 const InfoDevice: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = React.useState(false)

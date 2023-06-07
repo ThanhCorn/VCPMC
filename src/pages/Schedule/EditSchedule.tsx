@@ -1,11 +1,12 @@
 import React, { useEffect, MouseEvent } from 'react'
 import styled from 'styled-components'
 import { Button, Checkbox, Col, DatePicker, Form, Input, Modal, Row, Table } from 'antd'
-import SideMenu from '../../components/SideMenu'
-import PageContent from '../../components/PageContent'
+
+import { Schecule } from '../../@types/myType'
+
 import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
-import { mySchecule, Schecule } from '../../myData'
+import { mySchecule } from '../../myData'
 import dayjs from 'dayjs'
 
 import { CheckboxValueType } from 'antd/lib/checkbox/Group'

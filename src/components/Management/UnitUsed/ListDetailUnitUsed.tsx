@@ -15,7 +15,8 @@ import Page from '../../Page'
 import { DataContext, DataProps } from '../../../context/DataContext'
 import { doc, updateDoc } from '@firebase/firestore'
 import { db } from '../../../firebase'
-import { PartnerAuthorizer, myPartner } from '../../../myData'
+import { myPartner } from '../../../myData'
+import { PartnerAuthorizer } from '../../../@types/myType'
 const { Search } = Input
 const onSearch = (value: string) => console.log(value)
 

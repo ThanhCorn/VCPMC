@@ -1,6 +1,8 @@
 import React from 'react'
 import { List, Switch, Row, Col } from 'antd'
-import { Role, myRole } from '../../myData'
+import { myRole } from '../../myData'
+import { Role } from '../../@types/myType'
+
 import { Link } from 'react-router-dom'
 import Page from '../Page'
 import styled from 'styled-components'

@@ -2,7 +2,8 @@ import { createContext, useContext, useState, useEffect } from 'react'
 import { auth, db } from '../firebase'
 import firebase from 'firebase/compat/app'
 import { collection, getDocs, query, onSnapshot, Timestamp, doc } from 'firebase/firestore'
-
+import PropTypes from 'prop-types'
+import { ReactNode } from 'react'
 export interface DataProps {
   STT: number
   'Số hợp đồng': string
@@ -33,16 +34,24 @@ interface DataContextValue {
   setIsKhoBanGhi: (isKhoBanGhi: boolean) => void
 }
 
+interface DataProviderProps {
+  children: ReactNode
+}
+
 export const DataContext = createContext<DataContextValue>({
   data: [],
-  setData: () => {},
+  setData: () => {
+    ;[]
+  },
   isKhoBanGhi: true,
-  setIsKhoBanGhi: () => {}
+  setIsKhoBanGhi: () => {
+    true
+  }
 })
 
 export const useData = () => useContext(DataContext)
 
-export const DataProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [data, setData] = useState<DataProps[]>([])
   const [isKhoBanGhi, setIsKhoBanGhi] = useState<boolean>(true)
 
@@ -59,4 +68,8 @@ export const DataProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     getData()
   }, [])
   return <DataContext.Provider value={{ data, setData, isKhoBanGhi, setIsKhoBanGhi }}>{children}</DataContext.Provider>
+}
+
+DataProvider.propTypes = {
+  children: PropTypes.node.isRequired
 }

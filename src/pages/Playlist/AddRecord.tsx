@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { Song, mySong } from '../../myData'
+import { mySong } from '../../myData'
 import { useDispatch, useSelector } from 'react-redux'
+import { Song } from '../../@types/myType'
 
 import styled from 'styled-components'
-import SideMenu from '../../components/SideMenu'
-import PageContent from '../../components/PageContent'
+
 import { DownOutlined, RightOutlined } from '@ant-design/icons'
 import { Button, Dropdown, Space, Input, Row, Col, List, Pagination } from 'antd'
 import { items, items2, items3, items4 } from '../../MenuDropDown'
@@ -53,7 +53,6 @@ const AddRecord: React.FC<Song> = () => {
     dispatch(addRecord({ ...playlist, stt: newStt }))
   }
 
-  useEffect(() => {}, [playlist])
   console.log(playlist)
   return (
     <Wrapper>

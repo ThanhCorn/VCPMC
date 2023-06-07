@@ -32,7 +32,6 @@ const RecordApproval = () => {
   const [isChecked, setIsChecked] = React.useState(false)
   const dispatch = useDispatch()
 
-  useEffect(() => {}, [isKhoBanGhi])
   return (
     <Wrapper>
       <div className='content'>

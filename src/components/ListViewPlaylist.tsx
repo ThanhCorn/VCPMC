@@ -1,6 +1,8 @@
 import { Button, Checkbox, Col, Input, List, Modal, Pagination, Row } from 'antd'
 import React from 'react'
-import { mySchecule, mySong, Schecule, Song } from '../myData'
+import { mySchecule, mySong } from '../myData'
+import { Song, Schecule } from '../@types/myType'
+
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'

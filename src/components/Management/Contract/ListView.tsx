@@ -6,7 +6,8 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import Page from '../../Page'
 import ListenButton from '../../ListenButton'
-import { mySong, Song } from '../../../myData'
+import { mySong } from '../../../myData'
+import { Song } from '../../../@types/myType'
 import { RootState } from '../../../app/store'
 
 interface ListViewProps {

@@ -1,13 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import SideMenu from '../../components/SideMenu'
-import PageContent from '../../components/PageContent'
-import { myDevice, Device } from '../../myData'
-import { Button, Pagination, Row, Col, List, Checkbox, Input, Modal } from 'antd'
 
+import { myDevice } from '../../myData'
+import { Button, Pagination, Row, Col, List, Checkbox, Input, Modal } from 'antd'
+import { Device } from '../../@types/myType'
 import { Link } from 'react-router-dom'
-import { CheckOutlined, CloseOutlined, PlusCircleOutlined, PlusSquareOutlined, RightOutlined } from '@ant-design/icons'
-import type { CheckboxChangeEvent } from 'antd/es/checkbox'
+import { CheckOutlined, CloseOutlined, RightOutlined } from '@ant-design/icons'
 
 export default function ChooseDevice() {
   const [isChecked, setIsChecked] = React.useState(false)

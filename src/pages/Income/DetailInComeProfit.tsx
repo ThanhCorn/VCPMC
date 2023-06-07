@@ -4,7 +4,9 @@ import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
 import { Button, Col, DatePicker, List, Modal, Row, Switch, Input } from 'antd'
 import { Link } from 'react-router-dom'
 
-import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData'
+import { myIncome } from '../../myData'
+import { Income } from '../../@types/myType'
+
 import Page from '../../components/Page'
 
 const { Search } = Input

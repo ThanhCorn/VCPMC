@@ -3,14 +3,14 @@ import type { MenuProps } from 'antd'
 import React, { useState, useEffect } from 'react'
 import { Button, Checkbox, Dropdown, Space, Input, Modal, Row, Col, List } from 'antd'
 import { ClockCircleFilled, DownOutlined, FormOutlined, MehOutlined, PlusOutlined } from '@ant-design/icons'
-import { Device, myDevice } from '../../../myData'
+import { myDevice } from '../../../myData'
+import { Device } from '../../../@types/myType'
+
 import Page from '../../../components/Page'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { CheckboxChangeEvent } from 'antd/lib/checkbox'
 import { FaTrash } from 'react-icons/fa'
-import InfoDevice from './InfoDevice'
-import MainLayout from '../../MainLayout'
-import { set } from 'immer/dist/internal'
+
 const { Search } = Input
 const onSearch = (value: string) => console.log(value)
 
@@ -117,7 +117,6 @@ const EquipManagement = () => {
     setMyData(newData)
     setSelectedDevice(null)
   }
-  useEffect(() => {}, [selectedDevice, myData])
   return (
     <Wrapper>
       <div className='content'>

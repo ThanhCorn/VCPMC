@@ -1,7 +1,7 @@
 import React from 'react'
 import { Pagination } from 'antd'
 import { DataProps } from '../context/DataContext'
-import { Song, PartnerAuthorizer, CategorySong, Device } from '../myData'
+import { Song, PartnerAuthorizer, CategorySong, Device } from '../@types/myType'
 
 interface PageProps {
   data: DataProps[] | Song[] | PartnerAuthorizer[] | CategorySong[] | Device[]

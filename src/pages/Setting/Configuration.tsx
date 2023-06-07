@@ -1,7 +1,8 @@
 import { FormOutlined, LeftOutlined, PlusOutlined, RightOutlined, DownOutlined } from '@ant-design/icons'
 import { Button, Col, List, Row, Dropdown, Space } from 'antd'
 import styled from 'styled-components'
-import { CategorySong, Config, myCategorySong, myConfig } from '../../myData'
+import { myConfig } from '../../myData'
+import { Config } from '../../@types/myType'
 import React, { useEffect } from 'react'
 
 import type { MenuProps } from 'antd'
@@ -53,16 +54,14 @@ const Configuration = () => {
               <LeftOutlined />
             </Button>
             {displayedImages.map((item, index) => (
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <img
-                  src={item.image}
-                  alt=''
-                  className='extra-image'
-                  key={index}
-                  onClick={() => handleImageClick(index, item)}
-                />
-                <p style={{ transform: 'translateX(30%)' }}>Theme {index + 2}</p>
-              </div>
+              <Button
+                onClick={() => handleImageClick(index, item)}
+                key={index}
+                style={{ display: 'flex', flexDirection: 'column', height: '160px', width: '240px' }}
+              >
+                <img src={item.image} alt='' className='extra-image' key={index} />
+                <p style={{ transform: 'translateX(100%)', fontSize: '14px' }}>Theme {index + 2}</p>
+              </Button>
             ))}
             <Button>
               <RightOutlined />

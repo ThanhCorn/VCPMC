@@ -30,8 +30,6 @@ const RecordStore = () => {
   const { isKhoBanGhi, setIsKhoBanGhi } = useContext(DataContext)
   const dispatch = useDispatch()
 
-  useEffect(() => {}, [isKhoBanGhi])
-
   return (
     <Wrapper>
       <div className='content'>

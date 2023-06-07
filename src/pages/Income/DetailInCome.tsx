@@ -8,7 +8,9 @@ import type { MenuProps } from 'antd'
 
 import { Line } from 'react-chartjs-2'
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement } from 'chart.js'
-import { Income, myIncome } from '../../myData'
+import { myIncome } from '../../myData'
+import { Income } from '../../@types/myType'
+
 import Page from '../../components/Page'
 import { toast } from 'react-toastify'
 
@@ -134,22 +136,22 @@ const DetailInCome = () => {
           <p style={{ marginRight: '20px' }}>Theo {`${isForMonth ? 'tháng:' : 'quý:'}`}</p>
           <div className='datepick'>
             <Dropdown menu={{ items: items, onClick }}>
-              <a onClick={(e) => e.preventDefault()}>
+              <Button>
                 <Space>
                   {isForMonth ? 'Theo tháng' : 'Theo quý'}
                   <DownOutlined />
                 </Space>
-              </a>
+              </Button>
             </Dropdown>
           </div>
           <div className='datepick'>
             <Dropdown menu={{ items: items4 }}>
-              <a onClick={(e) => e.preventDefault()}>
+              <Button>
                 <Space>
                   Tháng 7/2023
                   <DownOutlined />
                 </Space>
-              </a>
+              </Button>
             </Dropdown>
           </div>
           <div className='search'>

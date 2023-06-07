@@ -4,9 +4,6 @@ import { LineChartOutlined, PlusCircleOutlined, RightOutlined, DownOutlined } fr
 import { Button, Col, DatePicker, List, Row, Switch, Input, Dropdown, message, Space } from 'antd'
 import { Link } from 'react-router-dom'
 
-import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData'
-import Page from '../../components/Page'
-
 import type { MenuProps } from 'antd'
 
 import { Line } from 'react-chartjs-2'
@@ -165,22 +162,22 @@ const InCome = () => {
           <p style={{ marginRight: '20px' }}>Theo {`${isForMonth ? 'tháng:' : 'quý:'}`}</p>
           <div className='datepick'>
             <Dropdown menu={{ items: items, onClick }}>
-              <a onClick={(e) => e.preventDefault()}>
+              <Button>
                 <Space>
                   {isForMonth ? 'Theo tháng' : 'Theo quý'}
                   <DownOutlined />
                 </Space>
-              </a>
+              </Button>
             </Dropdown>
           </div>
           <div className='datepick'>
             <Dropdown menu={{ items: items4 }}>
-              <a onClick={(e) => e.preventDefault()}>
+              <Button>
                 <Space>
                   Tháng 7/2023
                   <DownOutlined />
                 </Space>
-              </a>
+              </Button>
             </Dropdown>
           </div>
         </div>

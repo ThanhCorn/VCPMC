@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { auth } from '../firebase'
+import PropTypes from 'prop-types'
 
 interface User {
   displayName: string | null
@@ -19,9 +20,13 @@ interface UserContextValue {
 
 export const UserContext = createContext<UserContextValue>({
   currentUser: null,
-  setCurrentUser: () => {},
+  setCurrentUser: () => {
+    ;[]
+  },
   isLogin: false,
-  setIsLogin: () => {}
+  setIsLogin: () => {
+    false
+  }
 })
 
 export const useUser = () => useContext(UserContext)
@@ -72,4 +77,7 @@ export const UserProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser, isLogin, setIsLogin }}>{children}</UserContext.Provider>
   )
+}
+UserProvider.propTypes = {
+  children: PropTypes.node.isRequired
 }

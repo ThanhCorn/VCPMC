@@ -1,21 +1,23 @@
 import { Checkbox, Col, Pagination, Row } from 'antd'
 import styled from 'styled-components'
-import { mySong, Song } from '../../../myData'
+import { mySong } from '../../../myData'
+import { Song } from '../../../@types/myType'
+
 import { FormOutlined } from '@ant-design/icons'
 import Page from '../../Page'
-
-interface GrỉdViewProps {
+import PropTypes from 'prop-types'
+interface GridViewProps {
   gridView: boolean
   isKhoBanGhi: boolean
   isChecked: boolean
 }
 
-const GridView: React.FC<GrỉdViewProps> = ({ gridView, isKhoBanGhi, isChecked }) => {
+const GridView: React.FC<GridViewProps> = ({ gridView, isKhoBanGhi, isChecked }) => {
   return (
     <Container>
       <Row>
         {mySong.map((song: Song) => (
-          <Col>
+          <Col key={song.stt}>
             <img src={song.hinhAnh} alt={song.tenBanGhi} />
             <div style={{ margin: '0 10px' }}>
               <p style={{ fontSize: '16px', marginTop: '5px' }}>{song.tenBanGhi}</p>
@@ -55,6 +57,12 @@ const GridView: React.FC<GrỉdViewProps> = ({ gridView, isKhoBanGhi, isChecked 
       <Page data={mySong} />
     </Container>
   )
+}
+
+GridView.propTypes = {
+  gridView: PropTypes.bool.isRequired,
+  isKhoBanGhi: PropTypes.bool.isRequired,
+  isChecked: PropTypes.bool.isRequired
 }
 
 export default GridView

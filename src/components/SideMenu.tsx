@@ -19,7 +19,6 @@ type MenuItem = Required<MenuProps>['items'][number] & {
   icon?: React.ReactNode
   label?: React.ReactNode
   children?: MenuItem[]
-  type?: 'group'
   path?: string
 }
 
@@ -28,22 +27,18 @@ function getItem(
   key: React.Key,
   icon?: React.ReactNode,
   children?: MenuItem[],
-  type?: 'group',
   path?: string
 ): MenuItem {
   if (path) {
     return {
       key,
       icon,
-      children: children?.map((child) =>
-        getItem(child.label, child.key, child.icon, child.children, child.type, child.path)
-      ),
+      children: children?.map((child) => getItem(child.label, child.key, child.icon, child.children, child.path)),
       label: (
         <Link to={path} style={{ color: 'inherit' }}>
           {label}
         </Link>
       ),
-      type,
       path
     } as MenuItem
   }
@@ -52,7 +47,6 @@ function getItem(
     icon,
     children,
     label,
-    type,
     path
   } as MenuItem
 }
@@ -152,34 +146,34 @@ const Wrapper = styled(Menu)`
 `
 
 const items: MenuItem[] = [
-  getItem('Kho bản ghi', '1', <VideoCameraOutlined />, undefined, undefined, '/record-store'),
-  getItem('Playlist', '2', <PlaySquareOutlined />, undefined, undefined, '/playlist'),
-  getItem('Lập lịch phát', '3', <CalendarOutlined />, undefined, undefined, '/schedule'),
+  getItem('Kho bản ghi', '1', <VideoCameraOutlined />, undefined, '/record-store'),
+  getItem('Playlist', '2', <PlaySquareOutlined />, undefined, '/playlist'),
+  getItem('Lập lịch phát', '3', <CalendarOutlined />, undefined, '/schedule'),
 
   getItem('Quản lý', 'sub1', <FileTextOutlined />, [
-    getItem('Quản lý hợp đồng', '5', undefined, undefined, undefined, '/management/contract'),
-    getItem('Quản lý thiết bị', '6', undefined, undefined, undefined, '/management/equip'),
-    getItem('Đơn vị ủy quyền', '7', undefined, undefined, undefined, '/management/authority'),
-    getItem('Đơn vị sử dụng', '8', undefined, undefined, undefined, '/management/used')
+    getItem('Quản lý hợp đồng', '5', undefined, undefined, '/management/contract'),
+    getItem('Quản lý thiết bị', '6', undefined, undefined, '/management/equip'),
+    getItem('Đơn vị ủy quyền', '7', undefined, undefined, '/management/authority'),
+    getItem('Đơn vị sử dụng', '8', undefined, undefined, '/management/used')
   ]),
 
   getItem('Doanh thu', 'sub2', <DollarCircleOutlined />, [
-    getItem('Báo cáo doanh thu', '9', undefined, undefined, undefined, '/income'),
-    getItem('Lịch sử đối soát', '10', undefined, undefined, undefined, '/income/history'),
-    getItem('Phấn phối doanh thu', '11', undefined, undefined, undefined, '/income/distribution')
+    getItem('Báo cáo doanh thu', '9', undefined, undefined, '/income'),
+    getItem('Lịch sử đối soát', '10', undefined, undefined, '/income/history'),
+    getItem('Phấn phối doanh thu', '11', undefined, undefined, '/income/distribution')
   ]),
 
   getItem('Cài đặt', 'sub3', <SettingOutlined />, [
-    getItem('Phân quyền người dùng', '12', undefined, undefined, undefined, '/setting/permission'),
-    getItem('Cấu hình', '13', undefined, undefined, undefined, '/setting/config'),
-    getItem('Quản lý hợp đồng', '14', undefined, undefined, undefined, '/setting/contract'),
-    getItem('Thông tin tác phẩm', '15', undefined, undefined, undefined, '/setting/info-creation'),
-    getItem('Chu kỳ đối soát', '16', undefined, undefined, undefined, '/setting/period')
+    getItem('Phân quyền người dùng', '12', undefined, undefined, '/setting/permission'),
+    getItem('Cấu hình', '13', undefined, undefined, '/setting/config'),
+    getItem('Quản lý hợp đồng', '14', undefined, undefined, '/setting/contract'),
+    getItem('Thông tin tác phẩm', '15', undefined, undefined, '/setting/info-creation'),
+    getItem('Chu kỳ đối soát', '16', undefined, undefined, '/setting/period')
   ]),
   getItem('Hổ trợ', 'sub4', <QuestionCircleOutlined />, [
-    getItem('Hướng dẫn sử dụng', '17', undefined, undefined, undefined, '/help/guide'),
-    getItem('Tải app', '18', undefined, undefined, undefined, '/help/download'),
-    getItem('Feedback', '19', undefined, undefined, undefined, '/help/feedback')
+    getItem('Hướng dẫn sử dụng', '17', undefined, undefined, '/help/guide'),
+    getItem('Tải app', '18', undefined, undefined, '/help/download'),
+    getItem('Feedback', '19', undefined, undefined, '/help/feedback')
   ])
 ]
 

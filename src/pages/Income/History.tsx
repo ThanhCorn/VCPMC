@@ -4,12 +4,10 @@ import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
 import { Button, Col, DatePicker, List, Row, Switch, Input } from 'antd'
 import { Link } from 'react-router-dom'
 
-import { Income, PartnerAuthorizer, myIncome, myPartner } from '../../myData'
+import { myIncome } from '../../myData'
 import Page from '../../components/Page'
-import { useSelector, useDispatch } from 'react-redux'
-import { AppDispatch, RootState } from '../../app/store'
 
-import { fetchData } from '../../features/layoutSlice'
+import { Income } from '../../@types/myType'
 
 const { Search } = Input
 const onSearch = (value: string) => console.log(value)

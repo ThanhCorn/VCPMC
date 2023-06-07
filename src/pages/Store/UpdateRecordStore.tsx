@@ -4,7 +4,7 @@ import SideMenu from '../../components/SideMenu'
 import PageContent from '../../components/PageContent'
 import { RightOutlined, StepForwardOutlined } from '@ant-design/icons'
 import { Button, Form, Input, Space } from 'antd'
-import { mySong, Song } from '../../myData'
+import { mySong } from '../../myData'
 import { useNavigate } from 'react-router-dom'
 
 const UpdateRecordStore = () => {

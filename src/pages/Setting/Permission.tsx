@@ -3,9 +3,6 @@ import styled from 'styled-components'
 import { PlusCircleOutlined, RightOutlined } from '@ant-design/icons'
 import { Button, Col, List, Row, Switch, Input } from 'antd'
 import { Link } from 'react-router-dom'
-
-import { PartnerAuthorizer, myPartner } from '../../myData'
-import Page from '../../components/Page'
 import ListUser from '../../components/Setting/ListUser'
 import ListRole from '../../components/Setting/ListRole'
 

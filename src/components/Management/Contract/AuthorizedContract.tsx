@@ -13,7 +13,7 @@ import Page from '../../Page'
 import { AppDispatch, RootState } from '../../../app/store'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-import { fetchData } from '../../../features/layoutSlice'
+import { fetchData } from '../../../features/dataSlice'
 
 const { Search } = Input
 const onSearch = (value: string) => console.log(value)
@@ -42,7 +42,7 @@ type Props = {
 
 const AuthorizedContract = ({ children }: Props) => {
   const dispatch: AppDispatch = useDispatch()
-  const data2 = useSelector<RootState, DataProps[]>((state) => state.view.data2)
+  const data2 = useSelector<RootState, DataProps[]>((state) => state.data.data2)
   useEffect(() => {
     dispatch(fetchData())
   }, [dispatch])

@@ -1,6 +1,7 @@
 import React from 'react'
 import { List, Switch, Row, Col } from 'antd'
-import { PartnerAuthorizer, myPartner } from '../../myData'
+import { myPartner } from '../../myData'
+import { PartnerAuthorizer } from '../../@types/myType'
 import { Link } from 'react-router-dom'
 import Page from '../Page'
 import styled from 'styled-components'

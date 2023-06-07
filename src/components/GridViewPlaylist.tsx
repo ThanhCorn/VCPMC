@@ -1,6 +1,8 @@
 import { Checkbox, Col, Pagination, Row } from 'antd'
 import styled from 'styled-components'
-import { mySchecule, Schecule } from '../myData'
+import { mySchecule } from '../myData'
+import { Schecule } from '../@types/myType'
+
 import { InfoCircleOutlined } from '@ant-design/icons'
 import Page from './Page'
 
@@ -9,7 +11,7 @@ const GridViewPlaylist: React.FC = () => {
     <Container>
       <Row>
         {mySchecule.map((song: Schecule) => (
-          <Col>
+          <Col key={song.stt}>
             <img src={song.hinhanh} alt={song.tenplaylist} />
             <div style={{ margin: '0 10px' }}>
               <p
